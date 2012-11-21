@@ -1,9 +1,18 @@
-<!doctype html>
-<html>
-<head>
-  <title>Nothing here yet</title>
-</head>
-<body>
-  <p>Nothing here yet</p>
-</body>
-</html>
+---
+layout: default
+title: Me am banana
+---
+
+{% if site.posts.size != 0 %}
+  <h3>Posts</h3>
+  <ul>
+    {% for post in site.posts %}
+      <li itemscope itemtype="http://schema.org/BlogPosting">
+        <span itemprop="dateCreated">{{ post.date | date_to_string }}</span>
+        <a itemprop="name" href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+ <p>Nothing here yet</p>
+{% endif %}
