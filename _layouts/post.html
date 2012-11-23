@@ -1,5 +1,21 @@
----
-layout: default
----
-
-{{ content }}
+<!doctype html>
+<html>
+<head>
+  <title>{{ page.title }}</title>
+  <link rel="author" href="humans.txt" />
+</head>
+<body>
+  <head>
+    <h2><a href="/">Me am banana</a></h2>
+  </head>
+    <h1>{{ page.title }}</h1>
+    {{ page.date | date_to_string }}
+    {{ content }}
+  <footer>
+    <ul itemscope itemtype="http://schema.org/Person">
+      <li itemprop="name">Giorgio Polvara</li>
+      <li><a itemprop="email" href="mailto:&#112;&#111;&#108;&#118;&#97;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#112;&#111;&#108;&#118;&#97;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
