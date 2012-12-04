@@ -10,70 +10,65 @@ Users are created by an administrator using a web interface. Of course every for
 
 Following the official guide you have to do so in order to enable it:
 
-```javascript
-var express = require('express');
 
-var app = express();
+    var express = require('express');
 
-app.use(express.bodyParser()); // Read POST parameters
-app.use(express.cookieParser()); // Read cookies
-app.use(express.cookieSession({secret: 'mysecret'})); // Create a session using cookies
+    var app = express();
 
-app.use(express.csrf()); // Enable CSRF protection
-```
+    app.use(express.bodyParser()); // Read POST parameters
+    app.use(express.cookieParser()); // Read cookies
+    app.use(express.cookieSession({secret: 'mysecret'})); // Create a session using cookies
+
+    app.use(express.csrf()); // Enable CSRF protection
 
 That's correct if you want to validate **every** POST request. In my case I needed to skip the CSRF control for my API. So I defined my own middleware function that skips `/user_data` requests:
 
-```javascript
-var express = require('express');
-var connect = require('connect');
+    var express = require('express');
+    var connect = require('connect');
 
-// Disable CSRF for some requests
-var conditionalCSRF = function (req, res, next) {
-  var whitelist = [
-    '/user_data'
-  ];
+    // Disable CSRF for some requests
+    var conditionalCSRF = function (req, res, next) {
+      var whitelist = [
+        '/user_data'
+      ];
 
-  req.session._csrf || (req.session._csrf = connect.utils.uid(24));
+      req.session._csrf || (req.session._csrf = connect.utils.uid(24));
 
-  if (req.method !== 'POST') {
-    next();
-    return;
-  }
-  if (whitelist.indexOf(req.url) !== -1) {
-    next();
-  } else {
-    (express.csrf())(req, res, next);
-  }
-};
+      if (req.method !== 'POST') {
+        next();
+        return;
+      }
+      if (whitelist.indexOf(req.url) !== -1) {
+        next();
+      } else {
+        (express.csrf())(req, res, next);
+      }
+    };
 
-app.use(conditionalCSRF);
-```
+    app.use(conditionalCSRF);
 
 In this way CSRF token validation will be applied only on POST requests not in the `whitelist` array.
 
 If you want you can also skip AJAX requests. Here's the code:
 
-```javascript
-var express = require('express');
-var connect = require('connect');
+    var express = require('express');
+    var connect = require('connect');
 
-// Disable CSRF for some requests
-var conditionalCSRF = function (req, res, next) {
-  req.session._csrf || (req.session._csrf = connect.utils.uid(24));
+    // Disable CSRF for some requests
+    var conditionalCSRF = function (req, res, next) {
+      req.session._csrf || (req.session._csrf = connect.utils.uid(24));
 
-  if (req.method !== 'POST') {
-    next();
-    return;
-  }
-  if (req.xhr) {
-    next();
-  } else {
-    (express.csrf())(req, res, next);
-  }
-};
+      if (req.method !== 'POST') {
+        next();
+        return;
+      }
+      if (req.xhr) {
+        next();
+      } else {
+        (express.csrf())(req, res, next);
+      }
+    };
 
-app.use(conditionalCSRF);
-```
+    app.use(conditionalCSRF);
 
 You can find a *gist* for this [here](https://gist.github.com/4207967).
