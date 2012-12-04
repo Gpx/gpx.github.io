@@ -2,17 +2,18 @@
 layout: default
 title: Me am banana
 ---
+<div class="page-header">
+  <h1>Me am banana <small>Bad cod in bad english</small></h1>
+</div>
 
 {% if site.posts.size != 0 %}
-  <h3>Posts</h3>
-  <ul>
+  <h2>Posts</h2>
+  <dl class="dl-horizontal">
     {% for post in site.posts %}
-      <li itemscope itemtype="http://schema.org/BlogPosting">
-        <span itemprop="dateCreated">{{ post.date | date_to_string }}</span>
-        <a itemprop="name" href="{{ post.url }}">{{ post.title }}</a>
-      </li>
+      <dt>{{ post.date | date_to_string }}</dt>
+      <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
     {% endfor %}
-  </ul>
+  </dl>
 {% else %}
  <p>Nothing here yet</p>
 {% endif %}

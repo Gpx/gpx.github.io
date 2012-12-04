@@ -1,23 +1,31 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
   <link rel="author" href="humans.txt" />
-  {% include style.html %}
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="css/prettify.css">
 </head>
-<body>
-  <head>
-    <hgroup>
-      <h1>Me am banana</h1>
-      <h2>Bad code in bad english</h2>
-    </hgroup>
-  </head>
-  {{ content }}
-  <footer>
-    <ul itemscope itemtype="http://schema.org/Person">
-      <li itemprop="name">Giorgio Polvara</li>
-      <li><a itemprop="email" href="mailto:&#112;&#111;&#108;&#118;&#97;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#112;&#111;&#108;&#118;&#97;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
-    </ul>
-  </footer>
+<body onload="prettyPrint()">
+  <div class="container-fluid">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="/" class="brand">Me am banana</a>
+      </div>
+    </div>
+    {{ content }}
+    <footer>
+      <ul itemscope itemtype="http://schema.org/Person">
+        <li itemprop="name">Giorgio Polvara</li>
+        <li><a itemprop="email" href="mailto:&#112;&#111;&#108;&#118;&#97;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#112;&#111;&#108;&#118;&#97;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
+      </ul>
+    </footer>
+
+    <script src="js/prettify.js"></script>
+  </div>
 </body>
 </html>
