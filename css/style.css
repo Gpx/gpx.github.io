@@ -1,3 +1,8 @@
 body {
   overflow-y: scroll;
 }
+
+footer address strong {
+  position: relative;
+  bottom: -0.25em;
+}
