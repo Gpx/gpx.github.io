@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="page-header">
-  <h1><span class="muted">$ cat</span> <a href="/" title="cd ~">~</a>/{{ page.title }}</h1>
-  <em>{{ page.date | date_to_string }}</em>
+  <h1>{{ page.title }}</h1>
+  <time datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>
 </div>
 {{ content }}
