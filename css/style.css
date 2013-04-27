@@ -1,8 +1,59 @@
+html, body { height:100% }
+
+a {
+  text-decoration: none;
+  color: green;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+h1, h2, h3, time { font-family: 'Average Sans', sans-serif; }
+html { font-family: 'Noto Sans', sans-serif; }
+
+.heart { color: red; }
+
 body {
+  background-image: url('../img/white_wall_hash.png');
+  display: -webkit-flex;
+  -webkit-flex-flow: row;
+}
+
+aside {
+  text-align: center;
+  padding: 4em;
+  background-image: url('../img/binding_dark.png');
+  -webkit-flex: 18%;
+  -webkit-order: 1;
+  color: white;
+}
+
+aside address > a img {
+  border-radius: 10em;
+}
+
+section.main {
+  padding: 50px;
+  -webkit-flex: 82%;
+  -webkit-order: 2;
   overflow-y: scroll;
 }
 
-footer address strong {
-  position: relative;
-  bottom: -0.25em;
+.links {
+  margin-top: 6px;
+}
+
+@media all and (max-width: 767px) {
+  body {
+    -webkit-flex-flow: column;
+  }
+
+  aside {
+    padding: 1em;
+  }
+
+  section.main {
+    overflow-y: visible;
+  }
 }

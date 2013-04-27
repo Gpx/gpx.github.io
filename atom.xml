@@ -4,11 +4,11 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Me am banana</title>
- <link href="http://gpx.github.com/atom.xml" rel="self"/>
- <link href="http://gpx.github.com/"/>
+ <title>Giorgio Polvara aka Gpx</title>
+ <link href="http://gpx.github.io/atom.xml" rel="self"/>
+ <link href="http://gpx.github.io/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://gpx.github.com/</id>
+ <id>http://gpx.github.io/</id>
  <author>
    <name>Giorgio Polvara</name>
    <email>polvara@gmail.com</email>
@@ -17,9 +17,9 @@ layout: nil
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://gpx.github.com{{ post.url }}"/>
+   <link href="http://gpx.github.io{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://gpx.github.com{{ post.id }}</id>
+   <id>http://gpx.github.io{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
