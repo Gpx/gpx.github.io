@@ -16,8 +16,19 @@ html { font-family: 'Noto Sans', sans-serif; }
 
 body {
   background-image: url('../img/white_wall_hash.png');
+  
+  display: -ms-flex;
+  display: -o-flex;
+  display: -moz-flex;
   display: -webkit-flex;
+  display: flex;
+  -mx-flex-flow: row;
+  -o-flex-flow: row;
+  -moz-flex-flow: row;
   -webkit-flex-flow: row;
+  flex-flow: row;
+  
+  -ms-overflow-y: hidden;
   overflow-y: hidden;
 }
 
@@ -25,8 +36,19 @@ aside {
   text-align: center;
   padding: 4em;
   background-image: url('../img/binding_dark.png');
+  
+
+  -ms-flex: 18%;
+  -o-flex: 18%;
+  -moz-flex: 18%;
   -webkit-flex: 18%;
+  flex: 18%;
+  -ms-order: 1;
+  -o-order: 1;
+  -moz-order: 1;
   -webkit-order: 1;
+  order: 1;
+  
   color: white;
 }
 
@@ -36,8 +58,18 @@ aside address > a img {
 
 section.main {
   padding: 50px;
+  -ms-flex: 82%;
+  -o-flex: 82%;
+  -moz-flex: 82%;
   -webkit-flex: 82%;
+  flex: 82%;
+  -ms-order: 2;
+  -o-order: 2;
+  -moz-order: 2;
   -webkit-order: 2;
+  order: 2;
+  
+  -ms-overflow-y: scroll;
   overflow-y: scroll;
 }
 
@@ -47,7 +79,11 @@ section.main {
 
 @media all and (max-width: 767px) {
   body {
+    -ms-flex-flow: column;
+    -o-flex-flow: column;
+    -moz-flex-flow: column;
     -webkit-flex-flow: column;
+    flex-flow: column;
   }
 
   aside {
@@ -55,6 +91,7 @@ section.main {
   }
 
   section.main {
+    -ms-overflow-y: visible;
     overflow-y: visible;
   }
 }
