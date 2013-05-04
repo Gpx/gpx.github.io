@@ -35,7 +35,7 @@ body {
 aside {
   text-align: center;
   padding: 4em;
-  background-image: url('../img/binding_dark.png');
+  background-image: url('../img/purty_wood.png');
   
 
   -ms-flex: 18%;
@@ -48,8 +48,6 @@ aside {
   -moz-order: 1;
   -webkit-order: 1;
   order: 1;
-  
-  color: white;
 }
 
 aside address > a img {
