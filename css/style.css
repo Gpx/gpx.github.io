@@ -12,6 +12,16 @@ h1 {
 h1, h2, h3, time { font-family: 'Average Sans', sans-serif; }
 html { font-family: 'Noto Sans', sans-serif; }
 
+figure { text-align: center; }
+
+section.main > pre {
+  background-color: gray;
+  border-radius: 1em;
+  padding: 1em;
+  color: white;
+  font-size: 0.8em;
+}
+
 .heart {
   color: red;
   text-shadow: none;
