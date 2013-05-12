@@ -1,7 +1,4 @@
-auto: true
-server: true
 permalink: none
-server_port: 1234
 exclude:
 - .gitignore
 - README.md
