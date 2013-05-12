@@ -22,7 +22,7 @@ layout: nil
    <id>http://gpx.github.io{{ post.id }}</id>
    <content type="html">
     {{ post.content | truncatewords: 20 | xml_escape }}
-    <a href="http://gpx.github.io{{ post.url }}">Continue...</a>
+    <a href="http://gpx.github.io{{ post.url }}">Continue</a>
   </content>
  </entry>
  {% endfor %}
