@@ -13,8 +13,7 @@ So few days ago [XKCD](http://xkcd.com) published this comic:
 
 Which for me resolves in a infinite loop. But to be sure I wrote a small Ruby class to compute it.
 
-<script src="https://gist.github.com/Gpx/5563161.js">
-</script>
+{% gist 5563161 %}
 
 And the result was:
 

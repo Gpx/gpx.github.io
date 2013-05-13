@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Quick and dirt
-published: false
+published: true
 ---
 
 A couple of days ago I read this [article](http://www.inc.com/magazine/201305/jason-fried/the-importance-of-quick-and-dirty.html) from [Jason Fried](https://twitter.com/jasonfried) co-founder and president of [37signals](http://37signals.com/).

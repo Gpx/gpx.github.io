@@ -10,17 +10,14 @@ Users are created by an administrator using a web interface. Of course every for
 
 Following the official guide you have to do so in order to enable it:
 
-<script src="https://gist.github.com/Gpx/5474596.js">
-</script>
+{% gist 5474596 %}
 
 That's correct if you want to validate **every** POST request. In my case I needed to skip the CSRF control for my API. So I defined my own middleware function that skips `/user_data` requests:
 
-<script src="https://gist.github.com/Gpx/5474621.js">
-</script>
+{% gist 5474621 %}
 
 In this way CSRF token validation will be applied only on POST requests not in the `whitelist` array.
 
 If you want you can also skip validation for every AJAX requests. Here's the code:
 
-<script src="https://gist.github.com/Gpx/5474611.js">
-</script>
+{% gist 5474611 %}
