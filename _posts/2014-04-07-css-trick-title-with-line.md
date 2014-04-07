@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CSS trick&#58; with a line in the middle
+title: CSS trick&#58; &lt;h1&gt; with a line in the middle
 published: true
 ---
 
