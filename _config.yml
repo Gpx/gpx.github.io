@@ -1,4 +1,5 @@
 permalink: none
+pygments: true
 exclude:
 - .gitignore
 - README.md
