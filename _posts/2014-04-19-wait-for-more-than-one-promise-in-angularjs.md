@@ -24,7 +24,7 @@ function SomeController ($scope, userService, postService) {
 
 The code above is not efficient because the two request are run one after the other. We can do better using the [`$q.all()`](https://docs.angularjs.org/api/ng/service/$q#all) method.
 
-This method takes an array or an object of promises and combines them in a single promise.
+This method takes an array or an object of promises and combines them into a single promise.
 
 Let's see how we can improve the code above:
 
@@ -40,7 +40,7 @@ function SomeController ($scope, $q, userService, postService) {
 }
 {% endhighlight %}
 
-As you can see the results is cleaner and the code runs faster because the two AJAX request will be executed in parallel.
+As you can see this is cleaner and the code runs faster because the two AJAX request will be executed in parallel.
 
 
 I created [this JS Bin](http://jsbin.com/poboj/2/edit?js,console) as an example. It uses [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) instead of an AJAX call but the idea is the same.
