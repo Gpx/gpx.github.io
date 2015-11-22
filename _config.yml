@@ -1,6 +1,9 @@
 permalink: none
-pygments: true
+highlighter: 'pygments'
 markdown: kramdown
 exclude:
 - .gitignore
 - README.md
+- Gemfile
+- Gemfile.lock
+gems: ['jekyll-gist']
