@@ -1,6 +1,6 @@
 ---
-layout: post
 title: Wait for more than one promise in AngularJS
+date: 2014-04-19 00:00 UTC
 published: true
 ---
 
@@ -8,7 +8,7 @@ While developing a web application it may happen that you need the results from 
 
 One way to go is this:
 
-{% highlight javascript %}
+```javascript
 function SomeController ($scope, userService, postService) {
   userService.getAll()
   .then(function (users) {
@@ -20,7 +20,7 @@ function SomeController ($scope, userService, postService) {
     // Do the mapping
   });
 }
-{% endhighlight %}
+```
 
 The code above is not efficient because the two request are run one after the other. We can do better using the [`$q.all()`](https://docs.angularjs.org/api/ng/service/$q#all) method.
 
@@ -28,7 +28,7 @@ This method takes an array or an object of promises and combines them into a sin
 
 Let's see how we can improve the code above:
 
-{% highlight javascript %}
+```javascript
 function SomeController ($scope, $q, userService, postService) {
   $q.all([userService.getAll(), postService.getAll()])
   .then(function (results) {
@@ -38,7 +38,7 @@ function SomeController ($scope, $q, userService, postService) {
     // Do the mapping
   });
 }
-{% endhighlight %}
+```
 
 As you can see this is cleaner and the code runs faster because the two AJAX request will be executed in parallel.
 

@@ -1,0 +1,17 @@
+---
+title: Giorgio Polvara
+---
+
+<% (blog.articles + data.external.articles).sort_by(&:date).reverse.each do |article| %>
+  <article>
+    <h1>
+      <a href="<%= article.url %>"><%= article.title %></a>
+      <% if article.date.is_a? String %>
+        <time><%= Time.zone.parse(article.date).strftime('%b %e %Y') %></time>
+      <% else %>
+        <time><%= article.date.strftime('%b %e %Y') %></time>
+      <% end %>
+    </h1>
+  </article>
+<% end %>
+

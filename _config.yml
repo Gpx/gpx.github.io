@@ -1,9 +1,0 @@
-permalink: none
-highlighter: 'pygments'
-markdown: kramdown
-exclude:
-- .gitignore
-- README.md
-- Gemfile
-- Gemfile.lock
-gems: ['jekyll-gist']

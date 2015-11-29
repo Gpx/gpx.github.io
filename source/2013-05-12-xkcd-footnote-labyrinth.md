@@ -1,5 +1,4 @@
 ---
-layout: post
 title: XKCD footnote labyrinth
 published: true
 ---
@@ -13,7 +12,7 @@ So few days ago [XKCD](http://xkcd.com) published this comic:
 
 Which for me resolves in a infinite loop. But to be sure I wrote a small Ruby class to compute it.
 
-{% gist 5563161 %}
+<script src="https://gist.github.com/Gpx/5563161.js"></script>
 
 And the result was:
 
