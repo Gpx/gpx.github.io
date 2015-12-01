@@ -1,6 +1,11 @@
 {
   "articles": [
     {
+      "title": "JavaScript Function Composition",
+      "date": "2015-12-01",
+      "url": "http://yacht.fundbase.com/2015/12/01/javascript-function-composition/"
+    },
+    {
       "title": "Mind the Gap when upgrading to HTTP/2",
       "date": "2015-08-20",
       "url": "http://yacht.fundbase.com/2015/08/20/mind-the-gap-when-upgrading-to-http-2/"
@@ -16,7 +21,7 @@
       "url": "http://yacht.fundbase.com/2015/06/01/es6-tail-call-optimization/"
     },
     {
-      "title": "An Introduction to Hedge Funds for Dummies Developers",
+      "title": "An Introduction to Hedge Funds for <del>Dummies</del> Developers",
       "date": "2015-04-10",
       "url": "http://yacht.fundbase.com/2015/04/10/hedge-funds-for-developers/"
     },
