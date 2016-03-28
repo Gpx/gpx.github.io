@@ -1,6 +1,11 @@
 {
   "articles": [
     {
+      "title": "Leave a Trail",
+      "date": "2016-03-23",
+      "url": "http://nerds.fundbase.com/2016/03/23/leave-a-trail/"
+    },
+    {
       "title": "JavaScript Function Composition",
       "date": "2015-12-01",
       "url": "http://nerds.fundbase.com/2015/12/01/javascript-function-composition/"
