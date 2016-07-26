@@ -1,6 +1,11 @@
 {
   "articles": [
     {
+      "title": "What Is a Hedge",
+      "date": "2016-07-26",
+      "url": "http://nerds.fundbase.com/2016/07/26/hedging/"
+    },
+    {
       "title": "CSS Modules & React",
       "date": "2016-07-26",
       "url": "https://medium.com/@Gpx/css-modules-react-75ec4130ca65"
