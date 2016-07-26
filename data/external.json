@@ -1,6 +1,11 @@
 {
   "articles": [
     {
+      "title": "CSS Modules & React",
+      "date": "2016-07-26",
+      "url": "https://medium.com/@Gpx/css-modules-react-75ec4130ca65"
+    },
+    {
       "title": "Leave a Trail",
       "date": "2016-03-23",
       "url": "http://nerds.fundbase.com/2016/03/23/leave-a-trail/"
