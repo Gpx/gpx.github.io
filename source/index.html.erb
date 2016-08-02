@@ -2,16 +2,23 @@
 title: Giorgio Polvara
 ---
 
-<% (blog.articles + data.external.articles).sort_by(&:date).reverse.each do |article| %>
-  <article>
-    <h1>
-      <a href="<%= article.url %>"><%= article.title %></a>
+<header class="header">
+  <h1>Giorgio Polvara</h1>
+</header>
+
+<div class="articles">
+  <% (blog.articles + data.external.articles).sort_by(&:date).reverse.each do |article| %>
+    <article class="article">
+      <% if /^http/.match(article.url).nil? %>
+        <a href="<%= article.url %>"><%= article.title %></a>
+      <% else %>
+        <a href="<%= article.url %>" target="_blank" rel="noopener"><%= article.title %></a>
+      <% end %>
       <% if article.date.is_a? String %>
         <time><%= Time.zone.parse(article.date).strftime('%b %e %Y') %></time>
       <% else %>
         <time><%= article.date.strftime('%b %e %Y') %></time>
       <% end %>
-    </h1>
-  </article>
-<% end %>
-
+    </article>
+  <% end %>
+</div>
