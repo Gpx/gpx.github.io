@@ -5,7 +5,7 @@
 body {
   margin: 0 auto;
   max-width: 50em;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   color: #555;
 }
@@ -30,6 +30,7 @@ a:visited:hover {
 
 .index .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -41,19 +42,24 @@ a:visited:hover {
                     url('../images/header.jpeg');
   background-size: cover;
   background-position: 50% 65%;
+  line-height: 1;
 }
 
 .index .header h1 {
   margin: 0;
-  margin-bottom: 2rem;
   font-size: 4rem;
-  font-family: 'Lobster', sans-serif;
   letter-spacing: .07em;
   color: #fff;
-  text-shadow: 1px 3px rgba(254, 67, 101, 0.9),
-               0 0 10px rgba(254, 67, 101, 0.5),
-               0 0 20px rgba(254, 67, 101, 0.5),
-               0 0 25px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.index .header h1 + p {
+  margin: 0.5em auto 0.9em auto;
+  font-size: 2.0em;
+  color: #fe4365;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   font-smoothing: subpixel-antialiased;
   -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -65,8 +71,9 @@ a:visited:hover {
 .article {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 1.4rem;
-  line-height: 3;
+  line-height: 2.8;
 }
 
 .article time {
