@@ -1,6 +1,11 @@
 {
   "articles": [
     {
+      "title": "Why We Won’t Be Writing JavaScript in Five Years",
+      "date": "2016-09-13",
+      "url": "https://medium.com/thoughts-from-travelperk/why-we-wont-be-writing-javascript-in-five-years-f48b3274c327"
+    },
+    {
       "title": "What Is a Hedge",
       "date": "2016-07-26",
       "url": "http://nerds.fundbase.com/2016/07/26/hedging/"
