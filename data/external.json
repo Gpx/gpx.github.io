@@ -1,6 +1,11 @@
 {
   "articles": [
     {
+      "title": "What's Redux Anyway?",
+      "date": "2016-09-29",
+      "url": "https://blog.brainsandbeards.com/whats-redux-anyway-react-native-barcelona-talk-by-giorgio-polvara-video-recording-and-slides-eda595b5413#.azmlhdfi3"
+    },
+    {
       "title": "Why We Won’t Be Writing JavaScript in Five Years",
       "date": "2016-09-13",
       "url": "https://medium.com/thoughts-from-travelperk/why-we-wont-be-writing-javascript-in-five-years-f48b3274c327"
