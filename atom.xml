@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Giorgio Polvara</title>
+  <id>http://polvara.me/</id>
+  <link href="http://polvara.me/"/>
+  <link href="http://polvara.me/atom.xml" rel="self"/>
+  <updated>2014-04-19T02:00:00+02:00</updated>
+  <author>
+    <name>Giorgio Polvara</name>
+  </author>
+  <entry>
+    <title>Wait for more than one promise in AngularJS</title>
+    <link rel="alternate" href="http://polvara.me/2014/04/19/wait-for-more-than-one-promise-in-angularjs/"/>
+    <id>http://polvara.me/2014/04/19/wait-for-more-than-one-promise-in-angularjs/</id>
+    <published>2014-04-19T02:00:00+02:00</published>
+    <updated>2016-10-28T13:59:31+02:00</updated>
+    <author>
+      <name/>
+    </author>
+    <content type="html">&lt;p&gt;While developing a web application it may happen that you need the results from more than one asynchronous request. Let&amp;rsquo;s say that in a blog application you want to display for every user the list of posts he wrote. So you need to ask for &lt;code&gt;/users&lt;/code&gt; and &lt;code&gt;/posts&lt;/code&gt;. When you get both those information you can do the mapping.&lt;/p&gt;
+
+&lt;p&gt;One way to go is this:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;SomeController&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;userService&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;postService&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;userService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getAll&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;users&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;users&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;users&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// Save it for later&lt;/span&gt;
+    &lt;span class="nx"&gt;postService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getAll&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="p"&gt;}).&lt;/span&gt;&lt;span class="nx"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;posts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;posts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;posts&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Do the mapping&lt;/span&gt;
+  &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The code above is not efficient because the two request are run one after the other. We can do better using the &lt;a href="https://docs.angularjs.org/api/ng/service/$q#all"&gt;&lt;code&gt;$q.all()&lt;/code&gt;&lt;/a&gt; method.&lt;/p&gt;
+
+&lt;p&gt;This method takes an array or an object of promises and combines them into a single promise.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see how we can improve the code above:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;SomeController&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$q&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;userService&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;postService&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;$q&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;all&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nx"&gt;userService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getAll&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nx"&gt;postService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getAll&lt;/span&gt;&lt;span class="p"&gt;()])&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;results&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;users&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;results&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;posts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;results&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Do the mapping&lt;/span&gt;
+  &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see this is cleaner and the code runs faster because the two AJAX request will be executed in parallel.&lt;/p&gt;
+
+&lt;p&gt;I created &lt;a href="http://jsbin.com/poboj/2/edit?js,console"&gt;this JS Bin&lt;/a&gt; as an example. It uses &lt;a href="https://docs.angularjs.org/api/ng/service/$timeout"&gt;&lt;code&gt;$timeout&lt;/code&gt;&lt;/a&gt; instead of an AJAX call but the idea is the same.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>XKCD footnote labyrinth</title>
+    <link rel="alternate" href="http://polvara.me/2013/05/12/xkcd-footnote-labyrinth/"/>
+    <id>http://polvara.me/2013/05/12/xkcd-footnote-labyrinth/</id>
+    <published>2013-05-12T02:00:00+02:00</published>
+    <updated>2016-10-28T13:59:31+02:00</updated>
+    <author>
+      <name/>
+    </author>
+    <content type="html">&lt;p&gt;So few days ago &lt;a href="http://xkcd.com"&gt;XKCD&lt;/a&gt; published this comic:&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img alt="http://xkcd.com/1208" src="http://imgs.xkcd.com/comics/footnote_labyrinths.png"&gt;
+  &lt;figcaption&gt;&lt;a href="http://xkcd.com/1208/"&gt;xkcd.com/1208&lt;/a&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Which for me resolves in a infinite loop. But to be sure I wrote a small Ruby class to compute it.&lt;/p&gt;
+
+&lt;script src="https://gist.github.com/Gpx/5563161.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;And the result was:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;~/.rvm/gems/ruby-2.0.0-p0/gems/memoist-0.9.0/lib/memoist.rb:34: stack level too deep (SystemStackError)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So my idea was correct&lt;sup&gt;1&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt;. You&amp;rsquo;re welcome.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;May not be true&lt;/li&gt;
+&lt;li&gt;Increment by 2&lt;/li&gt;
+&lt;li&gt;Actually a 4&lt;sup&gt;5&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;False&lt;/li&gt;
+&lt;li&gt;True&lt;sup&gt;3&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt; if false&lt;sup&gt;1&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Conditional CSRF control with Express</title>
+    <link rel="alternate" href="http://polvara.me/2012/12/04/conditional-csrf-with-express/"/>
+    <id>http://polvara.me/2012/12/04/conditional-csrf-with-express/</id>
+    <published>2012-12-04T01:00:00+01:00</published>
+    <updated>2016-10-28T13:59:31+02:00</updated>
+    <author>
+      <name/>
+    </author>
+    <content type="html">&lt;p&gt;Some days ago I had to develop a small authentication app in &lt;a href="http://nodejs.org"&gt;Node&lt;/a&gt; with the &lt;a href="http://expressjs.com/"&gt;Express&lt;/a&gt; framework. Basically it exposes just one JSON API, something like &lt;code&gt;POST /user_data&lt;/code&gt;. It accepts two parameters: &lt;code&gt;user&lt;/code&gt; and &lt;code&gt;password&lt;/code&gt; and returns the data if they are correct.&lt;/p&gt;
+
+&lt;p&gt;Users are created by an administrator using a web interface. Of course every form is protected from &lt;a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery"&gt;CSRF&lt;/a&gt; using &lt;a href="http://expressjs.com/api.html#csrf"&gt;Express&amp;rsquo; middleware&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Following the official guide you have to do so in order to enable it:&lt;/p&gt;
+
+&lt;script src="https://gist.github.com/Gpx/5474596.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;That&amp;rsquo;s correct if you want to validate &lt;strong&gt;every&lt;/strong&gt; POST request. In my case I needed to skip the CSRF control for my API. So I defined my own middleware function that skips &lt;code&gt;/user_data&lt;/code&gt; requests:&lt;/p&gt;
+
+&lt;script src="https://gist.github.com/Gpx/5474621.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;In this way CSRF token validation will be applied only on POST requests not in the &lt;code&gt;whitelist&lt;/code&gt; array.&lt;/p&gt;
+
+&lt;p&gt;If you want you can also skip validation for every AJAX requests. Here&amp;rsquo;s the code:&lt;/p&gt;
+
+&lt;script src="https://gist.github.com/Gpx/5474611.js"&gt;&lt;/script&gt;
+</content>
+  </entry>
+</feed>
