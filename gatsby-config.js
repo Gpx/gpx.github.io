@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: "My Blog"
+    title: "Giorgio Polvara's Blog"
   },
   plugins: [
+    { resolve: "gatsby-plugin-styled-components", options: {} },
     {
       resolve: "gatsby-source-filesystem",
       options: { name: "src", path: `${__dirname}/src/` }
