@@ -1,0 +1,35 @@
+{
+  "name": "gatsby-starter-hello-world",
+  "private": true,
+  "description": "A simplified bare-bones starter for Gatsby",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "deploy": "gatsby build && gh-pages -d public -b master"
+  },
+  "dependencies": {
+    "gatsby": "^2.1.16",
+    "gatsby-remark-prismjs": "3.2.4",
+    "gatsby-source-filesystem": "2.0.22",
+    "gatsby-transformer-remark": "2.2.6",
+    "prismjs": "1.15.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "devDependencies": {
+    "gh-pages": "2.0.1",
+    "prettier": "1.16.4"
+  }
+}

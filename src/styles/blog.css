@@ -1,0 +1,20 @@
+article {
+  max-width: 65ch;
+  margin: 4em auto;
+  font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif; 
+  font-size: 18px;
+  text-align: justify;
+  hyphens: auto;
+  color: #333;
+}
+
+article h1 {
+  margin: 3em 0;
+  text-align: center;
+}
+
+article p:first-child::first-line {
+  font-weight: 600;
+}
+
+article p {  line-height: 1.5; }
