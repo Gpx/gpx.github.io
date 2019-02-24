@@ -1,0 +1,118 @@
+/* Palette: https://flatuicolors.com/palette/se */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.9em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: red;
+}
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #1e272e;
+  border-radius: 0.5em;
+  color: #d2dae2;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+  background: #00000011;
+  color: inherit;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #808e9b;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #808e9b;
+}
+
+.namespace {
+  color: red;
+  background: red;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ffa801;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #0be881;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #ffd32a;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #ef5777;
+}
+
+.token.function,
+.token.class-name {
+  color: #0fbcf9;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: red;
+  background: red;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
