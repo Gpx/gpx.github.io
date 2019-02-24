@@ -16,7 +16,7 @@ export default ({ data }) => {
   const post = data.markdownRemark;
   return (
     <Layout>
-      <article>
+      <article lang="en">
         <h1>
           {post.frontmatter.title}
           <Meta>
