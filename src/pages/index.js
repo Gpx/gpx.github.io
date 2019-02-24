@@ -1,17 +1,19 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import styled from "styled-components";
 import Layout from "../components/layout";
+
+const Title = styled.div`
+  font-size: 1.5em;
+  font-weight: 600;
+`;
 
 export default ({ data }) => (
   <Layout>
-    {data.allMarkdownRemark.totalCount}
-    <br />
-    {data.allFile.edges.map(({ node }) => node.relativePath)}
     {data.allMarkdownRemark.edges.map(({ node }) => (
-      <Link to={node.fields.slug}>
-        {node.frontmatter.title}
-        {node.excerpt}
-        {node.fields.slug}
+      <Link key={node.id} to={node.fields.slug} style={{ color: "inherit" }}>
+        <Title>{node.frontmatter.title}</Title>
+        {node.frontmatter.date} &middot; {node.timeToRead} min read
       </Link>
     ))}
   </Layout>
@@ -19,22 +21,16 @@ export default ({ data }) => (
 
 export const query = graphql`
   query {
-    allFile {
-      edges {
-        node {
-          relativePath
-        }
-      }
-    }
     allMarkdownRemark {
       totalCount
       edges {
         node {
           id
+          timeToRead
           frontmatter {
             title
+            date(formatString: "MMM DD, YYYY")
           }
-          excerpt
           fields {
             slug
           }

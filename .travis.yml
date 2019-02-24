@@ -3,6 +3,8 @@ node_js: 11.10.0
 branches:
   only:
     - source
+notifications:
+  email: false
 script:
   - git config --global user.name "${GH_NAME}"
   - git config --global user.email "${GH_EMAIL}"

@@ -1,5 +1,6 @@
 ---
 title: "Null Components Should be Hooks"
+date: "2019-02-23"
 ---
 
 Before Hooks were introduced in React I used to create several
