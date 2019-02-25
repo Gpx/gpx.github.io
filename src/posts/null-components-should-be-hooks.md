@@ -36,8 +36,8 @@ function PageTitle(props) {
 }
 ```
 
-I think null components should become Hooks instead. If we remove the `return`
-statement and rename `PageTitle` to be `usePageTitle` we have our Hook:
+I think null components should all become Hooks instead. It's easy to see why. If we remove the `return`
+statement and rename `PageTitle` to `usePageTitle` we have our Hook:
 
 ```jsx
 function usePageTitle(title) {
