@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+::selection,
+:not(pre) code[class*="language-"]::selection {
+  background: #03a9f433;
+}
+
 body {
   font-family: "EB Garamond", Palatino, Palatino Linotype, Palatino LT STD,
     Book Antiqua, Georgia, serif;
