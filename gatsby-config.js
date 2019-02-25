@@ -24,6 +24,19 @@ module.exports = {
           }
         ]
       }
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: "EB Garamond",
+            subset: ["latin-ext"],
+            variants: ["400", "400i", "500", "500i", "600"]
+          },
+          { family: "Ubuntu Mono" }
+        ]
+      }
     }
   ]
 };

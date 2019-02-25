@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Title = styled.h1`
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: center;
   padding: 2em 0;
   margin: 2em 0;

@@ -55,5 +55,7 @@ Hooks I expect the opposite. So, converting `PageTitle` to `usePageTitle` makes
 it obvious to any developer who's using my code that nothing will be rendered in
 the page.
 
-Here's the rule of thumb: is your component returning `null` in all cases?
+<p class="highlight">
+Here's the rule of thumb: is your component always rendering nothing?
 Convert it to a Hook.
+</p>
