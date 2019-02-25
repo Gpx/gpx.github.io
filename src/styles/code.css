@@ -19,7 +19,7 @@ pre[class*="language-"]::selection,
 pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
-  background: red;
+  background: #ffffff22;
 }
 
 pre[class*="language-"] {
