@@ -52,7 +52,7 @@ Hook version?
 
 When I use a component I generally expect something to appear on the page. With
 Hooks I expect the opposite. So, converting `PageTitle` to `usePageTitle` makes
-it obvious to any developer who's using my code that nothing will be rendered in
+it obvious to any developer who's using my code that nothing will be rendered on
 the page.
 
 <p class="highlight">
