@@ -3,9 +3,9 @@ title: "Null Components Should be Hooks"
 date: "2019-02-23"
 ---
 
-Before Hooks were introduced in React I used to create several
-"null&nbsp;components". In other words components that render nothing. One
-example of such component is the following:
+Before Hooks were introduced in React I used to create "null&nbsp;components".
+In other words components that render nothing. One example of such component is
+the following:
 
 ```jsx
 class PageTitle extends React.Component {
