@@ -4,11 +4,11 @@ import styled from "styled-components";
 import Layout from "../components/layout";
 
 const Post = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 `;
 
 const Title = styled.div`
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 600;
 `;
 

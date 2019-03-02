@@ -12,6 +12,14 @@ const Meta = styled.span`
   margin-top: 0.5em;
 `;
 
+const Footer = styled.footer`
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0.5em 0;
+  background: #e8eaf6;
+`;
+
 export default ({ data }) => {
   const post = data.markdownRemark;
   return (
@@ -25,6 +33,17 @@ export default ({ data }) => {
         </h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </article>
+      <Footer>
+        Would you like to have a civil discussion about this post? Hit me up on{" "}
+        <a
+          href="https://twitter.com/Gpx"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          twitter
+        </a>
+        .
+      </Footer>
     </Layout>
   );
 };
