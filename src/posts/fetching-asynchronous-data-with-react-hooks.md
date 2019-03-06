@@ -1,7 +1,6 @@
 ---
 title: "Fetching Asynchronous Data with React Hooks"
-date: "2019-02-28"
-private: true
+date: "2019-03-07"
 ---
 
 <details class="tldr">
@@ -19,17 +18,17 @@ decided to take a look at ways to streamline it as much as possible.
 
 ## A Word About My Setup
 
-Before we get started there are a few things that might throw you off.
+Before we get started, there are a few things that might throw you off.
 
-- I use `async`/`await`, you can read more about it [here]
+- I use `async`/`await`; you can read more about it [here]
 - I initialize my state with
   [class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Field_declarations)
   rather than in the `constructor`
-- In the examples I'm going to call `getResource` which is basically a function
-  that returns a
+- In the examples, I'm going to call `getResource` which is a function that
+  returns a
   [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
   I do this both because I want to hide the fetching logic and because it's then
-  easier to test my component. I can just
+  easier to test my component—I
   [`jest.mock`](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options)
   the import
 
@@ -120,8 +119,8 @@ message already at the first render.
 We also moved the fetching in a separate method and wrapped it in a
 `try`/`catch` statement. The
 [`finally`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch#The_finally_clause)
-branch is a rather new addition to JavaScript. It simply means "run this branch
-all the time no matter if the above code failed or not".
+branch is a somewhat new addition to JavaScript. It simply means "run this
+branch all the time no matter if the above code failed or not."
 
 ---
 
@@ -159,12 +158,12 @@ function FetchOneResource() {
 Most of the code remained the same, so let's focus on the differences.
 
 We converted our class into a function. That's because Hooks can be used only
-within a function component.
+within a functional component.
 
 Our state is now declared with the
 [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate) hook which
 gives us back the value and a function to set it. This is roughly how it
-compares to a class based state:
+compares to a class-based state:
 
 ```jsx
 // This code in a class component...
@@ -179,13 +178,13 @@ console.log(foo);
 
 The other Hook that we're using is
 [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect). It's
-probably the most complex of all pre-defined Hooks I wrote how it works [here].
-In this case we're using it to run our `getA` function for us exactly one time
-after the component mounts.
+probably the most complex of all pre-defined Hooks I wrote a bit about how it
+works [here](/posts/making-sense-of-useeffect). In this case, we're using it to
+run our `getA` function for us precisely one time after the component mounts.
 
 ---
 
-Before we move on to the next example I would like to take a minute to refactor
+Before we move on to the next example, I would like to take a minute to refactor
 our component. The code as is written works fine but it's very verbose, I would
 like to make it easier to follow.
 
@@ -227,16 +226,16 @@ function FetchOneResource() {
 }
 ```
 
-Ah! Much better, don't you think? Our `FetchOneResource` is now only 3 lines
-long and it's quite easy to understand what is going on.
+Ah! Much better, don't you think? Our `FetchOneResource` is now only three lines
+long, and it's quite easy to understand what is going on.
 
-Still, I think we can do better. But first let's see how to fetch more than one
+Still, I think we can do better. But first, let's see how to fetch more than one
 asynchronous resource at the same time.
 
 ## Fetch Multiple Resources at the Same Time
 
-In many cases you want to load more than one resource at the same time. Think of
-a page that renders a list of posts and your followers.
+In many cases, you want to load more than one resource at the same time. Think
+of a page that renders a list of posts and your followers.
 
 Let's see how we could do it with Hooks. First a naive implementation:
 
@@ -309,9 +308,9 @@ function FetchMultipleResourceAtOnce() {
 }
 ```
 
-We're duplicating a lot of code but it's quite easy to fix it. `useA` and `useB`
-are basically the same function, the only difference is that they are passing
-different arguments to `getResource`. Let's fix that:
+We're duplicating a lot of code, but it's quite easy to fix it. `useA` and
+`useB` are basically the same function. The only difference is that they are
+passing different arguments to `getResource`. Let's fix that:
 
 ```jsx
 import React, { useState, useEffect } from "react";
@@ -367,7 +366,7 @@ Note that we are now passing `params` to `useEffect` so that if one of them
 changes we fetch the resource again.
 
 We're also not returning an array anymore but an object. I think an object is
-easier to handle because it create only one variable and doesn't force us to
+easier to handle because it creates only one variable and doesn't force us to
 remember the order in which the results are returned.
 
 The last thing left to do is to take `useAsync` and move it in a separate file
