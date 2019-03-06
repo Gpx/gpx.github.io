@@ -18,6 +18,10 @@ const Footer = styled.footer`
   margin-bottom: 3rem;
   padding: 0.5em 0;
   background: #e8eaf6;
+
+  a {
+    text-decoration: underline;
+  }
 `;
 
 export default ({ data }) => {
@@ -26,7 +30,7 @@ export default ({ data }) => {
     <Layout>
       <article lang="en">
         <h1>
-          {post.frontmatter.title}
+          <span dangerouslySetInnerHTML={{ __html: post.frontmatter.title }} />
           <Meta>
             {post.frontmatter.date} &middot; {post.timeToRead} min read
           </Meta>

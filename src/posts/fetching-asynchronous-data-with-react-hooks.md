@@ -1,6 +1,7 @@
 ---
 title: "Fetching Asynchronous Data with React Hooks"
 date: "2019-02-28"
+private: true
 ---
 
 <details class="tldr">
