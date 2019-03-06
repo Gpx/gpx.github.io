@@ -4,11 +4,11 @@ import styled from "styled-components";
 import Layout from "../components/layout";
 
 const Post = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 `;
 
 const Title = styled.div`
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 600;
 `;
 
@@ -17,7 +17,7 @@ export default ({ data }) => (
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Link key={node.id} to={node.fields.slug} style={{ color: "inherit" }}>
         <Post>
-          <Title>{node.frontmatter.title}</Title>
+          <Title dangerouslySetInnerHTML={{ __html: node.frontmatter.title }} />
           {node.frontmatter.date} &middot; {node.timeToRead} min read
         </Post>
       </Link>
@@ -27,7 +27,10 @@ export default ({ data }) => (
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { private: { ne: true } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       totalCount
       edges {
         node {

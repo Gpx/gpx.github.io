@@ -2,15 +2,27 @@ article {
   margin: 4em 0;
   text-align: justify;
   hyphens: auto;
+  text-decoration-skip-ink: auto;
 }
 
 article h1 {
+  font-size: 1.5rem;
   margin: 3em 0;
   text-align: center;
 }
 
+article h2 {
+  text-align: left;
+  font-size: 1.3rem;
+  margin: 2em 0 1em 0;
+}
+
 article p:first-child::first-line {
   font-weight: 600;
+}
+
+article a {
+  text-decoration: underline;
 }
 
 hr {
@@ -58,4 +70,14 @@ article ul {
 
 article li {
   margin-bottom: 0.5em;
+}
+
+details.tldr {
+  border: 1px solid #0003;
+  padding: 0.4em 1em;
+  margin-bottom: 4rem;
+}
+
+details summary {
+  cursor: pointer;
 }

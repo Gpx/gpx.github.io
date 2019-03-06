@@ -83,8 +83,8 @@ course</a>.
 
 Now, look back at the first PRs from famous developers. One common theme you can
 see is that most of those are about fixing typos or improving a documentation.
-That's a great way to start. Coding can take some effort but _veryone know how to
-fxi a borken sntence_.
+That's a great way to start. Coding can take some effort but _veryone know how
+to fxi a borken sntence_.
 
 So, here's idea #1 if you want to start contributing:
 

@@ -117,6 +117,16 @@ pre[class*="language-"] {
   cursor: help;
 }
 
+.gatsby-highlight-code-line {
+  background: #2f3d48;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #575fcf;
+}
+
 .gatsby-highlight::before {
   content: attr(data-language);
   display: block;
