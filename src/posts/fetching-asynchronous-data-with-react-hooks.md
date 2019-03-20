@@ -20,7 +20,8 @@ decided to take a look at ways to streamline it as much as possible.
 
 Before we get started, there are a few things that might throw you off.
 
-- I use `async`/`await`; you can read more about it [here]
+- I use `async`/`await`; you can read more about it
+  [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 - I initialize my state with
   [class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Field_declarations)
   rather than in the `constructor`
