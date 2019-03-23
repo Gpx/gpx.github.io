@@ -4,11 +4,10 @@ date: "2016-09-13"
 ---
 
 As you probably know, JavaScript was created by
-<a href="https://twitter.com/BrendanEich" target="_blank">Brendan Eich</a> in
-1995 in only ten days. Many developers love to make fun of it, but it's an
-excellent language if you consider how little designing it took. Most of us
-can't event finish a sprint in ten days, let alone implement a programming
-language.
+[Brendan Eich](https://twitter.com/BrendanEich) in 1995 in only ten days. Many
+developers love to make fun of it, but it's an excellent language if you
+consider how little designing it took. Most of us can't event finish a sprint in
+ten days, let alone implement a programming language.
 
 Of course, it's far from perfect and through they years it got updated, although
 not as much as it should have. Luckily TC39, the committee responsible for
@@ -67,7 +66,7 @@ future of ES6</a> and, in particular, new ways to handle asynchronous code.
 
 During the Q/A I asked this question:
 
-TBD
+https://twitter.com/jhusain/status/773834257055776768
 
 He also gave a
 <a href="https://youtu.be/3pKNRgResq0?t=30m47s" target="_blank">longer

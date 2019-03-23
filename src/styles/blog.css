@@ -81,3 +81,7 @@ details.tldr {
 details summary {
   cursor: pointer;
 }
+
+twitter-widget {
+  margin: 2em auto !important;
+}
