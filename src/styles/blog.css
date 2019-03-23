@@ -55,6 +55,8 @@ hr::after {
 }
 
 article .highlight {
+  text-align: left;
+  hyphens: initial;
   font-size: 1.3em;
   color: #666;
   margin: 1.7em;
