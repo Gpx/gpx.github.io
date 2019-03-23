@@ -37,6 +37,10 @@ module.exports = {
           { family: "Ubuntu Mono" }
         ]
       }
+    },
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: { trackingId: "UA-40681255-1", head: false, respectDNT: true }
     }
   ]
 };
