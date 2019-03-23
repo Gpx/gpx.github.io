@@ -21,7 +21,9 @@ module.exports = {
               showLineNumbers: false,
               noInlineHighlight: false
             }
-          }
+          },
+          { resolve: "gatsby-remark-external-links" },
+          "@weknow/gatsby-remark-twitter"
         ]
       }
     },
