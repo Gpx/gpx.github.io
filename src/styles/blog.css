@@ -2,6 +2,9 @@ article {
   margin: 4em 0;
   text-align: justify;
   hyphens: auto;
+  hyphenate-limit-chars: 6 3 2;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-last: always;
   text-decoration-skip-ink: auto;
 }
 
