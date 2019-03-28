@@ -226,7 +226,6 @@ function MyComponent(props) {
   async function fetchUser() {
     user = await getUser(props.userId);
     setUser(user);
-    this.setState({ user });
   }
   useEffect(() => {
     fetchUser();
