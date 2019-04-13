@@ -8,6 +8,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: { name: "src", path: `${__dirname}/src/` }
     },
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -23,7 +24,14 @@ module.exports = {
             }
           },
           { resolve: "gatsby-remark-external-links" },
-          "@weknow/gatsby-remark-twitter"
+          "@weknow/gatsby-remark-twitter",
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 650
+            }
+          },
+          "gatsby-remark-copy-linked-files"
         ]
       }
     },
