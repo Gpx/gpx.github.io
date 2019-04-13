@@ -12,6 +12,7 @@ article h1 {
   font-size: 1.5rem;
   margin: 3em 0;
   text-align: center;
+  hyphens: none;
 }
 
 article h2 {
@@ -26,6 +27,22 @@ article p:first-child::first-line {
 
 article a {
   text-decoration: underline;
+}
+
+article figure {
+  margin: auto;
+  margin-bottom: 3em;
+  text-align: center;
+}
+
+article img {
+  max-width: 100%;
+}
+
+article figcaption {
+  text-align: center;
+  font-style: italic;
+  border-bottom: 1px solid #000a;
 }
 
 hr {
