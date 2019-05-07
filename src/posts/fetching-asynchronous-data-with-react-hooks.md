@@ -376,7 +376,7 @@ so that we can use it in other components too. Luckily a version of
 [react-use](https://github.com/streamich/react-use).
 
 ```jsx
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { getResource } from "./api";
 import { useAsync } from "react-use"; // highlight-line
 

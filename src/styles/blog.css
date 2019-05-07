@@ -107,3 +107,16 @@ details summary {
 twitter-widget {
   margin: 2em auto !important;
 }
+
+blockquote {
+  text-align: left;
+  hyphens: initial;
+  margin: 2em auto;
+  max-width: 80%;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+blockquote p:first-child::first-line {
+  font-weight: normal;
+}
