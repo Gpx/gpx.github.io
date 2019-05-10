@@ -135,10 +135,10 @@ jest.mock("./api/posts");
 
 You can read more about `jest.mock` in the
 [official docs](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options).
-What it does is to tell Jest to replace all the methods inside the './api/posts'
+What it does is to tell Jest to replace all the methods inside the `./api/posts`
 module with a mock.
 
-Now that we have the mock in place let's render the component and make sure we
+Now that we have the mock in place let's render the component and test that we
 see a loading message:
 
 ```jsx
@@ -187,8 +187,8 @@ we have in our codebase but a
 [mock function](https://jestjs.io/docs/en/mock-function-api).
 
 OK, we're almost there. All is left to do is to return some data from
-`fetchPosts` and make sure it appears in the DOM. This is exactly what we're
-going to do next:
+`fetchPosts` and verify it appears in the DOM. This is exactly what we're going
+to do next:
 
 ```jsx
 import React from "react";
@@ -260,5 +260,5 @@ To recap, these are the steps to test an asynchronous method:
    [`jest.mock`](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options)
    and make it resolve to some data;
 1. Test the loading state;
-1. Test that the async method got called correctly.
+1. Test that the async method got called correctly;
 1. Test that the component rendered the data correctly.
