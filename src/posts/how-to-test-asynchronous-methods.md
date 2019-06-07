@@ -38,7 +38,7 @@ have an `Index` component that shows the list of posts—kinda like what I have 
 ```jsx
 import React from "react";
 import { fetchPosts } from "./api/posts";
-import { useAsync } from "react-use"getResource;
+import { useAsync } from "react-use";
 
 function Index() {
   const posts = useAsync(fetchPosts, []);
@@ -144,7 +144,7 @@ see a loading message:
 ```jsx
 // highlight-start
 import React from "react";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 import Index from "./Index";
 import "jest-dom/extend-expect";
 // highlight-end
@@ -164,7 +164,7 @@ correctly:
 
 ```jsx
 import React from "react";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 import Index from "./Index";
 import "jest-dom/extend-expect";
 import { fetchPosts } from "./api/posts"; // highlight-line
@@ -192,7 +192,7 @@ to do next:
 
 ```jsx
 import React from "react";
-import { render, wait } from "react-testing-library"; // highlight-line
+import { render, wait } from "@testing-library/react"; // highlight-line
 import Index from "./Index";
 import "jest-dom/extend-expect";
 import { fetchPosts } from "./api/posts";
@@ -228,7 +228,7 @@ changing the mock:
 
 ```jsx
 import React from "react";
-import { render, wait } from "react-testing-library";
+import { render, wait } from "@testing-library/react";
 import Index from "./Index";
 import "jest-dom/extend-expect";
 import { fetchPosts } from "./api/posts";
