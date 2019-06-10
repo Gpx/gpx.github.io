@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Giorgio Polvara's Blog"
+    title: "Giorgio Polvara's Blog",
+    siteUrl: "https://polvara.me"
   },
   plugins: [
     { resolve: "gatsby-plugin-styled-components", options: {} },
@@ -51,6 +52,52 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: { trackingId: "UA-40681255-1" }
+    },
+    {
+      resolve: "gatsby-plugin-feed",
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug
+                });
+              });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml"
+          }
+        ]
+      }
     }
   ]
 };
