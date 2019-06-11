@@ -140,6 +140,16 @@ pre[class*="language-"] {
   border-radius: 0.5em 0.5em 0 0;
 }
 
+.gatsby-highlight[data-language="html"]::before {
+  background-image: linear-gradient(90deg, #ffb74d, #ff9800);
+}
+
+.gatsby-highlight[data-language="text"]::before {
+  content: " ";
+  white-space: pre;
+  background-image: linear-gradient(90deg, #dce775, #cddc39);
+}
+
 .gatsby-highlight {
   border-radius: 0.5em;
   box-shadow: 2px 2px 3px 2px #0003;
