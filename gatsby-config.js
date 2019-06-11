@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Giorgio Polvara's Blog",
-    siteUrl: "https://polvara.me"
+    siteUrl: "https://www.polvara.me"
   },
   plugins: [
     { resolve: "gatsby-plugin-styled-components", options: {} },
