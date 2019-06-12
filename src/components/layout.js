@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/header";
+import Footer from "../components/footer";
 
 const Container = styled.div`
   max-width: calc(65 * 9px);
@@ -8,8 +9,9 @@ const Container = styled.div`
 `;
 
 export default ({ children }) => (
-  <Container>
+  <>
     <Header />
-    {children}
-  </Container>
+    <Container>{children}</Container>
+    <Footer />
+  </>
 );
