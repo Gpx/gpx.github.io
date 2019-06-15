@@ -1,6 +1,10 @@
 ---
 title: "Fetching Asynchronous Data with React Hooks"
 date: "2019-03-07"
+cover:
+  file: "./fetching-asynchronous-data-with-react-hooks//cover.jpg"
+  author: "cubicroot XYZ"
+  link: "https://unsplash.com/photos/rFNVqR2rJE0"
 ---
 
 <details class="tldr">

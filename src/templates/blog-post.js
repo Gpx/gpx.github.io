@@ -7,7 +7,7 @@ import PostHeader from "../components/post-header";
 
 const Meta = styled.span`
   display: block;
-  font-size: 0.6em;
+  font-size: 0.45em;
   font-weight: 400;
   color: #666;
   margin-top: 0.5em;
@@ -41,21 +41,23 @@ export default ({ data }) => {
             </Meta>
           </h1>
 
-          <figure>
-            <img
-              src={post.frontmatter.cover.file.publicURL}
-              alt={post.frontmatter.cover.alt}
-            />
-            <figcaption>
-              <a
-                href={post.frontmatter.cover.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Photo by {post.frontmatter.cover.author}
-              </a>
-            </figcaption>
-          </figure>
+          {post.frontmatter.cover ? (
+            <figure>
+              <img
+                src={post.frontmatter.cover.file.publicURL}
+                alt={post.frontmatter.cover.alt}
+              />
+              <figcaption>
+                <a
+                  href={post.frontmatter.cover.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Photo by {post.frontmatter.cover.author}
+                </a>
+              </figcaption>
+            </figure>
+          ) : null}
 
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </article>
