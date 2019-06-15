@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/header";
 import Footer from "../components/footer";
 
 const Container = styled.div`
@@ -10,7 +9,6 @@ const Container = styled.div`
 
 export default ({ children }) => (
   <>
-    <Header />
     <Container>{children}</Container>
     <Footer />
   </>

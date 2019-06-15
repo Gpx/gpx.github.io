@@ -1,6 +1,11 @@
 ---
 title: "Five Things You (Probably) Didn't Know About Testing Library"
 date: "2019-06-11"
+cover:
+  file: "./five-things-you-didnt-know-about-testing-library/cover.jpg"
+  author: "Nadine Shaabana"
+  link: "https://unsplash.com/photos/-M_f3f8DGRg"
+  alt: "An open hand showing the five fingers"
 ---
 
 I've just sold myself to the gods of click-baiting by making an "x things you

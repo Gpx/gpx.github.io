@@ -1,6 +1,10 @@
 ---
 title: "Testing a Custom Select with React Testing Library"
 date: "2019-04-13"
+cover:
+  file: "./testing-a-custom-select-with-react-testing-library/cover.jpg"
+  author: "Bodie Pyndus"
+  link: "https://unsplash.com/photos/JXqMjodZ0uM"
 ---
 
 I have been following the community around
@@ -15,7 +19,7 @@ By _custom select_ I mean a component like
 
 <figure>
   <a href="https://material-ui.com/demos/selects/" target="_blank">
-    <img src="./selects.gif" title="Material-UI's select" />
+    <img src="./testing-a-custom-select-with-react-testing-library/selects.gif" title="Material-UI's select" />
   </a>
   <figcaption>Material-UI's select</figcaption>
 </figure>
@@ -54,7 +58,7 @@ function MySelector() {
 ```
 
 <figure>
-  <img src="./custom-select.gif" title="MySelector in action" />
+  <img src="./testing-a-custom-select-with-react-testing-library/custom-select.gif" title="MySelector in action" />
   <figcaption><code>MySelector</code> in action</figcaption>
 </figure>
 

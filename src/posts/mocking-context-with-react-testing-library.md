@@ -1,6 +1,10 @@
 ---
 title: "Mocking Context with React Testing Library"
 date: "2019-03-23"
+cover:
+  file: "./mocking-context-with-react-testing-library/cover.jpg"
+  author: "Mae Mu"
+  link: "https://unsplash.com/photos/AX_VWc7ORwY"
 ---
 
 I noticed several people get confused on how to test React components that rely

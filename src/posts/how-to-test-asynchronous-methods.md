@@ -1,6 +1,10 @@
 ---
 title: How to Test Asynchronous Methods
 date: 2019-05-19
+cover:
+  file: "./how-to-test-asynchronous-methods/cover.jpg"
+  author: "Randy Fath"
+  link: "https://unsplash.com/photos/R5_1N6ZgCOo"
 ---
 
 I continue my series of posts on `react-testing-library` this time with a brief

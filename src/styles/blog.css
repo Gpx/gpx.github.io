@@ -1,5 +1,5 @@
 article {
-  margin: 4em 0;
+  margin-bottom: 4em;
   text-align: justify;
   hyphens: auto;
   hyphenate-limit-chars: 6 3 2;
@@ -9,8 +9,8 @@ article {
 }
 
 article h1 {
-  font-size: 1.5rem;
-  margin: 3em 0;
+  font-size: 2rem;
+  margin: 1.5em 0;
   text-align: center;
   hyphens: none;
 }
@@ -42,7 +42,6 @@ article img {
 article figcaption {
   text-align: center;
   font-style: italic;
-  border-bottom: 1px solid #000a;
 }
 
 hr {
