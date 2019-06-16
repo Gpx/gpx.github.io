@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 import "../styles/blog.css";
 import Layout from "../components/layout";
 import PostHeader from "../components/post-header";
@@ -29,6 +30,21 @@ export default ({ data }) => {
   const post = data.markdownRemark;
   return (
     <>
+      <Helmet>
+        <title>{post.frontmatter.title}</title>
+        <meta property="og:title" content={post.frontmatter.title} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`${data.site.siteMetadata.siteUrl}${post.fields.slug}`}
+        />
+        {post.frontmatter.cover ? (
+          <meta
+            property="og:image"
+            content={`${data.site.siteMetadata.siteUrl}${post.frontmatter.cover.file.publicURL}`}
+          />
+        ) : null}
+      </Helmet>
       <PostHeader />
       <Layout>
         <article lang="en">
@@ -80,6 +96,11 @@ export default ({ data }) => {
 
 export const query = graphql`
   query($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
@@ -94,6 +115,9 @@ export const query = graphql`
           link
           alt
         }
+      }
+      fields {
+        slug
       }
     }
   }
