@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 
 const Container = styled.div`
   margin-top: 4em;
-  padding: 3em 0;
+  padding: 3em 0.5em;
   text-align: right;
   background: #3a6;
   color: #fff;
