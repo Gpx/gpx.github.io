@@ -15,6 +15,7 @@ module.exports = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          { resolve: "gatsby-remark-embed-video", width: 800 },
           {
             resolve: "gatsby-remark-prismjs",
             options: {
