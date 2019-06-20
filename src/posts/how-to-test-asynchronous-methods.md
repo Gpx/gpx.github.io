@@ -24,7 +24,7 @@ Two notes before I start:
   strategy is the same if you use Hooks;
 - If you are uncertain how to make asynchronous calls in the first place check
   my other post
-  [Fetching Asynchronous Data with React Hooks](fetching-asynchronous-data-with-react-hooks).
+  [Fetching Asynchronous Data with React Hooks](../fetching-asynchronous-data-with-react-hooks).
 
 ---
 
@@ -71,8 +71,8 @@ showing a loading message while this happens. Once the async method resolves, we
 either show an error or the list of posts.
 
 If you are confused by the `useAsync` call refer to my
-[previous post](fetching-asynchronous-data-with-react-hooks) where I explain how
-it works.
+[previous post](../fetching-asynchronous-data-with-react-hooks) where I explain
+how it works.
 
 If you prefer to avoid Hooks, this is the class implementation (note that the
 tests we're going to write are going to work with both implementations):
