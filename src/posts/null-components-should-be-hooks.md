@@ -1,6 +1,10 @@
 ---
 title: "Null Components Should be Hooks"
 date: "2019-02-23"
+cover:
+  file: "./null-components-should-be-hooks/cover.jpg"
+  author: "Ben Hershey"
+  link: "https://unsplash.com/photos/rFNVqR2rJE0"
 ---
 
 Before Hooks were introduced in React I used to create "null&nbsp;components".
