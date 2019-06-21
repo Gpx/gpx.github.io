@@ -1,6 +1,10 @@
 ---
 title: "Making Sense of <code>useEffect</code>"
 date: "2019-03-06"
+cover:
+  file: "./making-sense-of-useeffect/cover.jpg"
+  author: "Jamison McAndie"
+  link: "https://unsplash.com/photos/uf4oyaimWwg"
 ---
 
 During the past few weeks, I had the chance to introduce many of my colleagues
