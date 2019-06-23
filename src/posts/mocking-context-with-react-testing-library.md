@@ -7,9 +7,9 @@ cover:
   link: "https://unsplash.com/photos/AX_VWc7ORwY"
 ---
 
-I noticed several people get confused on how to test React components that rely
-on a context with `react-testing-library`. Before I even explain how to test
-such components let me get something out of the way:
+I noticed several people getting confused on how to test React components that
+rely on a context with `react-testing-library`. Before I even explain how to
+test such components let me get something out of the way:
 
 <p class="highlight">
 There is no need to mock your contexts in order to test them.
