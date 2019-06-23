@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import NewsletterForm from "./newsletter-form";
 
 const Container = styled.div`
   margin-top: 4em;
@@ -33,25 +34,28 @@ const Copy = styled.div`
 `;
 
 export default () => (
-  <Container>
-    <Content>
-      <Link to="/">Home</Link>&middot;<a href="/rss.xml">RSS</a>&middot;
-      <a
-        href="https://twitter.com/Gpx"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Twitter
-      </a>
-      &middot;
-      <a
-        href="https://github.com/Gpx"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
-    </Content>
-    <Copy>&copy; 2014&ndash;{new Date().getFullYear()} Giorgio Polvara</Copy>
-  </Container>
+  <>
+    <NewsletterForm />
+    <Container>
+      <Content>
+        <Link to="/">Home</Link>&middot;<a href="/rss.xml">RSS</a>&middot;
+        <a
+          href="https://twitter.com/Gpx"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Twitter
+        </a>
+        &middot;
+        <a
+          href="https://github.com/Gpx"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </Content>
+      <Copy>&copy; 2014&ndash;{new Date().getFullYear()} Giorgio Polvara</Copy>
+    </Container>
+  </>
 );
