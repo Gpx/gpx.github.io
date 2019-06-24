@@ -1,0 +1,281 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.fd5b84aa803f55dd1170.css">article{margin-bottom:4em;text-align:justify;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 2;hyphenate-limit-lines:2;hyphenate-limit-last:always;-webkit-text-decoration-skip:ink;text-decoration-skip-ink:auto}article h1{font-size:2rem;margin:1.5em 0;text-align:center;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article h2{text-align:left;font-size:1.3rem;margin:2em 0 1em}article p:first-child:first-line{font-weight:600}article a{text-decoration:underline}article figure{margin:auto auto 3em;text-align:center}article img{max-width:100%}article figcaption{text-align:center;font-style:italic}hr{border:none;border-radius:50%;margin:2em auto}hr,hr:after,hr:before{height:3px;width:3px;background:rgba(0,0,0,.67)}hr:after,hr:before{position:absolute;content:"";display:inline-block;border-radius:50%;padding:0}hr:before{-webkit-transform:translateX(-1em);transform:translateX(-1em)}hr:after{-webkit-transform:translateX(1em);transform:translateX(1em)}article .highlight{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;font-size:1.3em;color:#666;margin:1.7em;font-weight:100;padding-bottom:.5em;border-bottom:3px solid #3f51b5}article ul{text-align:left;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article li{margin-bottom:.5em}details.tldr{border:1px solid rgba(0,0,0,.2);padding:.4em 1em;margin-bottom:4rem}details summary{cursor:pointer}twitter-widget{margin:2em auto!important}blockquote{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;margin:2em auto;max-width:80%;font-size:1.2em;font-style:italic}blockquote p:first-child:first-line{font-weight:400}*,:after,:before{box-sizing:border-box}::-moz-selection,:not(pre) code[class*=language-]::-moz-selection{background:rgba(3,169,244,.2)}::selection,:not(pre) code[class*=language-]::selection{background:rgba(3,169,244,.2)}html{font-size:19px}body{font-family:EB Garamond,Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;color:#333;line-height:1.5;margin:0}a{text-decoration:none;color:currentColor}code[class*=language-],pre[class*=language-]{font-family:Ubuntu Mono,monospace;font-size:.9em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{background:hsla(0,0%,100%,.13)}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:hsla(0,0%,100%,.13)}pre[class*=language-]{padding:1em;margin:0 0 .5em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#1e272e;border-radius:0 0 .5em .5em;color:#d2dae2}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:rgba(0,0,0,.07);color:inherit}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#808e9b;font-style:italic}.token.punctuation{color:#808e9b}.namespace{color:red;background:red}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#ffa801}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#0be881}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#ffd32a}.token.atrule,.token.attr-value,.token.keyword{color:#ef5777}.token.class-name,.token.function{color:#0fbcf9}.token.important,.token.regex,.token.variable{color:red;background:red}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.gatsby-highlight-code-line{background:#2f3d48;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:.75em;border-left:.25em solid #575fcf}.gatsby-highlight:before{content:attr(data-language);display:block;padding:.3em 1em;font-size:.9em;text-transform:uppercase;text-align:right;background-image:-webkit-gradient(linear,left top,right top,from(#7986cb),to(#3f51b5));background-image:linear-gradient(90deg,#7986cb,#3f51b5);color:#fff;font-family:Ubuntu Mono,monospace;border-radius:.5em .5em 0 0}.gatsby-highlight[data-language=html]:before{background-image:-webkit-gradient(linear,left top,right top,from(#ffb74d),to(#ff9800));background-image:linear-gradient(90deg,#ffb74d,#ff9800)}.gatsby-highlight[data-language=text]:before{content:" ";white-space:pre;background-image:-webkit-gradient(linear,left top,right top,from(#dce775),to(#cddc39));background-image:linear-gradient(90deg,#dce775,#cddc39)}.gatsby-highlight{border-radius:.5em;box-shadow:2px 2px 3px 2px rgba(0,0,0,.2);margin:2em 0}</style><meta name="generator" content="Gatsby 2.8.5"/><title data-react-helmet="true">JavaScript Function Composition</title><meta data-react-helmet="true" property="og:title" content="JavaScript Function Composition"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:url" content="https://www.polvara.me/posts/javascript-function-composition/"/><meta data-react-helmet="true" property="og:image" content="https://www.polvara.me/static/cover-605ddb6c249828e96b1357db7b4519c8.jpg"/><style data-styled="cAtjnm laQaBv dFgSI dFUOyp kHWxpf ddOZgs ioFzeH" data-styled-version="4.3.1">
+/* sc-component-id: footer__Container-sc-1abtvul-0 */
+.kHWxpf{margin-top:4em;padding:3em 0.5em;text-align:right;background:#3a6;color:#fff;text-shadow:1px 0 1px #0004;}
+/* sc-component-id: footer__Content-sc-1abtvul-1 */
+.ddOZgs{max-width:calc(65 * 9px);margin:auto;} .ddOZgs > *{margin:0.7em;} .ddOZgs > *:first-child{margin-left:0;} .ddOZgs > *:last-child{margin-right:0;}
+/* sc-component-id: footer__Copy-sc-1abtvul-2 */
+.ioFzeH{max-width:calc(65 * 9px);margin:auto;font-size:0.85em;margin-top:1em;}
+/* sc-component-id: layout__Container-sc-4dh0yk-0 */
+.laQaBv{padding:0 0.5em;max-width:calc(65 * 9px);margin:auto;}
+/* sc-component-id: post-header__Title-sc-1okepgc-0 */
+.cAtjnm{display:block;font-weight:500;font-size:1.5rem;text-align:center;padding:0.5em 0;color:#fff;text-shadow:1px 0 1px #0004;-webkit-text-decoration:none;text-decoration:none;width:100%;background:#3a6;}
+/* sc-component-id: blog-post__Meta-sc-7gkdnd-0 */
+.dFgSI{display:block;font-size:0.45em;font-weight:400;color:#666;margin-top:0.5em;}
+/* sc-component-id: blog-post__Footer-sc-7gkdnd-1 */
+.dFUOyp{font-size:0.85rem;text-align:center;margin-bottom:3rem;padding:0.5em 0;background:#e8eaf6;} .dFUOyp a{-webkit-text-decoration:underline;text-decoration:underline;}</style><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ebgaramond/v10/SlGJmQSNjdsmc35JDF1K5GyGaywSQg4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ebgaramond/v10/SlGJmQSNjdsmc35JDF1K5GyqbCwSQg4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ebgaramond/v10/SlGLmQSNjdsmc35JDF1K5GRwcMgWcgzoqA.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ebgaramond/v10/SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ebgaramond/v10/SlGWmQSNjdsmc35JDF1K5GRweDs1Zw.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ubuntumono/v8/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2"/><style type="text/css">@font-face{font-family:'EB Garamond';font-style:italic;font-weight:400;src:local('EB Garamond Italic'),local('EBGaramond-Italic'),url(/google-fonts/s/ebgaramond/v10/SlGWmQSNjdsmc35JDF1K5GRweDs1Zw.woff2) format('woff2'),url(/google-fonts/s/ebgaramond/v10/SlGWmQSNjdsmc35JDF1K5GRweDs1YQ.woff) format('woff');font-display: swap;}@font-face{font-family:'EB Garamond';font-style:italic;font-weight:500;src:local('EB Garamond Medium Italic'),local('EBGaramond-MediumItalic'),url(/google-fonts/s/ebgaramond/v10/SlGLmQSNjdsmc35JDF1K5GRwcMgWcgzoqA.woff2) format('woff2'),url(/google-fonts/s/ebgaramond/v10/SlGLmQSNjdsmc35JDF1K5GRwcMgWcgzorg.woff) format('woff');font-display: swap;}@font-face{font-family:'EB Garamond';font-style:normal;font-weight:400;src:local('EB Garamond Regular'),local('EBGaramond-Regular'),url(/google-fonts/s/ebgaramond/v10/SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2) format('woff2'),url(/google-fonts/s/ebgaramond/v10/SlGUmQSNjdsmc35JDF1K5GR1SD8.woff) format('woff');font-display: swap;}@font-face{font-family:'EB Garamond';font-style:normal;font-weight:500;src:local('EB Garamond Medium'),local('EBGaramond-Medium'),url(/google-fonts/s/ebgaramond/v10/SlGJmQSNjdsmc35JDF1K5GyGaywSQg4.woff2) format('woff2'),url(/google-fonts/s/ebgaramond/v10/SlGJmQSNjdsmc35JDF1K5GyGaywSQgg.woff) format('woff');font-display: swap;}@font-face{font-family:'EB Garamond';font-style:normal;font-weight:600;src:local('EB Garamond SemiBold'),local('EBGaramond-SemiBold'),url(/google-fonts/s/ebgaramond/v10/SlGJmQSNjdsmc35JDF1K5GyqbCwSQg4.woff2) format('woff2'),url(/google-fonts/s/ebgaramond/v10/SlGJmQSNjdsmc35JDF1K5GyqbCwSQgg.woff) format('woff');font-display: swap;}@font-face{font-family:'Ubuntu Mono';font-style:normal;font-weight:400;src:local('Ubuntu Mono'),local('UbuntuMono-Regular'),url(/google-fonts/s/ubuntumono/v8/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2) format('woff2'),url(/google-fonts/s/ubuntumono/v8/KFOjCneDtsqEr0keqCMhbCc6CsI.woff) format('woff');font-display: swap;}</style><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-2c85eccfa73cebc722b3.js"/><link as="script" rel="preload" href="/app-0980417e879f4d19700a.js"/><link as="script" rel="preload" href="/styles-19d2563d6e265800303d.js"/><link as="script" rel="preload" href="/1-47a19a7bcba3d7fa96c9.js"/><link as="script" rel="preload" href="/7-08dbccc1a78cc48ac45b.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-4973f05030b2683695f8.js"/><link as="fetch" rel="preload" href="/static/d/484/path---posts-javascript-function-composition-c-0-d-94a-vkPV3J3q2pEPDiZ2LcIcdohq4aE.json" crossorigin="use-credentials"/></head><body><noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><a class="post-header__Title-sc-1okepgc-0 cAtjnm" href="/">Giorgio Polvara&#x27;s Blog</a><div class="layout__Container-sc-4dh0yk-0 laQaBv"><article lang="en"><h1><span>JavaScript Function Composition</span><span class="blog-post__Meta-sc-7gkdnd-0 dFgSI">December 01, 2015<!-- --> · <!-- -->8<!-- --> min read</span></h1><figure><img src="/static/cover-605ddb6c249828e96b1357db7b4519c8.jpg"/><figcaption><a href="https://unsplash.com/photos/L7MpmBGpM94" target="_blank" rel="noopener noreferrer">Photo by <!-- -->Tyler Wanlass</a></figcaption></figure><div><p>Around seven years ago (gosh I’m getting old), I started to work on my first
+serious single page application. I was the only frontend developer. A friend of
+mine was working on the backend. Before that, I worked only on small jQuery
+snippets. Things like “make this button disappear when I click on it”. I didn’t
+study JavaScript, I didn’t feel the need to. After all, I knew Java.</p>
+<p>It goes without saying, the project was a mess. A real example of spaghetti
+code. It was so complicated to understand what was going on that I had to create
+a set and a get method. They were two <strong>sync</strong> AJAX calls that were saving a
+variable in <code class="language-text">$_SESSION</code> and getting it back. All because I couldn’t figure out a
+way to access values from different sections of my codebase.</p>
+<p>After this terrible experience, I realized JavaScript might not be just a light
+version of Java. I started <em>googling</em> for some good material for a beginner like
+me. Almost everyone’s advice was to read
+<a href="http://shop.oreilly.com/product/9780596517748.do" target="_blank" rel="nofollow noopener noreferrer">“Javascript: The Good Parts”</a>.
+The author, <a href="https://www.crockford.com" target="_blank" rel="nofollow noopener noreferrer">Douglas Crockford</a>, remained ever since
+a guru for me. He often says:</p>
+<blockquote>
+<p>If a feature is sometimes useful and sometimes dangerous, and if there is a
+better option then, always use the better option.</p>
+</blockquote>
+<p>You can see this motto applied to his code, his style is unambiguous and easy to
+follow, although it may appear verbose.</p>
+<p>What does this have to do with <em>function composition</em> you might ask. Fast
+forward to one year ago. I saw this talk from Douglas about “The Better Parts”.</p>
+<p>
+        <div class="embedVideo-container">
+            <iframe 
+              width="560" 
+              height="316" 
+              src="https://www.youtube.com/embed/bo36MrBfTk4?rel=0"
+              class="embedVideo-iframe"
+              style="border:0"
+              allowfullscreen
+            ></iframe>
+        </div></p>
+<p>With ES6 coming he decided to give an update on what are the new “good parts”. I
+was very much into <code class="language-text">class</code> back then, like many others, so I couldn’t wait to
+hear my guru explain how and why they’re so cool.</p>
+<p>With my great surprise they weren’t in the list. He mentioned things like
+<a href="../es6-tail-call-optimization">tail call optimization</a> and
+<a href="https://github.com/lukehoban/es6features#default--rest--spread" target="_blank" rel="nofollow noopener noreferrer">spread</a> but not
+classes.</p>
+<p>He eventually talked about the class keyword, it was the first of the new <em>bad
+features</em>.</p>
+<h2>A Crazy Little Thing Called Functional Programming</h2>
+<p>That talk left me puzzled. Not only he wasn’t using classes, he wasn’t using
+<code class="language-text">this</code>, <code class="language-text">new</code>, <code class="language-text">for</code> loops and pretty much what was 80% of my code. He was even
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze" target="_blank" rel="nofollow noopener noreferrer">freezing objects</a>
+after creating them.</p>
+<p>What’s the deal Doug? Why are you trying to make my life a hell? Are you just
+mocking me? Are you mocking us all? It was a prank talk, wasn’t it? The guru
+decided to have some fun at the expense of his followers.</p>
+<p>Turns out it wasn’t a prank.</p>
+<p>While in university, I attended a course about functional programming. The mood
+was this:</p>
+<blockquote>
+<p>There’s a programming language called
+<a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)" target="_blank" rel="nofollow noopener noreferrer">Lisp</a>. We use it
+in academia but in the real world no one does. You’re going to learn enough of
+it to build a small program and pass the exam.</p>
+</blockquote>
+<p>Damn I hated school.</p>
+<p>Lisp may not be in much use nowadays, but it influenced languages that are
+taking the world by storm, such as <a href="http://clojure.org/" target="_blank" rel="nofollow noopener noreferrer">Clojure</a> and
+<a href="https://www.haskell.org/" target="_blank" rel="nofollow noopener noreferrer">Haskell</a>.</p>
+<p>Most importantly, its functional paradigm is going to be more and more
+predominant in the foreseeable future.</p>
+<p>Oh and by the way, do you know what’s the most popular functional language by a
+vast margin? JavaScript.</p>
+<p>All this just to tell you that we better learn function composition and other
+functional idioms.</p>
+<h2>Finally Some Function Composition</h2>
+<p>After my longest introduction yet, let’s get into function composition. First
+off, function composition works at its best when we <em>curry</em> a function. What’s
+that? Glad you asked.</p>
+<h3>Currying</h3>
+<p><a href="https://en.wikipedia.org/wiki/Haskell_Curry" target="_blank" rel="nofollow noopener noreferrer">Haskell Curry</a> was a great
+mathematician. So great that they named a programming language after his first
+name and a programming technique after his last name (sadly nothing yet on his
+middle name “Brooks”).</p>
+<p>Let’s say you have a function sum that takes two parameters a and b and returns
+their sum.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3</span></code></pre></div>
+<p>If the code above looks weird to you it’s because we’re using ES6, in particular
+<a href="http://es6-features.org/#Constants" target="_blank" rel="nofollow noopener noreferrer">constants</a> and
+<a href="http://es6-features.org/#ExpressionBodies" target="_blank" rel="nofollow noopener noreferrer">arrow functions</a>.</p>
+<p>In ES5, this would translate to:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p>When we call sum we have to provide 2 arguments. We also have to provide them at
+the same time. What if I want to set a now and b later?</p>
+<p>Basically, what we want is this:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> partial <span class="token operator">=</span> <span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">partial</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3</span>
+
+<span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 10</span></code></pre></div>
+<p>How is this new <code class="language-text">currySum</code> defined? This is one way to do it:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">currySum</span> <span class="token operator">=</span> <span class="token parameter">a</span> <span class="token operator">=></span> <span class="token parameter">b</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span></code></pre></div>
+<p><code class="language-text">currySum</code> is a function that takes one argument a and returns a function. The
+returned function accepts an argument <code class="language-text">b</code> and returns <code class="language-text">a + b</code>. This is possible
+thanks to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank" rel="nofollow noopener noreferrer">closures</a>.</p>
+<p>How is this useful? Take our <code class="language-text">partial</code> function, it could be renamed to <code class="language-text">plus1</code>.
+It is in fact a function that takes a number and adds 1 to it. We can easily
+define <code class="language-text">plus2</code> or <code class="language-text">plus10</code>.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> plus2 <span class="token operator">=</span> <span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> plus10 <span class="token operator">=</span> <span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Note that we can also convert a function to its curried version. Libraries like
+<a href="https://lodash.com/" target="_blank" rel="nofollow noopener noreferrer">lodash</a> implement a curry method. We are going to use
+<a href="http://ramdajs.com/" target="_blank" rel="nofollow noopener noreferrer">Ramda</a>. Let’s see it in action.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> currySum <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">curry</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 5</span>
+<span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 5</span></code></pre></div>
+<p>As you can see <code class="language-text">R.curry</code> takes a function and returns its curried version. The
+nice thing is that we can then call the function passing all the arguments or
+just some.</p>
+<h3>Function Composition</h3>
+<p>Suppose you have this array:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> colleagues <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Marek"</span><span class="token punctuation">,</span>
+    developer<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Tim"</span><span class="token punctuation">,</span>
+    developer<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Jan"</span><span class="token punctuation">,</span>
+    developer<span class="token punctuation">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
+<p>Now, you want a list of uppercased names.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> colleagues<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  names<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+names<span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM','JAN']</span></code></pre></div>
+<p>Can we do better?</p>
+<p>Let’s divide the problem. First we need a function that takes a string and
+returns its uppercased version.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">toUpper</span> <span class="token operator">=</span> <span class="token parameter">s</span> <span class="token operator">=></span> s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">toUpper</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'HELLO'</span></code></pre></div>
+<p>Next we need a function that takes an object and returns one of its properties.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">prop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token operator">=></span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"Giorgio"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'Giorgio'</span></code></pre></div>
+<p>We’re interested in the <code class="language-text">name</code> property. What we need is a function that given
+an object returns it’s <code class="language-text">name</code>. If we curry our <code class="language-text">prop</code> function that’s very easy.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> prop <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">curry</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token operator">=></span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> getName <span class="token operator">=</span> <span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Wow, look at that. We called <code class="language-text">prop</code> with just one argument and we got back
+another function that receives an object and returns this object’s <code class="language-text">name</code>
+property. Now you begin to see why curring is so important.</p>
+<p>Before we move on, you need to know that Ramda implements the two functions we
+just defined. Furthermore Ramda functions are curried by default. So we can
+refactor our code like this.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> toUpper <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span>toUpper<span class="token punctuation">;</span>
+<span class="token keyword">const</span> getName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Here comes the interesting part, given an object we want to get its <code class="language-text">name</code>
+property and uppercase it. One naïve solution is this.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">upperName</span> <span class="token operator">=</span> <span class="token parameter">obj</span> <span class="token operator">=></span> obj<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperName</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"Giorgio"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'GIORGIO'</span></code></pre></div>
+<p>But this function is solving two problems we already solved:</p>
+<ul>
+<li>Getting the name property</li>
+<li>Uppercase a string</li>
+</ul>
+<p>How can we do this using our pre-defined functions?</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">upperName</span> <span class="token operator">=</span> <span class="token parameter">obj</span> <span class="token operator">=></span> <span class="token function">toUpper</span><span class="token punctuation">(</span><span class="token function">getName</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Amazing, we composed the functions. We can now look at the official definition
+for function composition (obviously from Wikipedia):</p>
+<blockquote>
+<p>In mathematics, function composition is the pointwise application of one
+function to the result of another to produce a third function.</p>
+</blockquote>
+<p>This is exactly what we did. We took the output of <code class="language-text">getName</code> and used it as an
+input for <code class="language-text">toUpper</code>.</p>
+<p>Ramda has a <code class="language-text">compose</code> function just for that. We can use it to refactor our
+code.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> upperName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">compose</span><span class="token punctuation">(</span>
+  toUpper<span class="token punctuation">,</span>
+  getName
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperName</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"Giorgio"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'GIORGIO'</span></code></pre></div>
+<p>You should read the code from right to left. An object enters, it gets processed
+by <code class="language-text">getName</code>, you get a string and feed it to <code class="language-text">toUpper</code>, you get a result.</p>
+<p>Now to get the list of uppercased names from our objects we simply use <code class="language-text">map</code>.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> upperNames <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>upperName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperNames</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM','JAN']</span></code></pre></div>
+<p>Here is the whole code. I also made a
+<a href="http://codepen.io/Gpx/pen/YybPGV?editors=001" target="_blank" rel="nofollow noopener noreferrer">pen</a>.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> colleagues <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Marek"</span><span class="token punctuation">,</span>
+    developer<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Tim"</span><span class="token punctuation">,</span>
+    developer<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Jan"</span><span class="token punctuation">,</span>
+    developer<span class="token punctuation">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> getName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> toUpper <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span>toUpper<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> upperName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">compose</span><span class="token punctuation">(</span>
+  toUpper<span class="token punctuation">,</span>
+  getName
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> upperNames <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>upperName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token function">upperNames</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM','JAN']</span></code></pre></div>
+<h2>Is It worth It?</h2>
+<p>If you are like me you are probably asking yourself “Is it worth it?”. After all
+the original code with a <code class="language-text">for</code> loop was easy enough. The solution with function
+composition works but it may seem a bit awkward. Let me tell you two big
+advantages of our functional version.</p>
+<p>The code has a higher level of abstraction. You have a <code class="language-text">upperName</code> function.
+What does it do? It applies <code class="language-text">getName</code> and <code class="language-text">toUpper</code>. No need to know about
+arrays or indexes.</p>
+<p>It’s much easier to extend. Want to upper the name only for developers?</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// Takes an array and filter out non-developers</span>
+<span class="token keyword">const</span> onlyDevelopers <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"developer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Takes an array returns an array of uppercased names</span>
+<span class="token comment">// only for developers</span>
+<span class="token keyword">const</span> upperDevelopers <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">compose</span><span class="token punctuation">(</span>
+  upperNames<span class="token punctuation">,</span>
+  onlyDevelopers
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperDevelopers</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM']</span></code></pre></div>
+<p>Here we solved the issue with another function composition.</p></div></article><footer class="blog-post__Footer-sc-7gkdnd-1 dFUOyp">Would you like to have a civil discussion about this post? Hit me up on<!-- --> <a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">twitter</a>.</footer></div><div class="footer__Container-sc-1abtvul-0 kHWxpf"><div class="footer__Content-sc-1abtvul-1 ddOZgs"><a href="/">Home</a>·<a href="/rss.xml">RSS</a>·<a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">Twitter</a>·<a href="https://github.com/Gpx" target="_blank" rel="noopener noreferrer">GitHub</a></div><div class="footer__Copy-sc-1abtvul-2 ioFzeH">© 2014–<!-- -->2019<!-- --> Giorgio Polvara</div></div></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-40681255-1', 'auto', {});
+      
+      
+      
+      }
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-blog-post-js","jsonName":"posts-javascript-function-composition-c0d","path":"/posts/javascript-function-composition/"};window.dataPath="484/path---posts-javascript-function-composition-c-0-d-94a-vkPV3J3q2pEPDiZ2LcIcdohq4aE";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-0980417e879f4d19700a.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-4973f05030b2683695f8.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d4556dc5ace3b81b9ccd.js"],"pages-manifest":["/pages-manifest-1de995eeddce1e35f3e2.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-4973f05030b2683695f8.js" async=""></script><script src="/7-08dbccc1a78cc48ac45b.js" async=""></script><script src="/1-47a19a7bcba3d7fa96c9.js" async=""></script><script src="/styles-19d2563d6e265800303d.js" async=""></script><script src="/app-0980417e879f4d19700a.js" async=""></script><script src="/webpack-runtime-2c85eccfa73cebc722b3.js" async=""></script></body></html>
