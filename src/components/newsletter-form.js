@@ -9,9 +9,7 @@ const Card = styled.div`
   box-shadow: 2px 2px 3px 2px #0003;
   padding: 2em 2.5em;
   text-align: center;
-  border: 5px solid #ff9800;
   transition: transform 0.2s;
-  background: #e8eaf6;
   border-radius: 6px;
 `;
 
