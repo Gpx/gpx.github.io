@@ -1,5 +1,5 @@
 ---
-title: How to Test Asynchronous Methods
+title: How to Test Asynchronous Methods with React Testing Library
 date: 2019-05-19
 cover:
   file: "./how-to-test-asynchronous-methods/cover.jpg"
