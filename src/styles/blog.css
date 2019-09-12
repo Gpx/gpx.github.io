@@ -1,6 +1,5 @@
 article {
   margin-bottom: 4em;
-  text-align: justify;
   hyphens: auto;
   hyphenate-limit-chars: 6 3 2;
   hyphenate-limit-lines: 2;
