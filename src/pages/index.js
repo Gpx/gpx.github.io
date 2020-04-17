@@ -23,7 +23,6 @@ export default ({ data }) => (
             <Title
               dangerouslySetInnerHTML={{ __html: node.frontmatter.title }}
             />
-            {node.frontmatter.date} &middot; {node.timeToRead} min read
           </Post>
         </Link>
       ))}
@@ -38,10 +37,8 @@ export const query = graphql`
       edges {
         node {
           id
-          timeToRead
           frontmatter {
             title
-            date(formatString: "MMM DD, YYYY")
           }
           fields {
             slug
