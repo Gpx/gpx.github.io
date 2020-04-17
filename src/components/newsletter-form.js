@@ -70,7 +70,7 @@ export default () => {
         onsubmit="window.open('https://buttondown.email/gpx', 'popupwindow')"
       >
         <InputGroup>
-          <label for="bd-email">Email</label>
+          <label htmlFor="bd-email">Email</label>
           <input
             type="email"
             name="email"
