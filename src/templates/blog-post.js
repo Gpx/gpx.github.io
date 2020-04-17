@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import "../styles/blog.css";
 import Layout from "../components/layout";
 import PostHeader from "../components/post-header";
+import Img from "gatsby-image";
 
 const Meta = styled.span`
   display: block;
@@ -57,9 +58,9 @@ export default ({ data }) => {
 
           {post.frontmatter.cover ? (
             <figure>
-              <img
-                src={post.frontmatter.cover.file.publicURL}
-                alt={post.frontmatter.cover.alt}
+              <Img
+                fluid={post.frontmatter.cover.file.childImageSharp.fluid}
+                background="#6eb632"
               />
               <figcaption>
                 <a
@@ -106,7 +107,11 @@ export const query = graphql`
         title
         cover {
           file {
-            publicURL
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 4160) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
           }
           author
           link
