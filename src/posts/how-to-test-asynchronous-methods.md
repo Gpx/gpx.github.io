@@ -54,7 +54,7 @@ function Index() {
     <>
       <h1>My Posts</h1>
       <ul>
-        {posts.value.map(post => (
+        {posts.value.map((post) => (
           <li key={post.id}>
             <a href={post.url}>{post.title}</a>
           </li>
@@ -102,7 +102,7 @@ class Index extends React.Component {
       <>
         <h1>My Posts</h1>
         <ul>
-          {this.state.posts.map(post => (
+          {this.state.posts.map((post) => (
             <li key={post.id}>
               <a href={post.url}>{post.title}</a>
             </li>
@@ -215,7 +215,7 @@ test("We show a list of posts", async () => {
   expect(fetchPosts).toHaveBeenCalledWith();
   // highlight-start
   await wait(() => expect(getByText("My Posts")).toBeInTheDocument());
-  posts.forEach(post => expect(getByText(post.title)).toBeInTheDocument());
+  posts.forEach((post) => expect(getByText(post.title)).toBeInTheDocument());
   // highlight-end
 });
 ```

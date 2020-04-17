@@ -87,7 +87,7 @@ class FetchOneResource extends React.Component {
   state = {
     valueA: null,
     loadingA: true, // highlight-line
-    errorA: null // highlight-line
+    errorA: null, // highlight-line
   };
 
   componentDidMount() {

@@ -26,6 +26,6 @@ export default () => (
         }
       }
     `}
-    render={data => <Title to="/">{data.site.siteMetadata.title}</Title>}
+    render={(data) => <Title to="/">{data.site.siteMetadata.title}</Title>}
   />
 );

@@ -114,7 +114,7 @@ If the code above looks weird to you it’s because we’re using ES6, in partic
 In ES5, this would translate to:
 
 ```js
-var sum = function(a, b) {
+var sum = function (a, b) {
   return a + b;
 };
 ```
@@ -135,7 +135,7 @@ currySum(5)(5); //=> 10
 How is this new `currySum` defined? This is one way to do it:
 
 ```js
-const currySum = a => b => a + b;
+const currySum = (a) => (b) => a + b;
 ```
 
 `currySum` is a function that takes one argument a and returns a function. The
@@ -177,16 +177,16 @@ Suppose you have this array:
 const colleagues = [
   {
     name: "Marek",
-    developer: true
+    developer: true,
   },
   {
     name: "Tim",
-    developer: true
+    developer: true,
   },
   {
     name: "Jan",
-    developer: false
-  }
+    developer: false,
+  },
 ];
 ```
 
@@ -207,7 +207,7 @@ Let’s divide the problem. First we need a function that takes a string and
 returns its uppercased version.
 
 ```js
-const toUpper = s => s.toUpperCase();
+const toUpper = (s) => s.toUpperCase();
 
 toUpper("hello"); //=> 'HELLO'
 ```
@@ -246,7 +246,7 @@ Here comes the interesting part, given an object we want to get its `name`
 property and uppercase it. One naïve solution is this.
 
 ```js
-const upperName = obj => obj.name.toUpperCase();
+const upperName = (obj) => obj.name.toUpperCase();
 
 upperName({ name: "Giorgio" }); //=> 'GIORGIO'
 ```
@@ -259,7 +259,7 @@ But this function is solving two problems we already solved:
 How can we do this using our pre-defined functions?
 
 ```js
-const upperName = obj => toUpper(getName(obj));
+const upperName = (obj) => toUpper(getName(obj));
 ```
 
 Amazing, we composed the functions. We can now look at the official definition
@@ -275,10 +275,7 @@ Ramda has a `compose` function just for that. We can use it to refactor our
 code.
 
 ```js
-const upperName = R.compose(
-  toUpper,
-  getName
-);
+const upperName = R.compose(toUpper, getName);
 
 upperName({ name: "Giorgio" }); //=> 'GIORGIO'
 ```
@@ -301,25 +298,22 @@ Here is the whole code. I also made a
 const colleagues = [
   {
     name: "Marek",
-    developer: true
+    developer: true,
   },
   {
     name: "Tim",
-    developer: true
+    developer: true,
   },
   {
     name: "Jan",
-    developer: false
-  }
+    developer: false,
+  },
 ];
 
 const getName = R.prop("name");
 const toUpper = R.toUpper;
 
-const upperName = R.compose(
-  toUpper,
-  getName
-);
+const upperName = R.compose(toUpper, getName);
 
 const upperNames = R.map(upperName);
 
@@ -345,10 +339,7 @@ const onlyDevelopers = R.filter(R.prop("developer"));
 
 // Takes an array returns an array of uppercased names
 // only for developers
-const upperDevelopers = R.compose(
-  upperNames,
-  onlyDevelopers
-);
+const upperDevelopers = R.compose(upperNames, onlyDevelopers);
 
 upperDevelopers(colleagues); //=> ['MAREK','TIM']
 ```

@@ -41,12 +41,12 @@ class MyComponent extends React.Component {
   }
 
   async fetchFoo() {
-    const foo = await fetch("/foo").then(res => res.json());
+    const foo = await fetch("/foo").then((res) => res.json());
     this.setState({ foo });
   }
 
   async fetchBar() {
-    const bar = await fetch("/bar").then(res => res.json());
+    const bar = await fetch("/bar").then((res) => res.json());
     this.setState({ bar });
   }
 
@@ -73,12 +73,12 @@ function MyComponent() {
   const [bar, setBar] = useState(null);
 
   async function fetchFoo() {
-    const foo = await fetch("/foo").then(res => res.json());
+    const foo = await fetch("/foo").then((res) => res.json());
     setFoo(foo);
   }
 
   async function fetchBar() {
-    const bar = await fetch("/bar").then(res => res.json());
+    const bar = await fetch("/bar").then((res) => res.json());
     setBar(bar);
   }
 
@@ -113,7 +113,7 @@ example to see this idea in action:
 function MyComponent() {
   const [foo, setFoo] = useState(null);
   async function fetchFoo() {
-    const foo = await fetch("/foo").then(res => res.json());
+    const foo = await fetch("/foo").then((res) => res.json());
     setFoo(foo);
   }
   useEffect(() => {
@@ -122,7 +122,7 @@ function MyComponent() {
 
   const [bar, setBar] = useState(null);
   async function fetchBar() {
-    const bar = await fetch("/bar").then(res => res.json());
+    const bar = await fetch("/bar").then((res) => res.json());
     setBar(bar);
   }
   useEffect(() => {

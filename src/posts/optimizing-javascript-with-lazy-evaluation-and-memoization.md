@@ -18,7 +18,7 @@ method similar to the one below:
 ```js
 function parseObject(result) {
   return {
-    computedValue: superSlowMethod(result.parameter)
+    computedValue: superSlowMethod(result.parameter),
     /* Plus some other props */
   };
 }
