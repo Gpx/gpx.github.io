@@ -14,7 +14,7 @@
     "cm": "npx git-cz"
   },
   "dependencies": {
-    "@weknow/gatsby-remark-twitter": "0.2.1",
+    "@weknow/gatsby-remark-twitter": "^0.2.3",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.20.23",
     "gatsby-background-image": "0.7.3",
