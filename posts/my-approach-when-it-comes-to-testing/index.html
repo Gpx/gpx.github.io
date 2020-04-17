@@ -1,0 +1,221 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.835962e22f0584898860.css">*,:after,:before{box-sizing:border-box}::selection,:not(pre) code[class*=language-]::selection{background:rgba(3,169,244,.2)}html{font-size:19px}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;color:#333;line-height:1.5;margin:0}a{text-decoration:none;color:currentColor}code[class*=language-],pre[class*=language-]{font-family:Ubuntu Mono,monospace;font-size:.9em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:hsla(0,0%,100%,.13)}pre[class*=language-]{padding:1em;margin:0 0 .5em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#1e272e;border-radius:0 0 .5em .5em;color:#d2dae2}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:rgba(0,0,0,.07);color:inherit}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#808e9b;font-style:italic}.token.punctuation{color:#808e9b}.namespace{color:red;background:red}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#ffa801}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#0be881}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#ffd32a}.token.atrule,.token.attr-value,.token.keyword{color:#ef5777}.token.class-name,.token.function{color:#0fbcf9}.token.important,.token.regex,.token.variable{color:#0be881}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.gatsby-highlight-code-line{background:#2f3d48;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:.75em;border-left:.25em solid #575fcf}.gatsby-highlight:before{content:attr(data-language);display:block;padding:.3em 1em;font-size:.9em;text-transform:uppercase;text-align:right;background-image:linear-gradient(90deg,#7986cb,#3f51b5);color:#fff;font-family:Ubuntu Mono,monospace;border-radius:.5em .5em 0 0}.gatsby-highlight[data-language=html]:before{background-image:linear-gradient(90deg,#ffb74d,#ff9800)}.gatsby-highlight[data-language=text]:before{content:" ";white-space:pre;background-image:linear-gradient(90deg,#dce775,#cddc39)}.gatsby-highlight{border-radius:.5em;box-shadow:2px 2px 3px 2px rgba(0,0,0,.2);margin:2em 0}article{margin-bottom:4em;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 2;hyphenate-limit-lines:2;hyphenate-limit-last:always;-webkit-text-decoration-skip:ink;text-decoration-skip-ink:auto}article h1{font-size:2rem;margin:1.5em 0;text-align:center;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article h2{text-align:left;font-size:1.3rem;margin:2em 0 1em}article p:first-child:first-line{font-weight:600}article a{text-decoration:underline}article figure{margin:auto auto 3em;text-align:center}article img{max-width:100%}article figcaption{text-align:center;font-style:italic}hr{border:none;border-radius:50%;margin:2em auto}hr,hr:after,hr:before{height:3px;width:3px;background:rgba(0,0,0,.67)}hr:after,hr:before{position:absolute;content:"";display:inline-block;border-radius:50%;padding:0}hr:before{transform:translateX(-1em)}hr:after{transform:translateX(1em)}article .highlight{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;font-size:1.3em;color:#666;margin:1.7em;font-weight:100;padding-bottom:.5em;border-bottom:3px solid #3f51b5}article ul{text-align:left;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article li{margin-bottom:.5em}details.tldr{border:1px solid rgba(0,0,0,.2);padding:.4em 1em;margin-bottom:4rem}details summary{cursor:pointer}twitter-widget{margin:2em auto!important}blockquote{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;margin:2em auto;max-width:80%;font-size:1.2em;font-style:italic}blockquote p:first-child:first-line{font-weight:400}</style><meta name="generator" content="Gatsby 2.20.23"/><title data-react-helmet="true">My Approach When It Comes to Testing</title><meta data-react-helmet="true" property="og:title" content="My Approach When It Comes to Testing"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:url" content="https://www.polvara.me/posts/my-approach-when-it-comes-to-testing/"/><meta data-react-helmet="true" property="og:image" content="https://www.polvara.me/static/098caee768906eaa77d5b61d8758a6ae/cover.jpg"/><style data-styled="" data-styled-version="5.1.0">.fscSeJ{display:block;max-width:500px;margin:auto;margin-top:3em;box-shadow:2px 2px 3px 2px #0003;padding:2em 2.5em;text-align:center;-webkit-transition:-webkit-transform 0.2s;-webkit-transition:transform 0.2s;transition:transform 0.2s;border-radius:6px;}/*!sc*/
+data-styled.g1[id="newsletter-form__Card-a2ms4a-0"]{content:"fscSeJ,"}/*!sc*/
+.eyKXbm{color:red;}/*!sc*/
+data-styled.g2[id="newsletter-form__Button-a2ms4a-1"]{content:"eyKXbm,"}/*!sc*/
+.KHPza{margin:0;font-size:1.6em;font-weight:500;line-height:1;}/*!sc*/
+data-styled.g4[id="newsletter-form__Title-a2ms4a-3"]{content:"KHPza,"}/*!sc*/
+.dYhHPN{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-top:2em;}/*!sc*/
+.dYhHPN label{text-align:left;margin-bottom:0.3em;}/*!sc*/
+.dYhHPN [type="email"]{font-size:1.3em;border:1px solid #333;padding:0.3em 0.6em;border-radius:6px;margin-bottom:0.5em;}/*!sc*/
+.dYhHPN [type="submit"]{background:#3a6;border:none;font-size:1.3em;padding:0.6em;color:#fff;text-shadow:1px 0 1px #0004;border-radius:6px;cursor:pointer;}/*!sc*/
+data-styled.g6[id="newsletter-form__InputGroup-a2ms4a-5"]{content:"dYhHPN,"}/*!sc*/
+.jBIpkR{margin-top:4em;padding:3em 0.5em;text-align:right;background:#3a6;color:#fff;text-shadow:1px 0 1px #0004;}/*!sc*/
+data-styled.g7[id="footer__Container-sc-1abtvul-0"]{content:"jBIpkR,"}/*!sc*/
+.ihWmWm{max-width:calc(65 * 9px);margin:auto;}/*!sc*/
+.ihWmWm > *{margin:0.7em;}/*!sc*/
+.ihWmWm > *:first-child{margin-left:0;}/*!sc*/
+.ihWmWm > *:last-child{margin-right:0;}/*!sc*/
+data-styled.g8[id="footer__Content-sc-1abtvul-1"]{content:"ihWmWm,"}/*!sc*/
+.bcrfyt{max-width:calc(65 * 9px);margin:auto;font-size:0.85em;margin-top:1em;}/*!sc*/
+data-styled.g9[id="footer__Copy-sc-1abtvul-2"]{content:"bcrfyt,"}/*!sc*/
+.cCMnR{padding:0 0.5em;max-width:calc(65 * 9px);margin:auto;}/*!sc*/
+data-styled.g10[id="layout__Container-sc-4dh0yk-0"]{content:"cCMnR,"}/*!sc*/
+.fsQVfs{display:block;font-weight:500;font-size:1.5rem;text-align:center;padding:0.5em 0;color:#fff;text-shadow:1px 0 1px #0004;-webkit-text-decoration:none;text-decoration:none;width:100%;background:#3a6;}/*!sc*/
+data-styled.g20[id="post-header__Title-sc-1okepgc-0"]{content:"fsQVfs,"}/*!sc*/
+.jOkvKZ{display:block;font-size:0.45em;font-weight:400;color:#666;margin-top:0.5em;}/*!sc*/
+data-styled.g21[id="blog-post__Meta-sc-7gkdnd-0"]{content:"jOkvKZ,"}/*!sc*/
+.duvUWk{font-size:0.85rem;text-align:center;margin-bottom:3rem;padding:0.5em 0;background:#e8eaf6;}/*!sc*/
+.duvUWk a{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+data-styled.g22[id="blog-post__Footer-sc-7gkdnd-1"]{content:"duvUWk,"}/*!sc*/
+</style><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2"/><style type="text/css">@font-face{font-family:'Ubuntu Mono';font-style:normal;font-weight:400;src:local('Ubuntu Mono'),local('UbuntuMono-Regular'),url(/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2) format('woff2'),url(/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsI.woff) format('woff');font-display: swap;}</style><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-8e691e3e3f0a2aa1e2ab.js"/><link as="script" rel="preload" href="/framework-c88d07efb40e009babfb.js"/><link as="script" rel="preload" href="/app-04a92f08d6fc44f9844d.js"/><link as="script" rel="preload" href="/styles-b729c27faa6284e9ff45.js"/><link as="script" rel="preload" href="/cd7d5f864fc9e15ed8adef086269b0aeff617554-07b4eddf745c8b51c4d2.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-c93b23e414f8b900b80e.js"/><link as="fetch" rel="preload" href="/page-data/posts/my-approach-when-it-comes-to-testing/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><a class="post-header__Title-sc-1okepgc-0 fsQVfs" href="/">Giorgio Polvara&#x27;s Blog</a><div class="layout__Container-sc-4dh0yk-0 cCMnR"><article lang="en"><h1><span>My Approach When It Comes to Testing</span><span class="blog-post__Meta-sc-7gkdnd-0 jOkvKZ">Approximately <!-- -->7<!-- --> min read</span></h1><figure><img src="/static/098caee768906eaa77d5b61d8758a6ae/cover.jpg"/><figcaption><a href="https://unsplash.com/photos/97odosRYZ7w" target="_blank" rel="noopener noreferrer">Photo by <!-- -->Ryan Quintal</a></figcaption></figure><div><p>One thing I've seen people struggling with when it comes to testing a web
+application is what to test and how. This post explains the approach I follow at
+work and for my projects.</p>
+<p>The examples will be based on React Testing Library, but the same concepts apply
+just as well to any other frontend technology.</p>
+<h2>You already know how to test</h2>
+<p>The first thing to understand is that you already know how to test. In fact, if
+you have developed any application, you have tested it.</p>
+<p>Do you remember when you were learning how to code, and you wrote your first
+program? Chances are it looked something like this:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>You then executed your script, and sure enough, you read "Hello, world!" in the
+console. That was a test. You were testing that your program was working as
+expected.</p>
+<p>If you think about it, that's what you still do for every program you create.
+You write some code and then execute it to make sure it works.</p>
+<p>Now imagine you get a bug report. Apparently, some feature stopped working. What
+do you do first? You try to reproduce the bug by using your application. Again,
+you are manually testing.</p>
+<p>Manually testing is a very effective way to ensure your software is working.
+Interacting with a portion of your application gives you confidence that it
+works.</p>
+<p>Of course, manual tests have a big problem: you need a person to run them. Even
+a small application can quickly become hard to test manually. On top of that,
+consider that you must "run" all your tests every time you introduce a small
+change.</p>
+<p>This is where testing libraries come into play. For me, these tools are a way to
+automate the way I would manually test my application.</p>
+<h2>An example</h2>
+<p>Let's go through a more concrete example to understand what I mean by
+"automating the way I would manually test."</p>
+<p>Suppose we are working on a simple currency converter application like this one:</p>
+<iframe style="width: 100%;" src="http://www.polvara.me/currency-converter/"></iframe>
+<p>You can find the complete code
+<a href="https://github.com/Gpx/currency-converter" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<p>Let's not get into the code just yet. What we should ask ourselves now is "How
+would I manually test this app?" I would do something like this:</p>
+<ol>
+<li>Check that we see a loading message until the app is ready</li>
+<li>Check that we see the initial conversion for 1 Euro to Dollars</li>
+<li>Change the amount and see that the conversion is updated</li>
+<li>Change the currency and see that the conversion is updated</li>
+</ol>
+<p>I think this makes for a reasonable test case. What we need to do now is trying
+to automate it. I'm going to do that using React Testing Library, but the same
+principles apply to most testing tools.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"renders learn react link"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 1. Check that we see a loading message until the app is ready</span>
+  <span class="token comment">// 2. Check that we see the initial conversion for 1 Euro to Dollars</span>
+  <span class="token comment">// 3. Change the amount and see that the conversion is updated</span>
+  <span class="token comment">// 4. Change the currency and see that the conversion is updated</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>This is our basic setup that doesn't do much at the moment. Let's implement the
+first step.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"renders learn react link"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span>
+  <span class="token comment">// 1. Check that we see a loading message until the app is ready</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> <span class="token function">waitForElementToBeRemoved</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 2. Check that we see the initial conversion for 1 Euro to Dollars</span>
+  <span class="token comment">// 3. Change the amount and see that the conversion is updated</span>
+  <span class="token comment">// 4. Change the currency and see that the conversion is updated</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Don't worry if you are not familiar with the particular API I'm using. The
+important concept to get is that we're simulating what a user would do. First,
+checking that the loading message is on the page and then waiting for it do
+disappear.</p>
+<p>Let's move on to step two:</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"renders learn react link"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span>
+  <span class="token comment">// 1. Check that we see a loading message until the app is ready</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> <span class="token function">waitForElementToBeRemoved</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 2. Check that we see the initial conversion for 1 Euro to Dollars</span>
+  <span class="token keyword">const</span> input <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByDisplayValue</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token regex">/1.08/</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 3. Change the amount and see that the conversion is updated</span>
+  <span class="token comment">// 4. Change the currency and see that the conversion is updated</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Here we are getting the input and checking that the converted value is on the
+page.</p>
+<p>Step three and four are quite similar so we can group them:</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"renders learn react link"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span>
+  <span class="token comment">// 1. Check that we see a loading message until the app is ready</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> <span class="token function">waitForElementToBeRemoved</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 2. Check that we see the initial conversion for 1 Euro to Dollars</span>
+  <span class="token keyword">const</span> input <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByDisplayValue</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token regex">/1.08/</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 3. Change the amount and see that the conversion is updated</span>
+  fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> <span class="token punctuation">{</span> target<span class="token operator">:</span> <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token string">"2"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token regex">/2.16/</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 4. Change the currency and see that the conversion is updated</span>
+  <span class="token keyword">const</span> select <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByDisplayValue</span><span class="token punctuation">(</span><span class="token string">"USD"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>select<span class="token punctuation">,</span> <span class="token punctuation">{</span> target<span class="token operator">:</span> <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token string">"RUB"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token regex">/137.94/</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>And that's about it. We automated what a user would do to test this app. Notice
+that the test knows nothing about the implementation details. We didn't have to
+read the source code. This app could have been written in any frontend
+framework, and the test would be the same.</p>
+<p>There's only one last step missing. Our code is fetching the conversion rates.
+It's always better not to make any real network calls in the tests, so we're
+going to mock it. You can find a longer explanation on how to do that
+<a href="https://www.polvara.me/posts/how-to-test-asynchronous-methods/" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> fetchRates <span class="token keyword">from</span> <span class="token string">"./fetchRates"</span><span class="token punctuation">;</span>
+jest<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">"./fetchRates"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"renders learn react link"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  fetchRates<span class="token punctuation">.</span><span class="token function">mockResolvedValueOnce</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">RUB</span><span class="token operator">:</span> <span class="token number">68.9685</span><span class="token punctuation">,</span> <span class="token constant">USD</span><span class="token operator">:</span> <span class="token number">1.0816</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span>
+
+  <span class="token comment">// 1. Check that we see a loading message until the app is ready</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> <span class="token function">waitForElementToBeRemoved</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Loading..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 2. Check that we see the initial conversion for 1 Euro to Dollars</span>
+  <span class="token keyword">const</span> input <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByDisplayValue</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token regex">/1.08/</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 3. Change the amount and see that the conversion is updated</span>
+  fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> <span class="token punctuation">{</span> target<span class="token operator">:</span> <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token string">"2"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token regex">/2.16/</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 4. Change the currency and see that the conversion is updated</span>
+  <span class="token keyword">const</span> select <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByDisplayValue</span><span class="token punctuation">(</span><span class="token string">"USD"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>select<span class="token punctuation">,</span> <span class="token punctuation">{</span> target<span class="token operator">:</span> <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token string">"RUB"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token regex">/137.94/</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">expect</span><span class="token punctuation">(</span>fetchRates<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledWith</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>fetchRates<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledTimes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h2>Units and integrations don't matter that much</h2>
+<p>At this point, people usually have two kinds of reactions. Some are hooked and
+start writing tests this way—if you are, welcome to the club.</p>
+<p>The second kind of reaction is usually a generic fear about the lack of unit
+tests, namely the fact that these kinds of tests look more like integration,
+end-to-end, or feature tests. For some people, you need to have 100% test
+coverage with unit tests before you can do anything else.</p>
+<p>If you are in this second category, allow me to tell you that in most
+applications, 100% unit test coverage is not needed. It is usually a bad
+practice.</p>
+<p>Please don't take me wrong, unit tests can be useful for some occasions, but
+writing higher-level tests is almost always better. The reason we write tests is
+to make sure our app works. Writing a test that simulates a user interacting
+with your app is what will give you the most confidence.</p>
+<p>Unit tests are just checking that a small portion of your software is doing what
+it's supposed to do. You can have 100% coverage with unit tests, but that gives
+you no guarantee that the single parts are working well together.</p>
+<h2>Why not E2E tests then?</h2>
+<p>If tests that simulate the user are so great, why not only writing end-to-end
+tests (also known as browser tests or Selenium tests)? These are tests that run
+inside a browser and connect to a real API.</p>
+<p>E2E tests are great because they test your application in a real browser
+environment. They have two drawbacks, though. They are slow to run, and they are
+usually unstable.</p>
+<p>To run them, you have to start a browser, run your application, and potentially
+start your backend too. There are many more parts involved, and This leads to a
+higher risk of something going wrong.</p>
+<p>In general, I write E2E tests only to cover critical features and only the happy
+paths (no errors, no edge cases).</p>
+<h2>Conclusions</h2>
+<p>To sum it up, here's my strategy when it comes to testing:</p>
+<ol>
+<li>Manually test my code</li>
+<li>Write a test to simulate the way I manually test</li>
+<li>Add an E2E test if the feature is critical</li>
+</ol></div></article><footer class="blog-post__Footer-sc-7gkdnd-1 duvUWk">Would you like to have a civil discussion about this post? Hit me up on<!-- --> <a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">twitter</a>.</footer></div><div class="newsletter-form__Card-a2ms4a-0 fscSeJ"><h1 class="newsletter-form__Title-a2ms4a-3 KHPza">Subscribe to my newsletter</h1><div class="newsletter-form__Sub-a2ms4a-4 cocZZB">No spam. Unsubscribe when you want.</div><form action="https://buttondown.email/api/emails/embed-subscribe/gpx" method="post" target="popupwindow" class="newsletter-form__Form-a2ms4a-2 kvNPcB"><div class="newsletter-form__InputGroup-a2ms4a-5 dYhHPN"><label for="bd-email">Email</label><input type="email" name="email" id="bd-email" placeholder="Your email" required=""/><input type="submit" value="Subscribe" class="newsletter-form__Button-a2ms4a-1 eyKXbm"/></div><input type="hidden" value="1" name="embed"/></form></div><div class="footer__Container-sc-1abtvul-0 jBIpkR"><div class="footer__Content-sc-1abtvul-1 ihWmWm"><a href="/">Home</a>·<a href="/rss.xml">RSS</a>·<a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">Twitter</a>·<a href="https://github.com/Gpx" target="_blank" rel="noopener noreferrer">GitHub</a></div><div class="footer__Copy-sc-1abtvul-2 bcrfyt">© 2014–<!-- -->2020<!-- --> Giorgio Polvara</div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-40681255-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/my-approach-when-it-comes-to-testing/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-04a92f08d6fc44f9844d.js"],"component---src-pages-index-js":["/component---src-pages-index-js-2ca2271122e335b40db2.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-c93b23e414f8b900b80e.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-c93b23e414f8b900b80e.js" async=""></script><script src="/cd7d5f864fc9e15ed8adef086269b0aeff617554-07b4eddf745c8b51c4d2.js" async=""></script><script src="/styles-b729c27faa6284e9ff45.js" async=""></script><script src="/app-04a92f08d6fc44f9844d.js" async=""></script><script src="/framework-c88d07efb40e009babfb.js" async=""></script><script src="/webpack-runtime-8e691e3e3f0a2aa1e2ab.js" async=""></script></body></html>
