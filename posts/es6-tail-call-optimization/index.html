@@ -1,26 +1,33 @@
-<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.5aee901d9136b276a918.css">article{margin-bottom:4em;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 2;hyphenate-limit-lines:2;hyphenate-limit-last:always;-webkit-text-decoration-skip:ink;text-decoration-skip-ink:auto}article h1{font-size:2rem;margin:1.5em 0;text-align:center;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article h2{text-align:left;font-size:1.3rem;margin:2em 0 1em}article p:first-child:first-line{font-weight:600}article a{text-decoration:underline}article figure{margin:auto auto 3em;text-align:center}article img{max-width:100%}article figcaption{text-align:center;font-style:italic}hr{border:none;border-radius:50%;margin:2em auto}hr,hr:after,hr:before{height:3px;width:3px;background:rgba(0,0,0,.67)}hr:after,hr:before{position:absolute;content:"";display:inline-block;border-radius:50%;padding:0}hr:before{-webkit-transform:translateX(-1em);transform:translateX(-1em)}hr:after{-webkit-transform:translateX(1em);transform:translateX(1em)}article .highlight{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;font-size:1.3em;color:#666;margin:1.7em;font-weight:100;padding-bottom:.5em;border-bottom:3px solid #3f51b5}article ul{text-align:left;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article li{margin-bottom:.5em}details.tldr{border:1px solid rgba(0,0,0,.2);padding:.4em 1em;margin-bottom:4rem}details summary{cursor:pointer}twitter-widget{margin:2em auto!important}blockquote{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;margin:2em auto;max-width:80%;font-size:1.2em;font-style:italic}blockquote p:first-child:first-line{font-weight:400}*,:after,:before{box-sizing:border-box}::-moz-selection,:not(pre) code[class*=language-]::-moz-selection{background:rgba(3,169,244,.2)}::selection,:not(pre) code[class*=language-]::selection{background:rgba(3,169,244,.2)}html{font-size:19px}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;color:#333;line-height:1.5;margin:0}a{text-decoration:none;color:currentColor}code[class*=language-],pre[class*=language-]{font-family:Ubuntu Mono,monospace;font-size:.9em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{background:hsla(0,0%,100%,.13)}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:hsla(0,0%,100%,.13)}pre[class*=language-]{padding:1em;margin:0 0 .5em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#1e272e;border-radius:0 0 .5em .5em;color:#d2dae2}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:rgba(0,0,0,.07);color:inherit}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#808e9b;font-style:italic}.token.punctuation{color:#808e9b}.namespace{color:red;background:red}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#ffa801}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#0be881}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#ffd32a}.token.atrule,.token.attr-value,.token.keyword{color:#ef5777}.token.class-name,.token.function{color:#0fbcf9}.token.important,.token.regex,.token.variable{color:red;background:red}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.gatsby-highlight-code-line{background:#2f3d48;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:.75em;border-left:.25em solid #575fcf}.gatsby-highlight:before{content:attr(data-language);display:block;padding:.3em 1em;font-size:.9em;text-transform:uppercase;text-align:right;background-image:-webkit-gradient(linear,left top,right top,from(#7986cb),to(#3f51b5));background-image:linear-gradient(90deg,#7986cb,#3f51b5);color:#fff;font-family:Ubuntu Mono,monospace;border-radius:.5em .5em 0 0}.gatsby-highlight[data-language=html]:before{background-image:-webkit-gradient(linear,left top,right top,from(#ffb74d),to(#ff9800));background-image:linear-gradient(90deg,#ffb74d,#ff9800)}.gatsby-highlight[data-language=text]:before{content:" ";white-space:pre;background-image:-webkit-gradient(linear,left top,right top,from(#dce775),to(#cddc39));background-image:linear-gradient(90deg,#dce775,#cddc39)}.gatsby-highlight{border-radius:.5em;box-shadow:2px 2px 3px 2px rgba(0,0,0,.2);margin:2em 0}</style><meta name="generator" content="Gatsby 2.10.4"/><title data-react-helmet="true">ES6 Tail Call Optimization</title><meta data-react-helmet="true" property="og:title" content="ES6 Tail Call Optimization"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:url" content="https://www.polvara.me/posts/es6-tail-call-optimization/"/><meta data-react-helmet="true" property="og:image" content="https://www.polvara.me/static/cover-6abcfffa25560660a71305103867626c.jpg"/><style data-styled="cAtjnm laQaBv dFgSI dFUOyp ehOTuu bJlgSv eJvqld ipLkBW aUwco kiwFPk kHWxpf ddOZgs ioFzeH" data-styled-version="4.3.2">
-/* sc-component-id: newsletter-form__Card-a2ms4a-0 */
-.ehOTuu{display:block;max-width:500px;margin:auto;margin-top:3em;box-shadow:2px 2px 3px 2px #0003;padding:2em 2.5em;text-align:center;-webkit-transition:-webkit-transform 0.2s;-webkit-transition:transform 0.2s;transition:transform 0.2s;border-radius:6px;}
-/* sc-component-id: newsletter-form__Button-a2ms4a-1 */
-.kiwFPk{color:red;}
-/* sc-component-id: newsletter-form__Title-a2ms4a-3 */
-.bJlgSv{margin:0;font-size:1.6em;font-weight:500;line-height:1;}
-/* sc-component-id: newsletter-form__InputGroup-a2ms4a-5 */
-.aUwco{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-top:2em;} .aUwco label{text-align:left;margin-bottom:0.3em;} .aUwco [type="email"]{font-size:1.3em;border:1px solid #333;padding:0.3em 0.6em;border-radius:6px;margin-bottom:0.5em;} .aUwco [type="submit"]{background:#3a6;border:none;font-size:1.3em;padding:0.6em;color:#fff;text-shadow:1px 0 1px #0004;border-radius:6px;cursor:pointer;}
-/* sc-component-id: footer__Container-sc-1abtvul-0 */
-.kHWxpf{margin-top:4em;padding:3em 0.5em;text-align:right;background:#3a6;color:#fff;text-shadow:1px 0 1px #0004;}
-/* sc-component-id: footer__Content-sc-1abtvul-1 */
-.ddOZgs{max-width:calc(65 * 9px);margin:auto;} .ddOZgs > *{margin:0.7em;} .ddOZgs > *:first-child{margin-left:0;} .ddOZgs > *:last-child{margin-right:0;}
-/* sc-component-id: footer__Copy-sc-1abtvul-2 */
-.ioFzeH{max-width:calc(65 * 9px);margin:auto;font-size:0.85em;margin-top:1em;}
-/* sc-component-id: layout__Container-sc-4dh0yk-0 */
-.laQaBv{padding:0 0.5em;max-width:calc(65 * 9px);margin:auto;}
-/* sc-component-id: post-header__Title-sc-1okepgc-0 */
-.cAtjnm{display:block;font-weight:500;font-size:1.5rem;text-align:center;padding:0.5em 0;color:#fff;text-shadow:1px 0 1px #0004;-webkit-text-decoration:none;text-decoration:none;width:100%;background:#3a6;}
-/* sc-component-id: blog-post__Meta-sc-7gkdnd-0 */
-.dFgSI{display:block;font-size:0.45em;font-weight:400;color:#666;margin-top:0.5em;}
-/* sc-component-id: blog-post__Footer-sc-7gkdnd-1 */
-.dFUOyp{font-size:0.85rem;text-align:center;margin-bottom:3rem;padding:0.5em 0;background:#e8eaf6;} .dFUOyp a{-webkit-text-decoration:underline;text-decoration:underline;}</style><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2"/><style type="text/css">@font-face{font-family:'Ubuntu Mono';font-style:normal;font-weight:400;src:local('Ubuntu Mono'),local('UbuntuMono-Regular'),url(/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2) format('woff2'),url(/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsI.woff) format('woff');font-display: swap;}</style><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-cf9195eda15b926afde6.js"/><link as="script" rel="preload" href="/app-b481eba8fdcd9d6f9ef1.js"/><link as="script" rel="preload" href="/styles-ce515ab697f1c548843c.js"/><link as="script" rel="preload" href="/1-3f56be50250633955a2a.js"/><link as="script" rel="preload" href="/6-a6f462c0fac3ae18286b.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-a4da96fd57464bfe4cb2.js"/><link as="fetch" rel="preload" href="/page-data/posts/es6-tail-call-optimization/page-data.json" crossorigin="use-credentials"/></head><body><noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><a class="post-header__Title-sc-1okepgc-0 cAtjnm" href="/">Giorgio Polvara&#x27;s Blog</a><div class="layout__Container-sc-4dh0yk-0 laQaBv"><article lang="en"><h1><span>ES6 Tail Call Optimization</span><span class="blog-post__Meta-sc-7gkdnd-0 dFgSI">June 01, 2015<!-- --> · <!-- -->5<!-- --> min read</span></h1><figure><img src="/static/cover-6abcfffa25560660a71305103867626c.jpg"/><figcaption><a href="https://unsplash.com/photos/kqB7IDljjMI" target="_blank" rel="noopener noreferrer">Photo by <!-- -->Noah Baslé</a></figcaption></figure><div><p>ECMAScript 6 a.k.a. ECMAScript 2015 a.k.a. the new version of JavaScript is
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.637385fdf848c36ba95b.css">*,:after,:before{box-sizing:border-box}::selection,:not(pre) code[class*=language-]::selection{background:rgba(3,169,244,.2)}html{font-size:19px}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;color:#333;line-height:1.5;margin:0}a{text-decoration:none;color:currentColor}code[class*=language-],pre[class*=language-]{font-family:Ubuntu Mono,monospace;font-size:.9em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:hsla(0,0%,100%,.13)}pre[class*=language-]{padding:1em;margin:0 0 .5em;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#1e272e;border-radius:0 0 .5em .5em;color:#d2dae2}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:rgba(0,0,0,.07);color:inherit}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#808e9b;font-style:italic}.token.punctuation{color:#808e9b}.namespace{color:red;background:red}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#ffa801}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#0be881}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#ffd32a}.token.atrule,.token.attr-value,.token.keyword{color:#ef5777}.token.class-name,.token.function{color:#0fbcf9}.token.important,.token.regex,.token.variable{color:red;background:red}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.gatsby-highlight-code-line{background:#2f3d48;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:.75em;border-left:.25em solid #575fcf}.gatsby-highlight:before{content:attr(data-language);display:block;padding:.3em 1em;font-size:.9em;text-transform:uppercase;text-align:right;background-image:linear-gradient(90deg,#7986cb,#3f51b5);color:#fff;font-family:Ubuntu Mono,monospace;border-radius:.5em .5em 0 0}.gatsby-highlight[data-language=html]:before{background-image:linear-gradient(90deg,#ffb74d,#ff9800)}.gatsby-highlight[data-language=text]:before{content:" ";white-space:pre;background-image:linear-gradient(90deg,#dce775,#cddc39)}.gatsby-highlight{border-radius:.5em;box-shadow:2px 2px 3px 2px rgba(0,0,0,.2);margin:2em 0}article{margin-bottom:4em;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 2;hyphenate-limit-lines:2;hyphenate-limit-last:always;-webkit-text-decoration-skip:ink;text-decoration-skip-ink:auto}article h1{font-size:2rem;margin:1.5em 0;text-align:center;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article h2{text-align:left;font-size:1.3rem;margin:2em 0 1em}article p:first-child:first-line{font-weight:600}article a{text-decoration:underline}article figure{margin:auto auto 3em;text-align:center}article img{max-width:100%}article figcaption{text-align:center;font-style:italic}hr{border:none;border-radius:50%;margin:2em auto}hr,hr:after,hr:before{height:3px;width:3px;background:rgba(0,0,0,.67)}hr:after,hr:before{position:absolute;content:"";display:inline-block;border-radius:50%;padding:0}hr:before{transform:translateX(-1em)}hr:after{transform:translateX(1em)}article .highlight{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;font-size:1.3em;color:#666;margin:1.7em;font-weight:100;padding-bottom:.5em;border-bottom:3px solid #3f51b5}article ul{text-align:left;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}article li{margin-bottom:.5em}details.tldr{border:1px solid rgba(0,0,0,.2);padding:.4em 1em;margin-bottom:4rem}details summary{cursor:pointer}twitter-widget{margin:2em auto!important}blockquote{text-align:left;-webkit-hyphens:initial;-ms-hyphens:initial;hyphens:manual;margin:2em auto;max-width:80%;font-size:1.2em;font-style:italic}blockquote p:first-child:first-line{font-weight:400}</style><meta name="generator" content="Gatsby 2.20.23"/><title data-react-helmet="true">ES6 Tail Call Optimization</title><meta data-react-helmet="true" property="og:title" content="ES6 Tail Call Optimization"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:url" content="https://www.polvara.me/posts/es6-tail-call-optimization/"/><meta data-react-helmet="true" property="og:image" content="https://www.polvara.me/static/6abcfffa25560660a71305103867626c/cover.jpg"/><style data-styled="" data-styled-version="5.1.0">.fscSeJ{display:block;max-width:500px;margin:auto;margin-top:3em;box-shadow:2px 2px 3px 2px #0003;padding:2em 2.5em;text-align:center;-webkit-transition:-webkit-transform 0.2s;-webkit-transition:transform 0.2s;transition:transform 0.2s;border-radius:6px;}/*!sc*/
+data-styled.g1[id="newsletter-form__Card-a2ms4a-0"]{content:"fscSeJ,"}/*!sc*/
+.eyKXbm{color:red;}/*!sc*/
+data-styled.g2[id="newsletter-form__Button-a2ms4a-1"]{content:"eyKXbm,"}/*!sc*/
+.KHPza{margin:0;font-size:1.6em;font-weight:500;line-height:1;}/*!sc*/
+data-styled.g4[id="newsletter-form__Title-a2ms4a-3"]{content:"KHPza,"}/*!sc*/
+.dYhHPN{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-top:2em;}/*!sc*/
+.dYhHPN label{text-align:left;margin-bottom:0.3em;}/*!sc*/
+.dYhHPN [type="email"]{font-size:1.3em;border:1px solid #333;padding:0.3em 0.6em;border-radius:6px;margin-bottom:0.5em;}/*!sc*/
+.dYhHPN [type="submit"]{background:#3a6;border:none;font-size:1.3em;padding:0.6em;color:#fff;text-shadow:1px 0 1px #0004;border-radius:6px;cursor:pointer;}/*!sc*/
+data-styled.g6[id="newsletter-form__InputGroup-a2ms4a-5"]{content:"dYhHPN,"}/*!sc*/
+.jBIpkR{margin-top:4em;padding:3em 0.5em;text-align:right;background:#3a6;color:#fff;text-shadow:1px 0 1px #0004;}/*!sc*/
+data-styled.g7[id="footer__Container-sc-1abtvul-0"]{content:"jBIpkR,"}/*!sc*/
+.ihWmWm{max-width:calc(65 * 9px);margin:auto;}/*!sc*/
+.ihWmWm > *{margin:0.7em;}/*!sc*/
+.ihWmWm > *:first-child{margin-left:0;}/*!sc*/
+.ihWmWm > *:last-child{margin-right:0;}/*!sc*/
+data-styled.g8[id="footer__Content-sc-1abtvul-1"]{content:"ihWmWm,"}/*!sc*/
+.bcrfyt{max-width:calc(65 * 9px);margin:auto;font-size:0.85em;margin-top:1em;}/*!sc*/
+data-styled.g9[id="footer__Copy-sc-1abtvul-2"]{content:"bcrfyt,"}/*!sc*/
+.cCMnR{padding:0 0.5em;max-width:calc(65 * 9px);margin:auto;}/*!sc*/
+data-styled.g10[id="layout__Container-sc-4dh0yk-0"]{content:"cCMnR,"}/*!sc*/
+.fsQVfs{display:block;font-weight:500;font-size:1.5rem;text-align:center;padding:0.5em 0;color:#fff;text-shadow:1px 0 1px #0004;-webkit-text-decoration:none;text-decoration:none;width:100%;background:#3a6;}/*!sc*/
+data-styled.g20[id="post-header__Title-sc-1okepgc-0"]{content:"fsQVfs,"}/*!sc*/
+.jOkvKZ{display:block;font-size:0.45em;font-weight:400;color:#666;margin-top:0.5em;}/*!sc*/
+data-styled.g21[id="blog-post__Meta-sc-7gkdnd-0"]{content:"jOkvKZ,"}/*!sc*/
+.duvUWk{font-size:0.85rem;text-align:center;margin-bottom:3rem;padding:0.5em 0;background:#e8eaf6;}/*!sc*/
+.duvUWk a{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+data-styled.g22[id="blog-post__Footer-sc-7gkdnd-1"]{content:"duvUWk,"}/*!sc*/
+</style><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2"/><style type="text/css">@font-face{font-family:'Ubuntu Mono';font-style:normal;font-weight:400;src:local('Ubuntu Mono'),local('UbuntuMono-Regular'),url(/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2) format('woff2'),url(/google-fonts/s/ubuntumono/v9/KFOjCneDtsqEr0keqCMhbCc6CsI.woff) format('woff');font-display: swap;}</style><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-580f0b02116b6d9d7847.js"/><link as="script" rel="preload" href="/framework-c88d07efb40e009babfb.js"/><link as="script" rel="preload" href="/app-04a92f08d6fc44f9844d.js"/><link as="script" rel="preload" href="/styles-b729c27faa6284e9ff45.js"/><link as="script" rel="preload" href="/cd7d5f864fc9e15ed8adef086269b0aeff617554-07b4eddf745c8b51c4d2.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-fab01e696dab57df9651.js"/><link as="fetch" rel="preload" href="/page-data/posts/es6-tail-call-optimization/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><a class="post-header__Title-sc-1okepgc-0 fsQVfs" href="/">Giorgio Polvara&#x27;s Blog</a><div class="layout__Container-sc-4dh0yk-0 cCMnR"><article lang="en"><h1><span>ES6 Tail Call Optimization</span><span class="blog-post__Meta-sc-7gkdnd-0 jOkvKZ">June 01, 2015<!-- --> · <!-- -->5<!-- --> min read</span></h1><figure><img src="/static/6abcfffa25560660a71305103867626c/cover.jpg"/><figcaption><a href="https://unsplash.com/photos/kqB7IDljjMI" target="_blank" rel="noopener noreferrer">Photo by <!-- -->Noah Baslé</a></figcaption></figure><div><p>ECMAScript 6 a.k.a. ECMAScript 2015 a.k.a. the new version of JavaScript is
 getting closer and closer to ratification, the current goal is to have the new
 standard ready in June 2015. This is a big step forward for JavaScript that is
 becoming a modern language, suitable for all the uses we need.</p>
@@ -56,158 +63,163 @@ caller of the function, so when the execution is done the <em>callee</em> can re
 it.</p>
 <p>Let’s see this in action using
 <a href="https://developer.chrome.com/devtools/docs/javascript-debugging" target="_blank" rel="nofollow noopener noreferrer">Chrome’s debugger</a>:</p>
-<p><a
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 562px;"
+    >
+      <a
     class="gatsby-resp-image-link"
-    href="/static/ca2874801a019d19c9380c738ad0f627/0b56e/debug1.png"
+    href="/static/ca2874801a019d19c9380c738ad0f627/6e88f/debug1.png"
     style="display: block"
     target="_blank"
     rel="noopener"
   >
     <span
-    class="gatsby-resp-image-wrapper"
-    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 562px;"
-  >
-    <span
-      class="gatsby-resp-image-background-image"
-      style="padding-bottom: 54.270462633451956%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2UlEQVQoz21R226bQBDl//+mkvvQSlXUqCm242CTxLGNYbntDVh2AS9xuNkZcPPWo8NqeDhzZs4Y4YQgDDDGlFLyBfiNR0SYUDwiZpR4z/bLsz2fm2vLcg57w3U9HJGEpiITaZoWZXmjlDJJEj8IDwjvjmjvONAGBeFu7xw9lAlJGTeyLFOJjN2IEsoJaaqq6/vrF0LvsHi4t5bm8e0lOO4EjXIWS46h3q5XBuc8VxJTDG6nQnVV1Sh1rsoBpN072d1Z5sxeft9aPzbz2Zv1E21/24uZ9ffb63JmMMa00tfmWuu6rvVlGCbLy/i0Wmd/hDB9dIfQL0oeODMTZkJRqNWHXhmwWMYz583BmHCMPwrVNg20GNVDm7jr7eM9PqyZa5fEOTEXqLmX+VtysAwIVBZSSKFr/X469frUlsW5qi6XUU4oe1pvICOeJFIpVRQ3ijxPs8wIo1hlZVO1hSxVUXZdP0xDgzXIgzBcLFePq6f5fAl3EULApHAUiBn2NTiNKpXHPoojnwZul5K2zIeuuaXNOduDr+tO9EBPGYMJ4JDQyJjbbONIjzV+MgQTfdoi3kOBWKfP3ZjeBMhhgG9a5wZjc6xevcrD5zC5BDem/wrE+vrcT+Lrf/EJz9BX+SVeGLcAAAAASUVORK5CYII='); background-size: cover; display: block;"
-    ></span>
-    <img
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.987730061349694%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2UlEQVQoz21R226bQBDl//+mkvvQSlXUqCm242CTxLGNYbntDVh2AS9xuNkZcPPWo8NqeDhzZs4Y4YQgDDDGlFLyBfiNR0SYUDwiZpR4z/bLsz2fm2vLcg57w3U9HJGEpiITaZoWZXmjlDJJEj8IDwjvjmjvONAGBeFu7xw9lAlJGTeyLFOJjN2IEsoJaaqq6/vrF0LvsHi4t5bm8e0lOO4EjXIWS46h3q5XBuc8VxJTDG6nQnVV1Sh1rsoBpN072d1Z5sxeft9aPzbz2Zv1E21/24uZ9ffb63JmMMa00tfmWuu6rvVlGCbLy/i0Wmd/hDB9dIfQL0oeODMTZkJRqNWHXhmwWMYz583BmHCMPwrVNg20GNVDm7jr7eM9PqyZa5fEOTEXqLmX+VtysAwIVBZSSKFr/X469frUlsW5qi6XUU4oe1pvICOeJFIpVRQ3ijxPs8wIo1hlZVO1hSxVUXZdP0xDgzXIgzBcLFePq6f5fAl3EULApHAUiBn2NTiNKpXHPoojnwZul5K2zIeuuaXNOduDr+tO9EBPGYMJ4JDQyJjbbONIjzV+MgQTfdoi3kOBWKfP3ZjeBMhhgG9a5wZjc6xevcrD5zC5BDem/wrE+vrcT+Lrf/EJz9BX+SVeGLcAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
         class="gatsby-resp-image-image"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;"
         alt="debug1"
-        title=""
-        src="/static/ca2874801a019d19c9380c738ad0f627/0b56e/debug1.png"
-        srcset="/static/ca2874801a019d19c9380c738ad0f627/19bd1/debug1.png 163w,
-/static/ca2874801a019d19c9380c738ad0f627/d3bcb/debug1.png 325w,
-/static/ca2874801a019d19c9380c738ad0f627/0b56e/debug1.png 562w"
+        title="debug1"
+        src="/static/ca2874801a019d19c9380c738ad0f627/6e88f/debug1.png"
+        srcset="/static/ca2874801a019d19c9380c738ad0f627/222b7/debug1.png 163w,
+/static/ca2874801a019d19c9380c738ad0f627/ff46a/debug1.png 325w,
+/static/ca2874801a019d19c9380c738ad0f627/6e88f/debug1.png 562w"
         sizes="(max-width: 562px) 100vw, 562px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
       />
-  </span>
-  </a></p>
+  </a>
+    </span></p>
 <p>In the orange rectangle, you have the stack frame and also a list of local
 variables. It’s not exciting but let’s see what happens when we call <code class="language-text">foo</code>:</p>
-<p><a
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
+    >
+      <a
     class="gatsby-resp-image-link"
-    href="/static/afcef361171cddae11a2b27a3cc28682/8727f/debug2.png"
+    href="/static/afcef361171cddae11a2b27a3cc28682/a65ce/debug2.png"
     style="display: block"
     target="_blank"
     rel="noopener"
   >
     <span
-    class="gatsby-resp-image-wrapper"
-    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
-  >
-    <span
-      class="gatsby-resp-image-background-image"
-      style="padding-bottom: 54.56171735241503%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2klEQVQoz2WR147bMBBF9f9fka9IECB5SRDD66Jiy0US1SiqUCKpYlltVXbiXS8C5IB8YJm5l5eS/8DzPUJIFEXhE1gGGMMgYRSQ8P0UadpB09brtaIopmlKCNm+F4ZBSimLk5SLQuQlz4uMiyhhruebNr6a6GoY0Mpx3cv1ihDKsgx6STTNVjL/+sP7/of8XOH9Md9Zg2JPsj2rZqOfrc12s9vLoOO6XpbSLE0ZY67r6rouJUmScY5DAoKVyPuyaoW4l3VbsXb/xdp826iX88W4GEg/XfWzAS42O/nX79XLdi/FcXwv6mVYmjtQz/O0fDDDIDHfaoZyQvLROlk+TkSaNzZOTIe4AZUopVmSmWeTkDAhpCvyoe/n6aMFYxn2A845PLJtmr7ruraFCXeGoZeCIICMmGD1vW5ut7G+DWXRVtX8V3tu25Ylom26qgZT89PUAh2q203ycVCycoCSvASmcVz+IYpj9Xi0kA3KRVGUT7gQEJuURFgw7iDHdhwfoSYK75yBq/di38frly2kraia52POGH2QpvC1VFof4pjm4/j69DTP4/jpEGMsK5qiHnaycjpfTNOCaCACkIVvklSrpKwahm75j2ma+r5/fTCO4wCXOshp+Nx5A1UCWkgjS42QAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-    ></span>
-    <img
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.601226993865026%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2klEQVQoz2WR147bMBBF9f9fka9IECB5SRDD66Jiy0US1SiqUCKpYlltVXbiXS8C5IB8YJm5l5eS/8DzPUJIFEXhE1gGGMMgYRSQ8P0UadpB09brtaIopmlKCNm+F4ZBSimLk5SLQuQlz4uMiyhhruebNr6a6GoY0Mpx3cv1ihDKsgx6STTNVjL/+sP7/of8XOH9Md9Zg2JPsj2rZqOfrc12s9vLoOO6XpbSLE0ZY67r6rouJUmScY5DAoKVyPuyaoW4l3VbsXb/xdp826iX88W4GEg/XfWzAS42O/nX79XLdi/FcXwv6mVYmjtQz/O0fDDDIDHfaoZyQvLROlk+TkSaNzZOTIe4AZUopVmSmWeTkDAhpCvyoe/n6aMFYxn2A845PLJtmr7ruraFCXeGoZeCIICMmGD1vW5ut7G+DWXRVtX8V3tu25Ylom26qgZT89PUAh2q203ycVCycoCSvASmcVz+IYpj9Xi0kA3KRVGUT7gQEJuURFgw7iDHdhwfoSYK75yBq/di38frly2kraia52POGH2QpvC1VFof4pjm4/j69DTP4/jpEGMsK5qiHnaycjpfTNOCaCACkIVvklSrpKwahm75j2ma+r5/fTCO4wCXOshp+Nx5A1UCWkgjS42QAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
         class="gatsby-resp-image-image"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;"
         alt="debug2"
-        title=""
-        src="/static/afcef361171cddae11a2b27a3cc28682/8727f/debug2.png"
-        srcset="/static/afcef361171cddae11a2b27a3cc28682/19bd1/debug2.png 163w,
-/static/afcef361171cddae11a2b27a3cc28682/d3bcb/debug2.png 325w,
-/static/afcef361171cddae11a2b27a3cc28682/8727f/debug2.png 559w"
+        title="debug2"
+        src="/static/afcef361171cddae11a2b27a3cc28682/a65ce/debug2.png"
+        srcset="/static/afcef361171cddae11a2b27a3cc28682/222b7/debug2.png 163w,
+/static/afcef361171cddae11a2b27a3cc28682/ff46a/debug2.png 325w,
+/static/afcef361171cddae11a2b27a3cc28682/a65ce/debug2.png 559w"
         sizes="(max-width: 559px) 100vw, 559px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
       />
-  </span>
-  </a></p>
+  </a>
+    </span></p>
 <p>A new stack frame gets created. Notice that the other frame is still there, we
 will need it later. After <code class="language-text">foo</code> calls <code class="language-text">bar</code> that calls <code class="language-text">baz</code>, we are in this
 situation:</p>
-<p><a
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
+    >
+      <a
     class="gatsby-resp-image-link"
-    href="/static/95bcdd554cd2c58b61c43a3111de26d6/8727f/debug3.png"
+    href="/static/95bcdd554cd2c58b61c43a3111de26d6/a65ce/debug3.png"
     style="display: block"
     target="_blank"
     rel="noopener"
   >
     <span
-    class="gatsby-resp-image-wrapper"
-    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
-  >
-    <span
-      class="gatsby-resp-image-background-image"
-      style="padding-bottom: 54.56171735241503%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB1ElEQVQoz01Sf5eiIBT1+3+l+WfPaWtspnIrpwx/piAIKEqaOpYMY9vs3vMOPA7c++DyjPOE6BxBCNM0RU/oZaIRxxClCUSPXW+73W23pmlalgUAMDzPhzHKUsoZp5SWVfWIoiiyLIuiEPixA7zT6aSlgjB0HMdzXcaY1jL0JLIi8eIUpQShXsrhdlNPRFFkLs3Veg2AG4YBpRmjlHOmc9u2DUJILgqYQl3tUopByl6IVlbj+E0Grm++bY4nbwr34wh0vC5Xs/nr8n1jYIxrUateNXXTNPV4v6v/kJdNkol2UHWnmk91ace6V5AIx4vPiBv6YYwwcABJggiEnRCfff8jIWQbQUZ4hVmVZqKQ3bVXiBRBjFMqDG2DlEVZ8a5r+uai2nqsy6GR062V9sHaf9hHsD+AIII4y1leIkx14Iwb51h7WELYe+fSjQXOB1KprFREjLgYRXXhJL82rTb/dp+MfJgxZUaKEuvAX2bey8L/NQf2JrF2bB+0JzQ6yQ3TKomhKMrmeh2+cZtwl/LCeW6YO8xzodQw/rPp/qOvG+Vttd7tbf1nhGD2hO6IjFLjj1sRJvu+06fHifR3nNhhFM0Xprl8n/1e+H6gL6+ZXBfNc92FX2O0WzczUVXiAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-    ></span>
-    <img
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.601226993865026%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB1ElEQVQoz01Sf5eiIBT1+3+l+WfPaWtspnIrpwx/piAIKEqaOpYMY9vs3vMOPA7c++DyjPOE6BxBCNM0RU/oZaIRxxClCUSPXW+73W23pmlalgUAMDzPhzHKUsoZp5SWVfWIoiiyLIuiEPixA7zT6aSlgjB0HMdzXcaY1jL0JLIi8eIUpQShXsrhdlNPRFFkLs3Veg2AG4YBpRmjlHOmc9u2DUJILgqYQl3tUopByl6IVlbj+E0Grm++bY4nbwr34wh0vC5Xs/nr8n1jYIxrUateNXXTNPV4v6v/kJdNkol2UHWnmk91ace6V5AIx4vPiBv6YYwwcABJggiEnRCfff8jIWQbQUZ4hVmVZqKQ3bVXiBRBjFMqDG2DlEVZ8a5r+uai2nqsy6GR062V9sHaf9hHsD+AIII4y1leIkx14Iwb51h7WELYe+fSjQXOB1KprFREjLgYRXXhJL82rTb/dp+MfJgxZUaKEuvAX2bey8L/NQf2JrF2bB+0JzQ6yQ3TKomhKMrmeh2+cZtwl/LCeW6YO8xzodQw/rPp/qOvG+Vttd7tbf1nhGD2hO6IjFLjj1sRJvu+06fHifR3nNhhFM0Xprl8n/1e+H6gL6+ZXBfNc92FX2O0WzczUVXiAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
         class="gatsby-resp-image-image"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;"
         alt="debug3"
-        title=""
-        src="/static/95bcdd554cd2c58b61c43a3111de26d6/8727f/debug3.png"
-        srcset="/static/95bcdd554cd2c58b61c43a3111de26d6/19bd1/debug3.png 163w,
-/static/95bcdd554cd2c58b61c43a3111de26d6/d3bcb/debug3.png 325w,
-/static/95bcdd554cd2c58b61c43a3111de26d6/8727f/debug3.png 559w"
+        title="debug3"
+        src="/static/95bcdd554cd2c58b61c43a3111de26d6/a65ce/debug3.png"
+        srcset="/static/95bcdd554cd2c58b61c43a3111de26d6/222b7/debug3.png 163w,
+/static/95bcdd554cd2c58b61c43a3111de26d6/ff46a/debug3.png 325w,
+/static/95bcdd554cd2c58b61c43a3111de26d6/a65ce/debug3.png 559w"
         sizes="(max-width: 559px) 100vw, 559px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
       />
-  </span>
-  </a></p>
+  </a>
+    </span></p>
 <p>Two new stacks are created, one for <code class="language-text">bar</code> and one for <code class="language-text">baz</code>, those stacks are
 listed in what is called call stack. The call stack is very useful when you
 debug because it tells you the history of your program: which function called
 which other function. After <code class="language-text">baz</code> has done its job it returns back to <code class="language-text">bar</code>:</p>
-<p><a
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
+    >
+      <a
     class="gatsby-resp-image-link"
-    href="/static/6ef47025ef136174300f57b2a3567425/8727f/debug4.png"
+    href="/static/6ef47025ef136174300f57b2a3567425/a65ce/debug4.png"
     style="display: block"
     target="_blank"
     rel="noopener"
   >
     <span
-    class="gatsby-resp-image-wrapper"
-    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
-  >
-    <span
-      class="gatsby-resp-image-background-image"
-      style="padding-bottom: 54.56171735241503%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABy0lEQVQoz22Ra4+qMBCG+f9/a3MS9KCI7iKUcqdAaaEtCKJyOeMaN/vhPHkzbdPMdPqOFn8TxVGWZXmekzdwTIEkyUieZuR1iy3raFm6rpumiRDSMPazhNC84oxXVSWVeqlpGkppFIXITxyEXdeFUkEYOo6DPY8xBrU0WARtUpzkJC8JubXtY5rWN1EU6frGMHYuQoEfVJQyVnHOwjA4nU5aWZa1qNM8E1J1Qtzb9ibE0Kp5eSa7yN8aB+QFT+Hw7HpfZ6Rvdx9/9O3fvVYUxaAu67SOwzBe+2VZ1l+I7upnrGx6UEYVV7fLbY0Is704IlwrKQ2jyjBcG2UIpVXecDnKbpL9AirKynFdz/c9jMHBpqm7tuWMUVpC81qcpBu7/rAqw23Ns/p01OmzMW1phfMxnLNS5KSQsmV1/Xg85mmCOM3z8s0zuRdqHR5D1w4XtS7Tr66X69DTgveX4dL38zz/XPT9IKXSyjytGcdegP0w8nBPSMfrcbyBYaAkSXd788t20pTAXOo3MFQYpKYfi4IKaOdt1LJM049tcZJstgbkG3szjhMpJYe/MgYRnNYOnqK8vd/H9X/Ay6ZpHazj/mCZhyNsoJwQ4lXiH1kGWfGu8QH2AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-    ></span>
-    <img
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.601226993865026%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABy0lEQVQoz22Ra4+qMBCG+f9/a3MS9KCI7iKUcqdAaaEtCKJyOeMaN/vhPHkzbdPMdPqOFn8TxVGWZXmekzdwTIEkyUieZuR1iy3raFm6rpumiRDSMPazhNC84oxXVSWVeqlpGkppFIXITxyEXdeFUkEYOo6DPY8xBrU0WARtUpzkJC8JubXtY5rWN1EU6frGMHYuQoEfVJQyVnHOwjA4nU5aWZa1qNM8E1J1Qtzb9ibE0Kp5eSa7yN8aB+QFT+Hw7HpfZ6Rvdx9/9O3fvVYUxaAu67SOwzBe+2VZ1l+I7upnrGx6UEYVV7fLbY0Is704IlwrKQ2jyjBcG2UIpVXecDnKbpL9AirKynFdz/c9jMHBpqm7tuWMUVpC81qcpBu7/rAqw23Ns/p01OmzMW1phfMxnLNS5KSQsmV1/Xg85mmCOM3z8s0zuRdqHR5D1w4XtS7Tr66X69DTgveX4dL38zz/XPT9IKXSyjytGcdegP0w8nBPSMfrcbyBYaAkSXd788t20pTAXOo3MFQYpKYfi4IKaOdt1LJM049tcZJstgbkG3szjhMpJYe/MgYRnNYOnqK8vd/H9X/Ay6ZpHazj/mCZhyNsoJwQ4lXiH1kGWfGu8QH2AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
         class="gatsby-resp-image-image"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;"
         alt="debug4"
-        title=""
-        src="/static/6ef47025ef136174300f57b2a3567425/8727f/debug4.png"
-        srcset="/static/6ef47025ef136174300f57b2a3567425/19bd1/debug4.png 163w,
-/static/6ef47025ef136174300f57b2a3567425/d3bcb/debug4.png 325w,
-/static/6ef47025ef136174300f57b2a3567425/8727f/debug4.png 559w"
+        title="debug4"
+        src="/static/6ef47025ef136174300f57b2a3567425/a65ce/debug4.png"
+        srcset="/static/6ef47025ef136174300f57b2a3567425/222b7/debug4.png 163w,
+/static/6ef47025ef136174300f57b2a3567425/ff46a/debug4.png 325w,
+/static/6ef47025ef136174300f57b2a3567425/a65ce/debug4.png 559w"
         sizes="(max-width: 559px) 100vw, 559px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
       />
-  </span>
-  </a></p>
+  </a>
+    </span></p>
 <p>As you can see, the stack frame for <code class="language-text">baz</code> is deleted because we no longer need
 it anymore. Every time a function returns, its stack frame gets deleted. After
 our program is done, the call stack will be empty:</p>
-<p><a
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
+    >
+      <a
     class="gatsby-resp-image-link"
-    href="/static/4f0fd8e48b58d582a284db08bf31bc69/8727f/debug5.png"
+    href="/static/4f0fd8e48b58d582a284db08bf31bc69/a65ce/debug5.png"
     style="display: block"
     target="_blank"
     rel="noopener"
   >
     <span
-    class="gatsby-resp-image-wrapper"
-    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 559px;"
-  >
-    <span
-      class="gatsby-resp-image-background-image"
-      style="padding-bottom: 54.56171735241503%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkElEQVQoz4WR63KbMBSE9f7P1Wk9aR1iJ6U1wTYgoQsXCYGwA+bShY4zafuj3zCaI2n2nNVC4pUojiml6QcYYzjH+rvmnEshjvuFzWbjed7hcCBheGRJqniWqVwIaa2t7EJZltCcz+fgFYT40P0cRb7vB0GQZRmakjzPjdI0THgqJE+7ur4Nw3wHg7febv/8co5iypjWulpJKP3x80CklKXRjDMMbIy51XVnzLWup3mepqlpnK0XmgaXWimF+nq9XlaIEMIZN3dz69q2ddM4vo+F2BjD8RipMBYrwIlzDr2wEuxzmQd+AIeSsbfK9F13b7GI05RzIavKoi6KApMxs10hiEFXutCFa92laQbX9LaC7XGC8TmKok+fvzx83T7tnill0CMqtQLLJE6oLWwPiVlCHj+kBeI42T56j97u4dv25bsfhCF+AeYj5kUseaKL8hSejqdTHIYXnrZlAefrm8fLPRuEhEzwVBTdSt/3ZLMXQplhuE3vMQ3DtHoeR/j4w8hfkKdXq4q679/+vfuv+Bc1R2Zft//0GQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-    ></span>
-    <img
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.601226993865026%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkElEQVQoz4WR63KbMBSE9f7P1Wk9aR1iJ6U1wTYgoQsXCYGwA+bShY4zafuj3zCaI2n2nNVC4pUojiml6QcYYzjH+rvmnEshjvuFzWbjed7hcCBheGRJqniWqVwIaa2t7EJZltCcz+fgFYT40P0cRb7vB0GQZRmakjzPjdI0THgqJE+7ur4Nw3wHg7febv/8co5iypjWulpJKP3x80CklKXRjDMMbIy51XVnzLWup3mepqlpnK0XmgaXWimF+nq9XlaIEMIZN3dz69q2ddM4vo+F2BjD8RipMBYrwIlzDr2wEuxzmQd+AIeSsbfK9F13b7GI05RzIavKoi6KApMxs10hiEFXutCFa92laQbX9LaC7XGC8TmKok+fvzx83T7tnill0CMqtQLLJE6oLWwPiVlCHj+kBeI42T56j97u4dv25bsfhCF+AeYj5kUseaKL8hSejqdTHIYXnrZlAefrm8fLPRuEhEzwVBTdSt/3ZLMXQplhuE3vMQ3DtHoeR/j4w8hfkKdXq4q679/+vfuv+Bc1R2Zft//0GQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
         class="gatsby-resp-image-image"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;"
         alt="debug5"
-        title=""
-        src="/static/4f0fd8e48b58d582a284db08bf31bc69/8727f/debug5.png"
-        srcset="/static/4f0fd8e48b58d582a284db08bf31bc69/19bd1/debug5.png 163w,
-/static/4f0fd8e48b58d582a284db08bf31bc69/d3bcb/debug5.png 325w,
-/static/4f0fd8e48b58d582a284db08bf31bc69/8727f/debug5.png 559w"
+        title="debug5"
+        src="/static/4f0fd8e48b58d582a284db08bf31bc69/a65ce/debug5.png"
+        srcset="/static/4f0fd8e48b58d582a284db08bf31bc69/222b7/debug5.png 163w,
+/static/4f0fd8e48b58d582a284db08bf31bc69/ff46a/debug5.png 325w,
+/static/4f0fd8e48b58d582a284db08bf31bc69/a65ce/debug5.png 559w"
         sizes="(max-width: 559px) 100vw, 559px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
       />
-  </span>
-  </a></p>
+  </a>
+    </span></p>
 <h2>Maximum Call Stack Size</h2>
 <p>Now that you have a general understanding of what stack frame and call stack
 are, we can see an error you may encounter while programming.</p>
@@ -221,9 +233,9 @@ the number until it reaches zero. This is how the call stack behaves if we
 execute <code class="language-text">foo(10)</code>:</p>
 <p>
         <div class="embedVideo-container">
-            <iframe 
-              width="560" 
-              height="316" 
+            <iframe
+              width="560"
+              height="316"
               src="https://www.youtube.com/embed/oorN1hGcgKs?rel=0"
               class="embedVideo-iframe"
               style="border:0"
@@ -234,34 +246,35 @@ execute <code class="language-text">foo(10)</code>:</p>
 point the functions begin to return and all the stacks get deleted.</p>
 <p>So if <code class="language-text">n</code> is 10, we have 10 stack frames, if <code class="language-text">n</code> is 100, we have 100 frames and
 so on. What happens if <code class="language-text">n</code> is 100,000?</p>
-<p><a
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 423px;"
+    >
+      <a
     class="gatsby-resp-image-link"
-    href="/static/254549d007acf8e62e26e6c4ad9ff2ca/2d85a/debug6.png"
+    href="/static/254549d007acf8e62e26e6c4ad9ff2ca/f687d/debug6.png"
     style="display: block"
     target="_blank"
     rel="noopener"
   >
     <span
-    class="gatsby-resp-image-wrapper"
-    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 423px;"
-  >
-    <span
-      class="gatsby-resp-image-background-image"
-      style="padding-bottom: 8.983451536643026%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAa0lEQVQI1zWK0Q6CMBAE+f/vM5oYJNYehdBCqyANd9tTMPFlMpPdaplfRN35+j5dnnnNnwJlVhEFivBOLUVx5N9/sh+Yqxz8SnZrms25JSa+1WyN+AEp8cMwWQQvfYcYpSXESVyLMRyTuX8BRqlxp9x2g2oAAAAASUVORK5CYII='); background-size: cover; display: block;"
-    ></span>
-    <img
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.202453987730062%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAa0lEQVQI1zWK0Q6CMBAE+f/vM5oYJNYehdBCqyANd9tTMPFlMpPdaplfRN35+j5dnnnNnwJlVhEFivBOLUVx5N9/sh+Yqxz8SnZrms25JSa+1WyN+AEp8cMwWQQvfYcYpSXESVyLMRyTuX8BRqlxp9x2g2oAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
         class="gatsby-resp-image-image"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;"
         alt="Ungaught Ranger Error: Maximum call stack size exceeded"
-        title=""
-        src="/static/254549d007acf8e62e26e6c4ad9ff2ca/2d85a/debug6.png"
-        srcset="/static/254549d007acf8e62e26e6c4ad9ff2ca/19bd1/debug6.png 163w,
-/static/254549d007acf8e62e26e6c4ad9ff2ca/d3bcb/debug6.png 325w,
-/static/254549d007acf8e62e26e6c4ad9ff2ca/2d85a/debug6.png 423w"
+        title="Ungaught Ranger Error: Maximum call stack size exceeded"
+        src="/static/254549d007acf8e62e26e6c4ad9ff2ca/f687d/debug6.png"
+        srcset="/static/254549d007acf8e62e26e6c4ad9ff2ca/222b7/debug6.png 163w,
+/static/254549d007acf8e62e26e6c4ad9ff2ca/ff46a/debug6.png 325w,
+/static/254549d007acf8e62e26e6c4ad9ff2ca/f687d/debug6.png 423w"
         sizes="(max-width: 423px) 100vw, 423px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
       />
-  </span>
-  </a></p>
+  </a>
+    </span></p>
 <p>As said, every stack frame gets created in memory; unfortunately, a program has
 a limited amount of memory assigned, so it’s possible that the call stack
 becomes too big. In this case, we have an error and the program crashes.</p>
@@ -293,32 +306,33 @@ them.</p>
 <p>This is the part where we usually blame IE for not supporting the new cool
 feature, unfortunately this time we have to blame everyone:</p>
 <p><a href="https://kangax.github.io/compat-table/es6/#proper_tail_calls_(tail_call_optimisation)" target="_blank" rel="nofollow noopener noreferrer"><span
-    class="gatsby-resp-image-wrapper"
-    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
-  >
-    <span
-      class="gatsby-resp-image-background-image"
-      style="padding-bottom: 12.690355329949238%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwklEQVQI1wG3AEj/AO3t7e/v7uvt7vHnzfDasOfYu+7fxPLly/Xy2Ovt2/PszfnuyOfjxe7t0fb11vHt1vby2/Pu0eXguunkugDp6Onu7u/k3eDl2MLi47bq39Pm2dnl2dre2OnJzOrrxKf30q7e0rPW3Lvf4cfi2OHk3Oro3ujY1cjc27sA6ufq6e/x44iU62tqypdf7GZZ82Fe8mNf8WBg+nl38mVk/IaG9m1r+3Zz/n188mdm+XJx8mhn71NP9mpovwqN9lqzZ30AAAAASUVORK5CYII='); background-size: cover; display: block;"
-    ></span>
-    <img
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 12.883435582822086%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwklEQVQI1wG3AEj/AO3t7e/v7uvt7vHnzfDasOfYu+7fxPLly/Xy2Ovt2/PszfnuyOfjxe7t0fb11vHt1vby2/Pu0eXguunkugDp6Onu7u/k3eDl2MLi47bq39Pm2dnl2dre2OnJzOrrxKf30q7e0rPW3Lvf4cfi2OHk3Oro3ujY1cjc27sA6ufq6e/x44iU62tqypdf7GZZ82Fe8mNf8WBg+nl38mVk/IaG9m1r+3Zz/n188mdm+XJx8mhn71NP9mpovwqN9lqzZ30AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
         class="gatsby-resp-image-image"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px white;"
         alt="Usage table for tail-call optimization, no browser implements it"
-        title=""
-        src="/static/a868e005ef29c04190a8b7d5cc4ed780/dbb61/debug7.png"
-        srcset="/static/a868e005ef29c04190a8b7d5cc4ed780/19bd1/debug7.png 163w,
-/static/a868e005ef29c04190a8b7d5cc4ed780/d3bcb/debug7.png 325w,
-/static/a868e005ef29c04190a8b7d5cc4ed780/dbb61/debug7.png 650w,
-/static/a868e005ef29c04190a8b7d5cc4ed780/6b691/debug7.png 975w,
-/static/a868e005ef29c04190a8b7d5cc4ed780/91670/debug7.png 1300w,
-/static/a868e005ef29c04190a8b7d5cc4ed780/e537f/debug7.png 1773w"
+        title="Usage table for tail-call optimization, no browser implements it"
+        src="/static/a868e005ef29c04190a8b7d5cc4ed780/a6d36/debug7.png"
+        srcset="/static/a868e005ef29c04190a8b7d5cc4ed780/222b7/debug7.png 163w,
+/static/a868e005ef29c04190a8b7d5cc4ed780/ff46a/debug7.png 325w,
+/static/a868e005ef29c04190a8b7d5cc4ed780/a6d36/debug7.png 650w,
+/static/a868e005ef29c04190a8b7d5cc4ed780/e548f/debug7.png 975w,
+/static/a868e005ef29c04190a8b7d5cc4ed780/3c492/debug7.png 1300w,
+/static/a868e005ef29c04190a8b7d5cc4ed780/947d2/debug7.png 1773w"
         sizes="(max-width: 650px) 100vw, 650px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
       />
-  </span></a></p>
+    </span></a></p>
 <p>As you can see, only <a href="https://babeljs.io/" target="_blank" rel="nofollow noopener noreferrer">Babel</a> partially supports it. This is
 of course about to change in the near future.</p>
 <p>If you want to learn more about tail call optimization check the
-<a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tail-position-calls" target="_blank" rel="nofollow noopener noreferrer">ES6 draft</a>.</p></div></article><footer class="blog-post__Footer-sc-7gkdnd-1 dFUOyp">Would you like to have a civil discussion about this post? Hit me up on<!-- --> <a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">twitter</a>.</footer></div><div class="newsletter-form__Card-a2ms4a-0 ehOTuu"><h1 class="newsletter-form__Title-a2ms4a-3 bJlgSv">Subscribe to my newsletter</h1><div class="newsletter-form__Sub-a2ms4a-4 eJvqld">No spam. Unsubscribe when you want.</div><form action="https://buttondown.email/api/emails/embed-subscribe/gpx" method="post" target="popupwindow" class="newsletter-form__Form-a2ms4a-2 ipLkBW"><div class="newsletter-form__InputGroup-a2ms4a-5 aUwco"><label for="bd-email">Email</label><input type="email" name="email" id="bd-email" placeholder="Your email" required=""/><input type="submit" value="Subscribe" class="newsletter-form__Button-a2ms4a-1 kiwFPk"/></div><input type="hidden" value="1" name="embed"/></form></div><div class="footer__Container-sc-1abtvul-0 kHWxpf"><div class="footer__Content-sc-1abtvul-1 ddOZgs"><a href="/">Home</a>·<a href="/rss.xml">RSS</a>·<a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">Twitter</a>·<a href="https://github.com/Gpx" target="_blank" rel="noopener noreferrer">GitHub</a></div><div class="footer__Copy-sc-1abtvul-2 ioFzeH">© 2014–<!-- -->2019<!-- --> Giorgio Polvara</div></div></div></div><script>
+<a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tail-position-calls" target="_blank" rel="nofollow noopener noreferrer">ES6 draft</a>.</p></div></article><footer class="blog-post__Footer-sc-7gkdnd-1 duvUWk">Would you like to have a civil discussion about this post? Hit me up on<!-- --> <a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">twitter</a>.</footer></div><div class="newsletter-form__Card-a2ms4a-0 fscSeJ"><h1 class="newsletter-form__Title-a2ms4a-3 KHPza">Subscribe to my newsletter</h1><div class="newsletter-form__Sub-a2ms4a-4 cocZZB">No spam. Unsubscribe when you want.</div><form action="https://buttondown.email/api/emails/embed-subscribe/gpx" method="post" target="popupwindow" class="newsletter-form__Form-a2ms4a-2 kvNPcB"><div class="newsletter-form__InputGroup-a2ms4a-5 dYhHPN"><label for="bd-email">Email</label><input type="email" name="email" id="bd-email" placeholder="Your email" required=""/><input type="submit" value="Subscribe" class="newsletter-form__Button-a2ms4a-1 eyKXbm"/></div><input type="hidden" value="1" name="embed"/></form></div><div class="footer__Container-sc-1abtvul-0 jBIpkR"><div class="footer__Content-sc-1abtvul-1 ihWmWm"><a href="/">Home</a>·<a href="/rss.xml">RSS</a>·<a href="https://twitter.com/Gpx" target="_blank" rel="noopener noreferrer">Twitter</a>·<a href="https://github.com/Gpx" target="_blank" rel="noopener noreferrer">GitHub</a></div><div class="footer__Copy-sc-1abtvul-2 bcrfyt">© 2014–<!-- -->2020<!-- --> Giorgio Polvara</div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
   if(true) {
@@ -332,5 +346,6 @@ of course about to change in the near future.</p>
       
       
       
-      }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/es6-tail-call-optimization/";window.webpackCompilationHash="5319789ffc95762cfc3b";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-b481eba8fdcd9d6f9ef1.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-a4da96fd57464bfe4cb2.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d18ec082075261f9b2ff.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-a4da96fd57464bfe4cb2.js" async=""></script><script src="/6-a6f462c0fac3ae18286b.js" async=""></script><script src="/1-3f56be50250633955a2a.js" async=""></script><script src="/styles-ce515ab697f1c548843c.js" async=""></script><script src="/app-b481eba8fdcd9d6f9ef1.js" async=""></script><script src="/webpack-runtime-cf9195eda15b926afde6.js" async=""></script></body></html>
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/es6-tail-call-optimization/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-04a92f08d6fc44f9844d.js"],"component---src-pages-index-js":["/component---src-pages-index-js-835674aa6e01650223c6.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-fab01e696dab57df9651.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-fab01e696dab57df9651.js" async=""></script><script src="/cd7d5f864fc9e15ed8adef086269b0aeff617554-07b4eddf745c8b51c4d2.js" async=""></script><script src="/styles-b729c27faa6284e9ff45.js" async=""></script><script src="/app-04a92f08d6fc44f9844d.js" async=""></script><script src="/framework-c88d07efb40e009babfb.js" async=""></script><script src="/webpack-runtime-580f0b02116b6d9d7847.js" async=""></script></body></html>
