@@ -66,11 +66,11 @@ Testing `MySelector` is not as easy at it seems:
 
 ```jsx
 test("Naive test that doesn't work", () => {
-  const { getByText } = render(<MySelector />);
-  expect(getByText("Your favorite color is Red")).toBeInTheDocument();
-  fireEvent.click(getByText("Red"));
-  fireEvent.click(getByText("Green"));
-  expect(getByText("Your favorite color is Green")).toBeInTheDocument();
+  render(<MySelector />);
+  expect(screen.getByText("Your favorite color is Red")).toBeInTheDocument();
+  fireEvent.click(screen.getByText("Red"));
+  fireEvent.click(screen.getByText("Green"));
+  expect(screen.getByText("Your favorite color is Green")).toBeInTheDocument();
 });
 ```
 
@@ -122,12 +122,14 @@ jest.mock("react-select", () => ({ options, value, onChange }) => {
 // highlight-end
 
 test("Test with mock", () => {
-  const { getByText, getByTestId } = render(<MySelector />);
-  expect(getByText("Your favorite color is Red")).toBeInTheDocument();
+  render(<MySelector />);
+  expect(screen.getByText("Your favorite color is Red")).toBeInTheDocument();
   // highlight-start
-  fireEvent.change(getByTestId("select"), { target: { value: "green" } });
+  fireEvent.change(screen.getByTestId("select"), {
+    target: { value: "green" },
+  });
   // highlight-end
-  expect(getByText("Your favorite color is Green")).toBeInTheDocument();
+  expect(screen.getByText("Your favorite color is Green")).toBeInTheDocument();
 });
 ```
 

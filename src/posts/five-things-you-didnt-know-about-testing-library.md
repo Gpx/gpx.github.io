@@ -39,12 +39,12 @@ If you want to check for yourself, it's as simple as this:
 
 ```jsx
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 test("everything is a node", () => {
   const Foo = () => <div>Hello</div>;
-  const { getByText } = render(<Foo />);
-  expect(getByText("Hello")).toBeInstanceOf(Node);
+  render(<Foo />);
+  expect(screen.getByText("Hello")).toBeInstanceOf(Node);
 });
 ```
 
@@ -56,7 +56,7 @@ or
 
 ```jsx
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 test("the button has type of reset", () => {
   const ResetButton = () => (
@@ -64,8 +64,8 @@ test("the button has type of reset", () => {
       <div>Reset</div>
     </button>
   );
-  const { getByText } = render(<ResetButton />);
-  const node = getByText("Reset");
+  render(<ResetButton />);
+  const node = screen.getByText("Reset");
 
   // This won't work because `node` is the `<div>`
   // expect(node).toHaveProperty("type", "reset");
@@ -91,8 +91,8 @@ In those cases, you might want to isolate a subtree of your whole structure. You
 can do this easily by passing a node to `debug`:
 
 ```jsx
-const { debug, getByText } = render(<MyComponent />);
-const button = getByText("Click me").closest();
+const { debug } = render(<MyComponent />);
+const button = screen.getByText("Click me").closest();
 debug(button);
 ```
 
@@ -136,7 +136,7 @@ is for:
 
 ```jsx
 import React from "react";
-import { render, within } from "@testing-library/react"; // highlight-line
+import { render, screen, within } from "@testing-library/react"; // highlight-line
 import "jest-dom/extend-expect";
 
 test("the values are in the table", () => {
@@ -163,10 +163,10 @@ test("the values are in the table", () => {
     ["2", "Oranges"],
     ["3", "Apples"],
   ];
-  const { getByText } = render(<MyTable values={values} />);
+  render(<MyTable values={values} />);
 
   values.forEach(([id, fruit]) => {
-    const row = getByText(id).closest("tr");
+    const row = screen.getByText(id).closest("tr");
     // highlight-start
     const utils = within(row);
     expect(utils.getByText(id)).toBeInTheDocument();
@@ -206,7 +206,7 @@ return `true` or `false` depending on if the node is the one you want.
 An example will clarify it:
 
 ```jsx
-import { render, within } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import "jest-dom/extend-expect";
 
 test("pass functions to matchers", () => {
@@ -215,13 +215,13 @@ test("pass functions to matchers", () => {
       Hello <span>world</span>
     </div>
   );
-  const { getByText } = render(<Hello />);
+  render(<Hello />);
 
   // These won't match
   // getByText("Hello world");
   // getByText(/Hello world/);
 
-  getByText((content, node) => {
+  screen.getByText((content, node) => {
     const hasText = (node) => node.textContent === "Hello world";
     const nodeHasText = hasText(node);
     const childrenDontHaveText = Array.from(node.children).every(
