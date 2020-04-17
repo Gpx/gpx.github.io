@@ -52,9 +52,7 @@ export default ({ data }) => {
             <span
               dangerouslySetInnerHTML={{ __html: post.frontmatter.title }}
             />
-            <Meta>
-              {post.frontmatter.date} &middot; {post.timeToRead} min read
-            </Meta>
+            <Meta>Approximately {post.timeToRead} min read</Meta>
           </h1>
 
           {post.frontmatter.cover ? (
@@ -106,7 +104,6 @@ export const query = graphql`
       timeToRead
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
         cover {
           file {
             publicURL

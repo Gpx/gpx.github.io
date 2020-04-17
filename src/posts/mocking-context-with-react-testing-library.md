@@ -57,22 +57,22 @@ within a provider. Let's do that then.
 
 ```jsx
 test("UserGreeter salutes an anonymous user", () => {
-  const { getByText } = render(
+  render(
     <UserContext.Provider value={null}>
       <UserGreeter />
     </UserContext.Provider>
   );
-  expect(getByText("Hello stranger!")).toBeInTheDocument();
+  expect(screen.getByText("Hello stranger!")).toBeInTheDocument();
 });
 
 test("UserGreeter salutes a user", () => {
   const user = { name: "Giorgio" };
-  const { getByText } = render(
+  render(
     <UserContext.Provider value={user}>
       <UserGreeter />
     </UserContext.Provider>
   );
-  expect(getByText(`Hello ${user.name}!`)).toBeInTheDocument();
+  expect(screen.getByText(`Hello ${user.name}!`)).toBeInTheDocument();
 });
 ```
 
@@ -88,14 +88,14 @@ function renderUserGreeter(user) {
 }
 
 test("UserGreeter salutes an anonymous user", () => {
-  const { getByText } = renderUserGreeter(null);
-  expect(getByText("Hello stranger!")).toBeInTheDocument();
+  renderUserGreeter(null);
+  expect(screen.getByText("Hello stranger!")).toBeInTheDocument();
 });
 
 test("UserGreeter salutes a user", () => {
   const user = { name: "Giorgio" };
-  const { getByText } = renderUserGreeter(user);
-  expect(getByText(`Hello ${user.name}!`)).toBeInTheDocument();
+  renderUserGreeter(user);
+  expect(screen.getByText(`Hello ${user.name}!`)).toBeInTheDocument();
 });
 ```
 

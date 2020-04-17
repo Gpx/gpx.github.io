@@ -148,7 +148,7 @@ see a loading message:
 ```jsx
 // highlight-start
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Index from "./Index";
 import "jest-dom/extend-expect";
 // highlight-end
@@ -157,8 +157,8 @@ jest.mock("./api/posts");
 
 // highlight-start
 test("We show a list of posts", () => {
-  const { getByText } = render(<Index />);
-  expect(getByText("Loading...")).toBeInTheDocument();
+  render(<Index />);
+  expect(screen.getByText("Loading...")).toBeInTheDocument();
 });
 // highlight-end
 ```
@@ -168,7 +168,7 @@ correctly:
 
 ```jsx
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Index from "./Index";
 import "jest-dom/extend-expect";
 import { fetchPosts } from "./api/posts"; // highlight-line
@@ -176,8 +176,8 @@ import { fetchPosts } from "./api/posts"; // highlight-line
 jest.mock("./api/posts");
 
 test("We show a list of posts", () => {
-  const { getByText } = render(<Index />);
-  expect(getByText("Loading...")).toBeInTheDocument();
+  render(<Index />);
+  expect(screen.getByText("Loading...")).toBeInTheDocument();
   // highlight-start
   expect(fetchPosts).toHaveBeenCalledTimes(1);
   expect(fetchPosts).toHaveBeenCalledWith();
@@ -196,7 +196,7 @@ to do next:
 
 ```jsx
 import React from "react";
-import { render, wait } from "@testing-library/react"; // highlight-line
+import { render, screen, wait } from "@testing-library/react"; // highlight-line
 import Index from "./Index";
 import "jest-dom/extend-expect";
 import { fetchPosts } from "./api/posts";
@@ -209,13 +209,15 @@ test("We show a list of posts", async () => {
   const posts = [{ id: 1, title: "My post", url: "/1" }];
   fetchPosts.mockResolvedValueOnce(posts);
   // highlight-end
-  const { getByText } = render(<Index />);
-  expect(getByText("Loading...")).toBeInTheDocument();
+  render(<Index />);
+  expect(screen.getByText("Loading...")).toBeInTheDocument();
   expect(fetchPosts).toHaveBeenCalledTimes(1);
   expect(fetchPosts).toHaveBeenCalledWith();
   // highlight-start
-  await wait(() => expect(getByText("My Posts")).toBeInTheDocument());
-  posts.forEach((post) => expect(getByText(post.title)).toBeInTheDocument());
+  await wait(() => expect(screen.getByText("My Posts")).toBeInTheDocument());
+  posts.forEach((post) =>
+    expect(screen.getByText(post.title)).toBeInTheDocument()
+  );
   // highlight-end
 });
 ```
@@ -232,7 +234,7 @@ changing the mock:
 
 ```jsx
 import React from "react";
-import { render, wait } from "@testing-library/react";
+import { render, screen, wait } from "@testing-library/react";
 import Index from "./Index";
 import "jest-dom/extend-expect";
 import { fetchPosts } from "./api/posts";
@@ -244,13 +246,13 @@ test("We show an error message on failures", async () => {
   // highlight-start
   fetchPosts.mockRejectedValueOnce("Error!");
   // highlight-end
-  const { getByText } = render(<Index />);
-  expect(getByText("Loading...")).toBeInTheDocument();
+  render(<Index />);
+  expect(screen.getByText("Loading...")).toBeInTheDocument();
   expect(fetchPosts).toHaveBeenCalledTimes(1);
   expect(fetchPosts).toHaveBeenCalledWith();
   // highlight-start
   await wait(() =>
-    expect(getByText("Something went wrong.")).toBeInTheDocument()
+    expect(screen.getByText("Something went wrong.")).toBeInTheDocument()
   );
   // highlight-end
 });
