@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Giorgio Polvara's Blog",
-    siteUrl: "https://www.polvara.me"
+    siteUrl: "https://www.polvara.me",
   },
   plugins: [
     "gatsby-transformer-sharp",
@@ -10,9 +10,8 @@ module.exports = {
     { resolve: "gatsby-plugin-styled-components", options: {} },
     {
       resolve: "gatsby-source-filesystem",
-      options: { name: "src", path: `${__dirname}/src/` }
+      options: { name: "src", path: `${__dirname}/src/` },
     },
-    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -25,30 +24,30 @@ module.exports = {
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,
-              noInlineHighlight: false
-            }
+              noInlineHighlight: false,
+            },
           },
           { resolve: "gatsby-remark-external-links" },
           "@weknow/gatsby-remark-twitter",
           {
             resolve: "gatsby-remark-images",
             options: {
-              maxWidth: 650
-            }
+              maxWidth: 650,
+            },
           },
-          "gatsby-remark-copy-linked-files"
-        ]
-      }
+          "gatsby-remark-copy-linked-files",
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [{ family: "Ubuntu Mono" }]
-      }
+        fonts: [{ family: "Ubuntu Mono" }],
+      },
     },
     {
       resolve: "gatsby-plugin-google-analytics",
-      options: { trackingId: "UA-40681255-1" }
+      options: { trackingId: "UA-40681255-1" },
     },
     {
       resolve: "gatsby-plugin-feed",
@@ -67,10 +66,10 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                 });
               });
             },
@@ -91,10 +90,10 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml"
-          }
-        ]
-      }
-    }
-  ]
+            output: "/rss.xml",
+          },
+        ],
+      },
+    },
+  ],
 };
