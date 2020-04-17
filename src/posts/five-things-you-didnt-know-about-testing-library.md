@@ -158,7 +158,11 @@ test("the values are in the table", () => {
       </tbody>
     </table>
   );
-  const values = [["1", "Apples"], ["2", "Oranges"], ["3", "Apples"]];
+  const values = [
+    ["1", "Apples"],
+    ["2", "Oranges"],
+    ["3", "Apples"],
+  ];
   const { getByText } = render(<MyTable values={values} />);
 
   values.forEach(([id, fruit]) => {
@@ -218,10 +222,10 @@ test("pass functions to matchers", () => {
   // getByText(/Hello world/);
 
   getByText((content, node) => {
-    const hasText = node => node.textContent === "Hello world";
+    const hasText = (node) => node.textContent === "Hello world";
     const nodeHasText = hasText(node);
     const childrenDontHaveText = Array.from(node.children).every(
-      child => !hasText(child)
+      (child) => !hasText(child)
     );
 
     return nodeHasText && childrenDontHaveText;

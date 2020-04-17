@@ -37,7 +37,7 @@ function MySelector() {
   const options = [
     { value: "red", label: "Red" },
     { value: "green", label: "Green" },
-    { value: "blue", label: "Blue" }
+    { value: "blue", label: "Blue" },
   ];
   const [color, setColor] = React.useState(options[0]);
 
@@ -47,7 +47,7 @@ function MySelector() {
       <Select
         options={options}
         value={color}
-        onChange={value => {
+        onChange={(value) => {
           console.log(value);
           setColor(value);
         }}
@@ -104,7 +104,7 @@ Here's how you can do it:
 jest.mock("react-select", () => ({ options, value, onChange }) => {
   function handleChange(event) {
     const option = options.find(
-      option => option.value === event.currentTarget.value
+      (option) => option.value === event.currentTarget.value
     );
     onChange(option);
   }
