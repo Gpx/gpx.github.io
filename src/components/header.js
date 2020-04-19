@@ -50,13 +50,11 @@ const Header = styled(BackgroundSection)`
 const Border = styled.div`
   flex-direction: column;
   position: relative;
-  border: 10px solid #fff;
   height: 90%;
   width: 90%;
   display: flex;
   align-items: stretch;
   justify-content: flex-end;
-  padding: 3% 5%;
 
   @media (max-width: 768px) {
     border: none;
@@ -87,22 +85,6 @@ const Text = styled.span`
   @media (max-width: 576px) {
     font-size: 11vw;
   }
-`;
-
-const TextLine = styled.div`
-  display: flex;
-`;
-
-const Line = styled.div`
-  background-image: linear-gradient(
-    180deg,
-    transparent calc(50%),
-    white calc(50%),
-    white calc(50% + 10px),
-    transparent calc(50% + 10px)
-  );
-  flex: 1;
-  margin-right: 2%;
 `;
 
 const Menu = styled.div`
@@ -160,14 +142,8 @@ export default () => {
           </MenuItem>
           <MenuItem to="/rss.xml">RSS</MenuItem>
         </Menu>
-        <TextLine>
-          <Line />
-          <Text>Giorgio</Text>
-        </TextLine>
-        <TextLine>
-          <Line />
-          <Text>Polvara</Text>
-        </TextLine>
+        <Text>Giorgio</Text>
+        <Text>Polvara</Text>
       </Border>
     </Header>
   );
