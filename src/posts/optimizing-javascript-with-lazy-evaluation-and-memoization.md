@@ -1,6 +1,10 @@
 ---
 title: "Optimizing JavaScript with Lazy Evaluation and Memoization"
 date: "2017-11-10"
+cover:
+  file: "./optimizing-javascript-with-lazy-evaluation-and-memoization/cover.jpg"
+  author: "Lenin Estrada"
+  link: "https://unsplash.com/photos/SijjXiGEpAA"
 ---
 
 Recently at

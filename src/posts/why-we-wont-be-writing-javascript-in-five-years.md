@@ -1,6 +1,10 @@
 ---
 title: "Why We Won't Be Writing JavaScript in Five Years"
 date: "2016-09-13"
+cover:
+  file: "./why-we-wont-be-writing-javascript-in-five-years/cover.jpg"
+  author: "Thought Catalog"
+  link: "https://unsplash.com/photos/RdmLSJR-tq8"
 ---
 
 As you probably know, JavaScript was created by

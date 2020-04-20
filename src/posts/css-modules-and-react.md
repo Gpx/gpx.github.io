@@ -1,6 +1,8 @@
 ---
 title: "CSS Modules & React"
 date: "2016-07-26"
+cover:
+  file: "./css-modules-and-react/cover.jpg"
 ---
 
 Yesterday I gave my first tech talk at the

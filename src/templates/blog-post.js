@@ -56,21 +56,23 @@ export default ({ data }) => {
             <Meta>Approximately {post.timeToRead} min read</Meta>
           </h1>
 
-          {post.frontmatter.cover ? (
+          {post.frontmatter.cover && !post.frontmatter.cover.hide ? (
             <figure>
               <Img
                 fluid={post.frontmatter.cover.file.childImageSharp.fluid}
                 background="#6eb632"
               />
-              <figcaption>
-                <a
-                  href={post.frontmatter.cover.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Photo by {post.frontmatter.cover.author}
-                </a>
-              </figcaption>
+              {post.frontmatter.cover.author != null && (
+                <figcaption>
+                  <a
+                    href={post.frontmatter.cover.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Photo by {post.frontmatter.cover.author}
+                  </a>
+                </figcaption>
+              )}
             </figure>
           ) : null}
 
@@ -108,7 +110,7 @@ export const query = graphql`
         cover {
           file {
             childImageSharp {
-              fluid(quality: 90, maxWidth: 4160) {
+              fluid(quality: 100, maxWidth: 4160) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -116,6 +118,7 @@ export const query = graphql`
           author
           link
           alt
+          hide
         }
       }
       fields {
