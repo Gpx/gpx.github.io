@@ -1,6 +1,10 @@
 ---
 title: "How to Start with Open Source"
 date: "2018-10-25"
+cover:
+  file: "./how-to-start-with-open-source/cover.jpg"
+  author: "George Hiles"
+  link: "https://unsplash.com/photos/cKLr1zNnCzg"
 ---
 
 Last Sunday, October 21st, I took part in

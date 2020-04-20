@@ -4,13 +4,13 @@ import Footer from "../components/footer";
 
 const Container = styled.div`
   padding: 0 0.5em;
-  max-width: calc(65 * 9px);
+  max-width: ${({ wide }) => (wide ? "70%" : "calc(65 * 9px)")};
   margin: auto;
 `;
 
-export default ({ children }) => (
+export default ({ wide = false, children }) => (
   <>
-    <Container>{children}</Container>
+    <Container wide={wide}>{children}</Container>
     <Footer />
   </>
 );

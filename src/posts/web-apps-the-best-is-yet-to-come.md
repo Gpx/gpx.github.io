@@ -1,6 +1,9 @@
 ---
 title: "Web apps: the best is yet to come"
 date: "2014-07-06"
+cover:
+  file: "./web-apps-the-best-is-yet-to-come/cover.png"
+  hide: true
 ---
 
 `video: https://youtu.be/Q8TXgCzxEnw`
