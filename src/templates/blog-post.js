@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import "../styles/blog.css";
 import Layout from "../components/layout";
 import PostHeader from "../components/post-header";
+import JobBanner from "../components/job-banner";
 import Img from "gatsby-image";
 
 const Meta = styled.span`
@@ -46,6 +47,7 @@ export default ({ data }) => {
           />
         ) : null}
       </Helmet>
+      <JobBanner />
       <PostHeader />
       <Layout>
         <article lang="en">
