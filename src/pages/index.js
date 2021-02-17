@@ -57,7 +57,7 @@ const Title = styled.div.attrs({ className: "title" })`
   font-weight: 600;
 `;
 
-export default ({ data }) => (
+const Index = ({ data }) => (
   <>
     <Header />
     <Layout wide>
@@ -114,3 +114,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Index;
