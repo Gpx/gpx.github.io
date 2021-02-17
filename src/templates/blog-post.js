@@ -27,7 +27,7 @@ const Footer = styled.footer`
   }
 `;
 
-export default ({ data }) => {
+const BlogPost = ({ data }) => {
   const post = data.markdownRemark;
   return (
     <>
@@ -128,3 +128,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default BlogPost;
