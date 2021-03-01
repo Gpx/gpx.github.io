@@ -116,6 +116,10 @@
   list-style-type: none;
 }
 
+.expertise .stars {
+  float: right;
+}
+
 .education::before {
   content: "Education";
 }

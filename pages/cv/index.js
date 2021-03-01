@@ -2,18 +2,15 @@ import styles from "./cv.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChrome,
-  faGithub,
-  faLinkedin,
   faLinkedinIn,
-  faStackOverflow,
   faStickerMule,
-  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faEnvelope,
   faMapMarkerAlt,
-  faMobile,
   faPhone,
+  faStar,
+  faStarHalf,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function CV() {
@@ -57,21 +54,50 @@ export default function CV() {
         </dl>
 
         <ul className={styles.expertise}>
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>NodeJS</li>
+          <li>
+            JavaScript
+            <span className={styles.stars}>
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+            </span>
+          </li>
+          <li>
+            React
+            <span className={styles.stars}>
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+            </span>
+          </li>
+          <li>
+            NodeJS
+            <span className={styles.stars}>
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalf} />
+            </span>
+          </li>
         </ul>
 
         <ul className={styles.education}>
           <li>
             Bachelor's degree, Informatics
             <br />
-            <em>Università degli Studi di Milano-Bicocca</em>
+            <em style={{ fontWeight: 100 }}>
+              Università degli Studi di Milano-Bicocca
+            </em>
           </li>
           <li>
             High School Diploma, Informatic Specialization
             <br />
-            <em>I.T.I.S. S.Ten.Vasc. A. Badoni</em>
+            <em style={{ fontWeight: 100 }}>I.T.I.S. S.Ten.Vasc. A. Badoni</em>
           </li>
         </ul>
       </div>
