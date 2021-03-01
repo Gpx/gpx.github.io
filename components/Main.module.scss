@@ -120,6 +120,7 @@
     4px 4px color.scale(color.invert(#3a6, 100%), $lightness: 45%);
   color: #fff;
   text-shadow: 0 0 5px color.scale(color.invert(#3a6), $lightness: -20%);
+  transform: rotate(3deg);
 }
 
 .linkButtons {
