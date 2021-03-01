@@ -1,0 +1,17 @@
+@use 'sass:color';
+
+.footer {
+  position: relative;
+  padding: 2em 0;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.footer code {
+  position: absolute;
+  bottom: 0.8em;
+  left: 1em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.7rem;
+  color: color.scale(#333, $lightness: 65%);
+}

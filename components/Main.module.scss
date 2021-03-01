@@ -1,0 +1,159 @@
+@use "sass:color";
+
+.main {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20%;
+  background-image: linear-gradient(
+    90deg,
+    color.scale(#3a6, $lightness: 60%) 40%,
+    transparent 40%
+  );
+}
+
+.card {
+  width: 376px;
+  padding: 2em 0;
+  padding-bottom: 0;
+  background: color.scale(color.invert(#3a6, 100%), $lightness: 45%);
+  text-align: center;
+  box-shadow: #0003 -11.31px 11.31px 17px 0px, #fff 6px 0 0;
+  transform: rotate(-2deg);
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  right: -15px;
+  background: color.scale(#3a6, $lightness: 45%);
+  width: 4px;
+}
+
+.card::before {
+  top: 0;
+  height: 20px;
+  border-radius: 100px 100px 100px 100px;
+}
+
+.card::after {
+  top: 23px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.image {
+  border-radius: 50%;
+}
+
+.name {
+  margin-top: 2rem;
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 1px 1px #fff7;
+  letter-spacing: 0.02em;
+}
+
+.divider {
+  margin: 2r.1em auto;
+  width: 15%;
+  border: 1px solid color.scale(#3a6, $lightness: 25%);
+}
+
+.jobTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px #fffa;
+}
+
+.footer {
+  margin-top: 3.5rem;
+  padding: 1em 0;
+  background: #fff;
+
+  a {
+    margin: 0 1em;
+    transition: color 0.3s ease-in-out;
+  }
+  a:first-child {
+    margin-left: 0;
+  }
+  a:last-child {
+    margin-right: 0;
+  }
+
+  a:hover {
+    color: #3a6;
+  }
+
+  svg {
+    height: 1.5rem;
+  }
+}
+
+.description {
+  margin-left: 1.6rem;
+  max-width: 375px;
+}
+
+.salute {
+  font-size: 6.5rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 6px 2px color.scale(#3a6, $lightness: 60%);
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  background: color.scale(#3a6, $lightness: 60%);
+  display: inline-block;
+  padding: 0 1em;
+  font-style: italic;
+  font-weight: 500;
+  box-shadow: 2px 2px white,
+    4px 4px color.scale(color.invert(#3a6, 100%), $lightness: 45%);
+  color: #fff;
+  text-shadow: 0 0 5px color.scale(color.invert(#3a6), $lightness: -20%);
+}
+
+.linkButtons {
+  margin: 2.7rem 0;
+}
+
+.linkButtons a {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.5em 2em;
+  border-radius: 1rem;
+  margin: 0 0.5em;
+  letter-spacing: 0.02em;
+}
+
+.linkButtons a:first-child {
+  margin-left: 0;
+  background: #3a6;
+  color: #fff;
+  border: 2px solid #3a6;
+  transition: ease-in-out background 0.3s, ease-in-out color 0.3s;
+  &:hover {
+    background: #fff;
+    color: #333;
+  }
+}
+.linkButtons a:last-child {
+  margin-right: 0;
+  border: 1px solid #333;
+  transition: ease-in-out background 0.3s, ease-in-out color 0.3s,
+    ease-in-out border-color 0.3s;
+  &:hover {
+    background: #3a6;
+    color: #fff;
+    border-color: #3a6;
+  }
+}

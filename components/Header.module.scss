@@ -1,0 +1,87 @@
+@use 'sass:color';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 4em;
+  z-index: 1;
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+}
+
+.header.scrolled {
+  background: color.scale(#3a6, $lightness: 45%);
+  box-shadow: #0003 -11.31px 11.31px 17px 0px, #fff 6px 0 0;
+}
+
+.name {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.logo {
+  display: inline-block;
+  background: #3a6;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  transition: background 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+.header.scrolled .logo {
+  background: color.invert(#3a6);
+  border-radius: 3px;
+}
+
+.nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  li {
+    display: inline;
+    margin: 1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  li:first-child {
+    margin-left: 0;
+  }
+  li:last-child {
+    margin-right: 0;
+  }
+}
+
+.nav a {
+  transition: color 0.3s ease-in-out;
+}
+
+.nav a:hover {
+  color: #3a6;
+}
+
+.header.scrolled .nav a:hover {
+  color: #fff;
+}
+
+.activeLink {
+  color: #3a6;
+}
+
+.header.scrolled .activeLink {
+  color: #fff;
+}
+
+.margin {
+  margin-bottom: calc(25px * 2 + 4em);
+}

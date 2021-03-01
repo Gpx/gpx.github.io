@@ -1,0 +1,45 @@
+@use 'sass:color';
+
+.posts {
+  padding: 10rem 0;
+}
+
+.hr {
+  position: relative;
+  border: none;
+  height: 1.5rem;
+  margin: 10rem;
+}
+
+.hr::before {
+  content: "";
+  position: absolute;
+  left: calc(50% + 2.2rem - 3.8rem);
+  bottom: 0;
+  width: 6rem;
+  height: 1.5rem;
+  border-radius: 100px 100px 100px 100px;
+  background-color: color.scale(#3a6, $lightness: 45%);
+}
+
+.hr::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 3.8rem);
+  bottom: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: color.scale(#3a6, $lightness: 45%);
+}
+
+.hr.even::before {
+  left: calc(50% - 6.7rem + 3.8rem);
+}
+.hr.even::after {
+  left: calc(50% + 3.8rem);
+}
+.hr.even::before,
+.hr.even::after {
+  background-color: color.scale(color.invert(#3a6), $lightness: 45%);
+}

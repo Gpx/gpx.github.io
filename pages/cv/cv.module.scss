@@ -1,0 +1,174 @@
+@page {
+  margin: 0;
+  size: A4;
+}
+
+.cv {
+  --a4-w: 21cm;
+  display: flex;
+  background-color: #f3f3f3;
+  width: 21cm;
+  height: 29.7cm;
+  color: #202020;
+}
+
+.bar {
+  background-color: #f97805;
+  width: calc(var(--a4-w) * 0.4);
+  color: #fff;
+}
+
+.content {
+  width: calc(var(--a4-w) * 0.6);
+  padding: 0 1cm;
+}
+
+.title {
+  text-align: center;
+  background-color: #4e2817;
+  margin: 0;
+  margin-left: -1cm;
+  margin-right: -1cm;
+  margin-bottom: 1cm;
+  padding: 0.7cm 0;
+
+  > .name {
+    color: #fff;
+    margin-left: 0.05cm;
+  }
+  > .surname {
+    color: #f26922;
+  }
+}
+
+.pictureBox {
+  position: relative;
+  margin: 1cm auto;
+  width: 65%;
+}
+
+.picture,
+.pictureBelow {
+  width: 100%;
+  border: 10px solid #fff;
+  box-shadow: 0 0 0 1px #aaa, 0 0 1px 1px #333a;
+}
+
+.pictureBelow {
+  position: absolute;
+  top: 10px;
+  left: 2%;
+  transform: rotate(5deg);
+}
+
+.contact::before,
+.expertise::before,
+.education::before {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #fff;
+  padding-left: 0.3em;
+  padding-bottom: 0.1em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  font-weight: 200;
+}
+
+.contact::before {
+  content: "Contact";
+}
+.contact {
+  margin: auto;
+  width: 65%;
+
+  dt,
+  dd {
+    display: inline;
+  }
+
+  dt {
+    display: inline-block;
+    width: 16px;
+    text-align: center;
+  }
+
+  dd {
+    margin-left: 0.3cm;
+  }
+
+  dd::after {
+    content: "";
+    display: block;
+  }
+}
+
+.expertise::before {
+  content: "Expertise";
+}
+
+.expertise,
+.education {
+  display: block;
+  width: 65%;
+  margin: auto;
+  padding: 0;
+  list-style-type: none;
+}
+
+.education::before {
+  content: "Education";
+}
+
+.education li {
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  text-transform: uppercase;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #f97805;
+  padding-left: 0.3em;
+  padding-bottom: 0.1em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: #f97805;
+  font-size: 20px;
+}
+
+.profile {
+  font-size: 13px;
+  text-align: justify;
+}
+
+.experience {
+  margin-bottom: 0.7cm;
+}
+
+.experience .role {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.experience .company,
+.experience .dates {
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.experience .company {
+  border-right: 1px solid #20202050;
+  padding-right: 0.8em;
+}
+
+.experience .dates {
+  padding-left: 0.8em;
+}
+
+.experience .description {
+  font-size: 11px;
+  margin: 0;
+  margin-top: 0.6em;
+  text-align: justify;
+}

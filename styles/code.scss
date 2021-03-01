@@ -1,0 +1,156 @@
+/* Palette: https://flatuicolors.com/palette/se */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.9em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: #ffffff22;
+}
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0 0 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #1e272e;
+  border-radius: 0 0 0.5em 0.5em;
+  color: #d2dae2;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+  background: #00000011;
+  color: inherit;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #808e9b;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #808e9b;
+}
+
+.namespace {
+  color: red;
+  background: red;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ffa801;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #0be881;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #ffd32a;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #ef5777;
+}
+
+.token.function,
+.token.class-name {
+  color: #0fbcf9;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #0be881;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.gatsby-highlight-code-line {
+  background: #2f3d48;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #575fcf;
+}
+
+.gatsby-highlight::before {
+  content: attr(data-language);
+  display: block;
+  padding: 0.3em 1em;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  text-align: right;
+  background-image: linear-gradient(90deg, #7986cb, #3f51b5);
+  color: #fff;
+  font-family: "Ubuntu Mono", monospace;
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+.gatsby-highlight[data-language="html"]::before {
+  background-image: linear-gradient(90deg, #ffb74d, #ff9800);
+}
+
+.gatsby-highlight[data-language="text"]::before {
+  content: " ";
+  white-space: pre;
+  background-image: linear-gradient(90deg, #dce775, #cddc39);
+}
+
+.gatsby-highlight {
+  border-radius: 0.5em;
+  box-shadow: 2px 2px 3px 2px #0003;
+  margin: 2em 0;
+}

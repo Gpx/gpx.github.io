@@ -1,0 +1,61 @@
+@use 'sass:color';
+
+.title {
+  font-size: 5rem;
+  padding: 2em 1em;
+  padding-bottom: 0;
+  font-weight: 900;
+  background: linear-gradient(90deg, #3a6 20%, color.invert(#3a6) 80%);
+  color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.hr {
+  position: relative;
+  border: none;
+  height: 1.5rem;
+  margin: 10rem;
+}
+
+.hr::before {
+  content: "";
+  position: absolute;
+  left: calc(50% + 2.2rem - 3.8rem);
+  bottom: 0;
+  width: 6rem;
+  height: 1.5rem;
+  border-radius: 100px 100px 100px 100px;
+  background-color: color.scale(#3a6, $lightness: 45%);
+}
+
+.hr::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 3.8rem);
+  bottom: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: color.scale(#3a6, $lightness: 45%);
+}
+
+.content {
+  width: 585px;
+  margin: auto;
+  font-size: 1.2rem;
+  hyphens: auto;
+}
+
+.content > p:first-of-type::first-line {
+  font-weight: 700;
+}
+
+.content h2 {
+  margin: 2em 0 1em;
+  font-size: 1.3em;
+}
+
+.content img {
+  max-width: 100%;
+}
