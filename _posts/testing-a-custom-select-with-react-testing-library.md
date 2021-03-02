@@ -96,7 +96,7 @@ In my experience, the second option works well and is much easier to maintain.
 How do you replace the custom select for an easier one though? With
 [`jest.mock`](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options).
 
-In our case we want to replace `react-select` for a normal HTML `<select>` tag.
+In our case we want to replace `react-select` for a normal HTML `select` tag.
 Here's how you can do it:
 
 ```jsx
@@ -133,7 +133,7 @@ test("Test with mock", () => {
 });
 ```
 
-I've added a `data-testid` to make it easy to find the `<select>` and
+I've added a `data-testid` to make it easy to find the `select` and
 implemented a `handleChange` handler that simulates the one from `react-select`.
 Your logic might change depending on what custom select you are using but the
 basic idea is the same.
