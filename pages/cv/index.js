@@ -130,7 +130,7 @@ export default function CV() {
           <span className={styles.dates}>November 2020 - Present</span>
           <p className={styles.description}>
             At Toptal, I manage the Core Tools team to provide reliable and
-            useful tools to more than 700 hundreds of internal employees. I also
+            useful tools to more than 700 hundred internal employees. I also
             mentor my team members helping them thrive in their careers.
           </p>
         </div>
