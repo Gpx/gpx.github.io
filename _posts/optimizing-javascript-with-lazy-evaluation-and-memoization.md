@@ -85,7 +85,7 @@ evaluate. Instead we used
 
 As the name already indicates this method allows us to define a property on an
 object. It's different from doing `obj.newProperty = value` because it allows to
-set some useful options. In our case we used the `set` method:
+set some useful options. In our case we used the `get` method:
 
 ```js
 function parseObject(result) {
