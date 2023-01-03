@@ -3,16 +3,15 @@ import cx from "classnames";
 import { getPosts } from "../../lib/posts";
 import Post from "../../components/Post";
 import styles from "./index.module.scss";
+import React from "react";
 
 export default function Index({ posts }) {
   return (
     <div className={styles.posts}>
       {posts.map((post, index) => (
-        <>
-          <Link key={post.slug} href={`/posts/${post.slug}`}>
-            <a>
-              <Post post={post} index={index} />
-            </a>
+        <React.Fragment key={post.slug}>
+          <Link href={`/posts/${post.slug}`}>
+            <Post post={post} index={index} />
           </Link>
           {posts.length !== index + 1 ? (
             <hr
@@ -21,7 +20,7 @@ export default function Index({ posts }) {
               })}
             />
           ) : null}
-        </>
+        </React.Fragment>
       ))}
     </div>
   );

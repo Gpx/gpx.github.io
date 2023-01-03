@@ -25,33 +25,31 @@ export default function Header() {
   return (
     <>
       <header className={cx(styles.header, { [styles.scrolled]: scrolled })}>
-        <Link href="/">
-          <a className={styles.name}>
-            <Logo />
-            Giorgio Polvara
-          </a>
+        <Link href="/" className={styles.name}>
+          <Logo />
+          Giorgio Polvara
         </Link>
         <nav className={styles.nav}>
           <ul>
             <li>
-              <Link href="/">
-                <a className={router.asPath === "/" ? styles.activeLink : ""}>
-                  About me
-                </a>
+              <Link
+                href="/"
+                className={router.asPath === "/" ? styles.activeLink : ""}
+              >
+                About me
               </Link>
             </li>
             <li>
-              <Link href="/blog">
-                <a
-                  className={
-                    router.asPath === "/blog" ||
-                    router.asPath.startsWith("/posts")
-                      ? styles.activeLink
-                      : ""
-                  }
-                >
-                  Blog
-                </a>
+              <Link
+                href="/blog"
+                className={
+                  router.asPath === "/blog" ||
+                  router.asPath.startsWith("/posts")
+                    ? styles.activeLink
+                    : ""
+                }
+              >
+                Blog
               </Link>
             </li>
             {/*
