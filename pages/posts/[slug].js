@@ -22,8 +22,6 @@ export default function Post({ post }) {
             border: "1px solid #EEE",
             background: "white",
           }}
-          frameborder="0"
-          scrolling="no"
         ></iframe>
       </div>
     </>

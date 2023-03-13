@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -19,10 +18,10 @@ export default function Main() {
           width={205}
           height={205}
           priority
+          alt="Giorgio Polvara"
         />
         <span className={styles.name}>Giorgio Polvara</span>
         <hr className={styles.divider} />
-        <span className={styles.jobTitle}>Engineering Manager</span>
         <div className={styles.footer}>
           <a
             href="https://twitter.com/gpx"
@@ -75,7 +74,13 @@ export default function Main() {
           I have experience working in small and bigger companies, and I've
           worked with a vast spectrum of technologies from DBs to CSS and
           everything in between.
-          <span className={styles.logoDot} />
+        </p>
+        <p>
+          Currently I'm working as a Tech Lead at{" "}
+          <a href="https://about.wallapop.com/en" target="_blank">
+            Wallapop
+          </a>
+          .
         </p>
       </div>
     </div>
