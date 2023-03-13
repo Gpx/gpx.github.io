@@ -1,7 +1,8 @@
+import SuggestedPosts from "../../components/SuggestedPosts";
 import { getPosts, getFullPostBySlug } from "../../lib/posts";
 import styles from "./post.module.scss";
 
-export default function Post({ post }) {
+export default function Post({ post, suggestedPosts }) {
   return (
     <>
       <h1
@@ -24,6 +25,7 @@ export default function Post({ post }) {
           }}
         ></iframe>
       </div>
+      <SuggestedPosts posts={suggestedPosts} />
     </>
   );
 }
@@ -31,7 +33,12 @@ export default function Post({ post }) {
 export async function getStaticProps({ params }) {
   const { slug } = params;
   const post = await getFullPostBySlug(slug);
-  return { props: { post } };
+
+  const posts = getPosts()
+    .filter((post) => post.slug !== slug)
+    .slice(0, 3);
+
+  return { props: { post, suggestedPosts: posts } };
 }
 
 export async function getStaticPaths() {
