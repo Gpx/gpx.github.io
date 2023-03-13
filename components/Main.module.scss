@@ -118,8 +118,7 @@
   font-weight: 500;
   box-shadow: 2px 2px white,
     4px 4px color.scale(color.invert(#3a6, 100%), $lightness: 45%);
-  color: #fff;
-  text-shadow: 0 0 5px color.scale(color.invert(#3a6), $lightness: -20%);
+  color: color.scale(#3a6, $lightness: 93%);
   transform: rotate(3deg);
 }
 
