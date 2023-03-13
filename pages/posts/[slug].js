@@ -13,6 +13,19 @@ export default function Post({ post }) {
         className={styles.content}
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
+      <div style={{ textAlign: "center", margin: "3rem 0" }}>
+        <iframe
+          src="https://polvara.substack.com/embed"
+          width="480"
+          height="320"
+          style={{
+            border: "1px solid #EEE",
+            background: "white",
+          }}
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
     </>
   );
 }
