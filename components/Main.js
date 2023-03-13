@@ -76,7 +76,7 @@ export default function Main() {
           everything in between.
         </p>
         <p>
-          Currently I'm working as a Tech Lead at{" "}
+          Currently, I'm working as a Tech Lead at{" "}
           <a href="https://about.wallapop.com/en" target="_blank">
             Wallapop
           </a>
