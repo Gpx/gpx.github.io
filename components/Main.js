@@ -7,7 +7,21 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import styles from "./Main.module.scss";
+import { getPosts } from "../lib/posts";
 
+export default function Main({ posts }) {
+  return (
+    <div className={styles.main}>
+      <h2>Ciao!</h2>
+      <div>
+        <p>I'm Giorgio, a Tech Lead from Italy living in Barcelona.</p>
+        <p>I love helping teams and individual shipping better software.</p>
+      </div>
+    </div>
+  );
+}
+
+/*
 export default function Main() {
   return (
     <div className={styles.main}>
@@ -86,3 +100,4 @@ export default function Main() {
     </div>
   );
 }
+*/

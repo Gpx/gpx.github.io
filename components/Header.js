@@ -5,8 +5,7 @@ import Link from "next/link";
 import styles from "./Header.module.scss";
 
 function Logo() {
-  const today = new Date();
-  return today.getMonth() === 12 ? "🎅 " : <div className={styles.logo} />;
+  return <div className={styles.logo} />;
 }
 
 export default function Header() {
@@ -33,14 +32,6 @@ export default function Header() {
           <ul>
             <li>
               <Link
-                href="/"
-                className={router.asPath === "/" ? styles.activeLink : ""}
-              >
-                About me
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/blog"
                 className={
                   router.asPath === "/blog" ||
@@ -52,22 +43,6 @@ export default function Header() {
                 Blog
               </Link>
             </li>
-            {/*
-            <li>
-              <Link href="/now">
-                <a
-                  className={router.asPath === "/now" ? styles.activeLink : ""}
-                >
-                  Now
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a>Contact</a>
-              </Link>
-            </li>
-            */}
           </ul>
         </nav>
       </header>

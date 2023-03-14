@@ -1,5 +1,5 @@
 ---
-title: "Making Sense of <code>useEffect</code>"
+title: "Making Sense of useEffect"
 date: "2019-03-06"
 cover:
   file: "./making-sense-of-useeffect/cover.jpg"

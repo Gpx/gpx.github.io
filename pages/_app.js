@@ -1,19 +1,21 @@
 import "../styles/globals.css";
 import "../styles/code.scss";
-import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-  if (router.asPath === "/cv") return <Component {...pageProps} />;
-
   return (
     <>
-      <Header />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="true"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;900&display=swap"
+        rel="stylesheet"
+      ></link>
       <Component {...pageProps} />
-      <Footer />
       <Analytics />
     </>
   );

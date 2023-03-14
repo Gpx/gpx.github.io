@@ -1,0 +1,115 @@
+.main {
+  background: var(--main);
+  padding: 4rem 2rem;
+  border-bottom: 5px solid var(--dark);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0rem;
+}
+
+.title h2 {
+  margin: 0;
+  color: var(--accent-tertiary-on-color);
+  font-size: 2.6rem;
+  text-align: center;
+  background: var(--accent-tertiary);
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  border-radius: 5px;
+  border: 6px solid var(--dark);
+  margin-bottom: 2rem;
+  margin-left: -1.8rem;
+  z-index: 1;
+  animation: title 4s infinite alternate linear;
+}
+
+@keyframes title {
+  0% {
+    transform: skew(-10deg) rotate(-4deg) translateY(3px);
+  }
+  100% {
+    transform: skew(-10deg) rotate(-5deg) translateY(-3px);
+  }
+}
+
+.main > div {
+  display: flex;
+  align-items: center;
+}
+
+.main p {
+  border-left: 10px solid var(--dark);
+  font-size: 2.5rem;
+  padding-left: 3rem;
+  font-weight: 900;
+  max-width: 20ch;
+  margin-left: 2rem;
+}
+
+.highlight {
+  background-image: linear-gradient(
+    -1deg,
+    transparent 25%,
+    var(--accent) 25%,
+    var(--accent) 55%,
+    transparent 55%
+  );
+  padding: 0 2px;
+  font-style: italic;
+}
+
+.period {
+  color: var(--accent);
+}
+
+.main img {
+  border: 8px solid var(--dark);
+  border-radius: 10% 10% 30% 10%;
+  box-shadow: 10px 8px var(--accent), 10px 8px 0 4px var(--dark);
+  transform: rotate(4deg);
+  animation: photo 5s infinite alternate linear;
+}
+
+@keyframes photo {
+  0% {
+    transform: translateY(3px) rotate(4deg);
+    box-shadow: 6px 4px var(--accent), 6px 4px 0 4px var(--dark);
+  }
+  100% {
+    transform: translateY(-3px) rotate(4deg);
+    box-shadow: 10px 8px var(--accent), 10px 8px 0 4px var(--dark);
+  }
+}
+
+.posts {
+  background: var(--accent-variant);
+  padding: 4rem 2rem;
+  margin: 0;
+  list-style: none;
+}
+
+.posts li a {
+  display: block;
+  padding: 1rem 2rem;
+  margin: 2rem;
+  background: #fff;
+  border: 4px solid var(--dark);
+  font-size: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 5px 5px var(--dark);
+  transition: 0.2s;
+}
+
+.posts li a:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px var(--dark);
+}
+
+.posts li a:active {
+  transform: translate(5px, 5px);
+  box-shadow: 0 0 var(--dark);
+}
