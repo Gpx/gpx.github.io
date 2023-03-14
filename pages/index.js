@@ -1,3 +1,4 @@
+import Balancer from "react-wrap-balancer";
 import Link from "next/link";
 import Image from "next/image";
 import Marquee from "../components/Marquee";
@@ -10,10 +11,12 @@ export default function Home({ posts }) {
       <div className={styles.main}>
         <div>
           <p>
-            I'm Giorgio, I love talking about{" "}
-            <span className={styles.highlight}>programming</span> and helping
-            teams and individuals shipping better software
-            <span className={styles.period}>.</span>
+            <Balancer>
+              I'm Giorgio. I love talking about{" "}
+              <span className={styles.highlight}>programming</span> and helping
+              teams and individuals ship better software
+              <span className={styles.period}>.</span>
+            </Balancer>
           </p>
           <div>
             <div className={styles.title}>
