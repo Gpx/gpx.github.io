@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
         crossOrigin="true"
       />
       <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,500;0,900;1,900&display=swap"
         rel="stylesheet"
       ></link>
       <Component {...pageProps} />

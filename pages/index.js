@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Marquee from "../components/Marquee";
 import { getPosts } from "../lib/posts";
 import styles from "./Home.module.scss";
 
@@ -18,7 +19,12 @@ export default function Home({ posts }) {
             <div className={styles.title}>
               <h2>Ciao!</h2>
             </div>
-            <Image src="/me.jpg" width={205} height={205} />
+            <Image
+              src="/me.jpg"
+              width={205}
+              height={205}
+              alt="Giorgio Polvara"
+            />
           </div>
         </div>
       </div>
@@ -33,6 +39,8 @@ export default function Home({ posts }) {
           <Link href="/blog">and more&hellip;</Link>
         </li>
       </ol>
+
+      <Marquee>Ciao!</Marquee>
     </>
   );
 }

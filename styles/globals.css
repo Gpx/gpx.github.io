@@ -4,9 +4,10 @@
   --text: var(--dark);
   --accent: hsl(315deg 75% 50%);
   --accent-on-color: hsl(315deg 75% 95%);
-  --accent-variant: hsl(15deg 75% 50%);
-  --accent-tertiary: hsl(225deg 75% 50%);
-  --accent-tertiary-on-color: hsl(225deg 75% 95%);
+  --secondary: hsl(15deg 75% 50%);
+  --secondary-on-color: hsl(15deg 75% 95%);
+  --tertiary: hsl(225deg 75% 50%);
+  --tertiary-on-color: hsl(225deg 75% 95%);
 }
 
 *,

@@ -1,0 +1,29 @@
+.main {
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.8rem;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 2rem;
+  border-top: 4px solid var(--dark);
+  border-bottom: 4px solid var(--dark);
+}
+
+.content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 2rem;
+  animation: roll calc(3 * 60s) infinite linear;
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

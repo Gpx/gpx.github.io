@@ -1,6 +1,10 @@
 .main {
   background: var(--main);
   padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 8px solid var(--dark);
   border-bottom: 5px solid var(--dark);
 }
 
@@ -13,10 +17,10 @@
 
 .title h2 {
   margin: 0;
-  color: var(--accent-tertiary-on-color);
+  color: var(--tertiary-on-color);
   font-size: 2.6rem;
   text-align: center;
-  background: var(--accent-tertiary);
+  background: var(--tertiary);
   display: inline-block;
   padding: 0.2em 0.8em;
   border-radius: 5px;
@@ -24,15 +28,17 @@
   margin-bottom: 2rem;
   margin-left: -1.8rem;
   z-index: 1;
-  animation: title 4s infinite alternate linear;
+  animation: title 3.5s infinite alternate linear;
 }
 
 @keyframes title {
   0% {
     transform: skew(-10deg) rotate(-4deg) translateY(3px);
+    box-shadow: 11px 1px var(--dark);
   }
   100% {
     transform: skew(-10deg) rotate(-5deg) translateY(-3px);
+    box-shadow: 12px 7px var(--dark);
   }
 }
 
@@ -52,13 +58,13 @@
 
 .highlight {
   background-image: linear-gradient(
-    -1deg,
+    -2deg,
     transparent 25%,
     var(--accent) 25%,
     var(--accent) 55%,
     transparent 55%
   );
-  padding: 0 2px;
+  padding: 0 4px;
   font-style: italic;
 }
 
@@ -69,24 +75,22 @@
 .main img {
   border: 8px solid var(--dark);
   border-radius: 10% 10% 30% 10%;
-  box-shadow: 10px 8px var(--accent), 10px 8px 0 4px var(--dark);
-  transform: rotate(4deg);
   animation: photo 5s infinite alternate linear;
 }
 
 @keyframes photo {
   0% {
     transform: translateY(3px) rotate(4deg);
-    box-shadow: 6px 4px var(--accent), 6px 4px 0 4px var(--dark);
+    box-shadow: 6px 4px var(--accent), 6px 4px 0 5px var(--dark);
   }
   100% {
     transform: translateY(-3px) rotate(4deg);
-    box-shadow: 10px 8px var(--accent), 10px 8px 0 4px var(--dark);
+    box-shadow: 10px 8px var(--accent), 10px 8px 0 5px var(--dark);
   }
 }
 
 .posts {
-  background: var(--accent-variant);
+  background: var(--secondary);
   padding: 4rem 2rem;
   margin: 0;
   list-style: none;
@@ -95,13 +99,16 @@
 .posts li a {
   display: block;
   padding: 1rem 2rem;
-  margin: 2rem;
-  background: #fff;
+  margin: 2rem auto;
+  background: var(--secondary-on-color);
+  color: var(--secondary);
   border: 4px solid var(--dark);
   font-size: 1.5rem;
   border-radius: 5px;
   box-shadow: 5px 5px var(--dark);
   transition: 0.2s;
+  font-weight: 900;
+  max-width: 1120px;
 }
 
 .posts li a:hover {
