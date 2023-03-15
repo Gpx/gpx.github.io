@@ -1,5 +1,6 @@
 :root {
   --main: hsl(130deg 60% 50%);
+  --main-on-color: hsl(130deg 60% 95%);
   --dark: hsl(0 0% 0%);
   --text: var(--dark);
   --accent: hsl(315deg 75% 50%);
@@ -8,6 +9,7 @@
   --secondary-on-color: hsl(15deg 75% 95%);
   --tertiary: hsl(225deg 75% 50%);
   --tertiary-on-color: hsl(225deg 75% 95%);
+  --font: "Public Sans", sans-serif;
 }
 
 *,
@@ -26,7 +28,7 @@ html {
 }
 
 body {
-  font-family: "Public Sans", sans-serif;
+  font-family: var(--font);
   color: var(--text);
   line-height: 1.5;
   margin: 0;

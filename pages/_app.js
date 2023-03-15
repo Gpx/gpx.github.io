@@ -3,7 +3,9 @@ import "../styles/code.scss";
 import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }) {
-  return (
+  const getLayout = Component.getLayout || ((page) => page);
+
+  return getLayout(
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link
