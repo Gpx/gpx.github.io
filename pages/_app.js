@@ -1,19 +1,23 @@
 import "../styles/globals.css";
 import "../styles/code.scss";
-import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-  if (router.asPath === "/cv") return <Component {...pageProps} />;
+  const getLayout = Component.getLayout || ((page) => page);
 
-  return (
+  return getLayout(
     <>
-      <Header />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="true"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,900;1,400;1,900&family=Space+Mono&display=swap"
+        rel="stylesheet"
+      ></link>
       <Component {...pageProps} />
-      <Footer />
       <Analytics />
     </>
   );
