@@ -1,5 +1,5 @@
-import styles from "./Footer.module.scss";
+import Marquee from "./Marquee";
 
 export default function Footer() {
-  return <footer className={styles.footer}></footer>;
+  return <Marquee>Ciao!</Marquee>;
 }

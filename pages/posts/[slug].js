@@ -1,3 +1,4 @@
+import Layout from "../../components/Layout";
 import SuggestedPosts from "../../components/SuggestedPosts";
 import { getPosts, getFullPostBySlug } from "../../lib/posts";
 import styles from "./post.module.scss";
@@ -29,6 +30,10 @@ export default function Post({ post, suggestedPosts }) {
     </>
   );
 }
+
+Post.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
