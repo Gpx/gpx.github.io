@@ -6,7 +6,7 @@ cover:
   hide: true
 ---
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q8TXgCzxEnw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q8TXgCzxEnw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin: 3rem auto; width: 100%;"></iframe>
 
 > “What if pixels didn’t just have color, but also depth? What if there was an
 > intelligent material that was as simple as paper but could transform and

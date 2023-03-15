@@ -21,7 +21,9 @@ one of them. So how do we go about testing it?
 
 The answer is all in `react-testing-library`'s core principle:
 
-https://twitter.com/kentcdodds/status/977018512689455106
+> The more your tests resemble the way your software is used, the more confidence they can give you.
+>
+> &mdash;[Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106)
 
 What does <q>resemble the way your software is used</q> mean in our case? Let's
 see a practical example:

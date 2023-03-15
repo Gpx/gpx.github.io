@@ -69,3 +69,10 @@
 .content :is(ol, ul) {
   padding-left: 5rem;
 }
+
+.content blockquote {
+  margin: 3rem 0;
+  border-left: 8px solid var(--dark);
+  padding-left: 3rem;
+  font-style: italic;
+}
