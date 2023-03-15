@@ -5,6 +5,17 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Link href="/">Giorgio Polvara!</Link>
+
+      <nav>
+        <ul>
+          <li>
+            <Link href="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link href="/">About</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }

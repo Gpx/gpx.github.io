@@ -6,7 +6,6 @@ import {
   faStackOverflow,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import Link from "next/link";
 import Image from "next/image";
 import Marquee from "../components/Marquee";
 import PostsList from "../components/PostsList";
@@ -20,7 +19,7 @@ export default function Home({ posts }) {
         <div>
           <p>
             <Balancer>
-              I'm Giorgio. I love talking about{" "}
+              Hi there! I'm Giorgio. I love talking about{" "}
               <span className={styles.highlight}>programming</span> and helping
               teams and individuals ship better software
               <span className={styles.period}>.</span>

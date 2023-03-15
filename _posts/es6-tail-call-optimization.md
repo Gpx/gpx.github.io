@@ -117,7 +117,7 @@ thing it does before returning is to call itself. This means that, when the
 called function returns, `foo` will do nothing, just immediately return to its
 caller.
 
-This kind of code allows a `tail call optimization`. With this optimization, if
+This kind of code allows a _tail call optimization_. With this optimization, if
 the last thing a function does is to call another function, instead of creating
 a new stack frame the callee will use the caller function’s frame.
 

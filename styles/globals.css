@@ -9,7 +9,8 @@
   --secondary-on-color: hsl(15deg 75% 95%);
   --tertiary: hsl(225deg 75% 50%);
   --tertiary-on-color: hsl(225deg 75% 95%);
-  --font: "Public Sans", sans-serif;
+  --font-sans: "Public Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
 }
 
 *,
@@ -28,7 +29,7 @@ html {
 }
 
 body {
-  font-family: var(--font);
+  font-family: var(--font-sans);
   color: var(--text);
   line-height: 1.5;
   margin: 0;
