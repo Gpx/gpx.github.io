@@ -1,35 +1,27 @@
 import Balancer from "react-wrap-balancer";
+import Follow from "../../components/Follow";
 import Layout from "../../components/Layout";
+import Newsletter from "../../components/Newsletter";
 import SuggestedPosts from "../../components/SuggestedPosts";
 import { getPosts, getFullPostBySlug } from "../../lib/posts";
 import styles from "./post.module.scss";
 
 export default function Post({ post, suggestedPosts }) {
   return (
-    <article className={styles.article}>
-      <h1 className={styles.title}>
-        <Balancer dangerouslySetInnerHTML={{ __html: post.title }} />
-      </h1>
+    <>
+      <article className={styles.article}>
+        <h1 className={styles.title}>
+          <Balancer dangerouslySetInnerHTML={{ __html: post.title }} />
+        </h1>
 
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+      </article>
 
-      <div style={{ textAlign: "center", margin: "3rem 0" }}>
-        <iframe
-          src="https://polvara.substack.com/embed"
-          width="480"
-          height="320"
-          style={{
-            border: "1px solid #EEE",
-            background: "white",
-          }}
-        ></iframe>
-      </div>
-
-      <SuggestedPosts posts={suggestedPosts} />
-    </article>
+      <Follow />
+    </>
   );
 }
 
