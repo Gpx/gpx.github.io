@@ -17,6 +17,18 @@ function MyApp({ Component, pageProps }) {
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,900;1,400;1,900&family=Space+Mono&display=swap"
         rel="stylesheet"
       ></link>
+      {/* Google tag (gtag.js) */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-9Z7PG23CS5"
+      ></script>
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || []; function
+          gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+          gtag('config', 'G-9Z7PG23CS5');
+        `}
+      </script>
       <Component {...pageProps} />
       <Analytics />
     </>
