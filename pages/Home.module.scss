@@ -32,6 +32,12 @@
   animation: title 3.5s infinite alternate linear;
 }
 
+@media (max-width: 640px) {
+  .title h2 {
+    display: none;
+  }
+}
+
 @keyframes title {
   0% {
     transform: skew(-10deg) rotate(-4deg) translateY(3px);
@@ -58,6 +64,15 @@
   margin-left: 2rem;
 }
 
+@media (max-width: 640px) {
+  .main p {
+    font-size: 1.8rem;
+    padding: 0;
+    border: none;
+    max-width: none;
+  }
+}
+
 .highlight {
   background-image: linear-gradient(
     -2deg,
@@ -78,6 +93,12 @@
   border: 8px solid var(--dark);
   border-radius: 10% 10% 30% 10%;
   animation: photo 5s infinite alternate linear;
+}
+
+@media (max-width: 640px) {
+  .main img {
+    display: none;
+  }
 }
 
 @keyframes photo {

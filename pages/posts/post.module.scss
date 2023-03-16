@@ -4,6 +4,12 @@
   border-bottom: 8px solid var(--dark);
 }
 
+@media (max-width: 640px) {
+  .article {
+    padding-top: 0;
+  }
+}
+
 .title {
   font-size: 4rem;
   font-weight: 900;
@@ -19,12 +25,29 @@
   border-radius: 5px;
 }
 
+@media (max-width: 640px) {
+  .title {
+    font-size: 3rem;
+    padding: 2rem 1rem;
+    border: none;
+    border-bottom: 8px solid var(--dark);
+    border-radius: 0;
+  }
+}
+
 .content {
   max-width: 800px;
   margin: auto;
   hyphens: auto;
   font-size: 1.4rem;
   font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  .content {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
 }
 
 .content hr {
@@ -71,9 +94,21 @@
   padding-left: 5rem;
 }
 
+@media (max-width: 640px) {
+  .content :is(ol, ul) {
+    padding-left: 2rem;
+  }
+}
+
 .content blockquote {
   margin: 3rem 0;
   border-left: 8px solid var(--dark);
   padding-left: 3rem;
   font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .content blockquote {
+    padding-left: 1rem;
+  }
 }

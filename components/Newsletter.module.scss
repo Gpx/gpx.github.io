@@ -3,3 +3,37 @@
   border-radius: 5px;
   box-shadow: 5px 5px var(--dark);
 }
+
+.link {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .frame {
+    display: none;
+  }
+
+  .link {
+    display: block;
+    background: var(--accent);
+    color: var(--accent-on-color);
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    border: 4px solid var(--dark);
+    border-radius: 5px;
+    box-shadow: 5px 5px var(--dark);
+    transition: 0.2s;
+  }
+
+  .link:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 4px 4px var(--dark);
+  }
+
+  .link:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 var(--dark);
+  }
+}

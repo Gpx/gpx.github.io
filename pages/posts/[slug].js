@@ -1,8 +1,6 @@
 import Balancer from "react-wrap-balancer";
 import Follow from "../../components/Follow";
 import Layout from "../../components/Layout";
-import Newsletter from "../../components/Newsletter";
-import SuggestedPosts from "../../components/SuggestedPosts";
 import { getPosts, getFullPostBySlug } from "../../lib/posts";
 import styles from "./post.module.scss";
 
