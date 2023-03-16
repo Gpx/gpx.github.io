@@ -105,6 +105,5 @@ test("UserGreeter salutes a user", () => {
 
 If you want more information about testing context with `react-testing-library`
 check out the
-[official docs](https://testing-library.com/docs/example-react-context) and join
-the [spectrum community](https://spectrum.chat/react-testing-library) for help
+[official docs](https://testing-library.com/docs/example-react-context) for help
 getting you started.
