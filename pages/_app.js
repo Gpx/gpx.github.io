@@ -1,3 +1,4 @@
+import Script from "next/script";
 import "../styles/globals.css";
 import "../styles/code.scss";
 import { Analytics } from "@vercel/analytics/react";
@@ -18,17 +19,18 @@ function MyApp({ Component, pageProps }) {
         rel="stylesheet"
       ></link>
       {/* Google tag (gtag.js) */}
-      <script
-        async
+      <Script
+        strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-9Z7PG23CS5"
-      ></script>
-      <script>
-        {`
-          window.dataLayer = window.dataLayer || []; function
-          gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-          gtag('config', 'G-9Z7PG23CS5');
-        `}
-      </script>
+        onLoad={() => {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", "G-9Z7PG23CS5");
+        }}
+      />
       <Component {...pageProps} />
       <Analytics />
     </>
