@@ -60,7 +60,7 @@ const AllowedColors = ColorFlags.Red | ColorFlags.Yellow | ColorFlags.Blue;
 // 0001 | 0010 | 1000 = 1011
 ```
 
-Let's say that we get a `color` as a parameter, and we want to do something if this color is `Red`, but _only_ if `Red` is one of the allowed colors. We can now do this:
+Let's say that we get a `color` as a parameter, and we want to do something if this color is `Red`, but _only if_ `Red` is one of the allowed colors. We can now do this:
 
 ```ts
 if ((AllowedColors & color) === ColorFlags.Red) {
