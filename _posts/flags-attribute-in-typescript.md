@@ -72,4 +72,4 @@ If color is allowed, the [bitwise AND](https://developer.mozilla.org/en-US/docs/
 
 ---
 
-Here you can see this technique being used in TypeScript' codebase: [types.ts](https://github.com/microsoft/TypeScript/blob/f218a562bfb417ecec263fc96d7a7a71abf96268/src/compiler/types.ts#L787)
+Here you can see this technique being used in TypeScript's codebase: [types.ts](https://github.com/microsoft/TypeScript/blob/f218a562bfb417ecec263fc96d7a7a71abf96268/src/compiler/types.ts#L787)
