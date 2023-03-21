@@ -11,6 +11,7 @@
   --tertiary-on-color: hsl(225deg 75% 95%);
   --font-sans: "Public Sans", sans-serif;
   --font-mono: "Space Mono", monospace;
+  --font-emphasis: "Caveat Brush", sans-serif;
 }
 
 *,
