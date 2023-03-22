@@ -46,6 +46,10 @@
   transition: 0.2s;
 }
 
+.social a svg {
+  height: 90%;
+}
+
 .social a:hover {
   transform: translate(1px, 1px);
   box-shadow: 7px 7px var(--dark);

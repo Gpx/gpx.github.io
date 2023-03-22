@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Balancer from "react-wrap-balancer";
 import Follow from "../../components/Follow";
 import Layout from "../../components/Layout";
@@ -7,6 +8,10 @@ import styles from "./post.module.scss";
 export default function Post({ post, suggestedPosts }) {
   return (
     <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+
       <article className={styles.article}>
         <h1 className={styles.title}>
           <Balancer dangerouslySetInnerHTML={{ __html: post.title }} />
