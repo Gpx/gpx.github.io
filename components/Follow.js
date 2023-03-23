@@ -48,7 +48,7 @@ export default function Follow() {
           <FontAwesomeIcon icon={faLinkedinIn} />
         </a>
         <a
-          href="https://stackoverflow.com/users/1047903/giorgio-polvara-gpx"
+          href="https://stackoverflow.com/users/1047903/gio-polvara"
           target="_blank"
           rel="noopener noreferrer"
           style={{ background: "hsl(27 75% 50%)" }}
