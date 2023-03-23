@@ -68,3 +68,19 @@ function BlogSkeleton() {
 ```
 
 I could achieve the same result by writing `PostSkeleton` three times but sometimes you don't know beforehand how many items you need to render.
+
+## The future: Iterator.range
+
+There's another option that feels more idiomatic to me. It's not available yet, it's currently at stage 2 of the TC39 process. It's called `Iterator.range` and it works like this:
+
+```js
+[...Iterator.range(1, 4)]; // [1, 2, 3]
+```
+
+You can even add a step argument:
+
+```js
+[...Iterator.range(1, 10, 2)]; // [1, 3, 5, 7, 9]
+```
+
+As I said, it's not supported by all browser yet. But you can learn more about it at the official [proposal repository](https://github.com/tc39/proposal-iterator.range).
