@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   return getLayout(
     <>
       <Head>
-        <title>Giorgio Polvara</title>
+        <title>Gio Polvara</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

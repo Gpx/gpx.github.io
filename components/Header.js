@@ -4,7 +4,7 @@ import styles from "./Header.module.scss";
 export default function Header() {
   return (
     <header className={styles.header}>
-      <Link href="/">Giorgio Polvara!</Link>
+      <Link href="/">Gio Polvara!</Link>
 
       <nav>
         <ul>

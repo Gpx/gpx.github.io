@@ -13,7 +13,8 @@ export default function Home({ posts }) {
         <div>
           <p>
             <Balancer>
-              Hi there! I'm Giorgio. I love talking about{" "}
+              Hi there, I'm Gio!
+              <br />I love talking about{" "}
               <span className={styles.highlight}>programming</span> and helping
               teams and individuals ship better software
               <span className={styles.period}>.</span>
@@ -23,12 +24,7 @@ export default function Home({ posts }) {
             <div className={styles.title}>
               <h2>Ciao!</h2>
             </div>
-            <Image
-              src="/me.jpg"
-              width={205}
-              height={205}
-              alt="Giorgio Polvara"
-            />
+            <Image src="/me.jpg" width={205} height={205} alt="Gio Polvara" />
           </div>
         </div>
       </div>
