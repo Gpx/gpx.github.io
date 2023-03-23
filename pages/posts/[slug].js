@@ -10,6 +10,10 @@ export default function Post({ post, suggestedPosts }) {
     <>
       <Head>
         <title>{post.title}</title>
+        <meta name="twitter:card" />
+        <meta name="twitter:site" value="@gpx" />
+        <meta name="twitter:creator" value="@gpx" />
+        <meta name="twitter:title" value={post.title} />
       </Head>
 
       <article className={styles.article}>
