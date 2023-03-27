@@ -75,7 +75,7 @@ to automate it. I'm going to do that using React Testing Library, but the same
 principles apply to most testing tools.
 
 ```jsx
-test("basic convertion", async () => {
+test("basic conversion", async () => {
   render(<App />);
   // 1. Check that we see a loading message until the app is ready
   // 2. Check that we see the initial conversion for 1 Euro to Dollars
@@ -88,7 +88,7 @@ This is our basic setup that doesn't do much at the moment. Let's implement the
 first step.
 
 ```jsx
-test("basic convertion", async () => {
+test("basic conversion", async () => {
   render(<App />);
   // 1. Check that we see a loading message until the app is ready
   expect(screen.getByText("Loading...")).toBeInTheDocument();
@@ -108,7 +108,7 @@ disappear.
 Let's move on to step two:
 
 ```jsx
-test("basic convertion", async () => {
+test("basic conversion", async () => {
   render(<App />);
   // 1. Check that we see a loading message until the app is ready
   expect(screen.getByText("Loading...")).toBeInTheDocument();
@@ -129,7 +129,7 @@ page.
 Step three and four are quite similar so we can group them:
 
 ```jsx
-test("basic convertion", async () => {
+test("basic conversion", async () => {
   render(<App />);
   // 1. Check that we see a loading message until the app is ready
   expect(screen.getByText("Loading...")).toBeInTheDocument();
@@ -164,7 +164,7 @@ going to mock it. You can find a longer explanation on how to do that
 import fetchRates from "./fetchRates";
 jest.mock("./fetchRates");
 
-test("basic convertion", async () => {
+test("basic conversion", async () => {
   fetchRates.mockResolvedValueOnce({ RUB: 68.9685, USD: 1.0816 });
   render(<App />);
 
