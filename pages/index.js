@@ -39,6 +39,6 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = getPosts().slice(0, 5);
+  const posts = (await getPosts()).slice(0, 5);
   return { props: { posts } };
 }

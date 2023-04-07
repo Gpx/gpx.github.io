@@ -1,11 +1,9 @@
----
-title: "ES6 Tail Call Optimization"
-date: "2015-06-01"
-cover:
-  file: "./es6-tail-call-optimization/cover.jpg"
-  author: "Noah Baslé"
-  link: "https://unsplash.com/photos/kqB7IDljjMI"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "ES6 Tail Call Optimization",
+  date: "2015-06-01",
+};
 
 ECMAScript 6 a.k.a. ECMAScript 2015 a.k.a. the new version of JavaScript is
 getting closer and closer to ratification, the current goal is to have the new
@@ -96,7 +94,14 @@ If you call `foo` with a positive integer, it will simply call itself decreasing
 the number until it reaches zero. This is how the call stack behaves if we
 execute `foo(10)`:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oorN1hGcgKs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/oorN1hGcgKs"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 
 As you can see, 10 stack frames get created until `n` reaches zero, at which
 point the functions begin to return and all the stacks get deleted.
@@ -153,3 +158,7 @@ of course about to change in the near future.
 
 If you want to learn more about tail call optimization check the
 [ES6 draft](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tail-position-calls).
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

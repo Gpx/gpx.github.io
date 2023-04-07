@@ -1,7 +1,9 @@
----
-title: "Creating an Array Containing Values 1 to N in JavaScript"
-date: "2023-03-22"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Creating an Array Containing Values 1 to N in JavaScript",
+  date: "2023-03-22",
+};
 
 If, in JavaScript, you need an array with values from 1 to N, how do you do it? There's the good old `for` loop. But I used to do something like this:
 
@@ -84,3 +86,7 @@ You can even add a step argument:
 ```
 
 As I said, it's not supported by all browser yet. But you can learn more about it at the official [proposal repository](https://github.com/tc39/proposal-iterator.range).
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

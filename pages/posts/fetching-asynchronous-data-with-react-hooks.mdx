@@ -1,11 +1,9 @@
----
-title: "Fetching Asynchronous Data with React Hooks"
-date: "2019-03-07"
-cover:
-  file: "./fetching-asynchronous-data-with-react-hooks/cover.jpg"
-  author: "cubicroot XYZ"
-  link: "https://unsplash.com/photos/rFNVqR2rJE0"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Fetching Asynchronous Data with React Hooks",
+  date: "2019-03-07",
+};
 
 <details class="tldr">
   <summary>TL;DR;</summary>
@@ -411,3 +409,7 @@ You can find `useAsync` [here](https://github.com/streamich/react-use) in case
 you want to use it in your projects. The actual implementation is a bit more
 complex than the one presented in this post so make sure you check out the
 [README](https://github.com/streamich/react-use/blob/master/docs/useAsync.md).
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);
