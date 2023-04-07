@@ -3,24 +3,30 @@ import Script from "next/script";
 import "../styles/globals.css";
 import "../styles/code.scss";
 import { Analytics } from "@vercel/analytics/react";
+import { Caveat_Brush, Public_Sans, Space_Mono } from "next/font/google";
+
+const caveatBrush = Caveat_Brush({ subsets: ["latin"], weight: ["400"] });
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "500", "900"],
+});
+const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
 
   return getLayout(
     <>
+      <style jsx global>{`
+        :root {
+          --font-emphasis: ${caveatBrush.style.fontFamily};
+          --font-sans: ${publicSans.style.fontFamily};
+          --font-mono: ${spaceMono.style.fontFamily};
+        }
+      `}</style>
       <Head>
         <title>Gio Polvara</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Public+Sans:ital,wght@0,400;0,500;0,900;1,400;1,900&family=Space+Mono&display=swap"
-          rel="stylesheet"
-        ></link>
       </Head>
 
       <Script
