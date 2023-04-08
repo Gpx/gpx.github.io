@@ -1,11 +1,9 @@
----
-title: "Null Components Should be Hooks"
-date: "2019-02-23"
-cover:
-  file: "./null-components-should-be-hooks/cover.jpg"
-  author: "Ben Hershey"
-  link: "https://unsplash.com/photos/rFNVqR2rJE0"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Null Components Should be Hooks",
+  date: "2019-02-23",
+};
 
 Before Hooks were introduced in React I used to create "null&nbsp;components".
 In other words components that render nothing. One example of such component is
@@ -60,7 +58,8 @@ Hooks I expect the opposite. So, converting `PageTitle` to `usePageTitle` makes
 it obvious to any developer who's using my code that nothing will be rendered on
 the page.
 
-<p class="highlight">
-Here's the rule of thumb: is your component always rendering nothing?
-Convert it to a Hook.
-</p>
+> Here's the rule of thumb: is your component always rendering nothing? Convert it to a Hook.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

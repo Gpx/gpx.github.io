@@ -1,19 +1,15 @@
----
-title: "Mocking Context with React Testing Library"
-date: "2019-03-23"
-cover:
-  file: "./mocking-context-with-react-testing-library/cover.jpg"
-  author: "Mae Mu"
-  link: "https://unsplash.com/photos/AX_VWc7ORwY"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Mocking Context with React Testing Library",
+  date: "2019-03-23",
+};
 
 I noticed several people getting confused on how to test React components that
 rely on a context with `react-testing-library`. Before I even explain how to
 test such components let me get something out of the way:
 
-<p class="highlight">
-There is no need to mock your contexts in order to test them.
-</p>
+> There is no need to mock your contexts in order to test them.
 
 [`jest.mock`](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options)
 and friends are extremely helpful for many test scenarios, but context is not
@@ -107,3 +103,7 @@ If you want more information about testing context with `react-testing-library`
 check out the
 [official docs](https://testing-library.com/docs/example-react-context) for help
 getting you started.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

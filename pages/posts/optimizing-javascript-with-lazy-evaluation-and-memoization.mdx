@@ -1,17 +1,13 @@
----
-title: "Optimizing JavaScript with Lazy Evaluation and Memoization"
-date: "2017-11-10"
-cover:
-  file: "./optimizing-javascript-with-lazy-evaluation-and-memoization/cover.jpg"
-  author: "Lenin Estrada"
-  link: "https://unsplash.com/photos/SijjXiGEpAA"
----
+import PostLayout from "../../components/PostLayout";
 
-Recently at
-<a href="https://www.travelperk.com/" target="_blank">TravelPerk</a>, we've been
-working hard to allow our users to access our platform when they're on the go.
-Developing web applications for mobile devices brings a new set of problems that
-are not always easy to solve.
+export const meta = {
+  title: "Optimizing JavaScript with Lazy Evaluation and Memoization",
+  date: "2017-11-10",
+};
+
+Recently at [TravelPerk](https://www.travelperk.com/), we've been working hard to allow our users to access our platform when they're
+on the go. Developing web applications for mobile devices brings a new set of
+problems that are not always easy to solve.
 
 More specifically, a problem we recently encountered was severely affecting the
 performance of one of our pages.
@@ -80,8 +76,7 @@ faster.
 ---
 
 Coming back to our example we could not use a logic operator like `&&` to lazy
-evaluate. Instead we used
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank">`Object.defineProperty`</a>.
+evaluate. Instead we used [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty).
 
 As the name already indicates this method allows us to define a property on an
 object. It's different from doing `obj.newProperty = value` because it allows to
@@ -136,3 +131,7 @@ function parseObject(result) {
 
 And with that, we went from calculating `computedValue` thousand of times to
 just a handful of occasions.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

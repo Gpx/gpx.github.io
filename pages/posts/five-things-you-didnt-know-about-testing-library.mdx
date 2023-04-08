@@ -1,12 +1,9 @@
----
-title: "Five Things You (Probably) Didn't Know About Testing Library"
-date: "2019-06-11"
-cover:
-  file: "./five-things-you-didnt-know-about-testing-library/cover.jpg"
-  author: "Nadine Shaabana"
-  link: "https://unsplash.com/photos/-M_f3f8DGRg"
-  alt: "An open hand showing the five fingers"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Five Things You (Probably) Didn't Know About Testing Library",
+  date: "2019-06-11",
+};
 
 I've just sold myself to the gods of click-baiting by making an "x things you
 didn't know about y" post. But hey, at least there no subtitle that says "number
@@ -277,3 +274,7 @@ userEvent.type(input, "Hello world");
 Check out the
 [README](https://github.com/testing-library/user-event/blob/master/README.md) to
 see the available APIs and feel free to propose new ones too.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

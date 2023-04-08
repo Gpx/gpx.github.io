@@ -1,11 +1,9 @@
----
-title: "Mind the Gap when upgrading to HTTP/2"
-date: "2015-08-20"
-cover:
-  file: "./mind-the-gap-when-upgrading-to-http-2/cover.jpg"
-  author: "Erez Attias"
-  link: "https://unsplash.com/photos/KqVHRmHVwwM"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Mind the Gap when upgrading to HTTP/2",
+  date: "2015-08-20",
+};
 
 The web has been in great ferment in the last few years. HTML 5, ECMAScript 2015
 and all the new landing features are making our beloved platform a great place
@@ -118,3 +116,7 @@ Although a decade will pass before the majority of the web upgrades to it. Even
 so, you should plan your upgrade path now. The benefits you’ll get from it are
 definitely worth it. Just remeber to question all the best practices you learned
 through the years.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);
