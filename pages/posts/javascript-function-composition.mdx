@@ -1,11 +1,9 @@
----
-title: "JavaScript Function Composition"
-date: "2015-12-01"
-cover:
-  file: "./javascript-function-composition/cover.jpg"
-  author: "Tyler Wanlass"
-  link: "https://unsplash.com/photos/L7MpmBGpM94"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "JavaScript Function Composition",
+  date: "2015-12-01",
+};
 
 Around seven years ago (gosh I’m getting old), I started to work on my first
 serious single page application. I was the only frontend developer. A friend of
@@ -35,7 +33,14 @@ follow, although it may appear verbose.
 What does this have to do with _function composition_ you might ask. Fast
 forward to one year ago. I saw this talk from Douglas about “The Better Parts”.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bo36MrBfTk4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/bo36MrBfTk4"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 
 With ES6 coming he decided to give an update on what are the new “good parts”. I
 was very much into `class` back then, like many others, so I couldn’t wait to
@@ -345,3 +350,7 @@ upperDevelopers(colleagues); //=> ['MAREK','TIM']
 ```
 
 Here we solved the issue with another function composition.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

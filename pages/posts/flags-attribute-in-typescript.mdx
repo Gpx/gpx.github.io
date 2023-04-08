@@ -1,7 +1,9 @@
----
-title: "FlagsAttribute in TypeScript"
-date: "2023-03-22"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "FlagsAttribute in TypeScript",
+  date: "2023-03-22",
+};
 
 I discovered a neat trick I while reading [TypeScript](https://www.typescriptlang.org/)'s source code.
 
@@ -73,3 +75,7 @@ If color is allowed, the [bitwise AND](https://developer.mozilla.org/en-US/docs/
 ---
 
 Here you can see this technique being used in TypeScript's codebase: [types.ts](https://github.com/microsoft/TypeScript/blob/f218a562bfb417ecec263fc96d7a7a71abf96268/src/compiler/types.ts#L787)
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

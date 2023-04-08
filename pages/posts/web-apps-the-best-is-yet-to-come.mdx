@@ -1,15 +1,20 @@
----
-title: "Web apps: the best is yet to come"
-date: "2014-07-06"
-cover:
-  file: "./web-apps-the-best-is-yet-to-come/cover.png"
-  hide: true
----
+import PostLayout from "../../components/PostLayout";
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q8TXgCzxEnw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin: 3rem auto; width: 100%;"></iframe>
+export const meta = {
+  title: "Web apps: the best is yet to come",
+  date: "2014-07-06",
+};
 
-> “What if pixels didn’t just have color, but also depth? What if there was an
-> intelligent material that was as simple as paper but could transform and
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/Q8TXgCzxEnw"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  style={{ margin: "3rem auto", width: "100%" }}
+></iframe>> “What if pixels didn’t just have color, but also depth? What if there
+was an > intelligent material that was as simple as paper but could transform and
 > change shape in response to touch?”
 
 Matias Duarte—Vice President Design—just said that and the crowd attending the
@@ -39,7 +44,7 @@ Let me recap what’s coming on the web platform in the near future.
 - [SimplePushAPI](https://developer.mozilla.org/en-US/docs/Web/API/Simple_Push_API)
   will implement push notifications even if the browser is not running.
 - [WebComponents](http://webcomponents.org/) to extend HTML and build advanced
-  interfaces easily.<Paste>
+  interfaces easily.
 
 So don’t wait, start immediately to study those technologies because they’ll be
 the building blocks of the web in the near future.
@@ -49,3 +54,7 @@ that big companies like Google, Mozilla and Adobe are working with the
 developers to push the change.
 
 I’m looking forward for what will come next.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

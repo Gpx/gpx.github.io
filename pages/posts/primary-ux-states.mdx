@@ -1,7 +1,9 @@
----
-title: "The Five Primary UX States"
-date: "2023-03-29"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "The Five Primary UX States",
+  date: "2023-03-29",
+};
 
 Have you ever started implementing a design only to realize some states were missing? You then went back to your designer to ask, "what should we show if this happens?" I experienced this firsthand many times. The issue is often the same one. When we plan new interfaces, we only think about the happy path.
 
@@ -38,3 +40,7 @@ I'm sure you're familiar with this state because it's the one you always get fro
 ---
 
 That's it. These are the states that you need. _Write them down_ so you don’t forget them, and make sure they are well-defined for every component you work on, regardless if they are small as a button or as big as a page.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

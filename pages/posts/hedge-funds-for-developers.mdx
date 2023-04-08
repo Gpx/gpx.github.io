@@ -1,11 +1,9 @@
----
-title: "An Introduction to Hedge Funds for Developers"
-date: "2015-04-10"
-cover:
-  file: "./hedge-funds-for-developers/cover.jpg"
-  author: "Alejandro Escamilla"
-  link: "https://unsplash.com/photos/ABDTiLqDhJA"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "An Introduction to Hedge Funds for Developers",
+  date: "2015-04-10",
+};
 
 When I joined [Fundbase](https://www.fundbase.com/) in 2013, I had no clue what
 a hedge fund was. As a developer, all I care about is programming languages,
@@ -19,7 +17,8 @@ someone else planned.
 The only way to escape this is to study.
 
 <div class="highlight">
-The cool thing about our job is that we serve other industries and we learn from them.
+  The cool thing about our job is that we serve other industries and we learn
+  from them.
 </div>
 
 I found it quite hard to understand hedge funds since I didn’t have any
@@ -103,7 +102,8 @@ collect their money in order to have investors. The main difference is that
 hedge funds are less regulated than normal funds.
 
 <div class="highlight">
-Less regulated doesn’t mean illegal. Any fund, not only hedge funds, that acts illegaly gets shut down.
+  Less regulated doesn’t mean illegal. Any fund, not only hedge funds, that acts
+  illegaly gets shut down.
 </div>
 
 Thanks to this, hedge funds can adopt unconventional strategies that can lead to
@@ -133,3 +133,7 @@ especially if you take into account the manager fee.
 On the other hand, if you carefully choose and monitor the existing funds you
 can gain astonishing returns. In case you were asking, that’s exactly what
 Fundbase is for.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

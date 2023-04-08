@@ -1,11 +1,9 @@
----
-title: "Testing a Custom Select with React Testing Library"
-date: "2019-04-13"
-cover:
-  file: "./testing-a-custom-select-with-react-testing-library/cover.jpg"
-  author: "Bodie Pyndus"
-  link: "https://unsplash.com/photos/JXqMjodZ0uM"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Testing a Custom Select with React Testing Library",
+  date: "2019-04-13",
+};
 
 I have been following the community around
 [`react-testing-library`](https://testing-library.com/react) for a while now.
@@ -19,7 +17,10 @@ By _custom select_ I mean a component like
 
 <figure>
   <a href="https://material-ui.com/demos/selects/" target="_blank">
-    <img src="/testing-a-custom-select-with-react-testing-library/selects.gif" title="Material-UI's select" />
+    <img
+      src="/testing-a-custom-select-with-react-testing-library/selects.gif"
+      title="Material-UI's select"
+    />
   </a>
   <figcaption>Material-UI's select</figcaption>
 </figure>
@@ -58,8 +59,13 @@ function MySelector() {
 ```
 
 <figure>
-  <img src="/testing-a-custom-select-with-react-testing-library/custom-select.gif" title="MySelector in action" />
-  <figcaption><code>MySelector</code> in action</figcaption>
+  <img
+    src="/testing-a-custom-select-with-react-testing-library/custom-select.gif"
+    title="MySelector in action"
+  />
+  <figcaption>
+    <code>MySelector</code> in action
+  </figcaption>
 </figure>
 
 Testing `MySelector` is not as easy at it seems:
@@ -140,3 +146,7 @@ basic idea is the same.
 
 You can find the full code for this example at
 [Gpx/test-custom-select](https://github.com/Gpx/test-custom-select).
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

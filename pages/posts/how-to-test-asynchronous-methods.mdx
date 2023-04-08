@@ -1,11 +1,9 @@
----
-title: How to Test Asynchronous Methods with React Testing Library
-date: "2019-05-19"
-cover:
-  file: "./how-to-test-asynchronous-methods/cover.jpg"
-  author: "Randy Fath"
-  link: "https://unsplash.com/photos/R5_1N6ZgCOo"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "How to Test Asynchronous Methods with React Testing Library",
+  date: "2019-05-19",
+};
 
 I continue my series of posts on `react-testing-library` this time with a brief
 explanation on how to test asynchronous methods. The idea for this post comes
@@ -268,3 +266,7 @@ To recap, these are the steps to test an asynchronous method:
 1. Test the loading state;
 1. Test that the async method got called correctly;
 1. Test that the component rendered the data correctly.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);

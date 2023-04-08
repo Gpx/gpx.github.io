@@ -1,7 +1,9 @@
----
-title: "Effective Query Functions for React Query with Zod"
-date: "2022-03-03"
----
+import PostLayout from "../../components/PostLayout";
+
+export const meta = {
+  title: "Effective Query Functions for React Query with Zod",
+  date: "2022-03-03",
+};
 
 Lately, I have been experimenting with [React Query](https://react-query.tanstack.com/) for data synchronization with React, and I find it excellent.
 
@@ -104,3 +106,7 @@ The validation of the response happens asynchronously in production but synchron
 ---
 
 I have been using this approach for a while now, and it works really well for me. The added bonus is that all my queries are defined in one place, and I can read them to know what my API looks like. Plus, I can spot breaking changes in the backend and quickly fix them.
+
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);
