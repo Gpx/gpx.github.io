@@ -7,6 +7,7 @@ const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [externalLinks, prism, html],
+    providerImportSource: "@mdx-js/react",
   },
 });
 
