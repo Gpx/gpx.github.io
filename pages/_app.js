@@ -3,15 +3,16 @@ import Script from "next/script";
 import "../styles/globals.css";
 import "../styles/code.scss";
 import { Analytics } from "@vercel/analytics/react";
-import { Caveat_Brush, Public_Sans, Space_Mono } from "next/font/google";
+import { Caveat_Brush, Public_Sans, Space_Mono, VT323 } from "next/font/google";
 
 const caveatBrush = Caveat_Brush({ subsets: ["latin"], weight: ["400"] });
 const publicSans = Public_Sans({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: ["400", "500", "900"],
+  weight: ["200", "400", "500", "700", "800", "900"],
 });
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });
+const vt323 = VT323({ subsets: ["latin"], weight: ["400"] });
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
           --font-emphasis: ${caveatBrush.style.fontFamily};
           --font-sans: ${publicSans.style.fontFamily};
           --font-mono: ${spaceMono.style.fontFamily};
+          --font-console: ${vt323.style.fontFamily};
         }
       `}</style>
       <Head>

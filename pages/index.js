@@ -1,37 +1,49 @@
 import Balancer from "react-wrap-balancer";
 import Image from "next/image";
-import Marquee from "../components/Marquee";
-import PostsList from "../components/PostsList";
-import { getPosts } from "../lib/posts";
-import styles from "./Home.module.scss";
-import Follow from "../components/Follow";
+import Marquee from "components/Marquee";
+import PostsList from "components/PostsList";
+import { getPosts } from "lib/posts";
+import Follow from "components/Follow";
+import Header from "components/Header";
 
 export default function Home({ posts }) {
   return (
     <>
-      <div className={styles.main}>
-        <div>
-          <p>
-            <Balancer>
-              Hi there, I'm Gio!
-              <br />I love talking about{" "}
-              <span className={styles.highlight}>programming</span> and helping
-              teams and individuals ship better software
-              <span className={styles.period}>.</span>
+      <Header />
+
+      <div className="grid border-t-4 border-black md:grid-cols-2">
+        <div className="flex items-center justify-center border-b-4 border-black bg-green-500 md:border-b-0 md:border-r-4">
+          <div className="max-w-lg px-4 py-10 md:py-56">
+            <Balancer as="h1" className="text-7xl font-bold">
+              Hey, I'm Gio!
             </Balancer>
-          </p>
-          <div>
-            <div className={styles.title}>
-              <h2>Ciao!</h2>
-            </div>
-            <Image src="/me.jpg" width={205} height={205} alt="Gio Polvara" />
+            <span className="mt-9 block text-2xl font-medium">
+              I'm a tech lead and instructor. I'm sharing the lessons I learned
+              building web applications that serve millions of users.
+            </span>
+          </div>
+        </div>
+        <div className="flex items-center justify-center bg-pink-500 py-10">
+          <div className="relative">
+            <Image
+              src="/me.png"
+              width={305}
+              height={305}
+              alt="Gio Polvara"
+              className="rounded-full border-4 border-black"
+            />
+            <span className="absolute bottom-0 left-0 rotate-3 rounded-full border-4 border-black bg-blue-500 px-5 py-3 text-2xl tracking-wide text-blue-50">
+              Ciao!
+            </span>
           </div>
         </div>
       </div>
 
-      <PostsList posts={posts} showMore />
+      <PostsList posts={posts} showMore className="border-t-4 border-black" />
 
-      <Marquee>Ciao!</Marquee>
+      <Marquee>
+        polvara<span className="text-pink-500">.</span>me
+      </Marquee>
 
       <Follow />
     </>
