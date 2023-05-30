@@ -1,6 +1,5 @@
 .main {
   font-weight: 500;
-  font-style: italic;
   font-size: 1.8rem;
   display: flex;
   overflow: hidden;
@@ -8,6 +7,10 @@
   gap: 2rem;
   border-top: 4px solid var(--dark);
   border-bottom: 4px solid var(--dark);
+}
+
+.italic {
+  font-style: italic;
 }
 
 .content {

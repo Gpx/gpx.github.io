@@ -41,7 +41,7 @@ export default function Home({ posts }) {
 
       <PostsList posts={posts} showMore className="border-t-4 border-black" />
 
-      <Marquee>
+      <Marquee italic>
         polvara<span className="text-pink-500">.</span>me
       </Marquee>
 
