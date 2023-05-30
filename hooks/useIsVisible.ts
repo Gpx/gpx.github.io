@@ -3,7 +3,7 @@ import React from "react";
 export default function useIsVisible({
   threshold = 0,
   stopAfterFirst = false,
-} = {}) {
+} = {}): [boolean, React.MutableRefObject<null>] {
   const ref = React.useRef(null);
   const [isVisible, setIsVisible] = React.useState(true);
   React.useEffect(() => {
