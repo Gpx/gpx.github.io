@@ -1,50 +1,19 @@
-function Section({ title, children, className }) {
-  return (
-    <div className={`m-2 border border-red-50 px-4 py-2 ${className}`}>
-      <h2 className="mb-2 text-xl text-red-400">{title}</h2>
-      {children}
-    </div>
-  );
-}
+import { section, table, code, codeBlock } from "components/cheatsheet-utils";
 
-function Table({ data }) {
-  return (
-    <table className="w-full table-auto">
-      <thead className="bg-red-400 text-slate-950">
-        <tr>
-          {data[0].map((header) => (
-            <th className="p-4">{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.slice(1).map((row) => (
-          <tr className="odd:bg-white even:bg-slate-50">
-            {row.map((cell) => (
-              <td className="p-4">{cell}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
+const Section = section({ border: "border-red-50", text: "text-red-400" });
 
-function Code({ children }) {
-  return (
-    <code className="rounded border border-red-500 bg-red-300 px-1 py-0.5 text-slate-950">
-      {children}
-    </code>
-  );
-}
+const Table = table({
+  background: "bg-red-400",
+  text: "text-slate-950",
+  oddRow: "bg-slate-50",
+});
 
-function CodeBlock({ children }) {
-  return (
-    <pre className="rounded border border-slate-50 bg-slate-950 px-4 py-2 text-slate-50">
-      {children}
-    </pre>
-  );
-}
+const Code = code({ background: "bg-red-300", text: "text-slate-950" });
+
+const CodeBlock = codeBlock({
+  background: "bg-slate-950",
+  text: "text-slate-50",
+});
 
 export default function Cheatsheet() {
   return (
@@ -133,6 +102,7 @@ export default function Cheatsheet() {
                 <div className="text-center">Yes</div>,
               ],
             ]}
+            aligns={["left", "left", "left", "left", "center"]}
           />
         </Section>
         <Section title="Query Priorities">

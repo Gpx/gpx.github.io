@@ -35,6 +35,11 @@ export default function Header({ small = false }) {
                   About
                 </Link>
               </li>
+              <li>
+                <Link href="/cheatsheets" className="hover:underline">
+                  Cheatsheets
+                </Link>
+              </li>
             </ul>
           </nav>
         </header>
@@ -63,6 +68,11 @@ export default function Header({ small = false }) {
             <li>
               <Link href="/" className="hover:underline">
                 About
+              </Link>
+            </li>
+            <li>
+              <Link href="/cheatsheets" className="hover:underline">
+                Cheatsheets
               </Link>
             </li>
           </ul>

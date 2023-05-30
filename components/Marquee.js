@@ -1,8 +1,9 @@
+import cx from "classnames";
 import styles from "./Marquee.module.scss";
 
-export default function Marquee({ children }) {
+export default function Marquee({ children, italic = false }) {
   return (
-    <div className={styles.main} aria-hidden>
+    <div className={cx(styles.main, { [styles.italic]: italic })} aria-hidden>
       <div className={styles.content}>
         {Array.from({ length: 100 }).map((_, i) => (
           <span key={i}>{children}</span>
