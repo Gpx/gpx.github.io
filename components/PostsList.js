@@ -14,7 +14,7 @@ function Li({ children, href }) {
   );
 }
 
-export default function PostsList({ posts, showMore = false, className }) {
+export default function PostsList({ posts, showMore = false, className = "" }) {
   return (
     <ol className={cx("bg-rose-500 px-8 py-16", className)}>
       {posts.map((post) => (

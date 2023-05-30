@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import cx from "classnames";
 import Link from "next/link";
-import useIsVisible from "hooks/useIsVisible";
+import useIsVisible from "@/hooks/useIsVisible";
 
 export default function Header({ small = false }) {
   const [isBigHeaderVisible, bigHeaderRef] = useIsVisible();
