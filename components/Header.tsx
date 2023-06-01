@@ -42,6 +42,15 @@ export default function Header({ small = false }) {
                   Cheatsheets
                 </Link>
               </li>
+              <li className="hidden md:block">
+                <Link
+                  href="https://webfromthefuture.com"
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  Web from the future
+                </Link>
+              </li>
             </ul>
           </nav>
         </header>
@@ -75,6 +84,15 @@ export default function Header({ small = false }) {
             <li>
               <Link href="/cheatsheets" className="hover:underline">
                 Cheatsheets
+              </Link>
+            </li>
+            <li className="hidden md:block">
+              <Link
+                href="https://webfromthefuture.com"
+                target="_blank"
+                className="hover:underline"
+              >
+                Web from the future
               </Link>
             </li>
           </ul>

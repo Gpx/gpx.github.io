@@ -8,7 +8,6 @@ import { getPosts } from "lib/posts";
 
 export default async function Page() {
   const posts = (await getPosts()).slice(0, 5);
-  console.log(process.env.MAILER_LITE_API_KEY);
 
   return (
     <>
