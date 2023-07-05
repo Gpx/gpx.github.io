@@ -4,6 +4,11 @@
       "language": "markdown",
       "scheme": "file",
       "pattern": "*.md"
+    },
+    {
+      "language": "javascript",
+      "scheme": "file",
+      "pattern": "pages/cv/index.js"
     }
   ],
   "typescript.tsdk": "node_modules/typescript/lib"

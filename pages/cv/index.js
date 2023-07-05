@@ -1,188 +1,257 @@
 import styles from "./cv.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import {
-  faChrome,
-  faLinkedinIn,
-  faStickerMule,
-} from "@fortawesome/free-brands-svg-icons";
-import {
+  faCode,
   faEnvelope,
   faMapMarkerAlt,
-  faPhone,
-  faStar,
-  faStarHalf,
 } from "@fortawesome/free-solid-svg-icons";
+
+function Job({ title, company, from, to, children }) {
+  return (
+    <div className={styles.experience}>
+      <h3>{title}</h3>
+      <span>
+        {company} | {from} - {to}
+      </span>
+      {children}
+    </div>
+  );
+}
+
+function Page({ children }) {
+  return <div className={styles.page}>{children}</div>;
+}
+
+function Sidebar({ children }) {
+  return <div className={styles.sidebar}>{children}</div>;
+}
+
+function Content({ children }) {
+  return <div className={styles.content}>{children}</div>;
+}
+
+function BarSection({ children, title }) {
+  return (
+    <div className={styles.barSection}>
+      <h2>{title}</h2>
+      {children}
+    </div>
+  );
+}
+
+function BarSectionItem({ title, location, description = "" }) {
+  return (
+    <div className={styles.barSectionItem}>
+      <h3>{title}</h3>
+      <span>{location}</span>
+      <span>{description}</span>
+    </div>
+  );
+}
+
+function IconItem({ icon, text }) {
+  return (
+    <div className={styles.iconItem}>
+      <FontAwesomeIcon icon={icon} />
+      <span>{text}</span>
+    </div>
+  );
+}
 
 export default function CV() {
   return (
-    <article className={styles.cv}>
-      <div className={styles.bar}>
-        <div className={styles.pictureBox}>
-          <img className={styles.pictureBelow} src="me.jpg" />
-          <img className={styles.picture} src="me.jpg" />
-        </div>
+    <>
+      <Page>
+        <Sidebar>
+          <img src="me.jpg" />
 
-        <dl className={styles.contact}>
-          <dt>
-            <FontAwesomeIcon icon={faEnvelope} />
-          </dt>
-          <dd>
-            <a href="mailto:polvara@gmail.com">polvara@gmail.com</a>
-          </dd>
-          <dt>
-            <FontAwesomeIcon icon={faPhone} />
-          </dt>
-          <dd>+34 626 142 094</dd>
-          <dt>
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </dt>
-          <dd>
-            <a href="https://www.linkedin.com/in/polvara/?locale=en_US">
-              linkedin.com/in/polvara
-            </a>
-          </dd>
-          <dt>
-            <FontAwesomeIcon icon={faChrome} />
-          </dt>
-          <dd>
-            <a href="https://www.polvara.me">polvara.me</a>
-          </dd>
-          <dt>
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
-          </dt>
-          <dd>Barcelona, Spain</dd>
-        </dl>
+          <h1>
+            <span>
+              Giorgio <span>(He/Him)</span>
+            </span>
+            <span>Polvara</span>
+            <span>Web Developer</span>
+          </h1>
 
-        <ul className={styles.expertise}>
-          <li>
-            JavaScript
-            <span className={styles.stars}>
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-            </span>
-          </li>
-          <li>
-            React
-            <span className={styles.stars}>
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-            </span>
-          </li>
-          <li>
-            NodeJS
-            <span className={styles.stars}>
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStarHalf} />
-            </span>
-          </li>
-        </ul>
+          <BarSection title="Key Points">
+            <ul>
+              <li>15+ years of experience</li>
+              <li>7+ years working with React</li>
+              <li>Strong knowledge of JS and the Web platform in general</li>
+              <li>Experience both as a single contributor and as a manager</li>
+              <li>Passionate about teaching and mentoring</li>
+              <li>
+                Interested in all the steps of building a successful product,
+                especially defining the UX
+              </li>
+              <li>Advocate for good testing principles</li>
+            </ul>
+          </BarSection>
+        </Sidebar>
 
-        <ul className={styles.education}>
-          <li>
-            Bachelor's degree, Informatics
+        <Content>
+          <h2>About me</h2>
+          <p>
+            I&rsquo;m Giorgio, a Frontend Engineer with over 15 years of
+            experience. I led teams to build many different kinds of
+            applications. I have worked with small and bigger companies and a
+            vast spectrum of technologies, from DBs to CSS and everything in
+            between. I have experience with agile methodologies and planning,
+            delivering, and monitoring technical roadmaps. I always try to learn
+            new things&mdash;and share my discoveries&mdash;to get the best tool
+            for the job.
+          </p>
+          <p>
+            I&rsquo;m looking for an ambitious company built on a strong culture
+            where people behave as professionals but remember that we are
             <br />
-            <em style={{ fontWeight: 100 }}>
-              Università degli Studi di Milano-Bicocca
-            </em>
-          </li>
-          <li>
-            High School Diploma, Informatic Specialization
-            <br />
-            <em style={{ fontWeight: 100 }}>I.T.I.S. S.Ten.Vasc. A. Badoni</em>
-          </li>
-        </ul>
-      </div>
-
-      <div className={styles.content}>
-        <h1 className={styles.title}>
-          <FontAwesomeIcon style={{ color: "#fff" }} icon={faStickerMule} />
-          <span className={styles.name}>giorgio</span>
-          <span className={styles.surname}>polvara</span>
-        </h1>
-
-        <h2 className={styles.subtitle}>Profile</h2>
-        <p className={styles.profile}>
-          I'm a web developer and engineering manager with more than 15 years of
-          experience building different kinds of applications and coordinating
-          teams. I have worked with small and bigger companies and a vast
-          spectrum of technologies from DBs to CSS and everything in between. I
-          always try to learn new things—and share my discoveries—to get the
-          best tool for the job.
-        </p>
-        <p className={styles.profile}>
-          I'm looking for a company built on a strong culture where people
-          behave as professionals but remember that we're all humans.
-        </p>
-
-        <h2 className={styles.subtitle}>Experience</h2>
-        <div className={styles.experience}>
-          <div className={styles.role}>Engineering Manager</div>
-          <span className={styles.company}>Toptal</span>
-          <span className={styles.dates}>November 2020 - Present</span>
-          <p className={styles.description}>
-            At Toptal, I manage the Core Tools team to provide reliable and
-            useful tools to more than 700 hundred internal employees. I also
-            mentor my team members helping them thrive in their careers.
+            all humans.
           </p>
-        </div>
 
-        <div className={styles.experience}>
-          <div className={styles.role}>
-            Engineering Manager / Squad Leader / Senior Full Stack Developer
-          </div>
-          <span className={styles.company}>TravelPerk</span>
-          <span className={styles.dates}>August 2016 - May 2020</span>
-          <p className={styles.description}>
-            I joined TravelPerk when there were only 15 employees and left when
-            there were almost 500. My role changed and grew with the company. I
-            set up and coordinated the whole front-end infrastructure, making it
-            ready to scale to serve hundreds of users per day. I documented the
-            best practices and shared them with the rest of the team, even by
-            organizing internal workshops and overseeing new team members'
-            onboarding. As a Squad Leader, I guided my team in finding the best
-            technical solution to achieve our OKRs. At the same time, I
-            communicated with Product Owners, Managers, other Squad Leaders, and
-            various stakeholders to ensure everyone was aligned. During this
-            period, I also started interviewing candidates for different
-            technical positions.
-          </p>
-        </div>
+          <h2>Experience</h2>
+          <Job
+            title="Tech Lead"
+            company="Wallapop"
+            from="February 2023"
+            to="Present"
+          >
+            <p>
+              As Frontend Tech Lead at Wallapop, my role is empowering our
+              developers, identifying and eliminating roadblocks, and enhancing
+              our workflow to boost productivity. I have created a comprehensive
+              roadmap for our Frontend team, encompassing our objectives for the
+              next year&mdash;from technical improvements to implementing a more
+              effective on-call rotation, post-mortem strategy, and more. This
+              work aims to support our service in meeting the demands and
+              expectations of our millions of monthly users.
+            </p>
+          </Job>
+          <Job
+            title="Staff engineer"
+            company="Amenitiz"
+            from="January 2022"
+            to="February 2023"
+          >
+            <p>
+              At Amenitiz, I took the lead on improving the whole frontend
+              infrastructure while improving some of the core products and
+              mentoring the team.
+            </p>
+            <ul>
+              <li>Architecting the new frontend as a React application.</li>
+              <li>
+                Rebuilding the Website builder functionality to decrease server
+                load and improve the overall experience for our users.
+              </li>
+              <li>Interviewing candidates for frontend positions.</li>
+            </ul>
+          </Job>
 
-        <div className={styles.experience}>
-          <div className={styles.role}>
-            Senior Fullstack Developer and Frontend Team Coordinator
-          </div>
-          <span className={styles.company}>Fundbase Inc.</span>
-          <span className={styles.dates}>April 2014 - July 2016</span>
-          <p className={styles.description}>
-            At Fundbase, I helped build a SPA to manage a database of more than
-            10.000 hedge funds. I coordinated the front-end team in developing
-            our React, AngularJS, and Ruby on Rails applications.
-          </p>
-        </div>
+          <Job
+            title="Engineering Manager"
+            company="Toptal"
+            from="November 2020"
+            to="December 2021"
+          >
+            <p>
+              At Toptal, I directly managed a team of nine developers with
+              different backgrounds (BE, FE, and QA). I mentored each team
+              member to make sure they can make the most out of their careers
+              while making the team better. In addition, I collaborated with our
+              Product Manager and all the other stakeholders (directors,
+              managers, design, sales&hellip;) to ensure our delivery plans were
+              aligned with the company&rsquo;s requirements. I&rsquo;ve also
+              been active in the various phases of the interviewing process.
+            </p>
+          </Job>
+        </Content>
+      </Page>
+      <Page>
+        <Sidebar>
+          <BarSection title="Contact">
+            <IconItem icon={faEnvelope} text="polvara@gmail.com" />
+            <IconItem icon={faLinkedinIn} text="linkedin.com/in/polvara" />
+            <IconItem icon={faCode} text="polvara.me" />
+            <IconItem icon={faMapMarkerAlt} text="Barcelona, Spain" />
+          </BarSection>
 
-        <div className={styles.experience}>
-          <div className={styles.role}>Junior Developer and R&amp;D</div>
-          <span className={styles.company}>Trizero S.r.l.</span>
-          <span className={styles.dates}>December 2006 - June 2013</span>
-          <p className={styles.description}>
-            I was tasked with researching and experimenting with new
-            technologies and apply them to live websites. As a result, I got the
-            opportunity to learn various languages and platforms. I also shared
-            discoveries with my colleagues, via presentations or by writing
-            tutorials.
-          </p>
-        </div>
-      </div>
-    </article>
+          <BarSection title="Education">
+            <BarSectionItem
+              title="Bachelor&rsquo;s degree, Informatics"
+              location="Università degli Studi di Milano-Bicocca"
+            />
+
+            <BarSectionItem
+              title="High School Diploma, Informatic Specialization"
+              location="I.T.I.S. S.Ten.Vasc. A. Badoni"
+            />
+          </BarSection>
+
+          <BarSection title="Volunteer">
+            <BarSectionItem
+              title="Instructor"
+              location="MigraCode"
+              description="Teaching refugees and migrants how to code, and help them prepare for the job market."
+            />
+          </BarSection>
+        </Sidebar>
+
+        <Content>
+          <Job
+            title="Engineering manager / Squad Leader / Senior full stack developer"
+            company="TravelPerk"
+            from="August 2016"
+            to="May 2020"
+          >
+            <p>
+              I joined TravelPerk when there were only 15 employees and left
+              when there were almost 500. My role changed and grew with the
+              company. I set up and coordinated the whole frontend
+              infrastructure, making it ready to scale to serve hundreds of
+              users per day.
+            </p>
+            <p>
+              I documented the best practices and shared them with the rest of
+              the team, even by organizing internal workshops and overseeing new
+              team members&rsquo; onboarding. As an Engineering Manager and
+              Squad Leader, I guided my team in finding the best technical
+              solutions to achieve our OKRs. At the same time, I communicated
+              with Product Owners, Managers, other Squad Leaders, and various
+              stakeholders to ensure everyone was aligned. During this period, I
+              also interviewed candidates for different technical positions.
+            </p>
+          </Job>
+
+          <Job
+            title="Senior fullstack developer and frontend team coordinator"
+            company="Fundbase"
+            from="April 2014"
+            to="July 2016"
+          >
+            <p>
+              At Fundbase, I helped build a SPA to manage a database of more
+              than 10,000 hedge funds. I coordinated the frontend team in
+              developing our React, AngularJS, and Ruby on Rails applications.
+            </p>
+          </Job>
+
+          <Job
+            title="Junior developer and R&amp;D"
+            company="Trizero"
+            from="December 2006"
+            to="June 2013"
+          >
+            <p>
+              I was tasked with researching and experimenting with new
+              technologies and applying them to live websites. As a result, I
+              got the opportunity to learn various languages and platforms. I
+              also shared discoveries with my colleagues via presentations or
+              writing coding tutorials.
+            </p>
+          </Job>
+        </Content>
+      </Page>
+    </>
   );
 }
