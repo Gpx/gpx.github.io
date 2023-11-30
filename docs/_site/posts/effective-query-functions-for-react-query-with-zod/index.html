@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Effective Query Functions for React Query with Zod</title>
+    <link rel="stylesheet" href="/bundle.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/">polvara.me</a></header>
+      
+<h1 class="post-title">Effective Query Functions for React Query with Zod</h1>
+<div class="post-date">
+  Mar 3, 2022
+</div>
+
+<main class="post">
+  <p>Lately, I have been experimenting with <a href="https://react-query.tanstack.com/">React Query</a> for data synchronization with React, and I find it excellent.</p>
+<p>Take a look at a basic example:</p>
+<pre class="language-tsx"><code class="language-tsx"><span class="token keyword">function</span> <span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useQuery</span><span class="token punctuation">(</span><span class="token string">"repositoryData"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">getRepository</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">The name is </span><span class="token punctuation">{</span>data<span class="token operator">?.</span>name<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>I want to show you not this but the way I define the <code>getRepository</code> query function.</p>
+<p>Here is its definition:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> GetRepositoryRequest <span class="token operator">=</span> z<span class="token punctuation">.</span><span class="token function">void</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> GetRepositoryResponse <span class="token operator">=</span> z<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> getRepository <span class="token operator">=</span> <span class="token generic-function"><span class="token function">api</span><span class="token generic class-name"><span class="token operator">&lt;</span>
+  z<span class="token punctuation">.</span>infer<span class="token operator">&lt;</span><span class="token keyword">typeof</span> GetRepositoryRequest<span class="token operator">></span><span class="token punctuation">,</span>
+  z<span class="token punctuation">.</span>infer<span class="token operator">&lt;</span><span class="token keyword">typeof</span> GetRepositoryResponse<span class="token operator">></span>
+<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  method<span class="token operator">:</span> HTTPMethod<span class="token punctuation">.</span><span class="token constant">GET</span><span class="token punctuation">,</span>
+  path<span class="token operator">:</span> <span class="token string">"/repository"</span><span class="token punctuation">,</span>
+  requestSchema<span class="token operator">:</span> GetRepositoryRequest<span class="token punctuation">,</span>
+  responseSchema<span class="token operator">:</span> GetRepositoryResponse<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Yes, it looks complex at first, but it really isn't.</p>
+<p>First, we are using <a href="https://zod.js.org/">Zod</a> to define the request and response schemas. We will use these to validate the data that we're sending to and from the API. Why this, you ask? Simply because we have no guarantee on what data the API will return, and it's good to validate it before we use it.</p>
+<p>After request and response are defined, we create the query function. I'm using an <code>api</code> function that I will explain later. The <code>api</code> method is typed with a <a href="https://www.typescriptlang.org/docs/handbook/2/generics.html">generic</a> that accepts two arguments: the type of the request and the type of the response. Here we're using Zod's <a href="https://github.com/colinhacks/zod#type-inference">type inference</a>, so we don't have to duplicate the type definition. We're getting both runtime validation and TypeScript type checking at the price of one.</p>
+<p>The rest is self-explanatory. We're passing the method using the HTTPMethod enum, the path and the request and response schemas defined before.</p>
+<p>Ok, so what does the <code>api</code> method look like? Something like this:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">"axios"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> env<span class="token punctuation">,</span> <span class="token punctuation">{</span> isProduction<span class="token punctuation">,</span> EnvName <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"utils/env"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> z <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"zod"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">enum</span> HTTPMethod <span class="token punctuation">{</span>
+  <span class="token constant">GET</span> <span class="token operator">=</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+  <span class="token constant">POST</span> <span class="token operator">=</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">enum</span> HTTPStatusCode <span class="token punctuation">{</span>
+  <span class="token constant">OK</span> <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token generic-function"><span class="token function">api</span><span class="token generic class-name"><span class="token operator">&lt;</span>Request<span class="token punctuation">,</span> Response<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  method<span class="token punctuation">,</span>
+  path<span class="token punctuation">,</span>
+  requestSchema<span class="token punctuation">,</span>
+  responseSchema<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  method<span class="token operator">:</span> HTTPMethod<span class="token punctuation">;</span>
+  path<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  requestSchema<span class="token operator">:</span> z<span class="token punctuation">.</span>ZodType<span class="token operator">&lt;</span>Request<span class="token operator">></span><span class="token punctuation">;</span>
+  responseSchema<span class="token operator">:</span> z<span class="token punctuation">.</span>ZodType<span class="token operator">&lt;</span>Response<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>data<span class="token operator">:</span> Request<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>Response<span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>requestData<span class="token operator">:</span> Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    requestSchema<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>requestData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">apiCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        baseURL<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">API_URL</span><span class="token punctuation">,</span>
+        method<span class="token punctuation">,</span>
+        url<span class="token operator">:</span> path<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>method <span class="token operator">===</span> HTTPMethod<span class="token punctuation">.</span><span class="token constant">GET</span> <span class="token operator">?</span> <span class="token string">"params"</span> <span class="token operator">:</span> <span class="token string">"data"</span><span class="token punctuation">]</span><span class="token operator">:</span> requestData<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> EnvName<span class="token punctuation">.</span><span class="token constant">PRODUCTION</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        responseSchema<span class="token punctuation">.</span><span class="token function">safeParseAsync</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>result<span class="token punctuation">.</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// TODO: Send error to sentry or other error reporting service</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> response<span class="token punctuation">.</span>data <span class="token keyword">as</span> Response<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">return</span> responseSchema<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token function">apiCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>As you can see, <code>api</code> validates both your request and response data and makes the call to the API.</p>
+<p>The validation of the response happens asynchronously in production but synchronously in development. This is because we don't want to block the UI while we're validating the data.</p>
+<hr>
+<p>I have been using this approach for a while now, and it works really well for me. The added bonus is that all my queries are defined in one place, and I can read them to know what my API looks like. Plus, I can spot breaking changes in the backend and quickly fix them.</p>
+
+</main>
+
+    </div>
+  </body>
+</html>

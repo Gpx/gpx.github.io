@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Function Composition</title>
+    <link rel="stylesheet" href="/bundle.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/">polvara.me</a></header>
+      
+<h1 class="post-title">JavaScript Function Composition</h1>
+<div class="post-date">
+  Dec 1, 2015
+</div>
+
+<main class="post">
+  <p>Around seven years ago (gosh I’m getting old), I started to work on my first
+serious single page application. I was the only frontend developer. A friend of
+mine was working on the backend. Before that, I worked only on small jQuery
+snippets. Things like “make this button disappear when I click on it”. I didn’t
+study JavaScript, I didn’t feel the need to. After all, I knew Java.</p>
+<p>It goes without saying, the project was a mess. A real example of spaghetti
+code. It was so complicated to understand what was going on that I had to create
+a set and a get method. They were two <strong>sync</strong> AJAX calls that were saving a
+variable in <code>$_SESSION</code> and getting it back. All because I couldn’t figure out a
+way to access values from different sections of my codebase.</p>
+<p>After this terrible experience, I realized JavaScript might not be just a light
+version of Java. I started <em>googling</em> for some good material for a beginner like
+me. Almost everyone’s advice was to read
+<a href="http://shop.oreilly.com/product/9780596517748.do">“Javascript: The Good Parts”</a>.
+The author, <a href="https://www.crockford.com">Douglas Crockford</a>, remained ever since
+a guru for me. He often says:</p>
+<blockquote>
+<p>If a feature is sometimes useful and sometimes dangerous, and if there is a
+better option then, always use the better option.</p>
+</blockquote>
+<p>You can see this motto applied to his code, his style is unambiguous and easy to
+follow, although it may appear verbose.</p>
+<p>What does this have to do with <em>function composition</em> you might ask. Fast
+forward to one year ago. I saw this talk from Douglas about “The Better Parts”.</p>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/bo36MrBfTk4"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+<p>With ES6 coming he decided to give an update on what are the new “good parts”. I
+was very much into <code>class</code> back then, like many others, so I couldn’t wait to
+hear my guru explain how and why they’re so cool.</p>
+<p>With my great surprise they weren’t in the list. He mentioned things like
+<a href="../es6-tail-call-optimization">tail call optimization</a> and
+<a href="https://github.com/lukehoban/es6features#default--rest--spread">spread</a> but not
+classes.</p>
+<p>He eventually talked about the class keyword, it was the first of the new <em>bad
+features</em>.</p>
+<h2>A Crazy Little Thing Called Functional Programming</h2>
+<p>That talk left me puzzled. Not only he wasn’t using classes, he wasn’t using
+<code>this</code>, <code>new</code>, <code>for</code> loops and pretty much what was 80% of my code. He was even
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">freezing objects</a>
+after creating them.</p>
+<p>What’s the deal Doug? Why are you trying to make my life a hell? Are you just
+mocking me? Are you mocking us all? It was a prank talk, wasn’t it? The guru
+decided to have some fun at the expense of his followers.</p>
+<p>Turns out it wasn’t a prank.</p>
+<p>While in university, I attended a course about functional programming. The mood
+was this:</p>
+<blockquote>
+<p>There’s a programming language called
+<a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a>. We use it
+in academia but in the real world no one does. You’re going to learn enough of
+it to build a small program and pass the exam.</p>
+</blockquote>
+<p>Damn I hated school.</p>
+<p>Lisp may not be in much use nowadays, but it influenced languages that are
+taking the world by storm, such as <a href="http://clojure.org/">Clojure</a> and
+<a href="https://www.haskell.org/">Haskell</a>.</p>
+<p>Most importantly, its functional paradigm is going to be more and more
+predominant in the foreseeable future.</p>
+<p>Oh and by the way, do you know what’s the most popular functional language by a
+vast margin? JavaScript.</p>
+<p>All this just to tell you that we better learn function composition and other
+functional idioms.</p>
+<h2>Finally Some Function Composition</h2>
+<p>After my longest introduction yet, let’s get into function composition. First
+off, function composition works at its best when we <em>curry</em> a function. What’s
+that? Glad you asked.</p>
+<h3>Currying</h3>
+<p><a href="https://en.wikipedia.org/wiki/Haskell_Curry">Haskell Curry</a> was a great
+mathematician. So great that they named a programming language after his first
+name and a programming technique after his last name (sadly nothing yet on his
+middle name “Brooks”).</p>
+<p>Let’s say you have a function sum that takes two parameters a and b and returns
+their sum.</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3</span></code></pre>
+<p>If the code above looks weird to you it’s because we’re using ES6, in particular
+<a href="http://es6-features.org/#Constants">constants</a> and
+<a href="http://es6-features.org/#ExpressionBodies">arrow functions</a>.</p>
+<p>In ES5, this would translate to:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>When we call sum we have to provide 2 arguments. We also have to provide them at
+the same time. What if I want to set a now and b later?</p>
+<p>Basically, what we want is this:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">let</span> partial <span class="token operator">=</span> <span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">partial</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3</span>
+
+<span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 10</span></code></pre>
+<p>How is this new <code>currySum</code> defined? This is one way to do it:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">currySum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token parameter">b</span><span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span></code></pre>
+<p><code>currySum</code> is a function that takes one argument a and returns a function. The
+returned function accepts an argument <code>b</code> and returns <code>a + b</code>. This is possible
+thanks to
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">closures</a>.</p>
+<p>How is this useful? Take our <code>partial</code> function, it could be renamed to <code>plus1</code>.
+It is in fact a function that takes a number and adds 1 to it. We can easily
+define <code>plus2</code> or <code>plus10</code>.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> plus2 <span class="token operator">=</span> <span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> plus10 <span class="token operator">=</span> <span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Note that we can also convert a function to its curried version. Libraries like
+<a href="https://lodash.com/">lodash</a> implement a curry method. We are going to use
+<a href="http://ramdajs.com/">Ramda</a>. Let’s see it in action.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> currySum <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">curry</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 5</span>
+<span class="token function">currySum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 5</span></code></pre>
+<p>As you can see <code>R.curry</code> takes a function and returns its curried version. The
+nice thing is that we can then call the function passing all the arguments or
+just some.</p>
+<h3>Function Composition</h3>
+<p>Suppose you have this array:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> colleagues <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Marek"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">developer</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Tim"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">developer</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Jan"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">developer</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<p>Now, you want a list of uppercased names.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> colleagues<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  names<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+names<span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM','JAN']</span></code></pre>
+<p>Can we do better?</p>
+<p>Let’s divide the problem. First we need a function that takes a string and
+returns its uppercased version.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">toUpper</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token operator">=></span> s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">toUpper</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'HELLO'</span></code></pre>
+<p>Next we need a function that takes an object and returns one of its properties.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">prop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token operator">=></span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Giorgio"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'Giorgio'</span></code></pre>
+<p>We’re interested in the <code>name</code> property. What we need is a function that given
+an object returns it’s <code>name</code>. If we curry our <code>prop</code> function that’s very easy.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> prop <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">curry</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token operator">=></span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> getName <span class="token operator">=</span> <span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Wow, look at that. We called <code>prop</code> with just one argument and we got back
+another function that receives an object and returns this object’s <code>name</code>
+property. Now you begin to see why curring is so important.</p>
+<p>Before we move on, you need to know that Ramda implements the two functions we
+just defined. Furthermore Ramda functions are curried by default. So we can
+refactor our code like this.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> toUpper <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span>toUpper<span class="token punctuation">;</span>
+<span class="token keyword">const</span> getName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Here comes the interesting part, given an object we want to get its <code>name</code>
+property and uppercase it. One naïve solution is this.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">upperName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token operator">=></span> obj<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperName</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Giorgio"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'GIORGIO'</span></code></pre>
+<p>But this function is solving two problems we already solved:</p>
+<ul>
+<li>Getting the name property</li>
+<li>Uppercase a string</li>
+</ul>
+<p>How can we do this using our pre-defined functions?</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">upperName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">toUpper</span><span class="token punctuation">(</span><span class="token function">getName</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Amazing, we composed the functions. We can now look at the official definition
+for function composition (obviously from Wikipedia):</p>
+<blockquote>
+<p>In mathematics, function composition is the pointwise application of one
+function to the result of another to produce a third function.</p>
+</blockquote>
+<p>This is exactly what we did. We took the output of <code>getName</code> and used it as an
+input for <code>toUpper</code>.</p>
+<p>Ramda has a <code>compose</code> function just for that. We can use it to refactor our
+code.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> upperName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">compose</span><span class="token punctuation">(</span>toUpper<span class="token punctuation">,</span> getName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperName</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Giorgio"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'GIORGIO'</span></code></pre>
+<p>You should read the code from right to left. An object enters, it gets processed
+by <code>getName</code>, you get a string and feed it to <code>toUpper</code>, you get a result.</p>
+<p>Now to get the list of uppercased names from our objects we simply use <code>map</code>.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> upperNames <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>upperName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperNames</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM','JAN']</span></code></pre>
+<p>Here is the whole code. I also made a
+<a href="http://codepen.io/Gpx/pen/YybPGV?editors=001">pen</a>.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> colleagues <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Marek"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">developer</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Tim"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">developer</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Jan"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">developer</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> getName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> toUpper <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span>toUpper<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> upperName <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">compose</span><span class="token punctuation">(</span>toUpper<span class="token punctuation">,</span> getName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> upperNames <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>upperName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token function">upperNames</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM','JAN']</span></code></pre>
+<h2>Is It worth It?</h2>
+<p>If you are like me you are probably asking yourself “Is it worth it?”. After all
+the original code with a <code>for</code> loop was easy enough. The solution with function
+composition works but it may seem a bit awkward. Let me tell you two big
+advantages of our functional version.</p>
+<p>The code has a higher level of abstraction. You have a <code>upperName</code> function.
+What does it do? It applies <code>getName</code> and <code>toUpper</code>. No need to know about
+arrays or indexes.</p>
+<p>It’s much easier to extend. Want to upper the name only for developers?</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// Takes an array and filter out non-developers</span>
+<span class="token keyword">const</span> onlyDevelopers <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"developer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Takes an array returns an array of uppercased names</span>
+<span class="token comment">// only for developers</span>
+<span class="token keyword">const</span> upperDevelopers <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">compose</span><span class="token punctuation">(</span>upperNames<span class="token punctuation">,</span> onlyDevelopers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">upperDevelopers</span><span class="token punctuation">(</span>colleagues<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> ['MAREK','TIM']</span></code></pre>
+<p>Here we solved the issue with another function composition.</p>
+
+</main>
+
+    </div>
+  </body>
+</html>
