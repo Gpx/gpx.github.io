@@ -1,0 +1,13 @@
+---
+layout: base.liquid
+---
+
+<h1 class="post-title">{{ title }}</h1>
+<div class="post-date">
+  {{ page.date | date }}{% if favorite %} &middot; This post is popular! ⭐️{%
+  endif %}
+</div>
+
+<main class="post">
+  {{ content }}
+</main>

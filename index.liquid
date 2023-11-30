@@ -1,0 +1,17 @@
+---
+layout: base.liquid
+---
+
+<ol class="posts">
+  {% for post in collections.post reversed %}
+  <li>
+    <a href="{{ post.page.url }}">
+      <span>{{ post.page.date | date }}</span>
+      <div>
+        {% if post.data.favorite %}⭐️{% endif %}
+        {{ post.data.title }}
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ol>

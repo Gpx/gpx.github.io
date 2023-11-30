@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6 Tail Call Optimization</title>
+    <link rel="stylesheet" href="/bundle.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/">polvara.me</a></header>
+      
+<h1 class="post-title">ES6 Tail Call Optimization</h1>
+<div class="post-date">
+  Jun 1, 2015
+</div>
+
+<main class="post">
+  <p>ECMAScript 6 a.k.a. ECMAScript 2015 a.k.a. the new version of JavaScript is
+getting closer and closer to ratification, the current goal is to have the new
+standard ready in June 2015. This is a big step forward for JavaScript that is
+becoming a modern language, suitable for all the uses we need.</p>
+<p>If you follow tech news you know about some of these changes:
+<a href="http://es6-features.org/#ClassDefinition">classes</a>,
+<a href="http://es6-features.org/#SymbolExportImport">modules</a>,
+<a href="http://es6-features.org/#SpreadOperator">spread operators</a>… In this post I will
+analyze one less known feature: tail call optimization.</p>
+<h2>CS 101: The Stack Frame</h2>
+<p>Let’s analyze this simple snippet of code:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar called"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"baz called"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"baz"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"all done"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>When we invoke <code>foo</code>, a new stack frame is created in memory. A stack frame is
+simply a portion of memory where we store some values necessary to execute the
+function, for instance local variables, arguments and most importantly the
+caller of the function, so when the execution is done the <em>callee</em> can return to
+it.</p>
+<p>Let’s see this in action using
+<a href="https://developer.chrome.com/devtools/docs/javascript-debugging">Chrome’s debugger</a>:</p>
+<p><img src="/images/es6-tail-call-optimization/debug1.png" alt=""></p>
+<p>In the orange rectangle, you have the stack frame and also a list of local
+variables. It’s not exciting but let’s see what happens when we call <code>foo</code>:</p>
+<p><img src="/images/es6-tail-call-optimization/debug2.png" alt=""></p>
+<p>A new stack frame gets created. Notice that the other frame is still there, we
+will need it later. After <code>foo</code> calls <code>bar</code> that calls <code>baz</code>, we are in this
+situation:</p>
+<p><img src="/images/es6-tail-call-optimization/debug3.png" alt=""></p>
+<p>Two new stacks are created, one for <code>bar</code> and one for <code>baz</code>, those stacks are
+listed in what is called call stack. The call stack is very useful when you
+debug because it tells you the history of your program: which function called
+which other function. After <code>baz</code> has done its job it returns back to <code>bar</code>:</p>
+<p><img src="/images/es6-tail-call-optimization/debug4.png" alt=""></p>
+<p>As you can see, the stack frame for <code>baz</code> is deleted because we no longer need
+it anymore. Every time a function returns, its stack frame gets deleted. After
+our program is done, the call stack will be empty:</p>
+<p><img src="/images/es6-tail-call-optimization/debug5.png" alt=""></p>
+<h2>Maximum Call Stack Size</h2>
+<p>Now that you have a general understanding of what stack frame and call stack
+are, we can see an error you may encounter while programming.</p>
+<p>Imagine you have this function:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>If you call <code>foo</code> with a positive integer, it will simply call itself decreasing
+the number until it reaches zero. This is how the call stack behaves if we
+execute <code>foo(10)</code>:</p>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/oorN1hGcgKs"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+<p>As you can see, 10 stack frames get created until <code>n</code> reaches zero, at which
+point the functions begin to return and all the stacks get deleted.</p>
+<p>So if <code>n</code> is 10, we have 10 stack frames, if <code>n</code> is 100, we have 100 frames and
+so on. What happens if <code>n</code> is 100,000?</p>
+<figure>
+      <img src="/images/es6-tail-call-optimization/debug6.png" alt="Ungaught Ranger Error: Maximum call stack size exceeded" />
+      <figcaption>Ungaught Ranger Error: Maximum call stack size exceeded</figcaption>
+    </figure>
+<p>As said, every stack frame gets created in memory; unfortunately, a program has
+a limited amount of memory assigned, so it’s possible that the call stack
+becomes too big. In this case, we have an error and the program crashes.</p>
+<h2>Tail Call Optimization</h2>
+<p>Let’s keep our focus on the previous function. As you can clearly see, the last
+thing it does before returning is to call itself. This means that, when the
+called function returns, <code>foo</code> will do nothing, just immediately return to its
+caller.</p>
+<p>This kind of code allows a <em>tail call optimization</em>. With this optimization, if
+the last thing a function does is to call another function, instead of creating
+a new stack frame the callee will use the caller function’s frame.</p>
+<p>In our case, <code>foo(n-1)</code> will simply use <code>foo(n)</code>’s frame as will <code>foo(n-2)</code> etc.
+In the end, <code>foo(0)</code> will simply return directly to the main program instead of
+going through the entire call stack.</p>
+<p>This is not only faster but it requires far less memory: instead of creating
+100,000 frames we simply have 1 that gets re-used. So our call to <code>foo(100000)</code>
+will get executed without exceptions.</p>
+<p>If you think it’s unlikely you’ll write code like this, think again. Functional
+programming is
+<a href="https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9">rising in popularity</a>
+and makes heavy use of tail calls. One of the reasons it hasn’t been used too
+much in JavaScript was exactly the lack of tail call optimization.</p>
+<p>Also, many languages are now transpiling to JavaScript. Think of Unreal Engine,
+which is a C/C++ program, now
+<a href="https://blog.mozilla.org/blog/2014/03/12/mozilla-and-epic-preview-unreal-engine-4-running-in-firefox/">running in Firefox</a>.
+Those platforms will benefit from this optimization as it’s already a given for
+them.</p>
+<h2>Current Implementations</h2>
+<p>This is the part where we usually blame IE for not supporting the new cool
+feature, unfortunately this time we have to blame everyone:</p>
+<figure>
+      <img src="/images/es6-tail-call-optimization/debug7.png" alt="Usage table for tail-call optimization, no browser implements it" />
+      <figcaption>Usage table for tail-call optimization, no browser implements it</figcaption>
+    </figure>
+<p>As you can see, only <a href="https://babeljs.io/">Babel</a> partially supports it. This is
+of course about to change in the near future.</p>
+<p>If you want to learn more about tail call optimization check the
+<a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tail-position-calls">ES6 draft</a>.</p>
+
+</main>
+
+    </div>
+  </body>
+</html>

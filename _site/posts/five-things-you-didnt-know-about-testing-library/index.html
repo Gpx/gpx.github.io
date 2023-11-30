@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Five Things You (Probably) Didn't Know About Testing Library</title>
+    <link rel="stylesheet" href="/bundle.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/">polvara.me</a></header>
+      
+<h1 class="post-title">Five Things You (Probably) Didn't Know About Testing Library</h1>
+<div class="post-date">
+  Jun 11, 2019 &middot; This post is popular! ⭐️
+</div>
+
+<main class="post">
+  <p>I've just sold myself to the gods of click-baiting by making an &quot;x things you
+didn't know about y&quot; post. But hey, at least there no subtitle that says &quot;number
+three will blow your mind!&quot;</p>
+<p>Jokes aside the items in this list are concepts that I usually see beginners
+struggling with. At the same time, learning these concepts will vastyly improve
+your testing game. I know it did with mine.</p>
+<h2>1. Everything is a DOM node</h2>
+<p>This is usually the first misconception that beginners have when they start
+approaching Testing Library. It is especially true for those developers like me
+that came from <a href="https://airbnb.io/enzyme/">Enzyme</a>.</p>
+<p>Many think that <code>getByText</code> and other helper methods return some special wrapper
+around the React component. People even ask how to implement a
+<code>getByReactComponent</code> helper.</p>
+<p>When you work with Testing Library you are dealing with
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM nodes</a>.
+This is made clear by the first
+<a href="https://testing-library.com/docs/guiding-principles">Guiding Principle</a>:</p>
+<blockquote>
+<p>If it relates to rendering components, then it should deal with DOM nodes
+rather than component instances, and it should not encourage dealing with
+component instances.</p>
+</blockquote>
+<p>If you want to check for yourself, it's as simple as this:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> screen <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@testing-library/react"</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"everything is a node"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">Foo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Hello</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Foo</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInstanceOf</span><span class="token punctuation">(</span>Node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Once you realize that you're dealing with DOM nodes you can start taking
+advantage of all the DOM APIs like
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector"><code>querySelector</code></a>
+or
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest"><code>closest</code></a>:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> screen <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@testing-library/react"</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"the button has type of reset"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">ResetButton</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reset<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Reset</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ResetButton</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> node <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Reset"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// This won't work because `node` is the `&lt;div>`</span>
+  <span class="token comment">// expect(node).toHaveProperty("type", "reset");</span>
+
+  <span class="token function">expect</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveProperty</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">,</span> <span class="token string">"reset"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>2. <code>debug</code>'s optional parameter</h2>
+<p>Since we now know that we're dealing with a DOM structure, it would be helpful
+to be able to &quot;see&quot; it. This is what
+<a href="https://testing-library.com/docs/react-testing-library/api#debug"><code>debug</code></a> is
+meant for:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyComponent</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+screen<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Sometimes thought <code>debug</code>'s output can be very long and difficult to navigate.
+In those cases, you might want to isolate a subtree of your whole structure. You
+can do this easily by passing a node to <code>debug</code>:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyComponent</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> button <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Click me"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+screen<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>3. Restrict your queries with <code>within</code></h2>
+<p>Imagine you're testing a component that renders this structure:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>ID<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Fruit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>Apples<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>Oranges<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>Apples<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
+<p>You want to test that each ID gets its correct value. You can't use
+<code>getByText('Apples')</code> because there are two nodes with that value. Even if that
+wasn't the case you have no guarantee that the text is in the correct row.</p>
+<p>What you want to do is to run <code>getByText</code> only inside the row you're considering
+at the moment. This is exactly what
+<a href="https://testing-library.com/docs/dom-testing-library/api-helpers#within-and-getqueriesforelement-apis"><code>within</code></a>
+is for:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> screen<span class="token punctuation">,</span> within <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@testing-library/react"</span><span class="token punctuation">;</span> <span class="token comment">// highlight-line</span>
+<span class="token keyword">import</span> <span class="token string">"jest-dom/extend-expect"</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"the values are in the table"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">MyTable</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> values <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span><span class="token plain-text">ID</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span><span class="token plain-text">Fruits</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token punctuation">{</span>values<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>id<span class="token punctuation">,</span> fruit<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>id<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>id<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>fruit<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+        <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> values <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"Apples"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"Oranges"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"3"</span><span class="token punctuation">,</span> <span class="token string">"Apples"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyTable</span></span> <span class="token attr-name">values</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>values<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  values<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>id<span class="token punctuation">,</span> fruit<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> row <span class="token operator">=</span> screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token string">"tr"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// highlight-start</span>
+    <span class="token keyword">const</span> utils <span class="token operator">=</span> <span class="token function">within</span><span class="token punctuation">(</span>row<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>utils<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>utils<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span>fruit<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// highlight-end</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>4. Queries accept functions too</h2>
+<p>You have probably seen an error like this one:</p>
+<pre class="language-text"><code class="language-text">Unable to find an element with the text: Hello world.
+This could be because the text is broken up by multiple elements.
+In this case, you can provide a function for your text
+matcher to make your matcher more flexible.</code></pre>
+<p>Usually, it happens because your HTML looks like this:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Hello <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>world<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>The solution is contained inside the error message: &quot;[...] you can provide a
+function for your text matcher [...]&quot;.</p>
+<p>What's that all about? It turns out matchers accept strings, regular expressions
+or functions.</p>
+<p>The function gets called for each node you're rendering. It receives two
+arguments: the node's content and the node itself. All you have to do is to
+return <code>true</code> or <code>false</code> depending on if the node is the one you want.</p>
+<p>An example will clarify it:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> screen<span class="token punctuation">,</span> within <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@testing-library/react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"jest-dom/extend-expect"</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"pass functions to matchers"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">Hello</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      Hello </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">world</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Hello</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// These won't match</span>
+  <span class="token comment">// getByText("Hello world");</span>
+  <span class="token comment">// getByText(/Hello world/);</span>
+
+  screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">content<span class="token punctuation">,</span> node</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">hasText</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token operator">=></span> node<span class="token punctuation">.</span>textContent <span class="token operator">===</span> <span class="token string">"Hello world"</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> nodeHasText <span class="token operator">=</span> <span class="token function">hasText</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> childrenDontHaveText <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>children<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span>
+      <span class="token punctuation">(</span><span class="token parameter">child</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">!</span><span class="token function">hasText</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> nodeHasText <span class="token operator">&amp;&amp;</span> childrenDontHaveText<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>We're ignoring the <code>content</code> argument because in this case, it will either be
+&quot;Hello&quot;, &quot;world&quot; or an empty string.</p>
+<p>What we are checking instead is that the current node has the right
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"><code>textContent</code></a>.
+<code>hasText</code> is a little helper function to do that. I declared it to keep things
+clean.</p>
+<p>That's not all though. Our <code>div</code> is not the only node with the text we're
+looking for. For example, <code>body</code> in this case has the same text. To avoid
+returning more nodes than needed we are making sure that none of the children
+has the same text as its parent. In this way we're making sure that the node
+we're returning is the smallest—in other words the one closes to the bottom of
+our DOM tree.</p>
+<h2>5. You can simulate browsers events with <code>user-event</code></h2>
+<p>Ok, this one is a shameless plug since I'm the author of <code>user-event</code>. Still,
+people—myself included—find it useful. Maybe you will too.</p>
+<p>All <code>user-event</code> tries to do is to simulate the events a real user would do
+while interacting with your application. What does it mean? Imagine you have an
+<code>input</code> field, and in your tests, you want to enter some text in it. You would
+probably do something like this:</p>
+<pre class="language-jsx"><code class="language-jsx">fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">"Hello world"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>It works but it doesn't simulate what happens in the browser. A real user would
+most likely move the mouse to select the input field and then start typing one
+character at the time. This, in turns, fires many events (<code>blur</code>, <code>focus</code>,
+<code>mouseEnter</code>, <code>keyDown</code>, <code>keyUp</code>...). <code>user-event</code> simulates all those events
+for you:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> userEvent <span class="token keyword">from</span> <span class="token string">"@testing-library/user-event"</span><span class="token punctuation">;</span>
+
+userEvent<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> <span class="token string">"Hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Check out the
+<a href="https://github.com/testing-library/user-event/blob/master/README.md">README</a> to
+see the available APIs and feel free to propose new ones too.</p>
+
+</main>
+
+    </div>
+  </body>
+</html>

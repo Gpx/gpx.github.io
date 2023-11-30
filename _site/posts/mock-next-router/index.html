@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mock Next.js Router for Testing</title>
+    <link rel="stylesheet" href="/bundle.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/">polvara.me</a></header>
+      
+<h1 class="post-title">Mock Next.js Router for Testing</h1>
+<div class="post-date">
+  May 9, 2023
+</div>
+
+<main class="post">
+  <p>How do you test route changes in Jest Next.js? Well, out of the box, it sucks 😔</p>
+<p>That's because Jest tests are not running in a real browser. Instead, they run in an environment called <a href="https://github.com/jsdom/jsdom">jsdom</a>.
+jsdom's job is to simulate a browser as much as possible, but if writing a browser is hard, simulating it can be even harder.
+In particular, jsdom does not simulate navigation. So how do we test these cases?</p>
+<p>Luckily Next.js comes with its own routing. We can mock that!
+You can use <code>next-router-mock</code> and do something like this:</p>
+<pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@testing-library/react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> userEvent <span class="token keyword">from</span> <span class="token string">"@testing-library/user-event"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> mockRouter <span class="token keyword">from</span> <span class="token string">"next-router-mock"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MemoryRouterProvider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"next-router-mock/MemoryRouterProvider"</span><span class="token punctuation">;</span>
+
+<span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"tests also route changes"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> user <span class="token operator">=</span> userEvent<span class="token punctuation">.</span><span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyComponent</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> wrapper<span class="token operator">:</span> MemoryRouterProvider <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  user<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">"Navigate away"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>mockRouter<span class="token punctuation">.</span>asPath<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token string">"/away"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>You can see more examples in <code>next-router-mock</code> <a href="https://github.com/scottrippey/next-router-mock#readme">README</a>.</p>
+
+</main>
+
+    </div>
+  </body>
+</html>

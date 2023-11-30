@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>polvara.me</title>
+    <link rel="stylesheet" href="/bundle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/">polvara.me</a></header>
+      
+<h1 class="post-title">Branded types in TypeScript</h1>
+<div class="post-date">Nov 27, 2023</div>
+
+<main class="post">
+  <p>Brand types are a relatively unknown feature of TypeScript but can help make a codebase safer. As with all types, they don’t replace testing or even QA but augment them, improving the developer experience.</p>
+<p>We can see why they are useful with a simple example. See if you can spot the bug in the snippet below.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">purchaseFlight</span><span class="token punctuation">(</span>userId<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> flightId<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Pretend we’re buying a flight ticket</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> userId<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">"U123"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> flightId<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">"F456"</span><span class="token punctuation">;</span>
+
+<span class="token function">purchaseFlight</span><span class="token punctuation">(</span>flightId<span class="token punctuation">,</span> userId<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The error is right at the bottom. We’re calling <code>purchaseFlight</code> with its arguments reversed: the user ID becomes the flight ID and vice versa. Again, you should have tests covering this scenario, but it would be great if TypeScript helped us while writing this code.</p>
+<p>The issue is that <code>userId</code> and <code>flightId</code> are of type <code>string</code>, so there’s no way to distinguish them at the type level. Let’s try by introducing type aliases.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> <span class="token class-name">UserId</span> <span class="token operator">=</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">FlightId</span> <span class="token operator">=</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">purchaseFlight</span><span class="token punctuation">(</span>userId<span class="token operator">:</span> UserId<span class="token punctuation">,</span> flightId<span class="token operator">:</span> FlightId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Pretend we’re buying a flight ticket</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> userId<span class="token operator">:</span> UserId <span class="token operator">=</span> <span class="token string">"U123"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> flightId<span class="token operator">:</span> FlightId <span class="token operator">=</span> <span class="token string">"F456"</span><span class="token punctuation">;</span>
+
+<span class="token function">purchaseFlight</span><span class="token punctuation">(</span>flightId<span class="token punctuation">,</span> userId<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This version would make sense in a language like Java or C++ that supports a <a href="https://en.wikipedia.org/wiki/Nominal_type_system"><em>nominal type system</em></a> but not in TypeScript. This code and the one above are equivalent.</p>
+<p>Here’s where brand types come into play. With a brand type, we can simulate nominal types. See the updated version of our example.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> <span class="token class-name">UserId</span> <span class="token operator">=</span> Brand<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">"UserId"</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">FlightId</span> <span class="token operator">=</span> Brand<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">"FlightId"</span><span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">purchaseFlight</span><span class="token punctuation">(</span>userId<span class="token operator">:</span> UserId<span class="token punctuation">,</span> flightId<span class="token operator">:</span> FlightId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Pretend we’re buying a flight ticket</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> userId <span class="token operator">=</span> <span class="token string">"U123"</span> <span class="token keyword">as</span> UserId<span class="token punctuation">;</span>
+<span class="token keyword">const</span> flightId <span class="token operator">=</span> <span class="token string">"F456"</span> <span class="token keyword">as</span> FlightId<span class="token punctuation">;</span>
+
+<span class="token comment">// @ts-expect-error</span>
+<span class="token function">purchaseFlight</span><span class="token punctuation">(</span>flightId<span class="token punctuation">,</span> userId<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+</main>
+
+    </div>
+  </body>
+</html>

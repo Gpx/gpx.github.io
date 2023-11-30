@@ -1,0 +1,45 @@
+<h1>Brand types in TypeScript</h1>
+<p>Status: In progress</p>
+<p>Brand types are a relatively unknown feature of TypeScript but can help make a codebase safer. As with all types, they don’t replace testing or QA but augment them, improving the developer experience.</p>
+<p>We can see why they are useful with a simple example. See if you can spot the bug in the snippet below.</p>
+<pre class="language-tsx"><code class="language-tsx"><span class="token keyword">function</span> <span class="token function">purchaseFlight</span><span class="token punctuation">(</span>userId<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> flightId<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Pretend we’re buying a flight ticket</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> userId<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'U123'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> flightId<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'F456'</span><span class="token punctuation">;</span>
+
+<span class="token function">purchaseFlight</span><span class="token punctuation">(</span>flightId<span class="token punctuation">,</span> userId<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The error is right at the bottom. We’re calling <code>purchaseFlight</code> with its arguments reversed: the user ID becomes the flight ID and vice versa. Again, you should have tests covering this scenario, but it would be great if TypeScript helped us while writing this code.</p>
+<p>The issue is that <code>userId</code> and <code>flightId</code> are of type <code>string</code>, so there’s no way to distinguish them at the type level. Let’s try by introducing type aliases.</p>
+<pre class="language-tsx"><code class="language-tsx"><span class="token keyword">type</span> <span class="token class-name">UserId</span> <span class="token operator">=</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">FlightId</span> <span class="token operator">=</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">purchaseFlight</span><span class="token punctuation">(</span>userId<span class="token operator">:</span> UserId<span class="token punctuation">,</span> flightId<span class="token operator">:</span> FlightId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Pretend we’re buying a flight ticket</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> userId<span class="token operator">:</span> UserId <span class="token operator">=</span> <span class="token string">'U123'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> flightId<span class="token operator">:</span> FlightId <span class="token operator">=</span> <span class="token string">'F456'</span><span class="token punctuation">;</span>
+
+<span class="token function">purchaseFlight</span><span class="token punctuation">(</span>flightId<span class="token punctuation">,</span> userId<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This version would make sense in a language like Java or C++ that supports a <a href="https://en.wikipedia.org/wiki/Nominal_type_system"><em>nominal type system</em></a> but not in TypeScript. This code and the one above are equivalent.</p>
+<p>Here’s where brand types come into play. With a brand type, we can simulate nominal types. See the updated version of our example.</p>
+<pre class="language-tsx"><code class="language-tsx"><span class="token keyword">type</span> <span class="token class-name">UserId</span> <span class="token operator">=</span> Brand<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">"UserId"</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">FlightId</span> <span class="token operator">=</span> Brand<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">"FlightId"</span><span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">purchaseFlight</span><span class="token punctuation">(</span>userId<span class="token operator">:</span> UserId<span class="token punctuation">,</span> flightId<span class="token operator">:</span> FlightId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Pretend we’re buying a flight ticket</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> userId <span class="token operator">=</span> <span class="token string">"U123"</span> <span class="token keyword">as</span> UserId<span class="token punctuation">;</span>
+<span class="token keyword">const</span> flightId <span class="token operator">=</span> <span class="token string">"F456"</span> <span class="token keyword">as</span> FlightId<span class="token punctuation">;</span>
+
+<span class="token comment">// @ts-expect-error</span>
+<span class="token function">purchaseFlight</span><span class="token punctuation">(</span>flightId<span class="token punctuation">,</span> userId<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This is finally failing, as we’re expecting. By introducing the <code>Brand</code> generic type, we can tell TypeScript that although our values are both strings, they are indeed of different types.</p>
+<p>Notice how we had to use the <code>as</code> operator when declaring our values. Without that, TypeScript would have no way to know that “<code>U123</code>” is not a simple string but a <code>UserId</code>.</p>
+<p>There are different ways to implement <code>Brand</code>, each with pros and cons. Some TypeScript libraries like <a href="https://effect.website/docs/style/brands">Effect come with one</a>. I like to use <a href="https://twitter.com/mattpocockuk/status/1625173884885401600?lang=en">Matt Pocock’s implementation</a> because it’s easy to include in any codebase.</p>
+<pre class="language-tsx"><code class="language-tsx"><span class="token keyword">declare</span> <span class="token keyword">const</span> brand<span class="token operator">:</span> unique <span class="token builtin">symbol</span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">Brand<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token punctuation">,</span> TBrand <span class="token keyword">extends</span> <span class="token builtin">string</span><span class="token operator">></span></span> <span class="token operator">=</span> <span class="token constant">T</span> <span class="token operator">&amp;</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>brand<span class="token punctuation">]</span><span class="token operator">:</span> TBrand <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>You can play with <code>Brand</code> and the example in this post in <a href="https://www.typescriptlang.org/play?#code/CYUwxgNghgTiAEYD2A7AzgF3gIxlFwAXPAK4oCWAjiQmgJ4C22SEA3AFAZ0AOCAQngIAeACoAaeCIH5g8EAA8MIAmniYY5FAHMAfPAC8k+ADJ4Ab3gBtXDIC6xKYNkBfDpx4IAqmhAwAkrKG0sLqmloSAETevgEROhxcvPAAYhDkWgAWGAEG8MHAQqHakanpWbHx7OwAZmRgGOSo8NwkMGAZUD6lmRgAFCQ+-kTw0UMS1Wk9AcTd5cAAlObs8PAA9KvwAApwSgTwAO4ggJgEcDgkdGHwUPATZVgNYADWIBjszlXI6FgDMYHwUQBGABMAGYIldVKMAhxPpgbpM5rkIskACwAVgAbODOikEdlgG51vAAAIYNAAWgUvHqlJgMCQMHYLTaHS6eN6tymwAkPyG8zczPanRAsz6vIC4zxAX57CAA">this playground</a>.</p>
