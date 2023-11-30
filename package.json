@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx @11ty/eleventy --output=docs",
+    "build": "npx @11ty/eleventy",
     "serve": "npx @11ty/eleventy --serve"
   },
   "keywords": [],
