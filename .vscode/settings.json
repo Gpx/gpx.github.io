@@ -1,0 +1,9 @@
+{
+  "grammarly.selectors": [
+    {
+      "language": "liquid",
+      "scheme": "file",
+      "pattern": "index.liquid"
+    }
+  ]
+}
