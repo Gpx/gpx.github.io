@@ -35,6 +35,12 @@ body {
   min-height: 100dvh;
 }
 
+@media (max-width: 640px) {
+  body {
+    border: none;
+  }
+}
+
 a {
   color: var(--text);
   text-decoration: none;
@@ -50,6 +56,12 @@ a:hover {
   margin: 0 auto;
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+
 header {
   display: flex;
   align-items: baseline;
@@ -61,6 +73,12 @@ header {
   border-bottom: 3px solid currentColor;
 }
 
+@media (max-width: 640px) {
+  header {
+    padding: 1rem 0.5rem;
+  }
+}
+
 header select {
   font-size: 0.9rem;
   padding: 0.5rem;
@@ -70,6 +88,12 @@ header select {
   color: inherit;
   appearance: none;
   margin-right: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  header select {
+    display: none;
+  }
 }
 
 header a {
@@ -98,6 +122,12 @@ header > * {
   background-color: var(--text);
   color: var(--background);
   font-weight: 900;
+}
+
+@media (max-width: 640px) {
+  .introduction {
+    padding: 1rem;
+  }
 }
 
 .posts {
