@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title | default: "polvara.me" }}</title>
     <link rel="stylesheet" href="/bundle.css" />
-    <meta name="theme-color" content="#FF0000" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -21,12 +20,21 @@
       sizes="16x16"
       href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <script src="/bundle.js"></script>
   </head>
   <body>
     <div class="container">
       <header>
         <a href="/" class="main-link">polvara.me</a>
-        <a href="https://twitter.com/Gpx">Find me on X</a>
+        <div>
+          <select>
+            <option value="theme-1">Forest Glow</option>
+            <option value="theme-2">Lush Citrus</option>
+            <option value="theme-3">Rustic Ember</option>
+            <option value="theme-4">Mono Chic</option>
+          </select>
+          <a href="https://twitter.com/Gpx">Find me on X</a>
+        </div>
       </header>
       {{ content }}
     </div>
