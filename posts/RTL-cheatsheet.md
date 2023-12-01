@@ -2,6 +2,7 @@
 tags: post
 layout: post.liquid
 title: Testing Library Cheatsheet
+favorite: true
 ---
 
 I made a short cheatsheet for Testing Library. You can use it as a reference while writing tests.
