@@ -376,3 +376,16 @@ pre > code.highlight {
 a > code {
   text-underline-offset: auto;
 }
+
+footer {
+  font-size: 0.9rem;
+  margin-top: 4rem;
+  padding: 1rem 0;
+  border-top: 3px solid currentColor;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
