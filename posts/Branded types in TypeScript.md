@@ -2,6 +2,7 @@
 tags: post
 layout: post.liquid
 title: Branded types in TypeScript
+date: 2023-12-01
 ---
 
 Branded types are a relatively unknown feature of TypeScript but can help make a codebase safer. As with all types, they don’t replace testing or QA but augment them, improving the developer experience.

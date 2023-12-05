@@ -3,7 +3,7 @@ tags: post
 layout: post.liquid
 title: Testing Library Cheatsheet
 favorite: true
-date: git Created
+date: 2023-12-02
 ---
 
 I made a short cheatsheet for Testing Library. You can use it as a reference while writing tests.

@@ -2,6 +2,7 @@
 tags: post
 layout: post.liquid
 title: How to deprecate a component
+date: 2023-12-05
 ---
 
 If you work on a long-lived codebase, you will inevitably need to deprecate a component. Your decisions are no longer valid, or you found a better way to achieve the same result.
