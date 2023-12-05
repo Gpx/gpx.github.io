@@ -4,6 +4,11 @@
       "language": "liquid",
       "scheme": "file",
       "pattern": "index.liquid"
+    },
+    {
+      "language": "markdown",
+      "scheme": "file",
+      "pattern": "tech-stack.md"
     }
   ]
 }
