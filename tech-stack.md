@@ -2,7 +2,7 @@
 layout: post.liquid
 title: My Tech Stack
 show_last_modified: true
-date: Last Modified
+date: git Last Modified
 tags: post
 ---
 
