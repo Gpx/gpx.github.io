@@ -49,7 +49,7 @@ function Page() {
 }
 ```
 
-Talking about obvious! Now, even the junior developer joining your team next week will know at first glance that that component is deprecated.
+Talking about obvious! Now, even [the junior developer joining your team next week](/posts/Take%20decisions%20for%20the%20junior%20developer%20you%20haven/) will know at first glance that that component is deprecated.
 
 Depending on your case, you can use different names: `DeprecatedButtonDoNotUse` or `DeprecatedWindowUseModalInstead` are good examples.
 

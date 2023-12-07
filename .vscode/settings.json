@@ -9,6 +9,11 @@
       "language": "markdown",
       "scheme": "file",
       "pattern": "tech-stack.md"
+    },
+    {
+      "language": "markdown",
+      "scheme": "file",
+      "pattern": "posts/Take decisions for the junior developer you haven.md"
     }
   ]
 }
