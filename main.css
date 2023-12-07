@@ -149,11 +149,13 @@ header > * {
 }
 
 .post-title {
-  font-size: 3.5rem;
-  font-weight: 600;
+  font-size: 4rem;
+  font-weight: 800;
   text-wrap: balance;
   margin-top: 4rem;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  max-width: 90%;
 }
 
 .post-date {
