@@ -74,3 +74,12 @@ type Reverse<T extends string> = T extends `${infer Head}${infer Tail}`
   ? `${Reverse<Tail>}${Head}`
   : "";
 ```
+
+## Day Ten
+
+```ts
+type StreetSuffixTester<
+  TString extends string,
+  TSuffix extends string
+> = TString extends `${string}${TSuffix}` ? true : false;
+```
