@@ -83,3 +83,13 @@ type StreetSuffixTester<
   TSuffix extends string
 > = TString extends `${string}${TSuffix}` ? true : false;
 ```
+
+## Day Eleven
+
+```ts
+type SantaListProtector<T> = T extends Record<string, unknown> | Array<unknown>
+  ? {
+      readonly [K in keyof T]: SantaListProtector<T[K]>;
+    }
+  : T;
+```
