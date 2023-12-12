@@ -1,4 +1,5 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("main.css");
@@ -24,4 +25,9 @@ module.exports = function (eleventyConfig) {
     });
   });
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.amendLibrary("md", (mdLib) =>
+    mdLib.use(markdownItAnchor, {
+      permalink: markdownItAnchor.permalink.headerLink(),
+    })
+  );
 };

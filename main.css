@@ -215,6 +215,14 @@ header > * {
   text-wrap: balance;
 }
 
+.post h2 a {
+  text-decoration: none;
+}
+
+.post h2 a:hover::after {
+  content: " #";
+}
+
 .post h3 {
   font-size: 2rem;
   font-weight: 600;
