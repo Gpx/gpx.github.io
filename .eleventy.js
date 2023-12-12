@@ -25,9 +25,24 @@ module.exports = function (eleventyConfig) {
     });
   });
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.amendLibrary("md", (mdLib) =>
+  eleventyConfig.amendLibrary("md", (mdLib) => {
+    const proxy = (tokens, idx, options, env, self) =>
+      self.renderToken(tokens, idx, options);
+    const defaultLinkOpen = mdLib.renderer.rules.link_open || proxy;
+    mdLib.renderer.rules.link_open = function (
+      tokens,
+      idx,
+      options,
+      env,
+      self
+    ) {
+      if (tokens[idx].attrGet("href").startsWith("http"))
+        tokens[idx].attrPush(["target", "_blank"]);
+      return defaultLinkOpen(tokens, idx, options, env, self);
+    };
+
     mdLib.use(markdownItAnchor, {
       permalink: markdownItAnchor.permalink.headerLink(),
-    })
-  );
+    });
+  });
 };
