@@ -93,3 +93,16 @@ type SantaListProtector<T> = T extends Record<string, unknown> | Array<unknown>
     }
   : T;
 ```
+
+## Day Twelve
+
+```ts
+type FindSanta<TForest extends ("🎅🏼" | "🎄")[]> = TForest extends [
+  ...infer Head extends ("🎅🏼" | "🎄")[],
+  infer Tail
+]
+  ? Tail extends "🎅🏼"
+    ? Head["length"]
+    : FindSanta<Head>
+  : never;
+```
