@@ -106,3 +106,27 @@ type FindSanta<TForest extends ("🎅🏼" | "🎄")[]> = TForest extends [
     : FindSanta<Head>
   : never;
 ```
+
+## Day Thirteen
+
+```ts
+type DayCounter<FromT extends number, ToT extends number> = [
+  ...DropHead<FromT, Tail<Arr<ToT>>>,
+  ToT
+][number];
+
+type Arr<N extends number, T extends any[] = []> = T["length"] extends N
+  ? T
+  : Arr<N, [...T, T["length"]]>;
+
+type DropHead<N extends number, T extends number[]> = T extends [
+  infer Head,
+  ...infer Tail extends number[]
+]
+  ? N extends Head
+    ? T
+    : DropHead<N, Tail>
+  : [];
+
+type Tail<T extends any[]> = T extends [infer Head, ...infer Tail] ? Tail : [];
+```
