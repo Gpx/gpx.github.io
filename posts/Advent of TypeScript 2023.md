@@ -130,3 +130,14 @@ type DropHead<N extends number, T extends number[]> = T extends [
 
 type Tail<T extends any[]> = T extends [infer Head, ...infer Tail] ? Tail : [];
 ```
+
+## Day Fourteen
+
+```ts
+type DecipherNaughtyList<ListT extends string> = ListToArray<ListT>[number];
+
+type ListToArray<ListT extends string> =
+  ListT extends `${infer Name}/${infer Rest}`
+    ? [Name, ...ListToArray<Rest>]
+    : [ListT];
+```
