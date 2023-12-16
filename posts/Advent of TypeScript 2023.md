@@ -141,3 +141,11 @@ type ListToArray<ListT extends string> =
     ? [Name, ...ListToArray<Rest>]
     : [ListT];
 ```
+
+## Day Fifteen
+
+```ts
+type BoxToys<S, N extends number, A extends any[] = []> = N extends A["length"]
+  ? A
+  : BoxToys<S, N, [S, ...A]>;
+```
