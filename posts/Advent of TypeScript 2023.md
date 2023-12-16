@@ -149,3 +149,25 @@ type BoxToys<S, N extends number, A extends any[] = []> = N extends A["length"]
   ? A
   : BoxToys<S, N, [S, ...A]>;
 ```
+
+## Day Sixteen
+
+```ts
+type FindSanta<TForest extends string[][]> = TForest extends [
+  ...infer Head extends string[][],
+  infer Tail extends string[]
+]
+  ? FindSantaArray<Tail> extends never
+    ? FindSanta<Head>
+    : [Head["length"], FindSantaArray<Tail>]
+  : unknown;
+
+type FindSantaArray<TForest extends string[]> = TForest extends [
+  ...infer Head extends string[],
+  infer Tail
+]
+  ? Tail extends "🎅🏼"
+    ? Head["length"]
+    : FindSantaArray<Head>
+  : never;
+```
