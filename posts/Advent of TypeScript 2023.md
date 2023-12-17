@@ -171,3 +171,26 @@ type FindSantaArray<TForest extends string[]> = TForest extends [
     : FindSantaArray<Head>
   : never;
 ```
+
+## Day Seventeen
+
+```ts
+type RockPaperScissors = "👊🏻" | "🖐🏾" | "✌🏽";
+
+type WhoWins<
+  TOpponent extends RockPaperScissors,
+  TYou extends RockPaperScissors
+> = TOpponent extends TYou
+  ? "draw"
+  : TOpponent extends "👊🏻"
+  ? TYou extends "🖐🏾"
+    ? "win"
+    : "lose"
+  : TOpponent extends "🖐🏾"
+  ? TYou extends "👊🏻"
+    ? "lose"
+    : "win"
+  : TYou extends "👊🏻"
+  ? "win"
+  : "lose";
+```
