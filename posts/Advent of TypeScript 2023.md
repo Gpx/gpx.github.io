@@ -194,3 +194,15 @@ type WhoWins<
   ? "win"
   : "lose";
 ```
+
+## Day Eighteen
+
+```ts
+type Count<ToySack, Toy> = Filter<ToySack, Toy>["length"];
+
+type Filter<ToySack, Toy> = ToySack extends [infer Head, ...infer Tail]
+  ? Head extends Toy
+    ? [Head, ...Filter<Tail, Toy>]
+    : Filter<Tail, Toy>
+  : [];
+```
