@@ -206,3 +206,31 @@ type Filter<ToySack, Toy> = ToySack extends [infer Head, ...infer Tail]
     : Filter<Tail, Toy>
   : [];
 ```
+
+## Day Nineteen
+
+```ts
+type NextItem = {
+  "🛹": "🚲";
+  "🚲": "🛴";
+  "🛴": "🏄";
+  "🏄": "🛹";
+};
+
+type Rebuild<List> = Flatten<RebuildArray<List>>;
+
+type RebuildArray<List, Item extends keyof NextItem = "🛹"> = List extends [
+  infer Head extends number,
+  ...infer Tail
+]
+  ? [Repeat<Item, Head>, ...RebuildArray<Tail, NextItem[Item]>]
+  : [];
+
+type Repeat<S, N extends number, A extends any[] = []> = N extends A["length"]
+  ? A
+  : Repeat<S, N, [S, ...A]>;
+
+type Flatten<T> = T extends [infer Head extends any[], ...infer Tail]
+  ? [...Head, ...Flatten<Tail>]
+  : [];
+```
