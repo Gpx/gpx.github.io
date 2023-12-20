@@ -234,3 +234,60 @@ type Flatten<T> = T extends [infer Head extends any[], ...infer Tail]
   ? [...Head, ...Flatten<Tail>]
   : [];
 ```
+
+## Day Twenty
+
+```ts
+type Letters = {
+  A: ["█▀█ ", "█▀█ ", "▀ ▀ "];
+  B: ["█▀▄ ", "█▀▄ ", "▀▀  "];
+  C: ["█▀▀ ", "█ ░░", "▀▀▀ "];
+  E: ["█▀▀ ", "█▀▀ ", "▀▀▀ "];
+  H: ["█ █ ", "█▀█ ", "▀ ▀ "];
+  I: ["█ ", "█ ", "▀ "];
+  M: ["█▄░▄█ ", "█ ▀ █ ", "▀ ░░▀ "];
+  N: ["█▄░█ ", "█ ▀█ ", "▀ ░▀ "];
+  P: ["█▀█ ", "█▀▀ ", "▀ ░░"];
+  R: ["█▀█ ", "██▀ ", "▀ ▀ "];
+  S: ["█▀▀ ", "▀▀█ ", "▀▀▀ "];
+  T: ["▀█▀ ", "░█ ░", "░▀ ░"];
+  Y: ["█ █ ", "▀█▀ ", "░▀ ░"];
+  W: ["█ ░░█ ", "█▄▀▄█ ", "▀ ░ ▀ "];
+  " ": ["░", "░", "░"];
+  ":": ["#", "░", "#"];
+  "*": ["░", "#", "░"];
+};
+
+type ToAsciiArt<S extends string> = Flatten<ToAsciiArtLines<S>>;
+
+type ToAsciiArtLines<S extends string> = S extends `${infer H}\n${infer T}`
+  ? [ToAsciiArtLine<H>, ...ToAsciiArtLines<T>]
+  : [ToAsciiArtLine<S>];
+
+type ToAsciiArtLine<S extends string> = Joiner<ToAsciiArray<S>>;
+
+type ToAsciiArray<S extends string> =
+  Uppercase<S> extends `${infer H extends keyof Letters}${infer T}`
+    ? [Letters[H], ...ToAsciiArray<T>]
+    : [];
+
+type Joiner<
+  L extends [string, string, string][],
+  Tops extends string = "",
+  Middles extends string = "",
+  Bottoms extends string = ""
+> = L extends [
+  [
+    infer Top extends string,
+    infer Middle extends string,
+    infer Bottom extends string
+  ],
+  ...infer Tail extends [string, string, string][]
+]
+  ? Joiner<Tail, `${Tops}${Top}`, `${Middles}${Middle}`, `${Bottoms}${Bottom}`>
+  : [Tops, Middles, Bottoms];
+
+type Flatten<T> = T extends [infer Head extends any[], ...infer Tail]
+  ? [...Head, ...Flatten<Tail>]
+  : [];
+```
