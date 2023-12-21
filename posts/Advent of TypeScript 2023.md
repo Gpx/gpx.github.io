@@ -291,3 +291,163 @@ type Flatten<T> = T extends [infer Head extends any[], ...infer Tail]
   ? [...Head, ...Flatten<Tail>]
   : [];
 ```
+
+## Day Twenty-One
+
+```ts
+type TicTacToeChip = "❌" | "⭕";
+type TicTacToeEndState = "❌ Won" | "⭕ Won" | "Draw";
+type TicTacToeState = TicTacToeChip | TicTacToeEndState;
+type TicTacToeEmptyCell = "  ";
+type TicTacToeCell = TicTacToeChip | TicTacToeEmptyCell;
+type TicTacToeYPositions = "top" | "middle" | "bottom";
+type TicTacToeXPositions = "left" | "center" | "right";
+type TicTacToePositions = `${TicTacToeYPositions}-${TicTacToeXPositions}`;
+type TicTacToeBoard = TicTacToeCell[][];
+type TicTacToeGame = {
+  board: TicTacToeBoard;
+  state: TicTacToeState;
+};
+
+type EmptyBoard = [["  ", "  ", "  "], ["  ", "  ", "  "], ["  ", "  ", "  "]];
+
+type NewGame = {
+  board: EmptyBoard;
+  state: "❌";
+};
+
+type TicTacToe<
+  Game extends TicTacToeGame,
+  Move extends TicTacToePositions
+> = IsMoveInvalid<Game, Move> extends true
+  ? Game
+  : {
+      board: NextBoard<Game, Move>;
+      state: VerifyState<NextBoard<Game, Move>, Game["state"]>;
+    };
+
+type IsMoveInvalid<Game extends TicTacToeGame, Move> = GetCell<
+  Game,
+  Move
+> extends TicTacToeEmptyCell
+  ? false
+  : true;
+
+type GetCell<Game extends TicTacToeGame, Move> = Game["board"][PositionYToIndex<
+  MoveY<Move>
+>][PositionXToIndex<MoveX<Move>>];
+
+type PositionYToIndex<Position> = Position extends "top"
+  ? 0
+  : Position extends "middle"
+  ? 1
+  : 2;
+type PositionXToIndex<Position> = Position extends "left"
+  ? 0
+  : Position extends "center"
+  ? 1
+  : 2;
+
+type NextBoard<
+  Game extends TicTacToeGame,
+  Move extends TicTacToePositions
+> = Game["state"] extends TicTacToeChip
+  ? UpdateBoard<Game["board"], MoveY<Move>, MoveX<Move>, Game["state"]>
+  : Game["board"];
+
+type MoveX<Move> = Move extends `${string}-${infer X}` ? X : unknown;
+type MoveY<Move> =
+  Move extends `${infer Y extends TicTacToeYPositions}-${string}` ? Y : unknown;
+
+type VerifyState<
+  Board extends TicTacToeBoard,
+  Chip extends TicTacToeState
+> = SomeWin<Board, Chip> extends true
+  ? `${Chip} Won`
+  : SomeDraw<Board> extends true
+  ? `Draw`
+  : NextChip<Chip>;
+
+type SomeWin<Board extends TicTacToeBoard, Chip> = SomeLineWin<
+  Board,
+  Chip
+> extends true
+  ? true
+  : SomeColumnWin<Board, Chip> extends true
+  ? true
+  : SomeDiagonalWin<Board, Chip> extends true
+  ? true
+  : false;
+
+type SomeDraw<Board extends TicTacToeBoard> = IsLineFull<Board[0]> extends false
+  ? false
+  : IsLineFull<Board[1]> extends false
+  ? false
+  : IsLineFull<Board[2]> extends false
+  ? false
+  : true;
+
+type IsLineFull<Line extends TicTacToeCell[]> =
+  Line[0] extends TicTacToeEmptyCell
+    ? false
+    : Line[1] extends TicTacToeEmptyCell
+    ? false
+    : Line[2] extends TicTacToeEmptyCell
+    ? false
+    : true;
+
+type SomeLineWin<Board extends TicTacToeBoard, Chip> = LineWin<
+  Board[0],
+  Chip
+> extends true
+  ? true
+  : LineWin<Board[1], Chip> extends true
+  ? true
+  : LineWin<Board[2], Chip> extends true
+  ? true
+  : false;
+
+type LineWin<Line extends TicTacToeCell[], Chip> = Line[0] extends Chip
+  ? Line[1] extends Chip
+    ? Line[2] extends Chip
+      ? true
+      : false
+    : false
+  : false;
+
+type SomeColumnWin<Board extends TicTacToeBoard, Chip> = LineWin<
+  [Board[0][0], Board[1][0], Board[2][0]],
+  Chip
+> extends true
+  ? true
+  : LineWin<[Board[0][1], Board[1][1], Board[2][1]], Chip> extends true
+  ? true
+  : LineWin<[Board[0][2], Board[1][2], Board[2][2]], Chip>;
+
+type SomeDiagonalWin<Board extends TicTacToeBoard, Chip> = LineWin<
+  [Board[0][0], Board[1][1], Board[2][2]],
+  Chip
+> extends true
+  ? true
+  : LineWin<[Board[2][0], Board[1][1], Board[0][2]], Chip>;
+
+type UpdateBoard<Board extends TicTacToeBoard, Y, X, Chip> = Y extends "top"
+  ? [UpdateLine<Board[0], X, Chip>, Board[1], Board[2]]
+  : Y extends "middle"
+  ? [Board[0], UpdateLine<Board[1], X, Chip>, Board[2]]
+  : [Board[0], Board[1], UpdateLine<Board[2], X, Chip>];
+
+type UpdateLine<Cells extends TicTacToeCell[], X, Chip> = X extends "left"
+  ? Cells[0] extends TicTacToeEmptyCell
+    ? [Chip, Cells[1], Cells[2]]
+    : Cells
+  : X extends "center"
+  ? Cells[1] extends TicTacToeEmptyCell
+    ? [Cells[0], Chip, Cells[2]]
+    : Cells
+  : Cells[2] extends TicTacToeEmptyCell
+  ? [Cells[0], Cells[1], Chip]
+  : Cells;
+
+type NextChip<State> = State extends "⭕" ? "❌" : "⭕";
+```
