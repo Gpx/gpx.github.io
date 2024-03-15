@@ -3,7 +3,7 @@ layout: post.liquid
 title: My Tech Stack
 show_last_modified: true
 date: git Last Modified
-tags: post
+# tags: post
 ---
 
 <style>
