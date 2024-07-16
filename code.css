@@ -1,5 +1,4 @@
-code[class*="language-"],
-pre[class*="language-"] {
+pre:has(> code) {
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
     "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
     "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
@@ -16,15 +15,15 @@ pre[class*="language-"] {
   color: #9a86fd;
 }
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
+pre::selection,
+pre ::selection,
+code::selection,
+code ::selection {
   text-shadow: none;
   background: #6a51e6;
 }
 
-pre[class*="language-"] {
+pre:has(> code) {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
