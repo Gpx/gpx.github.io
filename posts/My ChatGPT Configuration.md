@@ -2,7 +2,7 @@
 tags: post
 title: My ChatGPT Configuration
 layout: post.liquid
-date: "2024-07-16"
+date: "2024-07-20"
 ---
 
 I’ve been using ChatGPT since it first came out, and it has become an invaluable tool that assists me in my job. I mainly use it for:
@@ -38,6 +38,7 @@ Do not include commands to install dependencies unless I ask you to
 Write frontend not front-end, same for fullstack and backend
 If I type xxx I want you to check the web before you answer me
 If I type ccc I want you to check the test I wrote for mistakes
+If I type ttt I want you to do the same you do for ccc but considering that the text is a tweet
 ```
 
 Here is where I try to gain speed. ChatGPT is slow, and to make things worse, by default it tends to write a lot and be very pompous. With the first two lines, I keep the answers short.
@@ -51,6 +52,8 @@ As I said, I use ChatGPT to help me write, and I have some conventions. One of t
 The last two lines are shortcuts. I often ask ChatGPT something and don’t trust it will give me the correct answer. What I want instead is for it to search the Web for information. I can do that by simply typing `xxx` at some point in my request. For example, “What’s the average distance from Earth to the Sun xxx” will provide me an answer with links to then verify it. I use this constantly. I use `xxx` because it is easy to remember and doesn’t usually appear in text. You can change it for whatever reason, of course.
 
 `ccc` is another shortcut I use to check if the text I entered is correct. As an Italian living in Spain and working in English, I often wonder if my sentences are correct. Now, I can type “voy a estar alli ccc” to know I’m missing an accent.
+
+`ttt` does the same as `ccc` but considering that the text is a tweet. This is useful because tweets have a character limit, and I often need to shorten my sentences.
 
 ---
 
