@@ -64,7 +64,7 @@ the page.
 
 Every rule has an exception and this one is no exception.
 
-If your hook gets called frequently—maybe because it's using `useContext` with a context that changes often—you might have a problem. Your hook will cause its caller component to re-render every time. This can lead to performance issues. In this case a null component is a better choice. My advice is to keep the hook but call it from a null component:
+If your hook gets called frequently—maybe because it's using `useContext` with a context that changes often—you might have a problem. Your hook will cause its caller component to re-render every time. This can lead to performance issues. In this case, a null component is a better choice. My advice is to keep the hook but call it from a null component:
 
 ```jsx
 function UpdatePageTitle() {
