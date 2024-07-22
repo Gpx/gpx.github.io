@@ -2,7 +2,7 @@
 tags: post
 layout: post.liquid
 title: "Null Components Should be Hooks"
-date: "2019-02-23"
+date: "2024-07-22"
 ---
 
 Before Hooks were introduced in React I used to create "null&nbsp;components".
@@ -59,3 +59,20 @@ it obvious to any developer who's using my code that nothing will be rendered on
 the page.
 
 > Here's the rule of thumb: is your component always rendering nothing? Convert it to a Hook.
+
+## The one exception to the rule
+
+Every rule has an exception and this one is no exception.
+
+If your hook gets called frequently—maybe because it's using `useContext` with a context that changes often—you might have a problem. Your hook will cause its caller component to re-render every time. This can lead to performance issues. In this case a null component is a better choice. My advice is to keep the hook but call it from a null component:
+
+```jsx
+function UpdatePageTitle() {
+  const someValue = useContext(SomeContext);
+  usePageTitle(someValue);
+
+  return null;
+}
+```
+
+A big thanks to [@gnapse](https://x.com/gnapse) for showing me this problem with my original approach.
