@@ -13,10 +13,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("favicon-32x32.png");
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("site.webmanifest");
-  eleventyConfig.addFilter("figure", (url, alt) => {
+  eleventyConfig.addFilter("figure", (url, description, alt = description) => {
     return `<figure>
       <img src="${url}" alt="${alt}" />
-      <figcaption>${alt}</figcaption>
+      <figcaption>${description}</figcaption>
     </figure>`;
   });
   eleventyConfig.addFilter("date", function (date) {
