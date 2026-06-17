@@ -53,6 +53,13 @@ layout: base.liquid
   </div>
 </header>
 
+{% assign toc = content | tocFromContent %}
+{% if toc != "" %}
+<div class="post-research-shell">
+  <aside class="post-toc-aside">{{ toc }}</aside>
+  <div class="post-research-body">
+{% endif %}
+
 <main class="post post-research">
   {{ content }}
 </main>
@@ -97,6 +104,12 @@ layout: base.liquid
       <span class="post-pagination-spacer" aria-hidden="true"></span>
     {% endif %}
   </nav>
+{% endif %}
+
+{% if toc != "" %}
+  </div>
+</div>
+<script src="/toc.js"></script>
 {% endif %}
 
 <script src="/citations.js"></script>

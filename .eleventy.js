@@ -10,6 +10,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("theme.js");
   eleventyConfig.addPassthroughCopy("transitions.js");
   eleventyConfig.addPassthroughCopy("citations.js");
+  eleventyConfig.addPassthroughCopy("toc.js");
   eleventyConfig.addPassthroughCopy({
     "node_modules/katex/dist/katex.min.css": "katex.min.css",
     "node_modules/katex/dist/fonts": "katex/fonts",
@@ -36,6 +37,55 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addFilter("isoDate", function (date) {
     return date.toISOString().slice(0, 10);
+  });
+  eleventyConfig.addFilter("tocFromContent", function (html, minH2 = 3) {
+    if (!html) return "";
+
+    const decodeEntities = (value) =>
+      value
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">");
+
+    const escape = (value) =>
+      value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+
+    const headingRe = /<h([23])([^>]*?)id="([^"]*)"[^>]*>([\s\S]*?)<\/h\1>/gi;
+    const headings = [];
+    let match;
+    while ((match = headingRe.exec(html)) !== null) {
+      headings.push({
+        level: match[1],
+        id: match[3],
+        text: decodeEntities(match[4].replace(/<[^>]+>/g, "").trim()),
+      });
+    }
+
+    const h2Count = headings.filter((h) => h.level === "2").length;
+    if (h2Count < minH2) return "";
+
+    const items = headings
+      .map((h) => {
+        const cls =
+          h.level === "3"
+            ? ' class="post-toc-item post-toc-h3"'
+            : ' class="post-toc-item"';
+        return `<li${cls}><a href="#${h.id}">${escape(h.text)}</a></li>`;
+      })
+      .join("");
+
+    return `<nav class="post-toc" aria-label="On this page">
+  <details class="post-toc-details">
+    <summary class="post-toc-label">On this page</summary>
+    <ol class="post-toc-list">${items}</ol>
+  </details>
+</nav>`;
   });
   eleventyConfig.addFilter("vtName", function (url) {
     if (!url) return "none";
