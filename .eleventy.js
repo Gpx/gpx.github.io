@@ -1,5 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItAnchor = require("markdown-it-anchor");
+const texmath = require("markdown-it-texmath");
+const katex = require("katex");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("AGENTS.md");
@@ -7,6 +9,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("code.css");
   eleventyConfig.addPassthroughCopy("theme.js");
   eleventyConfig.addPassthroughCopy("transitions.js");
+  eleventyConfig.addPassthroughCopy("citations.js");
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/katex/dist/katex.min.css": "katex.min.css",
+    "node_modules/katex/dist/fonts": "katex/fonts",
+  });
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("android-chrome-192x192.png");
@@ -70,6 +77,12 @@ module.exports = function (eleventyConfig) {
       }
       return defaultLinkOpen(tokens, idx, options, env, self);
     };
+
+    mdLib.use(texmath, {
+      engine: katex,
+      delimiters: "brackets",
+      katexOptions: { throwOnError: false },
+    });
 
     mdLib.use(markdownItAnchor, {
       permalink: markdownItAnchor.permalink.headerLink(),

@@ -1,0 +1,117 @@
+---
+layout: base.liquid
+---
+
+{% assign postsByDate = collections.post | reverse %}
+{% assign postIndex = -1 %}
+{% for item in postsByDate %}
+  {% if item.url == page.url %}
+    {% assign postIndex = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+{% assign newerIndex = postIndex | minus: 1 %}
+{% assign olderIndex = postIndex | plus: 1 %}
+{% assign newerPost = nil %}
+{% assign olderPost = nil %}
+{% for item in postsByDate %}
+  {% if forloop.index0 == newerIndex %}
+    {% assign newerPost = item %}
+  {% endif %}
+  {% if forloop.index0 == olderIndex %}
+    {% assign olderPost = item %}
+  {% endif %}
+{% endfor %}
+
+{% assign wordCount = content | strip_html | split: ' ' | size %}
+{% assign readingMinutes = wordCount | divided_by: 200.0 | ceil %}
+{% if readingMinutes < 1 %}
+  {% assign readingMinutes = 1 %}
+{% endif %}
+
+<nav class="post-nav-top" aria-label="Post navigation">
+  <a href="/" class="post-back">← Writing</a>
+</nav>
+
+<header class="post-header">
+  <p class="post-research-label">Deep Research</p>
+  <h1 class="post-title" style="view-transition-name: {{ page.url | vtName }}">{{ title }}</h1>
+  <div class="post-meta">
+  {% if showLastModified %}
+    Last modified: {{ page.date | date }}
+  {% else %}
+    <time datetime="{{ page.date | isoDate }}">{{ page.date | date }}</time>
+  {% endif %}
+  {% if favorite %}
+    &middot; Popular ⭐️
+  {% endif %}
+  &middot; {{ readingMinutes }} min read
+  {% assign researchReportUrl = geminiShare | default: googleDoc %}
+  {% if researchReportUrl %}
+    &middot; <a class="post-meta-link external-link" href="{{ researchReportUrl }}" target="_blank" rel="noopener noreferrer">Gemini report</a>
+  {% endif %}
+  </div>
+</header>
+
+<main class="post post-research">
+  {{ content }}
+</main>
+
+{% if sources %}
+  <section class="post-sources" aria-labelledby="sources-heading">
+    <h2 id="sources-heading">Sources</h2>
+    <ol class="post-sources-list">
+      {% for source in sources %}
+        <li id="source-{{ source.id | default: forloop.index }}" data-source-id="{{ source.id | default: forloop.index }}" class="post-source-item">
+          {% if source.links %}
+            <a href="{{ source.links[0].url }}" target="_blank" rel="noopener noreferrer" class="external-link post-source-link post-source-title">{{ source.links[0].title }}</a>
+          {% else %}
+            <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer" class="external-link post-source-link post-source-title">{{ source.title }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endif %}
+
+<p class="post-attribution">
+  Researched with <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="external-link">Google Gemini</a> Deep Research, prompted and edited by Giorgio Polvara.
+</p>
+
+{% if olderPost or newerPost %}
+  <nav class="post-pagination" aria-label="More posts">
+    {% if newerPost %}
+      <a class="post-pagination-link post-pagination-newer" href="{{ newerPost.url }}">
+        <span class="post-pagination-label">Newer</span>
+        <span class="post-pagination-title">{{ newerPost.data.title }}</span>
+      </a>
+    {% else %}
+      <span class="post-pagination-spacer" aria-hidden="true"></span>
+    {% endif %}
+    {% if olderPost %}
+      <a class="post-pagination-link post-pagination-older" href="{{ olderPost.url }}">
+        <span class="post-pagination-label">Older</span>
+        <span class="post-pagination-title">{{ olderPost.data.title }}</span>
+      </a>
+    {% else %}
+      <span class="post-pagination-spacer" aria-hidden="true"></span>
+    {% endif %}
+  </nav>
+{% endif %}
+
+<script src="/citations.js"></script>
+
+<footer class="post-cta">
+  <p>Would you like to have a civil discussion about this post?</p>
+  <p>
+    <a
+      href="https://www.linkedin.com/in/polvara/"
+      target="_blank"
+      rel="noopener noreferrer">LinkedIn</a>
+    or
+    <a
+      href="https://twitter.com/Gpx"
+      target="_blank"
+      rel="noopener noreferrer">Twitter</a>
+  </p>
+</footer>

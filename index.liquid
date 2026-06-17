@@ -37,6 +37,7 @@ layout: base.liquid
           <span class="post-link-title-wrap">
             {% if post.data.favorite %}<span class="post-favorite" aria-label="Popular post">★</span>{% endif %}
             <span class="post-link-title" style="view-transition-name: {{ post.page.url | vtName }}">{{ post.data.title }}</span>
+            {% if post.data.layout == 'research.liquid' %}<span class="post-link-research" aria-label="Deep Research post">Research</span>{% endif %}
           </span>
         </a>
       </li>

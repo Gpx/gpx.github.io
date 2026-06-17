@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "serve": "npx @11ty/eleventy --serve"
+    "serve": "npx @11ty/eleventy --serve",
+    "import:research": "node scripts/import-deep-research.cjs",
+    "import:gdoc": "node scripts/import-google-doc.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "playwright": "^1.52.0"
   },
   "dependencies": {
-    "markdown-it-anchor": "^9.2.0"
+    "katex": "^0.17.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-texmath": "^1.0.0"
   }
 }

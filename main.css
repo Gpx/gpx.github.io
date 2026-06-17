@@ -172,6 +172,17 @@
   --code-line-highlight: rgba(232, 122, 69, 0.12);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   font-family: var(--font-body);
   color: var(--text);
@@ -695,12 +706,20 @@ a:hover {
   background: var(--surface);
 }
 
+.post .katex-display {
+  margin: 1.75em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25em 0;
+}
+
 .post h2 {
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   margin: 3rem 0 1rem;
   text-wrap: balance;
+  scroll-margin-top: 5rem;
 }
 
 .post h2 a {
@@ -723,6 +742,21 @@ a:hover {
   font-weight: 600;
   margin: 3rem 0 1rem;
   text-wrap: balance;
+  scroll-margin-top: 5rem;
+}
+
+.post h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post h3 a:hover {
+  color: var(--accent);
+}
+
+.post h3 a:hover::after {
+  content: " #";
+  color: var(--muted);
 }
 
 .post blockquote {
@@ -835,4 +869,179 @@ a:hover {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 0.2em;
+}
+
+/* Deep Research posts */
+
+.post-research-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.25em 0.6em;
+  border-radius: 0.25rem;
+  margin: 0 0 0.5rem;
+}
+
+.post-meta-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.post-meta-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.post-sources {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  max-width: 65ch;
+}
+
+.post-sources h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+  scroll-margin-top: 5rem;
+}
+
+.post-sources-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-source-item {
+  margin: 0.85rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.55;
+  font-size: 0.95rem;
+  scroll-margin-top: 5rem;
+}
+
+.post-source-item::before {
+  content: attr(data-source-id);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  width: 1.5rem;
+  text-align: right;
+}
+
+.post-source-title {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.post-source-title:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.post-attribution {
+  margin: 2rem 0 0;
+  max-width: 65ch;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.post-attribution a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.post-attribution a:hover {
+  color: var(--accent);
+}
+
+.post-link-research {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.2em 0.55em;
+  border-radius: 999px;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.post-research a[href^="#source-"] {
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  vertical-align: super;
+  line-height: 0;
+  padding: 0 0.1em;
+}
+
+.post-research a[href^="#source-"]:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.citation-popover {
+  position: absolute;
+  z-index: 100;
+  max-width: min(22rem, calc(100vw - 1.5rem));
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+.citation-popover-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.citation-popover-link {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.citation-popover-footer {
+  margin: 0.65rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.citation-popover-footer a {
+  color: var(--muted);
+}
+
+.citation-popover-footer a:hover {
+  color: var(--accent);
 }
