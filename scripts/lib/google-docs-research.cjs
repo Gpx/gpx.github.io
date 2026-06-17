@@ -40,7 +40,19 @@ function extractGdocContent() {
     return bold;
   }
 
+  function getMonospaceClasses() {
+    const mono = new Set();
+    const styleText = document.querySelector("style")?.textContent || "";
+    for (const match of styleText.matchAll(
+      /\.([a-zA-Z0-9_-]+)\{[^}]*font-family:[^;}]*(?:Roboto Mono|Courier|Consolas|monospace)/gi
+    )) {
+      mono.add(match[1]);
+    }
+    return mono;
+  }
+
   const boldClasses = getBoldClasses();
+  const monoClasses = getMonospaceClasses();
 
   function isCitationSpan(el) {
     if (el.tagName !== "SPAN") return false;
@@ -62,6 +74,15 @@ function extractGdocContent() {
     return false;
   }
 
+  function isCode(el) {
+    if (el.tagName !== "SPAN") return false;
+    for (const cls of el.classList) {
+      if (monoClasses.has(cls)) return true;
+    }
+    const ff = window.getComputedStyle(el).fontFamily || "";
+    return /mono|courier|consolas/i.test(ff);
+  }
+
   function inlineMarkdown(el) {
     let out = "";
     for (const node of el.childNodes) {
@@ -71,6 +92,9 @@ function extractGdocContent() {
         if (isCitationSpan(node)) {
           const n = node.textContent.trim();
           out += `[${n}](#source-${n})`;
+        } else if (isCode(node)) {
+          const inner = inlineMarkdown(node).trim();
+          out += inner ? `\`${inner}\`` : "";
         } else if (isBold(node)) {
           const inner = inlineMarkdown(node).trim();
           out += inner ? `**${inner}**` : "";

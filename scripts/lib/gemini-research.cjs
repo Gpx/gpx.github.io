@@ -225,6 +225,16 @@ function cleanBody(body) {
   return body.trim();
 }
 
+/** Wrap shell commands and code literals that Google Docs exports as plain text. */
+function formatInlineCodeLiterals(body) {
+  body = body.replace(/(?<!`)rm -rf src\/(?!`)/g, "`rm -rf src/`");
+  body = body.replace(
+    /\(e\.g\., "Warning: this function only accepts positive integers"\)/g,
+    "(e.g., `Warning: this function only accepts positive integers`)"
+  );
+  return body;
+}
+
 /** Strips Gemini junk links but keeps `[n](#source-n)` citations and runs math conversion. */
 function cleanBodyForPublish(body) {
   body = body.replace(/\[[^\]]*\]\(https?:[^)]+\)/g, "");
@@ -232,6 +242,7 @@ function cleanBodyForPublish(body) {
   const variables = collectFormulaVariables(body);
   body = formatEquations(body);
   body = formatInlineVariables(body, variables);
+  body = formatInlineCodeLiterals(body);
   body = body.replace(/ {2,}/g, " ");
   body = body.replace(/\n{3,}/g, "\n\n");
   return body.trim();
@@ -441,6 +452,7 @@ module.exports = {
   stripInlineCitations,
   formatEquations,
   formatInlineVariables,
+  formatInlineCodeLiterals,
   collectFormulaVariables,
   summarizeMathConversion,
   exprToLatex,
