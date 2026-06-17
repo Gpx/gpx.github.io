@@ -215,23 +215,6 @@ a:hover {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a89f92' d='M3 4.5 6 7.5 9 4.5'/%3E%3C/svg%3E");
 }
 
-.site-header select {
-  font-size: 0.9rem;
-  padding: 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 0.25rem;
-  background: transparent;
-  color: inherit;
-  appearance: none;
-  margin-right: 0.5rem;
-}
-
-@media (max-width: 640px) {
-  .site-header select:not(.theme-select) {
-    display: none;
-  }
-}
-
 .site-header .main-link {
   display: grid;
   place-items: center;
@@ -293,6 +276,10 @@ a:hover {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .hero-photo {
+    display: none;
+  }
 }
 
 .hero-photo {
@@ -321,12 +308,6 @@ a:hover {
   background: var(--surface);
 }
 
-@media (max-width: 720px) {
-  .hero-photo {
-    width: min(10rem, 42vw);
-  }
-}
-
 @media (min-width: 721px) {
   .hero-photo {
     margin-top: 0.25rem;
@@ -336,20 +317,6 @@ a:hover {
 @media (max-width: 720px) {
   .hero {
     padding: 2.5rem 0 3rem;
-  }
-
-  .hero-layout {
-    grid-template-areas:
-      "photo"
-      "content";
-  }
-
-  .hero-photo {
-    grid-area: photo;
-  }
-
-  .hero-content {
-    grid-area: content;
   }
 }
 
@@ -390,26 +357,6 @@ a:hover {
 
 .hero-bio a:hover {
   text-decoration-color: var(--accent);
-}
-
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0 0;
-}
-
-.hero-tags li {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.03em;
-  padding: 0.35rem 0.7rem;
-  border-radius: 0.35rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--muted);
 }
 
 .writing {
