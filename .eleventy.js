@@ -6,6 +6,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("main.css");
   eleventyConfig.addPassthroughCopy("code.css");
   eleventyConfig.addPassthroughCopy("theme.js");
+  eleventyConfig.addPassthroughCopy("transitions.js");
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("android-chrome-192x192.png");
@@ -28,6 +29,21 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addFilter("isoDate", function (date) {
     return date.toISOString().slice(0, 10);
+  });
+  eleventyConfig.addFilter("vtName", function (url) {
+    if (!url) return "none";
+    let path = url;
+    try {
+      path = decodeURIComponent(url);
+    } catch (_) {
+      /* keep encoded path */
+    }
+    const safe = path
+      .replace(/^\/+|\/+$/g, "")
+      .replace(/[^a-zA-Z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .toLowerCase();
+    return safe ? `vt-${safe}` : "none";
   });
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.amendLibrary("md", (mdLib) => {

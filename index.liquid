@@ -34,9 +34,9 @@ layout: base.liquid
       <li>
         <a class="post-link" href="{{ post.page.url }}">
           <time datetime="{{ post.page.date | date: '%Y-%m-%d' }}">{{ post.page.date | date }}</time>
-          <span class="post-link-title">
+          <span class="post-link-title-wrap">
             {% if post.data.favorite %}<span class="post-favorite" aria-label="Popular post">★</span>{% endif %}
-            {{ post.data.title }}
+            <span class="post-link-title" style="view-transition-name: {{ post.page.url | vtName }}">{{ post.data.title }}</span>
           </span>
         </a>
       </li>
