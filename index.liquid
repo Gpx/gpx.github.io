@@ -2,18 +2,49 @@
 layout: base.liquid
 ---
 
-<p class="introduction">Hi, I'm Giorgio Polvara.<br/>I like to code things for the web and I sometimes write down what I discovered.</p>
+<section class="hero">
+  <div class="hero-layout">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Staff Engineer @ Perk</p>
+      <h1 class="hero-name">Giorgio Polvara</h1>
+      <p class="hero-bio">
+        I design and scale frontend systems for high-growth companies—architecture, developer experience, and foundations that teams can build on for years. I set up the frontend platform at TravelPerk when it was a 15-person startup; those choices still power the product today. I also created
+        <a href="https://www.npmjs.com/package/@testing-library/user-event">@testing-library/user-event</a>, now used by millions of projects every week.
+      </p>
+      <ul class="hero-tags" aria-label="Focus areas">
+        <li>Frontend architecture</li>
+        <li>Developer experience</li>
+        <li>Open source</li>
+      </ul>
+    </div>
+    <figure class="hero-photo">
+      <img
+        src="/images/giorgio-polvara.png"
+        alt="Giorgio Polvara"
+        width="280"
+        height="280"
+        loading="eager"
+        decoding="async" />
+    </figure>
+  </div>
+</section>
 
-<ol class="posts">
-  {% for post in collections.post reversed %}
-    <li>
-      <span>{{ post.page.date | date }}</span>
-      <div>
-        <a href="{{ post.page.url }}">
-          {% if post.data.favorite %}⭐️{% endif %}
-          {{ post.data.title }}
+<section class="writing">
+  <div class="section-header">
+    <h2 class="section-title">Writing</h2>
+    <span class="section-count">{{ collections.post | size }} posts</span>
+  </div>
+  <ol class="posts">
+    {% for post in collections.post reversed %}
+      <li>
+        <a class="post-link" href="{{ post.page.url }}">
+          <time datetime="{{ post.page.date | date: '%Y-%m-%d' }}">{{ post.page.date | date }}</time>
+          <span class="post-link-title">
+            {% if post.data.favorite %}<span class="post-favorite" aria-label="Popular post">★</span>{% endif %}
+            {{ post.data.title }}
+          </span>
         </a>
-      </div>
-    </li>
-  {% endfor %}
-</ol>
+      </li>
+    {% endfor %}
+  </ol>
+</section>

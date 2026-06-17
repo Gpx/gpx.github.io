@@ -3,11 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Giorgio Polvara — Staff Engineer at Perk. Frontend architecture, developer experience, and creator of @testing-library/user-event." />
     <title>
       {% if eleventy.env.runMode == 'serve' %}
         [Local]
       {% endif %}
       {{ title | default: "polvara.me" }}</title>
+    <script>
+      (function () {
+        var theme = localStorage.getItem("theme") || "auto";
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="/main.css" />
     <link rel="stylesheet" href="/code.css" />
     <link
@@ -36,17 +52,33 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <a href="/" class="main-link">polvara.me</a>
-        <div class="menu">
-          <a
-            href="https://twitter.com/Gpx"
-            target="_blank"
-            rel="noopener noreferrer">Find me on X</a>
+    <div class="page">
+      <header class="site-header">
+        <a href="/" class="main-link">GP</a>
+        <div class="header-actions">
+          <select id="theme-select" class="theme-select" aria-label="Color theme">
+            <option value="auto">Auto</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+          <nav class="social" aria-label="Social links">
+            <a
+              class="social-link"
+              href="https://www.linkedin.com/in/polvara/"
+              target="_blank"
+              rel="noopener noreferrer">LinkedIn</a>
+            <a
+              class="social-link"
+              href="https://twitter.com/Gpx"
+              target="_blank"
+              rel="noopener noreferrer">Twitter</a>
+          </nav>
         </div>
       </header>
-      {{ content }}
+      <main class="container">
+        {{ content }}
+      </main>
     </div>
+    <script src="/theme.js"></script>
   </body>
 </html>
