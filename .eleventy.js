@@ -2,6 +2,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.ignores.add("AGENTS.md");
   eleventyConfig.addPassthroughCopy("main.css");
   eleventyConfig.addPassthroughCopy("code.css");
   eleventyConfig.addPassthroughCopy("theme.js");
