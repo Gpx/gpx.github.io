@@ -13,6 +13,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("favicon-32x32.png");
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("site.webmanifest");
+  eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addFilter("figure", (url, description, alt = description) => {
     return `<figure>
       <img src="${url}" alt="${alt}" />
