@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Import a public Google Doc into posts/*.md (research layout + inline citations).
+ * Import a public Google Doc into posts/*.md (research layout + sources list).
  *
  *   npm run import:gdoc -- --doc https://docs.google.com/document/d/abc123/edit
  *   npm run import:gdoc -- --from-json scripts/fixtures/gdoc-abc123.json

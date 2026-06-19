@@ -35,7 +35,7 @@ layout: base.liquid
 
 <header class="post-header">
   <p class="post-research-label">Deep Research</p>
-  <h1 class="post-title" style="view-transition-name: {{ page.url | vtName }}">{{ title }}</h1>
+  <h1 class="post-title post-title--split" style="view-transition-name: {{ page.url | vtName }}">{% include "research-title.liquid", title: title, subtitle: subtitle %}</h1>
   <div class="post-meta">
   {% if showLastModified %}
     Last modified: {{ page.date | date }}
@@ -69,7 +69,7 @@ layout: base.liquid
     <h2 id="sources-heading">Sources</h2>
     <ol class="post-sources-list">
       {% for source in sources %}
-        <li id="source-{{ source.id | default: forloop.index }}" data-source-id="{{ source.id | default: forloop.index }}" class="post-source-item">
+        <li data-source-id="{{ forloop.index }}" class="post-source-item">
           {% if source.links %}
             <a href="{{ source.links[0].url }}" target="_blank" rel="noopener noreferrer" class="external-link post-source-link post-source-title">{{ source.links[0].title }}</a>
           {% else %}
@@ -90,7 +90,7 @@ layout: base.liquid
     {% if newerPost %}
       <a class="post-pagination-link post-pagination-newer" href="{{ newerPost.url }}">
         <span class="post-pagination-label">Newer</span>
-        <span class="post-pagination-title">{{ newerPost.data.title }}</span>
+        <span class="post-pagination-title">{% if newerPost.data.layout == 'research.liquid' %}{% include "research-title.liquid", title: newerPost.data.title, subtitle: newerPost.data.subtitle, inline: true %}{% else %}{{ newerPost.data.title }}{% endif %}</span>
       </a>
     {% else %}
       <span class="post-pagination-spacer" aria-hidden="true"></span>
@@ -98,7 +98,7 @@ layout: base.liquid
     {% if olderPost %}
       <a class="post-pagination-link post-pagination-older" href="{{ olderPost.url }}">
         <span class="post-pagination-label">Older</span>
-        <span class="post-pagination-title">{{ olderPost.data.title }}</span>
+        <span class="post-pagination-title">{% if olderPost.data.layout == 'research.liquid' %}{% include "research-title.liquid", title: olderPost.data.title, subtitle: olderPost.data.subtitle, inline: true %}{% else %}{{ olderPost.data.title }}{% endif %}</span>
       </a>
     {% else %}
       <span class="post-pagination-spacer" aria-hidden="true"></span>
@@ -111,8 +111,6 @@ layout: base.liquid
 </div>
 <script src="/toc.js"></script>
 {% endif %}
-
-<script src="/citations.js"></script>
 
 <footer class="post-cta">
   <p>Would you like to have a civil discussion about this post?</p>

@@ -17,17 +17,29 @@ function yamlEscape(str) {
   return String(str).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 }
 
+/** Split "Main title: Subtitle" on the first colon-space (Deep Research format). */
+function splitResearchTitle(rawTitle) {
+  const str = String(rawTitle || "").trim();
+  const idx = str.indexOf(": ");
+  if (idx === -1) {
+    return { title: str, subtitle: null };
+  }
+  return {
+    title: str.slice(0, idx).trim(),
+    subtitle: str.slice(idx + 2).trim(),
+  };
+}
+
 function buildSourcesYaml(sources) {
   const lines = ["sources:"];
   for (const src of sources) {
-    lines.push(`  - id: ${src.id}`);
-    lines.push(`    title: "${yamlEscape(src.title)}"`);
+    lines.push(`  - title: "${yamlEscape(src.title)}"`);
     lines.push(`    url: "${src.url}"`);
   }
   return lines.join("\n");
 }
 
-/** One source per citation index; `id` matches inline `[n](#source-n)` anchors. */
+/** One source per Gemini citation carousel index (sequential bibliography list). */
 function buildSourcesFromByIndex(byIndex) {
   const sources = [];
   const indices = Object.keys(byIndex)
@@ -40,7 +52,6 @@ function buildSourcesFromByIndex(byIndex) {
     );
     if (!links.length) continue;
     sources.push({
-      id: idx,
       title: links[0].title,
       url: links[0].url,
     });
@@ -235,9 +246,10 @@ function formatInlineCodeLiterals(body) {
   return body;
 }
 
-/** Strips Gemini junk links but keeps `[n](#source-n)` citations and runs math conversion. */
+/** Strips Gemini junk links, inline citations, and runs math conversion. */
 function cleanBodyForPublish(body) {
   body = body.replace(/\[[^\]]*\]\(https?:[^)]+\)/g, "");
+  body = stripInlineCitations(body);
   body = stripCitationOnlyLines(body);
   const variables = collectFormulaVariables(body);
   body = formatEquations(body);
@@ -249,11 +261,17 @@ function cleanBodyForPublish(body) {
 }
 
 function buildResearchPost({ meta, body, sources }) {
+  const { title, subtitle } =
+    meta.subtitle != null && meta.subtitle !== ""
+      ? { title: meta.title, subtitle: meta.subtitle }
+      : splitResearchTitle(meta.title);
+
   const frontmatter = [
     "---",
     "tags: post",
     "layout: research.liquid",
-    `title: "${yamlEscape(meta.title)}"`,
+    `title: "${yamlEscape(title)}"`,
+    subtitle ? `subtitle: "${yamlEscape(subtitle)}"` : null,
     `date: "${meta.date}"`,
     meta.draft ? "eleventyExcludeFromCollections: true" : null,
     meta.geminiShare ? `geminiShare: "${meta.geminiShare}"` : null,
@@ -441,6 +459,7 @@ module.exports = {
   slugify,
   shareIdFromUrl,
   yamlEscape,
+  splitResearchTitle,
   buildPost,
   buildResearchPost,
   buildSourcesFromByIndex,

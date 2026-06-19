@@ -6,7 +6,7 @@ Guide for AI agents working on [polvara.me](https://polvara.me) — Giorgio Polv
 
 Static site built with [Eleventy](https://www.11ty.dev/) (v3). Source lives in this repo; output goes to `_site/`. Deployed to GitHub Pages on push to `main`. Custom domain: `polvara.me` (see `CNAME`).
 
-No framework (no React/Vue). Templates are Liquid. Styles are hand-written CSS with CSS custom properties. Minimal client-side JS for theme switching and research-post citation popovers. Math in posts is rendered at build time with [KaTeX](https://katex.org/) via `markdown-it-texmath`.
+No framework (no React/Vue). Templates are Liquid. Styles are hand-written CSS with CSS custom properties. Minimal client-side JS for theme switching and table-of-contents on long research posts. Math in posts is rendered at build time with [KaTeX](https://katex.org/) via `markdown-it-texmath`.
 
 ## Commands
 
@@ -32,7 +32,7 @@ Always run `npm run build` after substantive changes to verify the site compiles
 ├── _includes/
 │   ├── base.liquid      # HTML shell: <head>, site nav, theme script
 │   ├── post.liquid      # Blog post layout: title, meta, pagination, CTA
-│   └── research.liquid  # Deep Research layout: label, sources, citation popover
+│   └── research.liquid  # Deep Research layout: label, sources list
 ├── posts/               # Markdown blog posts (*.md)
 ├── scripts/
 │   ├── import-deep-research.cjs   # CLI: import Gemini share → posts/*.md
@@ -47,7 +47,7 @@ Always run `npm run build` after substantive changes to verify the site compiles
 ├── main.css             # Site styles + design tokens
 ├── code.css             # Syntax highlighting (Prism token classes)
 ├── theme.js             # Light / dark / auto theme toggle
-├── citations.js         # Citation popovers on research posts
+├── toc.js               # Table of contents for long research posts
 ├── katex.min.css        # Copied from node_modules at build (math rendering)
 ├── .eleventy.js         # Eleventy config, filters, markdown plugins (incl. KaTeX)
 ├── CNAME                # Custom domain for GitHub Pages
@@ -77,7 +77,7 @@ Posts tagged `post` are collected into `collections.post` (used on the homepage 
 
 ## Importing research posts
 
-Research posts are long-form articles published with `layout: research.liquid`. They show a **Research** label on the homepage, keep **inline citation links** (`[1](#source-1)`), and render a numbered **Sources** section with clickable URLs. Citation numbers in the text open a popover (`citations.js`) linking to the matching source.
+Research posts are long-form articles published with `layout: research.liquid`. They show a **Research** label on the homepage and render a numbered **Sources** section at the end with clickable URLs. Inline citation numbers from the original report are stripped during import — the body has no footnotes or links to sources.
 
 Two import paths share the same output format via `buildResearchPost()` in `scripts/lib/gemini-research.cjs`:
 
@@ -86,7 +86,7 @@ Two import paths share the same output format via `buildResearchPost()` in `scri
 | [Gemini Deep Research](https://gemini.google.com/) share | `npm run import:research -- --share <url>` | Fetch share in Playwright, harvest citation carousels |
 | Google Doc (e.g. exported Gemini report) | `npm run import:gdoc -- --doc <url>` | Fetch HTML export, parse "Works cited" bibliography |
 
-Both write `posts/<slug>.md` with `sources` front matter and preserved `[n](#source-n)` anchors. Source `id` values match citation numbers in the text.
+Both write `posts/<slug>.md` with a `sources` front matter list (title + url). The body has no inline citation anchors.
 
 ### Gemini Deep Research
 
@@ -119,8 +119,8 @@ npm run import:research -- \
 
 1. Opens the share URL in headless Chromium (no sign-in needed for public shares)
 2. Extracts title, body (headings, paragraphs, lists, tables), and citation carousel links
-3. Runs `cleanBodyForPublish()` — strips stray Gemini markdown links, **keeps** `[n](#source-n)` citations, converts equations to KaTeX
-4. Writes `posts/<slug>.md` with `sources` where each `id` matches the citation index in the text (primary carousel link per index)
+3. Runs `cleanBodyForPublish()` — strips stray Gemini markdown links, inline citations, and converts equations to KaTeX
+4. Writes `posts/<slug>.md` with a `sources` bibliography (primary carousel link per citation index); splits `title: Subtitle` into separate `title` and `subtitle` front matter fields
 5. Sets `geminiShare` in front matter
 
 Fixtures (`scripts/fixtures/gemini-*.json`) store the **raw** extracted body. Re-importing from a fixture re-applies publish cleanup and math conversion without re-fetching Gemini.
@@ -152,7 +152,7 @@ npm run import:gdoc -- \
 | `--from-json PATH` | Rebuild from `scripts/fixtures/gdoc-*.json` |
 | `--slug`, `--date`, `--draft`, `--save-fixture` | Same as Gemini import |
 
-The doc must include a **Works cited** section (numbered bibliography). Superscript citation numbers in the body become `[n](#source-n)`; bibliography entries become `sources` with matching `id`s. Sets `googleDoc` in front matter.
+The doc must include a **Works cited** section (numbered bibliography). Superscript citation numbers in the body are dropped; bibliography entries become `sources`. Sets `googleDoc` in front matter.
 
 #### Re-import from Google Doc fixture
 
@@ -162,7 +162,7 @@ npm run import:gdoc -- --from-json scripts/fixtures/gdoc-abc123.json
 
 ### After import
 
-Review the markdown (tables, voice, accuracy), remove `--draft` / `eleventyExcludeFromCollections` when ready to publish, then `npm run build`. Spot-check citation popovers and equations in the browser (`npm run serve`).
+Review the markdown (tables, voice, accuracy), remove `--draft` / `eleventyExcludeFromCollections` when ready to publish, then `npm run build`. Spot-check equations in the browser (`npm run serve`).
 
 ### Math and formulas (automatic on import)
 
@@ -189,18 +189,16 @@ The CLI logs how many block formulas and variables were converted. After import,
 ---
 tags: post
 layout: research.liquid
-title: "Your Research Title"
+title: "The Phoenix Architecture"
+subtitle: "Regenerative Software Design in the Age of Generative AI"
 date: "YYYY-MM-DD"
 geminiShare: "https://gemini.google.com/share/..."   # Gemini imports
 googleDoc: "https://docs.google.com/document/d/.../edit"  # Google Doc imports
 sources:
-  - id: 1
-    title: "Source title"
+  - title: "Source title"
     url: "https://example.com"
 ---
 ```
-
-`id` must match inline citation anchors: `[1](#source-1)` → `id: 1`. IDs may be non-contiguous for Gemini posts (e.g. 1, 4, 7).
 
 Optional: `eleventyExcludeFromCollections: true` for drafts.
 
@@ -208,13 +206,12 @@ Optional: `eleventyExcludeFromCollections: true` for drafts.
 
 - **Deep Research** label in post header
 - **Gemini report** link in post meta (`geminiShare`, or `googleDoc` when imported from Docs)
-- **Sources** section at the bottom (`id="source-N"` anchors, external links)
-- **Citation popovers** (`citations.js`): clicking a superscript `[n]` opens a popover with the source title and link
+- **Sources** section at the bottom (numbered list, external links)
 - Homepage list shows a **Research** tag for posts with `layout: research.liquid`
 
-### Re-import existing posts with citations
+### Re-import existing research posts
 
-Re-run import from a saved fixture to apply importer improvements (citation preservation, math, source mapping) without re-fetching:
+Re-run import from a saved fixture to apply importer improvements (math, source mapping) without re-fetching:
 
 ```bash
 npm run import:research -- --from-json scripts/fixtures/gemini-<id>.json
@@ -268,7 +265,7 @@ Same navigation and pagination as `post.liquid`, plus:
 - `geminiShare` link in post meta
 - `<main class="post post-research">` for markdown body
 - `<section class="post-sources">` rendered from `sources` front matter
-- Attribution footer + `citations.js` for inline source popovers
+- Attribution footer + `toc.js` for long posts with a table of contents
 
 ## Styling conventions
 
@@ -322,7 +319,7 @@ A bare `header` selector caused post titles to render in a flex row with date on
 
 ### Passthrough assets
 
-Files copied as-is to `_site/` (configured in `.eleventy.js`): `main.css`, `code.css`, `theme.js`, `citations.js`, `katex.min.css`, `katex/fonts/`, `images/`, favicons, `CNAME`, `site.webmanifest`.
+Files copied as-is to `_site/` (configured in `.eleventy.js`): `main.css`, `code.css`, `theme.js`, `toc.js`, `katex.min.css`, `katex/fonts/`, `images/`, favicons, `CNAME`, `site.webmanifest`.
 
 **New static assets must be added to `addPassthroughCopy` in `.eleventy.js`.**
 
@@ -380,7 +377,6 @@ Redesign work may be on `redesign/homepage`. `main` is the production branch.
 | Import Gemini Deep Research | `npm run import:research -- --share <url>` |
 | Import Google Doc research | `npm run import:gdoc -- --doc <url>` |
 | Research layout / sources | `_includes/research.liquid` |
-| Citation popovers | `citations.js` + `.post-research` styles in `main.css` |
 | Math rendering / import conversion | `.eleventy.js` (KaTeX) + `scripts/lib/gemini-research.cjs` (`cleanBodyForPublish`) |
 | Shared research post builder | `scripts/lib/gemini-research.cjs` (`buildResearchPost`) |
 | CI / deploy | `.github/workflows/deploy.yml` |

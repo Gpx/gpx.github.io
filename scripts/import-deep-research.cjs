@@ -6,8 +6,8 @@
  *   npm run import:research -- --share ... --slug my-post --date 2026-06-17 --draft
  *   npm run import:research -- --from-json scripts/fixtures/gemini-abc123.json
  *
- * Every import runs cleanBodyForPublish() in gemini-research.cjs, which keeps
- * inline citations, strips Gemini junk links, and converts equations to KaTeX.
+ * Every import runs cleanBodyForPublish() in gemini-research.cjs, which strips
+ * inline citations and Gemini junk links, and converts equations to KaTeX.
  *
  * First run installs Chromium: npx playwright install chromium
  */
@@ -59,7 +59,7 @@ Options:
 Setup (once):
   npx playwright install chromium
 
-On every import (share or --from-json), inline citations are preserved and equations are converted to KaTeX.
+On every import (share or --from-json), inline citations are removed and equations are converted to KaTeX.
 `);
 }
 

@@ -1,0 +1,18 @@
+{% if subtitle %}
+  {% assign mainTitle = title %}
+  {% assign subTitle = subtitle %}
+{% else %}
+  {% assign parts = title | splitResearchTitle %}
+  {% assign mainTitle = parts.title %}
+  {% assign subTitle = parts.subtitle %}
+{% endif %}
+{% if subTitle %}
+  {% if inline %}
+    <span class="post-title-main">{{ mainTitle }}</span><span class="post-title-colon">:</span> <span class="post-title-sub">{{ subTitle }}</span>
+  {% else %}
+    <span class="post-title-main">{{ mainTitle }}</span>
+    <span class="post-title-sub">{{ subTitle }}</span>
+  {% endif %}
+{% else %}
+  {{ title }}
+{% endif %}

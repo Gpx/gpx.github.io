@@ -90,8 +90,7 @@ function extractGdocContent() {
         out += node.textContent;
       } else if (node.nodeName === "SPAN") {
         if (isCitationSpan(node)) {
-          const n = node.textContent.trim();
-          out += `[${n}](#source-${n})`;
+          /* superscript citation numbers — bibliography only, not inline */
         } else if (isCode(node)) {
           const inner = inlineMarkdown(node).trim();
           out += inner ? `\`${inner}\`` : "";
@@ -175,7 +174,7 @@ function extractGdocContent() {
         .replace(/\s+/g, " ")
         .trim();
       if (!title) title = url.replace(/^https?:\/\//, "");
-      sources.push({ id: index + 1, title, url });
+      sources.push({ title, url });
     });
   }
 

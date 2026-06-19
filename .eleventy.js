@@ -2,6 +2,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItAnchor = require("markdown-it-anchor");
 const texmath = require("markdown-it-texmath");
 const katex = require("katex");
+const { splitResearchTitle } = require("./scripts/lib/gemini-research.cjs");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("AGENTS.md");
@@ -9,7 +10,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("code.css");
   eleventyConfig.addPassthroughCopy("theme.js");
   eleventyConfig.addPassthroughCopy("transitions.js");
-  eleventyConfig.addPassthroughCopy("citations.js");
   eleventyConfig.addPassthroughCopy("toc.js");
   eleventyConfig.addPassthroughCopy({
     "node_modules/katex/dist/katex.min.css": "katex.min.css",
@@ -87,6 +87,7 @@ module.exports = function (eleventyConfig) {
   </details>
 </nav>`;
   });
+  eleventyConfig.addFilter("splitResearchTitle", splitResearchTitle);
   eleventyConfig.addFilter("vtName", function (url) {
     if (!url) return "none";
     let path = url;

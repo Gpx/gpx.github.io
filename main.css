@@ -550,6 +550,49 @@ a:hover {
   max-width: 100%;
 }
 
+.post-title--split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.post-title--split.post-link-title,
+.post-title--split.post-pagination-title {
+  display: inline;
+}
+
+.post-title-main {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.post-title-sub {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.post-link-title .post-title-sub,
+.post-pagination-title .post-title-sub {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: inherit;
+}
+
+.post-title-colon {
+  color: var(--muted);
+}
+
 .post-meta {
   display: block;
   font-family: var(--font-mono);
@@ -1100,59 +1143,3 @@ a:hover {
   white-space: nowrap;
 }
 
-.post-research a[href^="#source-"] {
-  font-family: var(--font-mono);
-  font-size: 0.75em;
-  font-weight: 500;
-  color: var(--accent);
-  text-decoration: none;
-  vertical-align: super;
-  line-height: 0;
-  padding: 0 0.1em;
-}
-
-.post-research a[href^="#source-"]:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
-
-.citation-popover {
-  position: absolute;
-  z-index: 100;
-  max-width: min(22rem, calc(100vw - 1.5rem));
-  padding: 0.85rem 1rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--text) 12%, transparent);
-}
-
-.citation-popover-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--muted);
-  margin-bottom: 0.35rem;
-}
-
-.citation-popover-link {
-  display: block;
-  font-size: 0.9rem;
-  line-height: 1.45;
-  color: var(--text);
-}
-
-.citation-popover-footer {
-  margin: 0.65rem 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-}
-
-.citation-popover-footer a {
-  color: var(--muted);
-}
-
-.citation-popover-footer a:hover {
-  color: var(--accent);
-}

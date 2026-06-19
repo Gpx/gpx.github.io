@@ -10,7 +10,11 @@
       {% if eleventy.env.runMode == 'serve' %}
         [Local]
       {% endif %}
-      {{ title | default: "polvara.me" }}</title>
+      {% if subtitle %}
+        {{ title }}: {{ subtitle }}
+      {% else %}
+        {{ title | default: "polvara.me" }}
+      {% endif %}</title>
     <script>
       (function () {
         var theme = localStorage.getItem("theme") || "auto";
