@@ -855,8 +855,12 @@ a:hover {
   color: var(--accent);
 }
 
-.post h2 a:hover::after {
+.post h2 a::after {
   content: " #";
+  color: transparent;
+}
+
+.post h2 a:hover::after {
   color: var(--muted);
 }
 
@@ -878,8 +882,12 @@ a:hover {
   color: var(--accent);
 }
 
-.post h3 a:hover::after {
+.post h3 a::after {
   content: " #";
+  color: transparent;
+}
+
+.post h3 a:hover::after {
   color: var(--muted);
 }
 
