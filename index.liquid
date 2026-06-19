@@ -35,7 +35,6 @@ layout: base.liquid
         <a class="post-link" href="{{ post.page.url }}">
           <time datetime="{{ post.page.date | date: '%Y-%m-%d' }}">{{ post.page.date | date }}</time>
           <span class="post-link-title-wrap">
-            {% if post.data.favorite %}<span class="post-favorite" aria-label="Popular post">★</span>{% endif %}
             <span class="post-link-title{% if post.data.layout == 'research.liquid' %} post-title--split{% endif %}" style="view-transition-name: {{ post.page.url | vtName }}">{% if post.data.layout == 'research.liquid' %}{% include "research-title.liquid", title: post.data.title, subtitle: post.data.subtitle, inline: true %}{% else %}{{ post.data.title }}{% endif %}</span>
             {% if post.data.layout == 'research.liquid' %}<span class="post-link-research" aria-label="Deep Research post">Research</span>{% endif %}
           </span>

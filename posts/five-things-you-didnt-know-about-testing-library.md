@@ -3,7 +3,6 @@ tags: post
 layout: post.liquid
 title: "Five Things You (Probably) Didn't Know About Testing Library"
 date: "2019-06-11"
-favorite: true
 ---
 
 I've just sold myself to the gods of click-baiting by making an "x things you

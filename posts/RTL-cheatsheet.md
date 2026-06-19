@@ -2,7 +2,6 @@
 tags: post
 layout: post.liquid
 title: Testing Library Cheatsheet
-favorite: true
 date: 2023-12-02
 ---
 

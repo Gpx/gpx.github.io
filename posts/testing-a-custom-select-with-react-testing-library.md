@@ -3,7 +3,6 @@ tags: post
 layout: post.liquid
 title: "Testing a Custom Select with React Testing Library"
 date: "2019-04-13"
-favorite: true
 ---
 
 I have been following the community around

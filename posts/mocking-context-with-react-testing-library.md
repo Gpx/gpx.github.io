@@ -3,7 +3,6 @@ tags: post
 layout: post.liquid
 title: "Mocking Context with React Testing Library"
 date: "2019-03-23"
-favorite: true
 ---
 
 I noticed several people getting confused on how to test React components that

@@ -41,9 +41,6 @@ layout: base.liquid
     {% else %}
       <time datetime="{{ page.date | isoDate }}">{{ page.date | date }}</time>
     {% endif %}
-    {% if favorite %}
-      &middot; Popular ⭐️
-    {% endif %}
     &middot; {{ readingMinutes }} min read
   </div>
 </header>

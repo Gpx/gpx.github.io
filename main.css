@@ -503,13 +503,6 @@ a:hover {
   text-wrap: pretty;
 }
 
-.post-favorite {
-  position: absolute;
-  right: calc(100% + 0.25rem);
-  top: 0;
-  color: var(--accent);
-}
-
 .post-nav-top {
   margin-top: 2rem;
 }

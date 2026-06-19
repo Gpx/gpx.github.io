@@ -3,7 +3,6 @@ tags: post
 layout: post.liquid
 title: "How to Test Asynchronous Methods with React Testing Library"
 date: "2019-05-19"
-favorite: true
 ---
 
 I continue my series of posts on `react-testing-library` this time with a brief
