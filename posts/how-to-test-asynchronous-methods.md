@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
+  - React
 layout: post.liquid
 title: "How to Test Asynchronous Methods with React Testing Library"
 date: "2019-05-19"

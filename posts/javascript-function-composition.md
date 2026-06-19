@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - JavaScript
 layout: post.liquid
 title: "JavaScript Function Composition"
 date: "2015-12-01"

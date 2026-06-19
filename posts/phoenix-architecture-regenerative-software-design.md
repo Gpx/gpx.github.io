@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - AI
+  - Architecture
 layout: research.liquid
 title: "The Phoenix Architecture"
 subtitle: "Regenerative Software Design in the Age of Generative AI"

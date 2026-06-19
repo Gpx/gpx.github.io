@@ -1,6 +1,9 @@
 ---
 layout: post.liquid
-tags: post
+tags:
+  - post
+  - Leadership
+  - Engineering
 title: Take decisions for the junior developer you haven’t hired yet
 date: 2023-12-07
 ---

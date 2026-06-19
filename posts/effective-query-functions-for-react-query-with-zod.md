@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - React
+  - TypeScript
 layout: post.liquid
 title: "Effective Query Functions for React Query with Zod"
 date: "2022-03-03"

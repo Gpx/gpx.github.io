@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
 layout: post.liquid
 date: 2023-06-15
 title: Make your tests fail on network requests with MSW

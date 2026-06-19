@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - AI
+  - Economics
 layout: research.liquid
 title: "The Paradox of Technological Deflation"
 subtitle: "Historical Cost Trajectories and the Economic Scaling of Generative Artificial Intelligence"

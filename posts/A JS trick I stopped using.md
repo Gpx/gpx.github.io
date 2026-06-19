@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - JavaScript
 title: A JS trick I stopped using
 layout: post.liquid
 date: "2024-03-19"

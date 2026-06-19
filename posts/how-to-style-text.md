@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - CSS
 layout: post.liquid
 title: "How to Style Text in HTML"
 date: "2023-04-03"

@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - TypeScript
 layout: post.liquid
 title: "FlagsAttribute in TypeScript"
 date: "2023-03-22"

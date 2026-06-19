@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
+  - React
 layout: post.liquid
 title: "Five Things You (Probably) Didn't Know About Testing Library"
 date: "2019-06-11"

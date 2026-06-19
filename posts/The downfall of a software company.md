@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Engineering
+  - Leadership
 layout: post.liquid
 title: "The downfall of a software company"
 date: "2024-10-05"

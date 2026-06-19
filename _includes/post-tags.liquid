@@ -1,0 +1,9 @@
+{% if tags %}
+  <ul class="post-tags" aria-label="Topics">
+    {% for tag in tags %}
+      {% unless tag == 'post' %}
+        <li><span class="post-tag">{{ tag }}</span></li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+{% endif %}

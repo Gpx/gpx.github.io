@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - JavaScript
 layout: post.liquid
 title: "ES6 Tail Call Optimization"
 date: "2015-06-01"

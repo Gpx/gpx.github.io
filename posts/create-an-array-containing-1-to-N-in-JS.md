@@ -1,8 +1,10 @@
 ---
-  tags: post
-  layout: post.liquid
-  date: 2023-03-22
-  title: "Creating an Array Containing Values 1 to N in JavaScript"
+tags:
+  - post
+  - JavaScript
+layout: post.liquid
+date: 2023-03-22
+title: "Creating an Array Containing Values 1 to N in JavaScript"
 ---
 
 If, in JavaScript, you need an array with values from 1 to N, how do you do it? There's the good old `for` loop. But I used to do something like this:

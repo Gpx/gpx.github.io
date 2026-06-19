@@ -1,5 +1,9 @@
 ---
-tags: post
+tags:
+  - post
+  - Architecture
+  - AI
+  - Leadership
 layout: research.liquid
 title: "The Cutting Edge of Socio-Technical Architecture"
 subtitle: "Transforming Systems, Teams, and Flow in the AI Era"

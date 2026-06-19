@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Web
+  - Performance
 layout: post.liquid
 title: "Mind the Gap when upgrading to HTTP/2"
 date: "2015-08-20"

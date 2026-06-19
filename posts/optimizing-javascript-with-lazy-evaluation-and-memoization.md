@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - JavaScript
+  - Performance
 layout: post.liquid
 title: "Optimizing JavaScript with Lazy Evaluation and Memoization"
 date: "2017-11-10"

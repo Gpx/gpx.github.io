@@ -1,5 +1,9 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
+  - React
+  - Next.js
 layout: post.liquid
 title: "Mock Next.js Router for Testing"
 date: "2023-05-09"

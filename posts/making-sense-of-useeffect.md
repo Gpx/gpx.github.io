@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - React
 layout: post.liquid
 title: "Making Sense of useEffect"
 date: "2019-03-06"

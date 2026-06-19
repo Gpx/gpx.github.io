@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - AI
 layout: post.liquid
 title: "What Similarweb’s Data Tells Us About the AI Market Today"
 date: "2025-11-19"

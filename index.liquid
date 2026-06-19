@@ -29,17 +29,33 @@ layout: base.liquid
     <h2 class="section-title">Writing</h2>
     <span class="section-count">{{ collections.post | size }} posts</span>
   </div>
+  {% if collections.topicTagsByRecency.size > 0 %}
+    <nav class="writing-tags" aria-label="Filter posts by topic">
+      {% for tag in collections.topicTagsByRecency %}
+        <button type="button" class="writing-tag" data-tag="{{ tag.name }}" aria-pressed="false">{{ tag.name }}</button>
+      {% endfor %}
+    </nav>
+  {% endif %}
   <ol class="posts">
     {% for post in collections.post reversed %}
-      <li>
+      <li data-tags="{{ post.data.tags | topicTagsList }}">
         <a class="post-link" href="{{ post.page.url }}">
           <time datetime="{{ post.page.date | date: '%Y-%m-%d' }}">{{ post.page.date | date }}</time>
           <span class="post-link-title-wrap">
             <span class="post-link-title{% if post.data.layout == 'research.liquid' %} post-title--split{% endif %}" style="view-transition-name: {{ post.page.url | vtName }}">{% if post.data.layout == 'research.liquid' %}{% include "research-title.liquid", title: post.data.title, subtitle: post.data.subtitle, inline: true %}{% else %}{{ post.data.title }}{% endif %}</span>
-            {% if post.data.layout == 'research.liquid' %}<span class="post-link-research" aria-label="Deep Research post">Research</span>{% endif %}
+            <span class="post-link-badges">
+              {% if post.data.tags %}
+                {% for tag in post.data.tags %}
+                  {% unless tag == 'post' %}
+                    <span class="post-tag">{{ tag }}</span>
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+            </span>
           </span>
         </a>
       </li>
     {% endfor %}
   </ol>
 </section>
+<script src="/writing-filter.js"></script>

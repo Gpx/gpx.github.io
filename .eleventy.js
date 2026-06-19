@@ -10,6 +10,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("code.css");
   eleventyConfig.addPassthroughCopy("theme.js");
   eleventyConfig.addPassthroughCopy("transitions.js");
+  eleventyConfig.addPassthroughCopy("writing-filter.js");
   eleventyConfig.addPassthroughCopy("toc.js");
   eleventyConfig.addPassthroughCopy({
     "node_modules/katex/dist/katex.min.css": "katex.min.css",
@@ -88,6 +89,33 @@ module.exports = function (eleventyConfig) {
 </nav>`;
   });
   eleventyConfig.addFilter("splitResearchTitle", splitResearchTitle);
+  eleventyConfig.addFilter("topicTagsList", function (tags) {
+    if (!tags) return "";
+    const list = Array.isArray(tags) ? tags : [tags];
+    return list.filter((tag) => tag !== "post").join(",");
+  });
+  eleventyConfig.addCollection("topicTagsByRecency", function (collectionApi) {
+    const posts = collectionApi
+      .getFilteredByTag("post")
+      .sort((a, b) => b.date - a.date);
+    const tagDates = new Map();
+
+    for (const post of posts) {
+      const tags = post.data.tags;
+      if (!tags) continue;
+      const topicTags = Array.isArray(tags) ? tags : [tags];
+      for (const tag of topicTags) {
+        if (tag === "post") continue;
+        if (!tagDates.has(tag)) {
+          tagDates.set(tag, post.date);
+        }
+      }
+    }
+
+    return [...tagDates.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([name, lastUsed]) => ({ name, lastUsed }));
+  });
   eleventyConfig.addFilter("vtName", function (url) {
     if (!url) return "none";
     let path = url;

@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - TypeScript
 title: Advent of TypeScript 2023
 layout: post.liquid
 date: git Last Modified

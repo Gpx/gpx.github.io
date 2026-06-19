@@ -1,5 +1,9 @@
 ---
-tags: post
+tags:
+  - post
+  - AI
+  - Leadership
+  - Engineering
 layout: research.liquid
 title: "The Architecture of Aligned Incentives"
 subtitle: "Engineering Productivity, AI Leverage, and the Future of Value Sharing"

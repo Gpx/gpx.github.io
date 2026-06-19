@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
+  - React
 layout: post.liquid
 title: "Mocking Context with React Testing Library"
 date: "2019-03-23"

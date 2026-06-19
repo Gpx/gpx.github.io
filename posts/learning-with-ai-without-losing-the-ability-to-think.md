@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - AI
+  - Education
 title: Learning With AI Without Losing the Ability to Think
 layout: post.liquid
 date: "2026-01-23"

@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Leadership
+  - Engineering
 layout: research.liquid
 title: "Strategic Transition from Asynchronous Code Review to Synchronous Pair Programming"
 subtitle: "An Analytical Framework for Engineering Leadership"

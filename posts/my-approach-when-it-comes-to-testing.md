@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
 layout: post.liquid
 title: "My Approach When It Comes to Testing"
 date: "2020-04-17"

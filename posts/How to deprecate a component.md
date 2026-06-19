@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Engineering
+  - React
 layout: post.liquid
 title: How to deprecate a component
 date: 2023-12-05

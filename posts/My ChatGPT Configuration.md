@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - AI
+  - Productivity
 title: My ChatGPT Configuration
 layout: post.liquid
 date: "2024-07-20"

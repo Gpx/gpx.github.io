@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
+  - React
 layout: post.liquid
 title: "Testing a Custom Select with React Testing Library"
 date: "2019-04-13"

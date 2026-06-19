@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - AI
+  - TypeScript
 layout: post.liquid
 title: "When AI Gets TypeScript Wrong"
 date: "2025-11-20"

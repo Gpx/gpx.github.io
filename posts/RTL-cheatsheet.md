@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - Testing
 layout: post.liquid
 title: Testing Library Cheatsheet
 date: 2023-12-02

@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - Leadership
+  - Engineering
 title: When introducing pain is useful
 date: 2023-12-12
 layout: post.liquid

@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - TypeScript
 layout: post.liquid
 title: Branded types in TypeScript
 date: 2023-12-01

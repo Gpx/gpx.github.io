@@ -1,6 +1,8 @@
 ---
 layout: post.liquid
-tags: post
+tags:
+  - post
+  - JavaScript
 title: On the switch true pattern
 date: 2024-01-19
 ---

@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - Finance
 layout: post.liquid
 title: "An Introduction to Hedge Funds for Developers"
 date: "2015-04-10"

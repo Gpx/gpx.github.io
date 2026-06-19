@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - Open Source
 layout: post.liquid
 title: "How to Start with Open Source"
 date: "2018-10-25"

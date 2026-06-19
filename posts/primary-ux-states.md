@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - UX
 layout: post.liquid
 title: "The Five Primary UX States"
 date: "2023-03-29"

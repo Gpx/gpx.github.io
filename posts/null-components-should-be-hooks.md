@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - React
 layout: post.liquid
 title: "Null Components Should be Hooks"
 date: "2024-07-22"

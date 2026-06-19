@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - React
 layout: post.liquid
 title: "Fetching Asynchronous Data with React Hooks"
 date: "2019-03-07"

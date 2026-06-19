@@ -1,5 +1,7 @@
 ---
-tags: post
+tags:
+  - post
+  - Web
 layout: post.liquid
 title: "Web apps: the best is yet to come"
 date: "2014-07-06"

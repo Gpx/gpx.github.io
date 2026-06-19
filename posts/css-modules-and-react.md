@@ -1,5 +1,8 @@
 ---
-tags: post
+tags:
+  - post
+  - React
+  - CSS
 layout: post.liquid
 title: "CSS Modules & React"
 date: "2016-07-26"
