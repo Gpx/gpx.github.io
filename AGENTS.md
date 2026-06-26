@@ -102,6 +102,7 @@ npm run import:research -- \
   --share https://gemini.google.com/share/abc123 \
   --slug my-research-slug \
   --date 2026-06-17 \
+  --tags AI,Architecture \
   --draft \
   --save-fixture
 ```
@@ -112,6 +113,7 @@ npm run import:research -- \
 | `--from-json PATH` | Rebuild from a saved fixture in `scripts/fixtures/` |
 | `--slug SLUG` | Output filename (default: slugified title) |
 | `--date YYYY-MM-DD` | Publication date (default: today) |
+| `--tags LIST` | Comma-separated topic tags (required on first import; preserved on re-import) |
 | `--draft` | Sets `eleventyExcludeFromCollections: true` (hidden from homepage) |
 | `--save-fixture` | Saves raw extraction to `scripts/fixtures/gemini-<id>.json` |
 
@@ -120,7 +122,7 @@ npm run import:research -- \
 1. Opens the share URL in headless Chromium (no sign-in needed for public shares)
 2. Extracts title, body (headings, paragraphs, lists, tables), and citation carousel links
 3. Runs `cleanBodyForPublish()` — strips stray Gemini markdown links, inline citations, and converts equations to KaTeX
-4. Writes `posts/<slug>.md` with a `sources` bibliography (primary carousel link per citation index); splits `title: Subtitle` into separate `title` and `subtitle` front matter fields
+4. Writes `posts/<slug>.md` with topic tags (`post` plus `--tags`), a `sources` bibliography (primary carousel link per citation index); splits `title: Subtitle` into separate `title` and `subtitle` front matter fields
 5. Sets `geminiShare` in front matter
 
 Fixtures (`scripts/fixtures/gemini-*.json`) store the **raw** extracted body. Re-importing from a fixture re-applies publish cleanup and math conversion without re-fetching Gemini.
@@ -143,6 +145,7 @@ npm run import:gdoc -- \
 npm run import:gdoc -- \
   --doc https://docs.google.com/document/d/abc123/edit \
   --date 2026-06-17 \
+  --tags AI,Engineering \
   --save-fixture
 ```
 
@@ -150,7 +153,7 @@ npm run import:gdoc -- \
 |---|---|
 | `--doc URL` | Public Google Doc link (required unless `--from-json`) |
 | `--from-json PATH` | Rebuild from `scripts/fixtures/gdoc-*.json` |
-| `--slug`, `--date`, `--draft`, `--save-fixture` | Same as Gemini import |
+| `--slug`, `--date`, `--tags`, `--draft`, `--save-fixture` | Same as Gemini import |
 
 The doc must include a **Works cited** section (numbered bibliography). Superscript citation numbers in the body are dropped; bibliography entries become `sources`. Sets `googleDoc` in front matter.
 
@@ -187,7 +190,10 @@ The CLI logs how many block formulas and variables were converted. After import,
 
 ```yaml
 ---
-tags: post
+tags:
+  - post
+  - AI
+  - Architecture
 layout: research.liquid
 title: "The Phoenix Architecture"
 subtitle: "Regenerative Software Design in the Age of Generative AI"

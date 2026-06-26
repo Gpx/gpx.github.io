@@ -4,7 +4,7 @@ tags:
   - TypeScript
 title: Advent of TypeScript 2023
 layout: post.liquid
-date: git Last Modified
+date: "2023-12-09"
 ---
 
 These are my solutions for [TypeHero's 2023 Advent of TypeScript](https://typehero.dev/aot-2023). I'll update this post as new ones are released.

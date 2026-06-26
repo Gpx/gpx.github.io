@@ -24,6 +24,7 @@ function parseArgs(argv) {
     else if (arg === "--slug") opts.slug = argv[++i];
     else if (arg === "--title") opts.title = argv[++i];
     else if (arg === "--date") opts.date = argv[++i];
+    else if (arg === "--tags") opts.tags = argv[++i];
     else if (arg === "--out") opts.out = argv[++i];
     else if (arg === "--draft") opts.draft = true;
     else if (arg === "--save-fixture") opts.saveFixture = true;
@@ -45,6 +46,7 @@ Options:
   --slug SLUG        Output filename without .md
   --title TITLE      Override title when using --from-json
   --date YYYY-MM-DD  Publication date (default: today)
+  --tags LIST        Comma-separated topic tags (required unless post already has tags)
   --out PATH         Output path (default: posts/<slug>.md)
   --draft            Exclude from homepage until ready
   --save-fixture     Save extraction JSON to scripts/fixtures/
@@ -54,8 +56,9 @@ Setup (once):
 `);
 }
 
-function logImportResult(outPath, math, sourceCount) {
+function logImportResult(outPath, math, sourceCount, tags) {
   console.log(`Wrote ${path.relative(process.cwd(), outPath)}`);
+  console.log(`Tags: ${tags.join(", ")}`);
   console.log(`Sources: ${sourceCount}`);
   if (math.blockFormulas || math.variables) {
     console.log(
@@ -89,8 +92,8 @@ async function importFromDoc(opts) {
       console.log(`Saved fixture ${fixturePath}`);
     }
 
-    const { outPath, math } = writePost(data, opts);
-    logImportResult(outPath, math, data.sources.length);
+    const { outPath, math, tags } = writePost(data, opts);
+    logImportResult(outPath, math, data.sources.length, tags);
     console.log("\nNext: review the post, then npm run build");
   } finally {
     await browser.close();
@@ -104,8 +107,8 @@ function importFromFixture(opts) {
   if (opts.draft) data.meta.draft = true;
   if (opts.doc) data.meta.googleDoc = opts.doc;
 
-  const { outPath, math } = writePost(data, opts);
-  logImportResult(outPath, math, data.sources.length);
+  const { outPath, math, tags } = writePost(data, opts);
+  logImportResult(outPath, math, data.sources.length, tags);
 }
 
 async function main() {

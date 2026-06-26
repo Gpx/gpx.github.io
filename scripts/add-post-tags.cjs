@@ -48,6 +48,8 @@ const TAGS_BY_FILE = {
     ["Architecture", "AI", "Leadership"],
   "the-paradox-of-technological-deflation-historical-cost-trajectories-and-the-economic-scaling-of-generative-artificial-intelligence.md":
     ["AI", "Economics"],
+  "the-persistence-of-theory-reevaluating-naur-s-programming-as-theory-building-in-the-generative-ai-era.md":
+    ["AI", "Engineering"],
   "web-apps-the-best-is-yet-to-come.md": ["Web"],
   "what-similarwebs-data-tells-us-about-the-ai-market-today.md": ["AI"],
   "when-ai-gets-typescript-wrong.md": ["AI", "TypeScript"],

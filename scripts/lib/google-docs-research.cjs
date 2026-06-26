@@ -4,6 +4,7 @@ const {
   slugify,
   buildResearchPost,
   summarizeMathConversion,
+  resolveTags,
 } = require("./gemini-research.cjs");
 
 function docIdFromUrl(url) {
@@ -218,9 +219,10 @@ function writePost(data, options = {}) {
     draft: options.draft ?? data.meta.draft ?? false,
     googleDoc: options.doc || data.meta.googleDoc,
     geminiShare: options.geminiShare || data.meta.geminiShare,
+    tags: resolveTags(options, outPath),
   };
   fs.writeFileSync(outPath, buildResearchPost({ meta, body: data.body, sources: data.sources }));
-  return { outPath, math: summarizeMathConversion(data.body) };
+  return { outPath, math: summarizeMathConversion(data.body), tags: meta.tags };
 }
 
 function saveFixture(data, docUrl) {

@@ -39,6 +39,52 @@ function buildSourcesYaml(sources) {
   return lines.join("\n");
 }
 
+function buildTagsYaml(topicTags) {
+  const lines = ["tags:", "  - post"];
+  for (const tag of topicTags) {
+    lines.push(`  - ${tag}`);
+  }
+  return lines.join("\n");
+}
+
+function parseTagsArg(str) {
+  return String(str)
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+}
+
+function readTopicTagsFromPost(outPath) {
+  if (!fs.existsSync(outPath)) return null;
+  const content = fs.readFileSync(outPath, "utf8");
+  const listMatch = content.match(/^tags:\s*\n((?:\s+-\s+.+\n)+)/m);
+  if (listMatch) {
+    return listMatch[1]
+      .split("\n")
+      .map((line) => line.match(/^\s+-\s+(.+)$/))
+      .filter(Boolean)
+      .map((match) => match[1].trim())
+      .filter((tag) => tag !== "post");
+  }
+  if (/^tags:\s*post\s*$/m.test(content)) {
+    return [];
+  }
+  return null;
+}
+
+function resolveTags(options, outPath) {
+  if (options.tags) {
+    return parseTagsArg(options.tags);
+  }
+  const existing = readTopicTagsFromPost(outPath);
+  if (existing && existing.length) {
+    return existing;
+  }
+  throw new Error(
+    "Missing --tags. Pass comma-separated topic tags (e.g. --tags AI,Engineering)."
+  );
+}
+
 /** One source per Gemini citation carousel index (sequential bibliography list). */
 function buildSourcesFromByIndex(byIndex) {
   const sources = [];
@@ -268,7 +314,7 @@ function buildResearchPost({ meta, body, sources }) {
 
   const frontmatter = [
     "---",
-    "tags: post",
+    buildTagsYaml(meta.tags || []),
     "layout: research.liquid",
     `title: "${yamlEscape(title)}"`,
     subtitle ? `subtitle: "${yamlEscape(subtitle)}"` : null,
@@ -437,9 +483,10 @@ function writePost(data, options = {}) {
     date: options.date || data.meta.date,
     draft: options.draft ?? data.meta.draft ?? false,
     geminiShare: options.share || data.meta.geminiShare,
+    tags: resolveTags(options, outPath),
   };
   fs.writeFileSync(outPath, buildPost({ meta, body: data.body, byIndex: data.byIndex }));
-  return { outPath, math: summarizeMathConversion(data.body) };
+  return { outPath, math: summarizeMathConversion(data.body), tags: meta.tags };
 }
 
 function saveFixture(data, shareUrl) {
@@ -465,6 +512,10 @@ module.exports = {
   buildSourcesFromByIndex,
   buildGlobalSources,
   buildSourcesYaml,
+  buildTagsYaml,
+  parseTagsArg,
+  readTopicTagsFromPost,
+  resolveTags,
   cleanBody,
   cleanBodyForPublish,
   stripCitationOnlyLines,
