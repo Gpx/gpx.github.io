@@ -11,7 +11,7 @@ pre:has(> code) {
   background: var(--code-bg);
   color: var(--code-fg);
   border: 1px solid var(--code-inline-border);
-  border-radius: 0.5rem;
+  border-radius: 0;
   padding: 1.1em 1.25em;
   margin: 2em 0;
   overflow: auto;
@@ -151,7 +151,7 @@ code ::selection {
 pre > code.highlight {
   outline: 0.25em solid color-mix(in srgb, var(--code-highlight) 35%, transparent);
   outline-offset: 0.25em;
-  border-radius: 0.15em;
+  border-radius: 0;
 }
 
 .line-numbers.line-numbers .line-numbers-rows {
@@ -173,7 +173,7 @@ pre > code.highlight {
   border: 1px solid var(--code-inline-border);
   color: var(--code-property);
   padding: 0.15em 0.35em;
-  border-radius: 0.25rem;
+  border-radius: 0;
   white-space: nowrap;
 }
 

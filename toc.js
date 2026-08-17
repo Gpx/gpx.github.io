@@ -2,6 +2,7 @@
   var toc = document.querySelector(".post-toc");
   if (!toc) return;
 
+  var aside = document.querySelector(".post-toc-aside");
   var details = toc.querySelector(".post-toc-details");
   var links = Array.from(toc.querySelectorAll('.post-toc-list a[href^="#"]'));
   if (!links.length) return;
@@ -17,6 +18,24 @@
   }
   syncDetailsOpen();
   desktop.addEventListener("change", syncDetailsOpen);
+
+  function syncAsideOverflow() {
+    if (!aside) return;
+    aside.classList.remove("is-scrollable");
+    if (!desktop.matches) return;
+    var top = aside.getBoundingClientRect().top;
+    var available = window.innerHeight - top - 24;
+    if (aside.scrollHeight > available + 2) {
+      aside.classList.add("is-scrollable");
+    }
+  }
+
+  syncAsideOverflow();
+  window.addEventListener("resize", syncAsideOverflow);
+  desktop.addEventListener("change", syncAsideOverflow);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncAsideOverflow);
+  }
 
   var headings = links
     .map(function (link) {

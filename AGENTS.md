@@ -248,7 +248,7 @@ Markdown links starting with `http` automatically get `target="_blank"`, `rel="n
 
 - Wraps all pages in `<div class="page">`
 - **Site navigation** uses `<header class="site-header">` — not a bare `<header>` tag
-- Loads Google Fonts: Fraunces, DM Sans, IBM Plex Mono
+- Loads Google Fonts: Titillium Web, Libre Baskerville, IBM Plex Mono
 - Inline script in `<head>` applies saved theme before paint (avoids flash)
 - Loads `theme.js` at end of `<body>`
 - Social links: LinkedIn first, then Twitter (`https://twitter.com/Gpx`)
@@ -280,10 +280,11 @@ Same navigation and pagination as `post.liquid`, plus:
 | Token | Purpose |
 |---|---|
 | `--bg`, `--surface`, `--text`, `--muted` | Page colors |
+| `--header-bg`, `--header-fg` | Inverted site header bar |
 | `--accent`, `--accent-soft`, `--border` | Links, highlights, borders |
-| `--font-display` | Fraunces — headings |
-| `--font-body` | DM Sans — body text |
-| `--font-mono` | IBM Plex Mono — dates, labels, code |
+| `--font-display` | Titillium Web — UI, headings, homepage |
+| `--font-body` | Libre Baskerville — post and bio prose |
+| `--font-mono` | IBM Plex Mono — code |
 | `--code-*` | Syntax highlighting palette (light + dark variants) |
 
 ### Theme switching
@@ -312,10 +313,10 @@ A bare `header` selector caused post titles to render in a flex row with date on
 
 ### Post typography
 
-- Body prose capped at `65ch` (`.post`)
+- Body prose capped at `--post-measure` (`.post`, pagination, sources, CTA)
 - First paragraph has lead styling (`.post > p:first-of-type`)
 - Consecutive paragraphs use tighter spacing (`.post p + p`)
-- Pagination cards use `.post-pagination-link` with border/background
+- Pagination uses `.post-pagination-link` (plain text, no cards)
 
 ### Code highlighting
 
